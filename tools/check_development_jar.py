@@ -18,6 +18,8 @@ def check_jar(jar: Path, root: Path = ROOT) -> tuple[int, str]:
         for name in ('rustic/fabric/RusticFabric.class', 'rustic/fabric/RusticItems.class', 'rustic/fabric/RusticFoods.class'):
             if archive.read(name)[:4] != b'\xca\xfe\xba\xbe':
                 raise ValueError(f'invalid class file: {name}')
+        if any(name.startswith('rustic/fabric/gametest/') for name in entries):
+            raise ValueError('GameTest classes must not be included in the development JAR')
         metadata = json.loads(archive.read('fabric.mod.json'))
         if metadata.get('id') != 'rustic' or metadata.get('version') != '0.0.0-dev':
             raise ValueError('unexpected Fabric metadata')

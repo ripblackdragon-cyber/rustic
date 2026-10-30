@@ -4,6 +4,7 @@ import net.fabricmc.fabric.api.gametest.v1.GameTest;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.gametest.framework.GameTestHelper;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -43,9 +44,17 @@ public class RusticGameTests {
 
     private void assertFood(GameTestHelper helper, Item food, int expectedHunger, float expectedSaturation) {
         Player player = helper.makeMockPlayer(GameType.SURVIVAL);
+        ItemStack stack = new ItemStack(food, 2);
+        player.setItemInHand(InteractionHand.MAIN_HAND, stack);
+        player.getFoodData().setFoodLevel(20);
+        stack.use(helper.getLevel(), player, InteractionHand.MAIN_HAND);
+        helper.assertTrue(!player.isUsingItem() && stack.getCount() == 2,
+                "Food must not be used at full hunger");
         player.getFoodData().setFoodLevel(10);
         player.getFoodData().setSaturation(0.0F);
-        ItemStack stack = new ItemStack(food, 2);
+        stack.use(helper.getLevel(), player, InteractionHand.MAIN_HAND);
+        helper.assertTrue(player.isUsingItem() && player.getUseItemRemainingTicks() == 16,
+                "Food must start a 16-tick use when hungry");
         ItemStack remaining = stack.finishUsingItem(helper.getLevel(), player);
         helper.assertTrue(remaining.getCount() == 1, "Eating must consume exactly one item");
         helper.assertTrue(player.getFoodData().getFoodLevel() == expectedHunger, "Unexpected hunger after eating");

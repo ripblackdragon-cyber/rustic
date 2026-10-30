@@ -31,16 +31,8 @@ jobs:
         run: |
           set -o pipefail
           ./gradlew build --stacktrace --no-daemon 2>&1 | tee "$RUNNER_TEMP/rustic-gradle-build.log"
-      - name: Inspect Minecraft GameTest report
-        run: |
-          python3 - <<'PY'
-          from pathlib import Path
-          report = Path('build/reports/rustic-gametest.xml')
-          if not report.is_file():
-              raise SystemExit('GameTest report missing: Minecraft tests did not report results')
-          text = report.read_text(encoding='utf-8').replace('%', '%25').replace('\r', '%0D').replace('\n', '%0A')
-          print('::notice::GameTest XML: ' + text[:12000])
-          PY
+      - name: Verify Minecraft GameTest results
+        run: python3 tools/check_gametest_results.py
       - name: Verify Java unit test results
         run: python3 tools/check_junit_results.py
       - name: Verify development JAR packaging
@@ -83,5 +75,53 @@ jobs:
         with:
           name: rustic-fabric-26.3-development
           path: build/libs/*.jar
+          if-no-files-found: error
+          retention-days: 7
+
+  client-game-test:
+    name: Minecraft 26.3 singleplayer client test
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Check out source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Install Java 25
+        uses: actions/setup-java@b843ebf9b913146b38da2eaa7aeddf76074ae1ad # v6.1.0
+        with:
+          distribution: temurin
+          java-version: '25'
+      - name: Run Minecraft client and integrated-server test
+        id: client
+        shell: bash
+        run: |
+          set -o pipefail
+          xvfb-run -a -s '-screen 0 1280x720x24' ./gradlew runClientGameTest --no-daemon --stacktrace 2>&1 | tee "$RUNNER_TEMP/rustic-client.log"
+          grep -Fx 'rustic-client-food-gametest-passed' build/reports/rustic-client-gametest.txt
+          echo '::notice::Minecraft client used both foods in a singleplayer world; integrated-server state verified.'
+      - name: Annotate client failure
+        if: failure() && steps.client.outcome == 'failure'
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import os
+          from pathlib import Path
+          log = Path(os.environ['RUNNER_TEMP']) / 'rustic-client.log'
+          if not log.exists():
+              print('::error::Client test log missing; check XVFB and Gradle startup.')
+          else:
+              lines = log.read_text(encoding='utf-8', errors='replace').splitlines()
+              found = []
+              for i, line in enumerate(lines):
+                  if any(key in line for key in ('What went wrong:', ' error:', 'ERROR', 'Exception', 'AssertionError', 'Failed to', 'GameTest')):
+                      found.extend(lines[i:i+3])
+              for line in (found[-60:] or lines[-30:]):
+                  print('::error::' + line[:1500].replace('%', '%25').replace('\r', '%0D').replace('\n', '%0A'))
+          PY
+      - name: Upload client screenshot
+        if: success()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: rustic-client-gametest-screenshot
+          path: build/run/clientGameTest/screenshots/*.png
           if-no-files-found: error
           retention-days: 7

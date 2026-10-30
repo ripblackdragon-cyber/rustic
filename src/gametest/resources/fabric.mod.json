@@ -3,7 +3,7 @@
   "id": "rustic_gametest",
   "version": "0.0.0-dev",
   "name": "Rustic development GameTests",
-  "environment": "server",
+  "environment": "*",
   "depends": { "rustic": "*", "fabric-gametest-api-v1": "*" },
-  "entrypoints": { "fabric-gametest": [ "rustic.fabric.gametest.RusticGameTests" ] }
+  "entrypoints": { "fabric-gametest": [ "rustic.fabric.gametest.RusticGameTests" ], "fabric-client-gametest": [ "rustic.fabric.gametest.RusticClientGameTest" ] }
 }

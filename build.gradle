@@ -24,7 +24,7 @@ fabricApi {
     configureTests {
         createSourceSet = true
         modId = "rustic_gametest"
-        enableClientGameTests = false
+        enableClientGameTests = true
         eula = false
     }
 }
@@ -33,6 +33,10 @@ loom {
     runs {
         gameTest {
             systemProperties.put('fabric-api.gametest.report-file', file('build/reports/rustic-gametest.xml').absolutePath)
+        }
+        clientGameTest {
+            systemProperties.put('fabric.client.gametest.modid', 'rustic_gametest')
+            systemProperties.put('rustic.client.report', file('build/reports/rustic-client-gametest.txt').absolutePath)
         }
     }
 }
