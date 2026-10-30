@@ -31,6 +31,16 @@ jobs:
         run: |
           set -o pipefail
           ./gradlew build --stacktrace --no-daemon 2>&1 | tee "$RUNNER_TEMP/rustic-gradle-build.log"
+      - name: Inspect Minecraft GameTest report
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          report = Path('build/reports/rustic-gametest.xml')
+          if not report.is_file():
+              raise SystemExit('GameTest report missing: Minecraft tests did not report results')
+          text = report.read_text(encoding='utf-8').replace('%', '%25').replace('\r', '%0D').replace('\n', '%0A')
+          print('::notice::GameTest XML: ' + text[:12000])
+          PY
       - name: Verify Java unit test results
         run: python3 tools/check_junit_results.py
       - name: Verify development JAR packaging
@@ -50,11 +60,14 @@ jobs:
               found = []
               for i, line in enumerate(lines):
                   if ('What went wrong:' in line or ' error:' in line or
-                      'Could not resolve' in line or 'Could not find' in line):
+                      'Could not resolve' in line or 'Could not find' in line or
+                      'GAME TEST' in line or 'GameTest' in line or '[ERROR]' in line):
                       found.extend(lines[i:i+4])
               for line in (found[:40] or lines[-15:]):
                   line = line.replace('%', '%25').replace('\r', '%0D').replace('\n', '%0A')
                   print('::error::' + line[:1500])
+          for report in Path('build/reports').glob('*gametest*.xml'):
+              print('::notice::GameTest report ' + report.read_text(encoding='utf-8').replace('%', '%25').replace('\r', '%0D').replace('\n', '%0A')[:5000])
           for xml in (Path('build/test-results/test')).glob('TEST-*.xml'):
               import xml.etree.ElementTree as ET
               root = ET.parse(xml).getroot()
