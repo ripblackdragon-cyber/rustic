@@ -1,6 +1,6 @@
 # Diagnóstico de compilación y pruebas
 
-Fecha: 2026-10-30. Rama local `arena/f8eaa5d8-rustic`. **El port no está terminado ni compilado.**
+Fecha: 2026-10-30. Rama local `arena/f8eaa5d8-rustic`. **El port no está terminado. La compilación inicial sí pasó en GitHub Actions; no se ha probado en juego.**
 
 ## 1. Fallo observado: descarga de Gradle
 
@@ -18,7 +18,11 @@ Attempt 1/1 failed. Reason: Remote host terminated the handshake
 javax.net.ssl.SSLHandshakeException: Remote host terminated the handshake
 ```
 
-El proceso terminó con código 1 **antes de evaluar el build**. No hay evidencia de que el código Java compile o falle al compilar. Las conexiones directas a `services.gradle.org` y `maven.fabricmc.net` también fallaron; estos hosts están fuera de los permitidos en el sandbox. No se generó ningún JAR del mod.
+El proceso terminó con código 1 **antes de evaluar el build**. Este intento local no aporta evidencia sobre el código Java; posteriormente se compiló en CI, como se indica abajo. Las conexiones directas a `services.gradle.org` y `maven.fabricmc.net` también fallaron; estos hosts están fuera de los permitidos en el sandbox. Este intento local no generó ningún JAR del mod.
+
+## Resultado posterior: compilación remota
+
+La [ejecución 40985016548](https://github.com/ripblackdragon-cyber/rustic/actions/runs/40985016548), commit `8b4ad59803e948c4d3542fbc01bc15ab39b7db55`, terminó correctamente: Java 25, copias originales y 32 pruebas Python, `./gradlew build --stacktrace --no-daemon`, y subida del artefacto `rustic-fabric-26.3-development`. El artefacto expira el 6 de noviembre de 2026. El intento de descargarlo al sandbox falló porque el almacenamiento de GitHub Actions está fuera de los hosts permitidos; no se ha inspeccionado aquí el JAR ni se ha ejecutado Minecraft. CI informó además de avisos de acciones antiguas; las acciones del flujo se actualizaron, pendientes de verificación en una ejecución nueva.
 
 ## 2. JDK incompleto
 
@@ -34,8 +38,8 @@ La mayoría de bloques, objetos, mecánicas, recetas, interfaces, mundo, sincron
 
 Se requiere un **JDK 25 completo**, acceso autorizado a los repositorios de Gradle, Fabric, Minecraft y JEI, o una caché offline completa y verificable. En ese entorno:
 
-1. Confirmar `java -version` y `javac -version` con Java 25 y ejecutar `./gradlew build --stacktrace`.
-2. Corregir los errores reales de resolución o compilación que aparezcan; un build exitoso no verifica jugabilidad.
+1. En un entorno local preparado, confirmar `java -version` y `javac -version` con Java 25 y ejecutar `./gradlew build --stacktrace`.
+2. Comprobar el contenido del JAR y corregir los errores que aparezcan; el build exitoso en CI no verifica jugabilidad.
 3. Ejecutar cliente y servidor dedicados Fabric 26.3, probar los seis ingredientes y tres recetas ya iniciados, y registrar evidencias reproducibles.
 4. Migrar el resto de contenido, pruebas y JEI antes de declarar el mod instalable o completo.
 

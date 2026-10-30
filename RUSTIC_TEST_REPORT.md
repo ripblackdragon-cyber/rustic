@@ -1,10 +1,10 @@
 # Informe de pruebas
 
-Fecha: 2026-10-30. **No se ha probado un port de Minecraft.**
+Fecha: 2026-10-30. **Se ha compilado código inicial en CI, pero no se ha probado en Minecraft.**
 
 ## Pruebas ejecutadas
 
-`python3 -m unittest discover -s tests -v`: **32 pruebas correctas**. Comprueban:
+`python3 -m unittest discover -s tests -q`: **34 pruebas correctas localmente** (incluidas dos pruebas sintéticas adicionales del verificador de JAR). La ejecución CI `40985016548`, anterior a esas dos pruebas, ejecutó 32 correctamente. Comprueban:
 
 - Índices de archivos y recursos, validez JSON de recetas originales y extracción de expresiones Java seleccionadas.
 - Correspondencia de las tres copias de referencia con los hashes Git registrados; detección de archivos modificados, añadidos y ausentes en un ejemplo sintético.
@@ -19,14 +19,16 @@ Fecha: 2026-10-30. **No se ha probado un port de Minecraft.**
 
 Se ejecutó `JAVA_HOME=/home/user/.cache/rustic-jdk/jdk4py/java-runtime ./gradlew build --stacktrace` con un JRE temporal OpenJDK 25.0.2; **falló con código 1 antes de evaluar el proyecto**, al descargar Gradle desde `services.gradle.org`: `SSLHandshakeException: Remote host terminated the handshake`. Tampoco hay acceso directo a `maven.fabricmc.net`. El JRE no incluye `javac` ni el módulo `jdk.compiler`. Este intento no compiló el mod, no resolvió Fabric y no generó ningún JAR. Se necesitarán un JDK 25 completo y acceso autorizado a los repositorios o una caché de dependencias completa y verificada.
 
+La [ejecución CI 40985016548](https://github.com/ripblackdragon-cyber/rustic/actions/runs/40985016548), para el commit `8b4ad59803e948c4d3542fbc01bc15ab39b7db55`, completó `./gradlew build --stacktrace --no-daemon` y subió el artefacto `rustic-fabric-26.3-development` (caduca el 6 de noviembre de 2026). El sandbox no pudo descargar el artefacto por el bloqueo del host de almacenamiento; el resultado de CI no prueba que Minecraft pueda cargarlo.
+
 Estas pruebas no demuestran que el commit sea idéntico al JAR publicado, que los recursos se vean correctamente o que todos los comportamientos se hayan identificado. Los casos de aceptación no ejecutados están en [RUSTIC_ACCEPTANCE_CASES.md](RUSTIC_ACCEPTANCE_CASES.md).
 
 ## No ejecutadas / bloqueadas
 
 | Prueba requerida | Estado y motivo |
 |---|---|
-| Compilación Java, resolución Gradle, empaquetado | No ejecutada: el wrapper no pudo descargar Gradle; solo se dispone de un JRE temporal, sin compilador. Los hosts de dependencias están fuera del acceso de red permitido. |
-| Cliente y servidor Fabric 26.3 | No ejecutada: no existe JAR del port ni entorno de ejecución instalado. |
+| Compilación Java, resolución Gradle, empaquetado | Correctos en CI para `8b4ad598`; el intento local falló por restricciones de red y falta de JDK completo. No se ha inspeccionado el JAR descargado localmente. |
+| Cliente y servidor Fabric 26.3 | No ejecutada: no hay entorno de ejecución instalado ni JAR descargado en el sandbox. |
 | Todos los bloques, objetos, texturas y recetas en juego | No ejecutada: sin implementación funcional. |
 | Agricultura, árboles, abejas, alquimia, bebidas, GUI y libro | No ejecutada: sin implementación. |
 | JEI, recetas y usos, categorías y servidor | No ejecutada: sin implementación de JEI ni entorno. |
