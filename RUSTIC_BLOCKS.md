@@ -1,6 +1,6 @@
 # Índice de bloques originales
 
-Base: `original/rustic-pre-1.2.0`, commit `88597f5ca4342a6b9d4509d93967ecbef6f8bafa`, versión declarada 1.2.0. No se ha verificado que sea idéntico al JAR publicado. Ninguna funcionalidad está verificada en juego; consultar el estado de cada fila.
+Base: `original/rustic-pre-1.2.0`, commit `88597f5ca4342a6b9d4509d93967ecbef6f8bafa`, versión declarada 1.2.0. No se ha verificado que sea idéntico al JAR publicado. La paridad integral aún no está verificada; consultar el estado de cada fila y RUSTIC_TEST_REPORT.md.
 
 Este índice enumera campos declarados, **no** IDs de registro ni todas las variantes por metadatos; algunos campos son ItemBlock, estados internos u opcionales. Los registros y variantes requieren auditoría manual; hierbas, fluidos y recetas pueden declarar elementos adicionales.
 

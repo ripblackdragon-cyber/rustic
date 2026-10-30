@@ -1,10 +1,10 @@
 # Casos de aceptación pendientes
 
-Estos son **casos diseñados, no pruebas ejecutadas**. La fuente de referencia es el commit 1.2.0 de [PORT_PROGRESS.md](PORT_PROGRESS.md). Ejecutarlos contra el mod original y el port cuando existan entornos; documentar resultados observados y diferencias. Las comprobaciones deben ejecutarse tanto en servidor dedicado como en cliente donde corresponda.
+Estos son **casos de aceptación aún no completados**; algunos tienen pruebas parciales descritas en [RUSTIC_TEST_REPORT.md](RUSTIC_TEST_REPORT.md). La fuente de referencia es el commit 1.2.0 de [PORT_PROGRESS.md](PORT_PROGRESS.md). Ejecutarlos contra el mod original y el port cuando existan entornos; documentar resultados observados y diferencias. Las comprobaciones deben ejecutarse tanto en servidor dedicado como en cliente donde corresponda.
 
 | ID | Preparación y acción | Resultado o propiedad a verificar | Estado |
 |---|---|---|---|
-| FOOD-01 | Consumir uvas y bayas silvestres con hambre variable en cliente y servidor; repetir con hambre completa. | Comparar duración de 16 ticks, puntos de hambre, saturación, bloqueo con hambre completa y reducción de pila; verificar que no puedan alimentar lobos. Comparar con Forge original. | Pendiente |
+| FOOD-01 | Consumir uvas y bayas silvestres con hambre variable en cliente y servidor; repetir con hambre completa. | Comparar duración de 16 ticks, puntos de hambre, saturación, bloqueo con hambre completa y reducción de pila; verificar que no puedan alimentar lobos. Comparar con Forge original. | Parcial en CI; falta comparación y lobos |
 | BEE-01 | Insertar 1, 20 y 64 abejas en apiarios separados, multiplicadores en 1. | Intervalos y límites según fórmula de `TileEntityApiary`; panal y reproducción independientes. | Pendiente |
 | BEE-02 | Automatizar inserción por arriba/lateral y extracción por abajo; romper bloque. | Las caras exponen los manejadores originales; objetos expulsados una sola vez. | Pendiente |
 | BEE-03 | Guardar/recargar antes de completar reproducción. | Comparar contadores y pilas con original: la revisión no guarda contadores. | Pendiente |

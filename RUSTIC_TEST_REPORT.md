@@ -1,10 +1,10 @@
 # Informe de pruebas
 
-Fecha: 2026-10-30. **Se ha compilado código inicial en CI, pero no se ha probado en Minecraft.**
+Fecha: 2026-10-30. **Hay pruebas acotadas en Minecraft por CI, no una validación integral del port.**
 
 ## Pruebas ejecutadas
 
-`python3 -m unittest discover -s tests -q`: **39 pruebas correctas localmente** (incluidas dos pruebas estáticas de uvas y bayas y tres del verificador de informes JUnit). La ejecución CI `40985016548`, anterior a esas dos pruebas, ejecutó 32 correctamente. Comprueban:
+`python3 -m unittest discover -s tests -q`: **43 pruebas correctas localmente** (incluyen pruebas de los verificadores de informes JUnit y GameTest). La ejecución CI `40985016548`, anterior a esas dos pruebas, ejecutó 32 correctamente. Comprueban:
 
 - Índices de archivos y recursos, validez JSON de recetas originales y extracción de expresiones Java seleccionadas.
 - Correspondencia de las tres copias de referencia con los hashes Git registrados; detección de archivos modificados, añadidos y ausentes en un ejemplo sintético.
@@ -25,17 +25,27 @@ La [segunda ejecución CI](https://github.com/ripblackdragon-cyber/rustic/action
 
 La [ejecución CI 40986891133](https://github.com/ripblackdragon-cyber/rustic/actions/runs/40986891133) para `935811c` compiló los dos alimentos y ejecutó tres pruebas Java con Fabric Loader JUnit. Estas comprueban los componentes construidos realmente: bayas 2 de nutrición y 2,0 de saturación; uvas 3 y 1,8; ambas no son siempre comestibles y el consumible dura 0,8 segundos (16 ticks). No inicializan el mod ni un mundo; no comprueban registro, alimentación del jugador o lobos, sonido, gráficos, inventario, servidor ni multijugador. En CI también se verificaron 403 recursos del JAR. SHA-256 `83161858e9f012ce93c003d6eb04923c38dd9d1c2fee14de037bee8d805643aa`. El verificador del informe JUnit rechazó inicialmente la ejecución `40986743999` al no reconocer el sufijo `()` en nombres XML; corregido en `935811c` y comprobado en CI.
 
+## Pruebas en Minecraft 26.3
+
+[CI 40990048384](https://github.com/ripblackdragon-cyber/rustic/actions/runs/40990048384), commit `5ff5aac`: `./gradlew build --stacktrace --no-daemon` pasó con 43 pruebas Python, tres JUnit y tres GameTests de Minecraft, más la verificación de 403 recursos empaquetados. Se cargaron los mods desde el entorno de desarrollo, no desde el JAR distribuido:
+
+- **Servidor GameTest:** los 8 identificadores corresponden a los objetos registrados tras inicializar el mod. Un jugador simulado intenta usar ambos alimentos con hambre llena y con hambre 10; se verifica el inicio de uso de 16 ticks y, al finalizarlo directamente, la reducción de la pila y los valores de hambre y saturación. La finalización directa no es una simulación de todos los ticks.
+- **Hornos del servidor GameTest:** panal→cera, polvo de hierro→pepita y polvo de oro→lingote consumen la entrada y producen una salida correcta con carbón como combustible. No se verificaron la experiencia, desbloqueos, todos los tiempos, JEI o la configuración.
+- **Cliente gráfico e integrado:** Minecraft se arrancó con Xvfb y gráficos Mesa por software. En un mundo individual se simuló la pulsación de uso para comer ambos alimentos; se comprobó la pila, hambre y saturación en el servidor integrado. También se verificó que interrumpir el uso tras 8 ticks no consuma el objeto y que con hambre llena no se consuma. El jugador es automatizado, no una persona; no se ha comparado con una ejecución del mod Forge original.
+
+Los artefactos `rustic-minecraft-test-reports`, `rustic-client-gametest-screenshot` y `rustic-fabric-26.3-development` caducan el 6 de noviembre de 2026. La captura no se descargó ni inspeccionó visualmente debido a restricciones de red del sandbox. No se han aceptado las condiciones de un servidor dedicado por el usuario.
+
 Estas pruebas no demuestran que el commit sea idéntico al JAR publicado, que los recursos se vean correctamente o que todos los comportamientos se hayan identificado. Los casos de aceptación no ejecutados están en [RUSTIC_ACCEPTANCE_CASES.md](RUSTIC_ACCEPTANCE_CASES.md).
 
 ## No ejecutadas / bloqueadas
 
 | Prueba requerida | Estado y motivo |
 |---|---|
-| Compilación Java, resolución Gradle, empaquetado | Correctos en CI para `935811c`, con comprobación estática del JAR y tres pruebas Java de componentes; el intento local falló por restricciones de red y falta de JDK completo. No se ha inspeccionado el JAR descargado localmente. |
-| Cliente y servidor Fabric 26.3 | No ejecutada: no hay entorno de ejecución instalado ni JAR descargado en el sandbox. |
+| Compilación Java, resolución Gradle, empaquetado | Correctos en CI para `5ff5aac`, con comprobación estática del JAR, tres JUnit y tres GameTests; el intento local falló por restricciones de red y falta de JDK completo. No se ha inspeccionado el JAR descargado localmente. |
+| Cliente y servidor Fabric 26.3 | Parcial en CI: cliente singleplayer y servidor GameTest con código de desarrollo. Sin cliente interactivo humano, servidor dedicado convencional ni prueba del JAR instalado. |
 | Todos los bloques, objetos, texturas y recetas en juego | No ejecutada: sin implementación funcional. |
 | Agricultura, árboles, abejas, alquimia, bebidas, GUI y libro | No ejecutada: sin implementación. |
 | JEI, recetas y usos, categorías y servidor | No ejecutada: sin implementación de JEI ni entorno. |
-| Dos jugadores, persistencia, guardado y recarga | No ejecutada: sin implementación ni servidor. |
+| Dos jugadores, persistencia, guardado y recarga | No ejecutadas: no hay prueba con dos clientes ni de persistencia del port. |
 
 No se ha realizado ninguna prueba de rendimiento, comparación visual ni compatibilidad con otros mods. Ningún requisito de paridad o de entrega está aprobado por estas pruebas.

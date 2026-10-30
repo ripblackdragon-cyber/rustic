@@ -1,6 +1,6 @@
 # Índice y comparación de recetas
 
-Base: `original/rustic-pre-1.2.0`, commit `88597f5ca4342a6b9d4509d93967ecbef6f8bafa`, versión declarada 1.2.0. No se ha verificado que sea idéntico al JAR publicado. Ninguna funcionalidad está verificada en juego; consultar el estado de cada fila.
+Base: `original/rustic-pre-1.2.0`, commit `88597f5ca4342a6b9d4509d93967ecbef6f8bafa`, versión declarada 1.2.0. No se ha verificado que sea idéntico al JAR publicado. La paridad integral aún no está verificada; consultar el estado de cada fila y RUSTIC_TEST_REPORT.md.
 
 La columna original enlaza al JSON íntegro; aún no se han creado equivalentes para esos JSON. Las llamadas Java se indexan por línea como pistas, no como recetas expandidas: bucles, condiciones, recetas especiales, integraciones y metadatos precisan revisión manual. Véase además [expresiones Java con argumentos completos](RUSTIC_RECIPES_JAVA.md) y [registro de paridad y sus límites](audit/README.md).
 
@@ -63,10 +63,10 @@ La columna original enlaza al JSON íntegro; aún no se han creado equivalentes 
 
 | Fuente | Declaración / llamada (primera línea) | Migrada | Estado |
 |---|---|---|---|
-| `original/rustic-pre-1.2.0/src/main/java/rustic/common/crafting/Recipes.java:176` | `GameRegistry.addSmelting(new ItemStack(ModItems.HONEYCOMB), new ItemStack(ModItems.BEESWAX), 0.3F);` | [beeswax_from_honeycomb.json](src/main/resources/data/rustic/recipe/beeswax_from_honeycomb.json) | En curso, sin probar |
+| `original/rustic-pre-1.2.0/src/main/java/rustic/common/crafting/Recipes.java:176` | `GameRegistry.addSmelting(new ItemStack(ModItems.HONEYCOMB), new ItemStack(ModItems.BEESWAX), 0.3F);` | [beeswax_from_honeycomb.json](src/main/resources/data/rustic/recipe/beeswax_from_honeycomb.json) | En curso, paridad sin verificar |
 | `original/rustic-pre-1.2.0/src/main/java/rustic/common/crafting/Recipes.java:181` | `GameRegistry.addSmelting(new ItemStack(ModBlocks.LOG, 1, meta), new ItemStack(Items.COAL, 1, 1), 0.15F);` | — | Pendiente |
-| `original/rustic-pre-1.2.0/src/main/java/rustic/common/crafting/Recipes.java:183` | `GameRegistry.addSmelting(new ItemStack(ModItems.IRON_DUST_TINY), new ItemStack(Items.IRON_NUGGET), 0.15F);` | [iron_nugget_from_tiny_dust.json](src/main/resources/data/rustic/recipe/iron_nugget_from_tiny_dust.json) | En curso, sin probar |
-| `original/rustic-pre-1.2.0/src/main/java/rustic/common/crafting/Recipes.java:184` | `GameRegistry.addSmelting(new ItemStack(ModItems.GOLD_DUST), new ItemStack(Items.GOLD_INGOT), 0.5F);` | [gold_ingot_from_dust.json](src/main/resources/data/rustic/recipe/gold_ingot_from_dust.json) | En curso, sin probar |
+| `original/rustic-pre-1.2.0/src/main/java/rustic/common/crafting/Recipes.java:183` | `GameRegistry.addSmelting(new ItemStack(ModItems.IRON_DUST_TINY), new ItemStack(Items.IRON_NUGGET), 0.15F);` | [iron_nugget_from_tiny_dust.json](src/main/resources/data/rustic/recipe/iron_nugget_from_tiny_dust.json) | En curso, paridad sin verificar |
+| `original/rustic-pre-1.2.0/src/main/java/rustic/common/crafting/Recipes.java:184` | `GameRegistry.addSmelting(new ItemStack(ModItems.GOLD_DUST), new ItemStack(Items.GOLD_INGOT), 0.5F);` | [gold_ingot_from_dust.json](src/main/resources/data/rustic/recipe/gold_ingot_from_dust.json) | En curso, paridad sin verificar |
 | `original/rustic-pre-1.2.0/src/main/java/rustic/common/crafting/Recipes.java:186` | `GameRegistry.addSmelting(new ItemStack(Items.ROTTEN_FLESH), new ItemStack(ModItems.TALLOW), 0.3F);` | — | Pendiente |
 | `original/rustic-pre-1.2.0/src/main/java/rustic/common/crafting/Recipes.java:299` | `GameRegistry.addShapedRecipe(new ResourceLocation(Rustic.MODID, "pillar_stone"), null, new ItemStack(ModBlocks.STONE_PILLAR, 6), "SS ", "SS ", "SS ", 'S',` | — | Pendiente |
 | `original/rustic-pre-1.2.0/src/main/java/rustic/common/crafting/Recipes.java:301` | `GameRegistry.addShapedRecipe(new ResourceLocation(Rustic.MODID, "pillar_andesite"), null, new ItemStack(ModBlocks.ANDESITE_PILLAR, 6), "SS ", "SS ", "SS ", 'S',` | — | Pendiente |

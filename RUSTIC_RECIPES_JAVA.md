@@ -38,7 +38,7 @@ Total: **123 expresiones fuente**, no recetas expandidas.
 
 ### GameRegistry.addSmelting — línea 176
 
-[Abrir fuente completa](original/rustic-pre-1.2.0/src/main/java/rustic/common/crafting/Recipes.java#L176) · Fabric: **en curso, sin probar**
+[Abrir fuente completa](original/rustic-pre-1.2.0/src/main/java/rustic/common/crafting/Recipes.java#L176) · Fabric: **en curso, paridad sin verificar**
 
 ```java
 GameRegistry.addSmelting(new ItemStack(ModItems.HONEYCOMB), new ItemStack(ModItems.BEESWAX), 0.3F)
@@ -54,7 +54,7 @@ GameRegistry.addSmelting(new ItemStack(ModBlocks.LOG, 1, meta), new ItemStack(It
 
 ### GameRegistry.addSmelting — línea 183
 
-[Abrir fuente completa](original/rustic-pre-1.2.0/src/main/java/rustic/common/crafting/Recipes.java#L183) · Fabric: **en curso, sin probar**
+[Abrir fuente completa](original/rustic-pre-1.2.0/src/main/java/rustic/common/crafting/Recipes.java#L183) · Fabric: **en curso, paridad sin verificar**
 
 ```java
 GameRegistry.addSmelting(new ItemStack(ModItems.IRON_DUST_TINY), new ItemStack(Items.IRON_NUGGET), 0.15F)
@@ -62,7 +62,7 @@ GameRegistry.addSmelting(new ItemStack(ModItems.IRON_DUST_TINY), new ItemStack(I
 
 ### GameRegistry.addSmelting — línea 184
 
-[Abrir fuente completa](original/rustic-pre-1.2.0/src/main/java/rustic/common/crafting/Recipes.java#L184) · Fabric: **en curso, sin probar**
+[Abrir fuente completa](original/rustic-pre-1.2.0/src/main/java/rustic/common/crafting/Recipes.java#L184) · Fabric: **en curso, paridad sin verificar**
 
 ```java
 GameRegistry.addSmelting(new ItemStack(ModItems.GOLD_DUST), new ItemStack(Items.GOLD_INGOT), 0.5F)

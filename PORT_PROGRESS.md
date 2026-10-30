@@ -1,6 +1,6 @@
 # Progreso de port: Rustic → Fabric 26.3
 
-**Estado: no terminado; el código inicial compiló en CI y produjo un artefacto de desarrollo, sin pruebas de arranque ni paridad.**
+**Estado: no terminado; el código inicial compiló en CI y produjo un artefacto de desarrollo, con pruebas acotadas en Minecraft, pero sin paridad.**
 Actualizado: 2026-10-30. La investigación está iniciada, no completada.
 
 ## Referencias preservadas
@@ -17,12 +17,12 @@ Actualizado: 2026-10-30. La investigación está iniciada, no completada.
 |---|---|---|
 | 1 Investigación | En curso | Dos revisiones y wiki preservadas; índice de archivos, lectura inicial de registros y mecánicas. Falta examinar semánticamente todos los archivos y cotejar binario y changelog. |
 | 2 Auditoría | En curso | Índices reproducibles de declaraciones, hierbas, registros, entradas del almanaque y recursos; 42 recetas JSON y 123 expresiones Java con argumentos íntegros en `RUSTIC_RECIPES_JAVA.md`. Se verificaron las copias frente a los blobs de los árboles upstream. Faltan variantes metadata/NBT, llamadas dinámicas, dependencias condicionales y revisión visual. |
-| 3 Fabric | En curso; compilación CI correcta | [Ejecución 40985016548](https://github.com/ripblackdragon-cyber/rustic/actions/runs/40985016548), commit `8b4ad598`: Java 25, resolución, `./gradlew build` y subida del artefacto de desarrollo correctos. La compilación local sigue bloqueada por TLS y por carecer de JDK completo. Sin pruebas de arranque y con atribución upstream pendiente. Ver `RUSTIC_BUILD_DIAGNOSTICS.md`. |
-| 4 Registros | En curso, sin probar | Seis ingredientes (`bee`, `honeycomb`, `beeswax`, `tallow`, `dust_tiny_iron`, `dust_gold`) compilados previamente. Se añaden `wildberries` y `grapes`, con comida y 16 ticks de consumo basados en `ModItems.java:178-189`; compilados en CI y con pruebas Java de sus componentes; todavía no probados en juego. Las pestañas vanilla de ingredientes y alimentos son una desviación temporal: falta la pestaña agrícola original con icono de aceitunas. Faltan plantas, obtención y usos completos. |
+| 3 Fabric | En curso; compilación CI correcta | [Ejecución 40985016548](https://github.com/ripblackdragon-cyber/rustic/actions/runs/40985016548), commit `8b4ad598`: Java 25, resolución, `./gradlew build` y subida del artefacto de desarrollo correctos. La compilación local sigue bloqueada por TLS y por carecer de JDK completo. Hay pruebas posteriores de arranque GameTest y cliente; atribución upstream pendiente. Ver `RUSTIC_BUILD_DIAGNOSTICS.md`. |
+| 4 Registros | En curso, paridad sin verificar | Seis ingredientes (`bee`, `honeycomb`, `beeswax`, `tallow`, `dust_tiny_iron`, `dust_gold`) compilados previamente. Se añaden `wildberries` y `grapes`, con comida y 16 ticks de consumo basados en `ModItems.java:178-189`; compilados y probados parcialmente en GameTest y en un cliente individual. Las pestañas vanilla de ingredientes y alimentos son una desviación temporal: falta la pestaña agrícola original con icono de aceitunas. Faltan plantas, obtención y usos completos. |
 | 5 Recursos y traducciones | En curso, sin validación en juego | 343 PNG, 32 metadatos de animación y un archivo PDN de la referencia 1.2.0 copiados sin modificar; ocho `.lang` convertidos a JSON preservando claves y valores, con alias modernos para ocho objetos cuando existe la traducción. Modelos de esos ocho preparados; faltan la mayoría de modelos, claves y renderizadores y todas las pruebas visuales. |
 | 6–8, 10–11 Mecánicas, JEI y multijugador | No iniciadas | Abejas, agricultura, bebidas, alquimia, GUI, integraciones y red todavía no implementadas. |
-| 9 Recetas | En curso, sin probar | Tres JSON de fundición correspondientes a `Recipes.java:176,183,184`; faltan avances, configuración, el resto de recetas y validación en juego/JEI. `audit/recipe-parity.json` sigue con 165 fuentes y cuatro bloqueos sin verificar; no prueba paridad. |
-| 12 Pruebas de juego | No iniciadas | No se ha ejecutado cliente ni servidor con el JAR de desarrollo. |
+| 9 Recetas | En curso, paridad sin verificar | Tres JSON de fundición correspondientes a `Recipes.java:176,183,184` producen el resultado esperado en hornos de GameTest; faltan XP, avances, configuración, el resto de recetas y validación en JEI. `audit/recipe-parity.json` sigue con 165 fuentes y cuatro bloqueos sin verificar; no prueba paridad. |
+| 12 Pruebas de juego | En curso | Tres pruebas de servidor GameTest y un cliente singleplayer automatizado en CI con las fuentes de desarrollo; no se probó el JAR instalado, un servidor dedicado convencional, dos jugadores ni JEI. |
 | 13 JAR definitivo | No iniciado | No existe `rustic-fabric-26.3.jar`. |
 
 ## Dependencias utilizadas en la compilación de desarrollo
@@ -42,7 +42,11 @@ La [ejecución 40985252713](https://github.com/ripblackdragon-cyber/rustic/actio
 
 ### Uvas y bayas
 
-La [ejecución 40986891133](https://github.com/ripblackdragon-cyber/rustic/actions/runs/40986891133), commit `935811c`, compila los nuevos alimentos y ejecuta tres pruebas Fabric Loader JUnit: valores de nutrición/saturación, si permiten comer con hambre completa y duración del componente consumible. Son pruebas de componentes, sin mundo ni entidades. También compara 403 recursos en el JAR; SHA-256 `83161858e9f012ce93c003d6eb04923c38dd9d1c2fee14de037bee8d805643aa`. La ejecución anterior `40986743999` había fallado en el verificador del informe porque Gradle añadió `()` a los nombres de método; se corrigió y se añadieron pruebas de regresión al verificador. Faltan comprobaciones reales en cliente y servidor, obtención de los objetos, usos y pestaña original.
+La [ejecución 40986891133](https://github.com/ripblackdragon-cyber/rustic/actions/runs/40986891133), commit `935811c`, compila los nuevos alimentos y ejecuta tres pruebas Fabric Loader JUnit: valores de nutrición/saturación, si permiten comer con hambre completa y duración del componente consumible. Son pruebas de componentes, sin mundo ni entidades. También compara 403 recursos en el JAR; SHA-256 `83161858e9f012ce93c003d6eb04923c38dd9d1c2fee14de037bee8d805643aa`. La ejecución anterior `40986743999` había fallado en el verificador del informe porque Gradle añadió `()` a los nombres de método; se corrigió y se añadieron pruebas de regresión al verificador. Se realizaron pruebas posteriores en cliente individual y servidor GameTest; siguen pendientes obtención, usos, pestaña original y paridad.
+
+### Pruebas en Minecraft
+
+[CI 40990048384](https://github.com/ripblackdragon-cyber/rustic/actions/runs/40990048384), commit `5ff5aac`: tres GameTests de servidor (registro de 8 objetos, consumo con jugador simulado y 3 hornos), y una prueba de cliente gráfico real con servidor integrado (comer ambos alimentos, interrumpir el uso, probar hambre llena y comprobar estado del servidor). 43 pruebas Python y tres JUnit también pasaron. La captura y los informes están como artefactos; no se ha revisado la captura visualmente. No se aceptó la EULA de un servidor dedicado convencional; no se ha probado multijugador ni se ha instalado el JAR construido.
 
 ## Siguientes pasos
 

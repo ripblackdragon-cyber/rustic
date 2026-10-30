@@ -120,7 +120,7 @@ Dynamic Trees o CraftTweaker, ni se interpreta Java. Esto no demuestra cobertura
     text += f'\nTotal: **{len(records)} expresiones fuente**, no recetas expandidas.\n\n## Expresiones originales\n\n'
     for line, kind, expr in records:
         text += f'### {kind} — línea {line}\n\n'
-        status = {'in_progress': 'en curso, sin probar', 'verified': 'verificada'}.get(statuses.get(f'java:{line}'), 'pendiente')
+        status = {'in_progress': 'en curso, paridad sin verificar', 'verified': 'verificada'}.get(statuses.get(f'java:{line}'), 'pendiente')
         text += f'[Abrir fuente completa]({rel}#L{line}) · Fabric: **{status}**\n\n```java\n{expr}\n```\n\n'
     OUTPUT.write_text(text, encoding='utf-8')
     print(f'{len(records)} expresiones indexadas; {len(counts)} categorías')

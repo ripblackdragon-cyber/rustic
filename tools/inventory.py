@@ -14,7 +14,7 @@ JAVA = SRC / 'java/rustic'
 NOTICE = ('Base: `original/rustic-pre-1.2.0`, commit '
           '`88597f5ca4342a6b9d4509d93967ecbef6f8bafa`, versión declarada 1.2.0. '
           'No se ha verificado que sea idéntico al JAR publicado. '
-          'Ninguna funcionalidad está verificada en juego; consultar el estado de cada fila.\n\n')
+          'La paridad integral aún no está verificada; consultar el estado de cada fila y RUSTIC_TEST_REPORT.md.\n\n')
 
 
 def rel(p):
@@ -42,7 +42,7 @@ for filename, label, path, prefix in [('RUSTIC_BLOCKS.md', 'bloques', blocks, 'M
     rows = declarations(path, prefix)
     if label == 'objetos':
         started = ('BEE', 'HONEYCOMB', 'BEESWAX', 'TALLOW', 'IRON_DUST_TINY', 'GOLD_DUST', 'WILDBERRIES', 'GRAPES')
-        rows = [row.replace('| Pendiente |', '| En curso, sin probar |')
+        rows = [row.replace('| Pendiente |', '| En curso, paridad sin verificar |')
                 if any(f'`ModItems.{name}`' in row for name in started) else row for row in rows]
     body = f'# Índice de {label} originales\n\n' + NOTICE
     body += ('Este índice enumera campos declarados, **no** IDs de registro ni todas las variantes por metadatos; '
@@ -90,7 +90,7 @@ for i, line in enumerate(java_rec.read_text(encoding='utf-8').splitlines(), 1):
         line = line.strip().replace('|', '\\|').replace('`', "'")
         record = mapping.get(f'java:{i}', {})
         targets = ', '.join(f'[{Path(target).name}]({target})' for target in record.get('targets', [])) or '—'
-        state = {'in_progress': 'En curso, sin probar', 'verified': 'Verificada'}.get(record.get('status'), 'Pendiente')
+        state = {'in_progress': 'En curso, paridad sin verificar', 'verified': 'Verificada'}.get(record.get('status'), 'Pendiente')
         body += f'| `{rel(java_rec)}:{i}` | `{line}` | {targets} | {state} |\n'
 body += '\nLas clases `RecipeCabinet`, `RecipeNonIngredientReturn`, `RecipeOliveOil` y `RecipeVantaOil` implementan lógica especial. Revisar registros externos, condiciones y clases completas antes de afirmar paridad.\n'
 write('RUSTIC_RECIPES.md', body)

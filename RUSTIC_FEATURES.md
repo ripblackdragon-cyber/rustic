@@ -1,6 +1,6 @@
 # Catálogo de características y fuentes
 
-Base: `original/rustic-pre-1.2.0`, commit `88597f5ca4342a6b9d4509d93967ecbef6f8bafa`, versión declarada 1.2.0. No se ha verificado que sea idéntico al JAR publicado. Ninguna funcionalidad está verificada en juego; consultar el estado de cada fila.
+Base: `original/rustic-pre-1.2.0`, commit `88597f5ca4342a6b9d4509d93967ecbef6f8bafa`, versión declarada 1.2.0. No se ha verificado que sea idéntico al JAR publicado. La paridad integral aún no está verificada; consultar el estado de cada fila y RUSTIC_TEST_REPORT.md.
 
 Índice mecánico de archivos y documentación, no una auditoría semántica completa. No equivale a que todos los comportamientos, entradas, metadatos o combinaciones hayan sido identificados.
 
