@@ -18,7 +18,10 @@ import net.minecraft.client.gui.screens.inventory.CreativeModeInventoryScreen;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.SlabBlock;
+import net.minecraft.world.level.block.state.properties.SlabType;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.item.CreativeModeTabs;
@@ -45,6 +48,8 @@ public final class RusticClientGameTest implements FabricClientGameTest {
             checkFoodAtFullHunger(context, world.getServer(), connection, RusticItems.OLIVES);
             context.takeScreenshot("rustic-olives-after-eating");
             checkSlatePlacementAndMining(context, world.getServer(), connection);
+            checkSlabMerging(context, world.getServer(), connection, RusticBlocks.SLATE_ROOF_SLAB);
+            checkSlabMerging(context, world.getServer(), connection, RusticBlocks.SLATE_BRICK_SLAB);
             checkCreativeTab(context, world.getServer());
         }
         boolean dedicated = Boolean.getBoolean("rustic.testDedicatedServer");
@@ -93,6 +98,56 @@ public final class RusticClientGameTest implements FabricClientGameTest {
                     entity -> entity.getItem().is(RusticBlocks.SLATE.asItem())).isEmpty();
             return level.getBlockState(target).isAir()
                     && (dropped || player.getInventory().contains(new ItemStack(RusticBlocks.SLATE)));
+        });
+    }
+
+    private void checkSlabMerging(ClientGameTestContext context, TestServerContext server,
+                                  TestServerConnection connection, Block slab) {
+        BlockPos target = server.computeOnServer(minecraftServer -> {
+            var player = connection.getServerPlayer();
+            var level = player.level();
+            BlockPos pos = player.blockPosition().east(2);
+            level.setBlockAndUpdate(pos, Blocks.AIR.defaultBlockState());
+            level.setBlockAndUpdate(pos.above(), Blocks.AIR.defaultBlockState());
+            level.setBlockAndUpdate(pos.below(), Blocks.STONE.defaultBlockState());
+            player.setItemInHand(InteractionHand.MAIN_HAND, new ItemStack(slab, 2));
+            return pos;
+        });
+        context.waitFor(client -> client.player.getMainHandItem().is(slab.asItem())
+                && client.level.getBlockState(target.below()).is(Blocks.STONE)
+                && client.level.getBlockState(target).isAir());
+        context.getInput().lookAt(target.below());
+        context.getInput().pressKey(options -> options.keyUse);
+        connection.waitForServerboundPackets();
+        server.waitFor(minecraftServer -> {
+            var state = connection.getServerPlayer().level().getBlockState(target);
+            return state.is(slab) && state.getValue(SlabBlock.TYPE) == SlabType.BOTTOM;
+        });
+        context.waitFor(client -> client.level.getBlockState(target).is(slab)
+                && client.player.getMainHandItem().getCount() == 1);
+        context.waitTicks(4);
+        context.getInput().lookAt(target);
+        context.getInput().pressKey(options -> options.keyUse);
+        connection.waitForServerboundPackets();
+        server.waitFor(minecraftServer -> {
+            var state = connection.getServerPlayer().level().getBlockState(target);
+            return state.is(slab) && state.getValue(SlabBlock.TYPE) == SlabType.DOUBLE;
+        });
+        context.waitFor(client -> client.level.getBlockState(target).is(slab)
+                && client.level.getBlockState(target).getValue(SlabBlock.TYPE) == SlabType.DOUBLE);
+        server.runOnServer(minecraftServer -> connection.getServerPlayer()
+                .setItemInHand(InteractionHand.MAIN_HAND, new ItemStack(Items.WOODEN_PICKAXE)));
+        context.waitFor(client -> client.player.getMainHandItem().is(Items.WOODEN_PICKAXE));
+        context.getInput().lookAt(target);
+        context.getInput().holdKeyFor(options -> options.keyAttack, 80);
+        connection.waitForServerboundPackets();
+        server.waitFor(minecraftServer -> {
+            var player = connection.getServerPlayer();
+            var level = player.level();
+            int drops = level.getEntitiesOfClass(ItemEntity.class, new AABB(target).inflate(3),
+                    entity -> entity.getItem().is(slab.asItem())).stream().mapToInt(entity -> entity.getItem().getCount()).sum();
+            return level.getBlockState(target).isAir()
+                    && drops + player.getInventory().countItem(slab.asItem()) >= 2;
         });
     }
 

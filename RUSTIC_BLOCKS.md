@@ -12,16 +12,16 @@ Campos encontrados: **117**.
 | `ModBlocks.ANDESITE_PILLAR` | `BlockPillar` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:52` | Pendiente |
 | `ModBlocks.DIORITE_PILLAR` | `BlockPillar` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:53` | Pendiente |
 | `ModBlocks.GRANITE_PILLAR` | `BlockPillar` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:54` | Pendiente |
-| `ModBlocks.SLATE_PILLAR` | `BlockPillar` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:55` | Pendiente |
+| `ModBlocks.SLATE_PILLAR` | `BlockPillar` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:55` | En curso, paridad sin verificar |
 | `ModBlocks.SLATE` | `BlockBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:56` | En curso, paridad sin verificar |
 | `ModBlocks.SLATE_ROOF` | `BlockBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:57` | En curso, paridad sin verificar |
 | `ModBlocks.SLATE_TILE` | `BlockBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:58` | En curso, paridad sin verificar |
 | `ModBlocks.SLATE_BRICK` | `BlockBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:59` | En curso, paridad sin verificar |
 | `ModBlocks.SLATE_CHISELED` | `BlockBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:60` | En curso, paridad sin verificar |
-| `ModBlocks.SLATE_ROOF_STAIRS` | `BlockStairsBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:61` | Pendiente |
-| `ModBlocks.SLATE_ROOF_DOUBLESLAB` | `BlockDoubleSlabBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:62` | Pendiente |
-| `ModBlocks.SLATE_ROOF_SLAB` | `BlockSlabBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:63` | Pendiente |
-| `ModBlocks.SLATE_ROOF_SLAB_ITEM` | `ItemBlockSlabBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:64` | Pendiente |
+| `ModBlocks.SLATE_ROOF_STAIRS` | `BlockStairsBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:61` | En curso, paridad sin verificar |
+| `ModBlocks.SLATE_ROOF_DOUBLESLAB` | `BlockDoubleSlabBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:62` | En curso, paridad sin verificar |
+| `ModBlocks.SLATE_ROOF_SLAB` | `BlockSlabBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:63` | En curso, paridad sin verificar |
+| `ModBlocks.SLATE_ROOF_SLAB_ITEM` | `ItemBlockSlabBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:64` | En curso, paridad sin verificar |
 | `ModBlocks.CLAY_WALL` | `BlockBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:65` | Pendiente |
 | `ModBlocks.CLAY_WALL_CROSS` | `BlockBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:66` | Pendiente |
 | `ModBlocks.CLAY_WALL_DIAG` | `BlockClayWallDiag` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:67` | Pendiente |
@@ -76,10 +76,10 @@ Campos encontrados: **117**.
 | `ModBlocks.PAINTED_WOOD_GREEN` | `BlockBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:116` | Pendiente |
 | `ModBlocks.PAINTED_WOOD_RED` | `BlockBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:117` | Pendiente |
 | `ModBlocks.PAINTED_WOOD_BLACK` | `BlockBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:118` | Pendiente |
-| `ModBlocks.SLATE_BRICK_DOUBLESLAB` | `BlockDoubleSlabBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:119` | Pendiente |
-| `ModBlocks.SLATE_BRICK_SLAB` | `BlockSlabBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:120` | Pendiente |
-| `ModBlocks.SLATE_BRICK_SLAB_ITEM` | `ItemBlockSlabBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:121` | Pendiente |
-| `ModBlocks.SLATE_BRICK_STAIRS` | `BlockStairsBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:122` | Pendiente |
+| `ModBlocks.SLATE_BRICK_DOUBLESLAB` | `BlockDoubleSlabBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:119` | En curso, paridad sin verificar |
+| `ModBlocks.SLATE_BRICK_SLAB` | `BlockSlabBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:120` | En curso, paridad sin verificar |
+| `ModBlocks.SLATE_BRICK_SLAB_ITEM` | `ItemBlockSlabBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:121` | En curso, paridad sin verificar |
+| `ModBlocks.SLATE_BRICK_STAIRS` | `BlockStairsBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:122` | En curso, paridad sin verificar |
 | `ModBlocks.GARGOYLE` | `BlockGargoyle` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:123` | Pendiente |
 | `ModBlocks.CABINET` | `BlockCabinet` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:124` | Pendiente |
 | `ModBlocks.LIQUID_BARREL` | `BlockLiquidBarrel` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:125` | Pendiente |
