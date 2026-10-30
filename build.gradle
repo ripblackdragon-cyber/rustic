@@ -1,0 +1,47 @@
+plugins {
+    id 'net.fabricmc.fabric-loom' version "${loom_version}"
+}
+
+group = project.maven_group
+version = project.mod_version
+base.archivesName = project.archives_base_name
+
+repositories {
+    // Loom provides the Minecraft and Fabric repositories.
+    mavenCentral()
+}
+
+dependencies {
+    minecraft "com.mojang:minecraft:${project.minecraft_version}"
+    implementation "net.fabricmc:fabric-loader:${project.loader_version}"
+    implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
+}
+
+processResources {
+    inputs.property 'version', project.version
+    filesMatching('fabric.mod.json') {
+        expand 'version': project.version
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+    options.release = 25
+}
+
+// Keep provenance notices with any development artifact. The upstream Rustic
+// license and attribution still require confirmation before distribution.
+tasks.named('jar') {
+    from('THIRD_PARTY_NOTICES.md') {
+        into 'META-INF'
+    }
+    from('licenses/GRADLE-APACHE-2.0.txt') {
+        into 'META-INF/licenses'
+    }
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_25
+    targetCompatibility = JavaVersion.VERSION_25
+    withSourcesJar()
+}

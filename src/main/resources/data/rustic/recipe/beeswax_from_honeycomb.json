@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": "rustic:honeycomb",
+  "result": {
+    "id": "rustic:beeswax"
+  },
+  "experience": 0.3,
+  "cookingtime": 200
+}

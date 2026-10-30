@@ -1,0 +1,5 @@
+# Third-party notices and provenance
+
+- Rustic source, textures and translations: upstream [cadaverous-eris/Rustic](https://github.com/cadaverous-eris/Rustic), revision `88597f5ca4342a6b9d4509d93967ecbef6f8bafa`. The upstream project listing declares MIT, but the preserved source revision does not contain a license file or explicit copyright notice. Confirm the applicable license text and attribution before distribution; see `PORT_PROGRESS.md`.
+- Gradle wrapper JAR and scripts: copied from [Gradle v9.7.1](https://github.com/gradle/gradle/tree/v9.7.1), Apache License 2.0; the scripts retain their original copyright and license notices. The upstream license is reproduced in `licenses/GRADLE-APACHE-2.0.txt`. Their Git blob IDs are recorded in `PORT_PROGRESS.md`. The distribution checksum was obtained from the official Gradle GitHub release metadata.
+- Project build configuration and registration patterns were checked against the [Fabric 26.3 example](https://github.com/FabricMC/fabric-example-mod/tree/91f19010a4e764f193fe50acfe2c8ee68f1f15cd) and Fabric API source; no Fabric source files are vendored in the port.

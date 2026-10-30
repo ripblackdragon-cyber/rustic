@@ -1,0 +1,282 @@
+# Catálogo de características y fuentes
+
+Base: `original/rustic-pre-1.2.0`, commit `88597f5ca4342a6b9d4509d93967ecbef6f8bafa`, versión declarada 1.2.0. No se ha verificado que sea idéntico al JAR publicado. Ninguna funcionalidad está verificada en juego; consultar el estado de cada fila.
+
+Índice mecánico de archivos y documentación, no una auditoría semántica completa. No equivale a que todos los comportamientos, entradas, metadatos o combinaciones hayan sido identificados.
+
+## Sistemas identificados
+
+- **Decoración y construcción, variantes, colocación y redstone** — `common/blocks, blockstates, models` — pendiente.
+- **Almacenamiento y fluidos** — `common/tileentity, common/inventory, common/blocks/fluids` — pendiente.
+- **Cultivos, abejas como objeto, colmenas y apiarios** — `common/blocks/crops, BlockBeehive, TileEntityApiary` — pendiente.
+- **Árboles, hierbas, pizarra y generación** — `common/world, common/blocks/crops, common/Config.java` — pendiente.
+- **Fermentación, calidad y bebidas** — `BrewingBarrelRecipe, TileEntityBrewingBarrel, FluidBooze, ModFluids` — pendiente.
+- **Alquimia y efectos** — `common/crafting, common/potions, common/util/ElixirUtils.java` — pendiente.
+- **Almanaque con páginas y traducciones** — `common/book, client/gui/book, assets/rustic/lang` — pendiente.
+- **Integraciones opcionales JEI, CraftTweaker, Dynamic Trees y Forestry** — `compat, Recipes.java, Config.java` — pendiente.
+- **HUD, renderizadores, avances, eventos y red** — `client, common/advancements, common/network, EventHandlerCommon` — pendiente.
+
+## Código Java (221 archivos)
+
+- [client/EventHandlerClient.java](original/rustic-pre-1.2.0/src/main/java/rustic/client/EventHandlerClient.java) — pendiente
+- [client/GuiProxy.java](original/rustic-pre-1.2.0/src/main/java/rustic/client/GuiProxy.java) — pendiente
+- [client/gui/GuiApiary.java](original/rustic-pre-1.2.0/src/main/java/rustic/client/gui/GuiApiary.java) — pendiente
+- [client/gui/GuiBarrel.java](original/rustic-pre-1.2.0/src/main/java/rustic/client/gui/GuiBarrel.java) — pendiente
+- [client/gui/GuiBrewingBarrel.java](original/rustic-pre-1.2.0/src/main/java/rustic/client/gui/GuiBrewingBarrel.java) — pendiente
+- [client/gui/GuiCabinet.java](original/rustic-pre-1.2.0/src/main/java/rustic/client/gui/GuiCabinet.java) — pendiente
+- [client/gui/GuiCabinetDouble.java](original/rustic-pre-1.2.0/src/main/java/rustic/client/gui/GuiCabinetDouble.java) — pendiente
+- [client/gui/GuiCondenser.java](original/rustic-pre-1.2.0/src/main/java/rustic/client/gui/GuiCondenser.java) — pendiente
+- [client/gui/GuiCondenserAdvanced.java](original/rustic-pre-1.2.0/src/main/java/rustic/client/gui/GuiCondenserAdvanced.java) — pendiente
+- [client/gui/GuiVase.java](original/rustic-pre-1.2.0/src/main/java/rustic/client/gui/GuiVase.java) — pendiente
+- [client/gui/book/GuiBook.java](original/rustic-pre-1.2.0/src/main/java/rustic/client/gui/book/GuiBook.java) — pendiente
+- [client/models/BookBakedModel.java](original/rustic-pre-1.2.0/src/main/java/rustic/client/models/BookBakedModel.java) — pendiente
+- [client/models/FluidBottleModel.java](original/rustic-pre-1.2.0/src/main/java/rustic/client/models/FluidBottleModel.java) — pendiente
+- [client/models/LatticeModel.java](original/rustic-pre-1.2.0/src/main/java/rustic/client/models/LatticeModel.java) — pendiente
+- [client/models/LiquidBarrelFilledItemModel.java](original/rustic-pre-1.2.0/src/main/java/rustic/client/models/LiquidBarrelFilledItemModel.java) — pendiente
+- [client/models/LiquidBarrelItemModel.java](original/rustic-pre-1.2.0/src/main/java/rustic/client/models/LiquidBarrelItemModel.java) — pendiente
+- [client/models/LiquidBarrelItemOverrideList.java](original/rustic-pre-1.2.0/src/main/java/rustic/client/models/LiquidBarrelItemOverrideList.java) — pendiente
+- [client/models/ModelCabinet.java](original/rustic-pre-1.2.0/src/main/java/rustic/client/models/ModelCabinet.java) — pendiente
+- [client/models/ModelCabinetDouble.java](original/rustic-pre-1.2.0/src/main/java/rustic/client/models/ModelCabinetDouble.java) — pendiente
+- [client/models/TEISRModel.java](original/rustic-pre-1.2.0/src/main/java/rustic/client/models/TEISRModel.java) — pendiente
+- [client/renderer/CabinetRenderer.java](original/rustic-pre-1.2.0/src/main/java/rustic/client/renderer/CabinetRenderer.java) — pendiente
+- [client/renderer/CrushingTubRenderer.java](original/rustic-pre-1.2.0/src/main/java/rustic/client/renderer/CrushingTubRenderer.java) — pendiente
+- [client/renderer/EvaporatingBasinRenderer.java](original/rustic-pre-1.2.0/src/main/java/rustic/client/renderer/EvaporatingBasinRenderer.java) — pendiente
+- [client/renderer/LayerIronSkin.java](original/rustic-pre-1.2.0/src/main/java/rustic/client/renderer/LayerIronSkin.java) — pendiente
+- [client/renderer/LiquidBarrelRenderer.java](original/rustic-pre-1.2.0/src/main/java/rustic/client/renderer/LiquidBarrelRenderer.java) — pendiente
+- [client/renderer/RenderTomato.java](original/rustic-pre-1.2.0/src/main/java/rustic/client/renderer/RenderTomato.java) — pendiente
+- [client/renderer/VertexFormatMultiTex.java](original/rustic-pre-1.2.0/src/main/java/rustic/client/renderer/VertexFormatMultiTex.java) — pendiente
+- [client/util/ClientUtils.java](original/rustic-pre-1.2.0/src/main/java/rustic/client/util/ClientUtils.java) — pendiente
+- [client/util/FluidClientUtil.java](original/rustic-pre-1.2.0/src/main/java/rustic/client/util/FluidClientUtil.java) — pendiente
+- [client/util/ItemColorCache.java](original/rustic-pre-1.2.0/src/main/java/rustic/client/util/ItemColorCache.java) — pendiente
+- [common/Config.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/Config.java) — pendiente
+- [common/EventHandlerCommon.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/EventHandlerCommon.java) — pendiente
+- [common/advancements/AlcoholItemPredicate.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/advancements/AlcoholItemPredicate.java) — pendiente
+- [common/advancements/ModAdvancements.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/advancements/ModAdvancements.java) — pendiente
+- [common/blocks/BlockApiary.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/BlockApiary.java) — pendiente
+- [common/blocks/BlockBarrel.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/BlockBarrel.java) — pendiente
+- [common/blocks/BlockBase.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/BlockBase.java) — pendiente
+- [common/blocks/BlockBeehive.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/BlockBeehive.java) — pendiente
+- [common/blocks/BlockBrewingBarrel.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/BlockBrewingBarrel.java) — pendiente
+- [common/blocks/BlockCabinet.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/BlockCabinet.java) — pendiente
+- [common/blocks/BlockCandle.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/BlockCandle.java) — pendiente
+- [common/blocks/BlockCandleDouble.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/BlockCandleDouble.java) — pendiente
+- [common/blocks/BlockCandleLever.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/BlockCandleLever.java) — pendiente
+- [common/blocks/BlockChain.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/BlockChain.java) — pendiente
+- [common/blocks/BlockChair.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/BlockChair.java) — pendiente
+- [common/blocks/BlockChandelier.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/BlockChandelier.java) — pendiente
+- [common/blocks/BlockClayWallDiag.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/BlockClayWallDiag.java) — pendiente
+- [common/blocks/BlockCondenser.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/BlockCondenser.java) — pendiente
+- [common/blocks/BlockCondenserAdvanced.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/BlockCondenserAdvanced.java) — pendiente
+- [common/blocks/BlockCrushingTub.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/BlockCrushingTub.java) — pendiente
+- [common/blocks/BlockDoorRustic.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/BlockDoorRustic.java) — pendiente
+- [common/blocks/BlockEvaporatingBasin.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/BlockEvaporatingBasin.java) — pendiente
+- [common/blocks/BlockFallingBase.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/BlockFallingBase.java) — pendiente
+- [common/blocks/BlockFenceGateRustic.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/BlockFenceGateRustic.java) — pendiente
+- [common/blocks/BlockFenceRustic.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/BlockFenceRustic.java) — pendiente
+- [common/blocks/BlockFertileSoil.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/BlockFertileSoil.java) — pendiente
+- [common/blocks/BlockGargoyle.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/BlockGargoyle.java) — pendiente
+- [common/blocks/BlockLantern.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/BlockLantern.java) — pendiente
+- [common/blocks/BlockLattice.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/BlockLattice.java) — pendiente
+- [common/blocks/BlockLeavesRustic.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/BlockLeavesRustic.java) — pendiente
+- [common/blocks/BlockLiquidBarrel.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/BlockLiquidBarrel.java) — pendiente
+- [common/blocks/BlockLogRustic.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/BlockLogRustic.java) — pendiente
+- [common/blocks/BlockPillar.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/BlockPillar.java) — pendiente
+- [common/blocks/BlockPlanksRustic.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/BlockPlanksRustic.java) — pendiente
+- [common/blocks/BlockRetort.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/BlockRetort.java) — pendiente
+- [common/blocks/BlockRope.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/BlockRope.java) — pendiente
+- [common/blocks/BlockRopeBase.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/BlockRopeBase.java) — pendiente
+- [common/blocks/BlockRotatable.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/BlockRotatable.java) — pendiente
+- [common/blocks/BlockSaplingRustic.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/BlockSaplingRustic.java) — pendiente
+- [common/blocks/BlockStairsBase.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/BlockStairsBase.java) — pendiente
+- [common/blocks/BlockTable.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/BlockTable.java) — pendiente
+- [common/blocks/BlockVase.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/BlockVase.java) — pendiente
+- [common/blocks/BlockWoodLantern.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/BlockWoodLantern.java) — pendiente
+- [common/blocks/IAdvancedRotationPlacement.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/IAdvancedRotationPlacement.java) — pendiente
+- [common/blocks/IColoredBlock.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/IColoredBlock.java) — pendiente
+- [common/blocks/ModBlocks.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java) — pendiente
+- [common/blocks/crops/BlockAppleSeeds.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/crops/BlockAppleSeeds.java) — pendiente
+- [common/blocks/crops/BlockBerryBush.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/crops/BlockBerryBush.java) — pendiente
+- [common/blocks/crops/BlockCropStake.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/crops/BlockCropStake.java) — pendiente
+- [common/blocks/crops/BlockGrapeLeaves.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/crops/BlockGrapeLeaves.java) — pendiente
+- [common/blocks/crops/BlockGrapeStem.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/crops/BlockGrapeStem.java) — pendiente
+- [common/blocks/crops/BlockHerbBase.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/crops/BlockHerbBase.java) — pendiente
+- [common/blocks/crops/BlockLeavesApple.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/crops/BlockLeavesApple.java) — pendiente
+- [common/blocks/crops/BlockSaplingApple.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/crops/BlockSaplingApple.java) — pendiente
+- [common/blocks/crops/BlockStakeCrop.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/crops/BlockStakeCrop.java) — pendiente
+- [common/blocks/crops/BlockStakeTied.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/crops/BlockStakeTied.java) — pendiente
+- [common/blocks/crops/Herbs.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/crops/Herbs.java) — pendiente
+- [common/blocks/fluids/BlockFluidRustic.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/fluids/BlockFluidRustic.java) — pendiente
+- [common/blocks/fluids/FluidBooze.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/fluids/FluidBooze.java) — pendiente
+- [common/blocks/fluids/FluidDrinkable.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/fluids/FluidDrinkable.java) — pendiente
+- [common/blocks/fluids/FluidStateMapper.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/fluids/FluidStateMapper.java) — pendiente
+- [common/blocks/fluids/ModFluids.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/fluids/ModFluids.java) — pendiente
+- [common/blocks/properties/UnlistedPropertyBool.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/properties/UnlistedPropertyBool.java) — pendiente
+- [common/blocks/slab/BlockDoubleSlabBase.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/slab/BlockDoubleSlabBase.java) — pendiente
+- [common/blocks/slab/BlockSlabBase.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/slab/BlockSlabBase.java) — pendiente
+- [common/blocks/slab/ItemBlockSlabBase.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/slab/ItemBlockSlabBase.java) — pendiente
+- [common/book/BookCategory.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/book/BookCategory.java) — pendiente
+- [common/book/BookEntry.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/book/BookEntry.java) — pendiente
+- [common/book/BookEntryCategory.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/book/BookEntryCategory.java) — pendiente
+- [common/book/BookManager.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/book/BookManager.java) — pendiente
+- [common/book/BookPage.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/book/BookPage.java) — pendiente
+- [common/book/pages/BookPageCategories.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/book/pages/BookPageCategories.java) — pendiente
+- [common/book/pages/BookPageCategory.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/book/pages/BookPageCategory.java) — pendiente
+- [common/book/pages/BookPageText.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/book/pages/BookPageText.java) — pendiente
+- [common/crafting/AdvancedCondenserRecipe.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/crafting/AdvancedCondenserRecipe.java) — pendiente
+- [common/crafting/BasicCondenserRecipe.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/crafting/BasicCondenserRecipe.java) — pendiente
+- [common/crafting/BrewingBarrelRecipe.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/crafting/BrewingBarrelRecipe.java) — pendiente
+- [common/crafting/CondenserRecipe.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/crafting/CondenserRecipe.java) — pendiente
+- [common/crafting/CrushingTubRecipe.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/crafting/CrushingTubRecipe.java) — pendiente
+- [common/crafting/EvaporatingBasinRecipe.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/crafting/EvaporatingBasinRecipe.java) — pendiente
+- [common/crafting/IBrewingBarrelRecipe.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/crafting/IBrewingBarrelRecipe.java) — pendiente
+- [common/crafting/ICondenserRecipe.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/crafting/ICondenserRecipe.java) — pendiente
+- [common/crafting/ICrushingTubRecipe.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/crafting/ICrushingTubRecipe.java) — pendiente
+- [common/crafting/IEvaporatingBasinRecipe.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/crafting/IEvaporatingBasinRecipe.java) — pendiente
+- [common/crafting/RecipeCabinet.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/crafting/RecipeCabinet.java) — pendiente
+- [common/crafting/RecipeNonIngredientReturn.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/crafting/RecipeNonIngredientReturn.java) — pendiente
+- [common/crafting/RecipeOliveOil.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/crafting/RecipeOliveOil.java) — pendiente
+- [common/crafting/RecipeVantaOil.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/crafting/RecipeVantaOil.java) — pendiente
+- [common/crafting/Recipes.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/crafting/Recipes.java) — pendiente
+- [common/entities/EntityTomato.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/entities/EntityTomato.java) — pendiente
+- [common/entities/ModEntities.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/entities/ModEntities.java) — pendiente
+- [common/entities/ai/EntityAITemptRustic.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/entities/ai/EntityAITemptRustic.java) — pendiente
+- [common/inventory/DoubleCabinetItemHandler.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/inventory/DoubleCabinetItemHandler.java) — pendiente
+- [common/inventory/ExternalItemHandler.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/inventory/ExternalItemHandler.java) — pendiente
+- [common/items/IColoredItem.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/items/IColoredItem.java) — pendiente
+- [common/items/ItemBase.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/items/ItemBase.java) — pendiente
+- [common/items/ItemBook.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/items/ItemBook.java) — pendiente
+- [common/items/ItemElixir.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/items/ItemElixir.java) — pendiente
+- [common/items/ItemFluidBottle.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/items/ItemFluidBottle.java) — pendiente
+- [common/items/ItemFoodBase.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/items/ItemFoodBase.java) — pendiente
+- [common/items/ItemHerbEdible.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/items/ItemHerbEdible.java) — pendiente
+- [common/items/ItemStakeCropSeed.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/items/ItemStakeCropSeed.java) — pendiente
+- [common/items/ModItems.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/items/ModItems.java) — pendiente
+- [common/network/MessageDismountChair.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/network/MessageDismountChair.java) — pendiente
+- [common/network/MessageFirePowerAttack.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/network/MessageFirePowerAttack.java) — pendiente
+- [common/network/MessageShameFX.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/network/MessageShameFX.java) — pendiente
+- [common/network/MessageVaseMeta.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/network/MessageVaseMeta.java) — pendiente
+- [common/network/PacketHandler.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/network/PacketHandler.java) — pendiente
+- [common/potions/EventHandlerPotions.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/potions/EventHandlerPotions.java) — pendiente
+- [common/potions/PotionBase.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/potions/PotionBase.java) — pendiente
+- [common/potions/PotionBlazingTrail.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/potions/PotionBlazingTrail.java) — pendiente
+- [common/potions/PotionFeather.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/potions/PotionFeather.java) — pendiente
+- [common/potions/PotionFullmetal.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/potions/PotionFullmetal.java) — pendiente
+- [common/potions/PotionIronSkin.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/potions/PotionIronSkin.java) — pendiente
+- [common/potions/PotionShame.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/potions/PotionShame.java) — pendiente
+- [common/potions/PotionTipsy.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/potions/PotionTipsy.java) — pendiente
+- [common/potions/PotionsRustic.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/potions/PotionsRustic.java) — pendiente
+- [common/tileentity/ContainerApiary.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/tileentity/ContainerApiary.java) — pendiente
+- [common/tileentity/ContainerBarrel.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/tileentity/ContainerBarrel.java) — pendiente
+- [common/tileentity/ContainerBrewingBarrel.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/tileentity/ContainerBrewingBarrel.java) — pendiente
+- [common/tileentity/ContainerCabinet.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/tileentity/ContainerCabinet.java) — pendiente
+- [common/tileentity/ContainerCabinetDouble.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/tileentity/ContainerCabinetDouble.java) — pendiente
+- [common/tileentity/ContainerCondenser.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/tileentity/ContainerCondenser.java) — pendiente
+- [common/tileentity/ContainerCondenserAdvanced.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/tileentity/ContainerCondenserAdvanced.java) — pendiente
+- [common/tileentity/ContainerVase.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/tileentity/ContainerVase.java) — pendiente
+- [common/tileentity/ITileEntitySyncable.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/tileentity/ITileEntitySyncable.java) — pendiente
+- [common/tileentity/TileEntityApiary.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/tileentity/TileEntityApiary.java) — pendiente
+- [common/tileentity/TileEntityBarrel.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/tileentity/TileEntityBarrel.java) — pendiente
+- [common/tileentity/TileEntityBrewingBarrel.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/tileentity/TileEntityBrewingBarrel.java) — pendiente
+- [common/tileentity/TileEntityCabinet.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/tileentity/TileEntityCabinet.java) — pendiente
+- [common/tileentity/TileEntityCondenser.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/tileentity/TileEntityCondenser.java) — pendiente
+- [common/tileentity/TileEntityCondenserAdvancedBottom.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/tileentity/TileEntityCondenserAdvancedBottom.java) — pendiente
+- [common/tileentity/TileEntityCondenserAdvancedTop.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/tileentity/TileEntityCondenserAdvancedTop.java) — pendiente
+- [common/tileentity/TileEntityCondenserBase.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/tileentity/TileEntityCondenserBase.java) — pendiente
+- [common/tileentity/TileEntityCrushingTub.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/tileentity/TileEntityCrushingTub.java) — pendiente
+- [common/tileentity/TileEntityEvaporatingBasin.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/tileentity/TileEntityEvaporatingBasin.java) — pendiente
+- [common/tileentity/TileEntityLiquidBarrel.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/tileentity/TileEntityLiquidBarrel.java) — pendiente
+- [common/tileentity/TileEntityVase.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/tileentity/TileEntityVase.java) — pendiente
+- [common/util/DispenseRope.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/util/DispenseRope.java) — pendiente
+- [common/util/ElixirUtils.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/util/ElixirUtils.java) — pendiente
+- [common/util/ItemStackHandlerRustic.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/util/ItemStackHandlerRustic.java) — pendiente
+- [common/util/ReflectionUtils.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/util/ReflectionUtils.java) — pendiente
+- [common/util/RusticUtils.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/util/RusticUtils.java) — pendiente
+- [common/world/WorldGenAllTrees.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/world/WorldGenAllTrees.java) — pendiente
+- [common/world/WorldGenAppleTree.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/world/WorldGenAppleTree.java) — pendiente
+- [common/world/WorldGenBeehive.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/world/WorldGenBeehive.java) — pendiente
+- [common/world/WorldGenCaveHerbs.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/world/WorldGenCaveHerbs.java) — pendiente
+- [common/world/WorldGenIronwoodTree.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/world/WorldGenIronwoodTree.java) — pendiente
+- [common/world/WorldGenNetherHerbs.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/world/WorldGenNetherHerbs.java) — pendiente
+- [common/world/WorldGenOliveTree.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/world/WorldGenOliveTree.java) — pendiente
+- [common/world/WorldGenSurfaceHerbs.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/world/WorldGenSurfaceHerbs.java) — pendiente
+- [common/world/WorldGenWildberries.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/world/WorldGenWildberries.java) — pendiente
+- [common/world/WorldGeneratorRustic.java](original/rustic-pre-1.2.0/src/main/java/rustic/common/world/WorldGeneratorRustic.java) — pendiente
+- [compat/Compat.java](original/rustic-pre-1.2.0/src/main/java/rustic/compat/Compat.java) — pendiente
+- [compat/crafttweaker/Condenser.java](original/rustic-pre-1.2.0/src/main/java/rustic/compat/crafttweaker/Condenser.java) — pendiente
+- [compat/crafttweaker/CrTCondenserRecipe.java](original/rustic-pre-1.2.0/src/main/java/rustic/compat/crafttweaker/CrTCondenserRecipe.java) — pendiente
+- [compat/crafttweaker/CrTEvaporatingBasinRecipe.java](original/rustic-pre-1.2.0/src/main/java/rustic/compat/crafttweaker/CrTEvaporatingBasinRecipe.java) — pendiente
+- [compat/crafttweaker/CraftTweakerHelper.java](original/rustic-pre-1.2.0/src/main/java/rustic/compat/crafttweaker/CraftTweakerHelper.java) — pendiente
+- [compat/crafttweaker/CrushingTub.java](original/rustic-pre-1.2.0/src/main/java/rustic/compat/crafttweaker/CrushingTub.java) — pendiente
+- [compat/crafttweaker/EvaporatingBasin.java](original/rustic-pre-1.2.0/src/main/java/rustic/compat/crafttweaker/EvaporatingBasin.java) — pendiente
+- [compat/dynamictrees/BiomeDataBasePopulator.java](original/rustic-pre-1.2.0/src/main/java/rustic/compat/dynamictrees/BiomeDataBasePopulator.java) — pendiente
+- [compat/dynamictrees/DropCreatorFruit.java](original/rustic-pre-1.2.0/src/main/java/rustic/compat/dynamictrees/DropCreatorFruit.java) — pendiente
+- [compat/dynamictrees/DynamicTreesCompat.java](original/rustic-pre-1.2.0/src/main/java/rustic/compat/dynamictrees/DynamicTreesCompat.java) — pendiente
+- [compat/dynamictrees/SaplingReplacer.java](original/rustic-pre-1.2.0/src/main/java/rustic/compat/dynamictrees/SaplingReplacer.java) — pendiente
+- [compat/dynamictrees/trees/TreeIronwood.java](original/rustic-pre-1.2.0/src/main/java/rustic/compat/dynamictrees/trees/TreeIronwood.java) — pendiente
+- [compat/dynamictrees/trees/TreeOlive.java](original/rustic-pre-1.2.0/src/main/java/rustic/compat/dynamictrees/trees/TreeOlive.java) — pendiente
+- [compat/jei/AdvancedAlchemyRecipeCategory.java](original/rustic-pre-1.2.0/src/main/java/rustic/compat/jei/AdvancedAlchemyRecipeCategory.java) — pendiente
+- [compat/jei/AdvancedAlchemyRecipeMaker.java](original/rustic-pre-1.2.0/src/main/java/rustic/compat/jei/AdvancedAlchemyRecipeMaker.java) — pendiente
+- [compat/jei/AdvancedAlchemyRecipeWrapper.java](original/rustic-pre-1.2.0/src/main/java/rustic/compat/jei/AdvancedAlchemyRecipeWrapper.java) — pendiente
+- [compat/jei/AdvancedAlchemyRecipeWrapperFactory.java](original/rustic-pre-1.2.0/src/main/java/rustic/compat/jei/AdvancedAlchemyRecipeWrapperFactory.java) — pendiente
+- [compat/jei/BrewingRecipeCategory.java](original/rustic-pre-1.2.0/src/main/java/rustic/compat/jei/BrewingRecipeCategory.java) — pendiente
+- [compat/jei/BrewingRecipeWrapper.java](original/rustic-pre-1.2.0/src/main/java/rustic/compat/jei/BrewingRecipeWrapper.java) — pendiente
+- [compat/jei/BrewingRecipeWrapperFactory.java](original/rustic-pre-1.2.0/src/main/java/rustic/compat/jei/BrewingRecipeWrapperFactory.java) — pendiente
+- [compat/jei/CabinetRecipeWrapper.java](original/rustic-pre-1.2.0/src/main/java/rustic/compat/jei/CabinetRecipeWrapper.java) — pendiente
+- [compat/jei/CrushingTubRecipeCategory.java](original/rustic-pre-1.2.0/src/main/java/rustic/compat/jei/CrushingTubRecipeCategory.java) — pendiente
+- [compat/jei/CrushingTubRecipeWrapper.java](original/rustic-pre-1.2.0/src/main/java/rustic/compat/jei/CrushingTubRecipeWrapper.java) — pendiente
+- [compat/jei/CrushingTubRecipeWrapperFactory.java](original/rustic-pre-1.2.0/src/main/java/rustic/compat/jei/CrushingTubRecipeWrapperFactory.java) — pendiente
+- [compat/jei/EvaporatingRecipeCategory.java](original/rustic-pre-1.2.0/src/main/java/rustic/compat/jei/EvaporatingRecipeCategory.java) — pendiente
+- [compat/jei/EvaporatingRecipeWrapper.java](original/rustic-pre-1.2.0/src/main/java/rustic/compat/jei/EvaporatingRecipeWrapper.java) — pendiente
+- [compat/jei/EvaporatingRecipeWrapperFactory.java](original/rustic-pre-1.2.0/src/main/java/rustic/compat/jei/EvaporatingRecipeWrapperFactory.java) — pendiente
+- [compat/jei/OliveOilRecipeMaker.java](original/rustic-pre-1.2.0/src/main/java/rustic/compat/jei/OliveOilRecipeMaker.java) — pendiente
+- [compat/jei/OliveOilRecipeWrapper.java](original/rustic-pre-1.2.0/src/main/java/rustic/compat/jei/OliveOilRecipeWrapper.java) — pendiente
+- [compat/jei/RusticJEIPlugin.java](original/rustic-pre-1.2.0/src/main/java/rustic/compat/jei/RusticJEIPlugin.java) — pendiente
+- [compat/jei/SimpleAlchemyRecipeCategory.java](original/rustic-pre-1.2.0/src/main/java/rustic/compat/jei/SimpleAlchemyRecipeCategory.java) — pendiente
+- [compat/jei/SimpleAlchemyRecipeMaker.java](original/rustic-pre-1.2.0/src/main/java/rustic/compat/jei/SimpleAlchemyRecipeMaker.java) — pendiente
+- [compat/jei/SimpleAlchemyRecipeWrapper.java](original/rustic-pre-1.2.0/src/main/java/rustic/compat/jei/SimpleAlchemyRecipeWrapper.java) — pendiente
+- [compat/jei/SimpleAlchemyRecipeWrapperFactory.java](original/rustic-pre-1.2.0/src/main/java/rustic/compat/jei/SimpleAlchemyRecipeWrapperFactory.java) — pendiente
+- [compat/jei/VantaOilRecipeWrapper.java](original/rustic-pre-1.2.0/src/main/java/rustic/compat/jei/VantaOilRecipeWrapper.java) — pendiente
+- [core/ClientProxy.java](original/rustic-pre-1.2.0/src/main/java/rustic/core/ClientProxy.java) — pendiente
+- [core/CommonProxy.java](original/rustic-pre-1.2.0/src/main/java/rustic/core/CommonProxy.java) — pendiente
+- [core/Rustic.java](original/rustic-pre-1.2.0/src/main/java/rustic/core/Rustic.java) — pendiente
+
+## Wiki (38 páginas)
+
+- [Alchemy](original/wiki/Alchemy.md) — referencia, pendiente de contraste
+- [Apple-Trees](original/wiki/Apple-Trees.md) — referencia, pendiente de contraste
+- [Armor-HUD](original/wiki/Armor-HUD.md) — referencia, pendiente de contraste
+- [Barrels](original/wiki/Barrels.md) — referencia, pendiente de contraste
+- [Bees](original/wiki/Bees.md) — referencia, pendiente de contraste
+- [Brewing](original/wiki/Brewing.md) — referencia, pendiente de contraste
+- [Cabinets](original/wiki/Cabinets.md) — referencia, pendiente de contraste
+- [Candles](original/wiki/Candles.md) — referencia, pendiente de contraste
+- [Chain](original/wiki/Chain.md) — referencia, pendiente de contraste
+- [Chairs](original/wiki/Chairs.md) — referencia, pendiente de contraste
+- [Chandelier-Ring](original/wiki/Chandelier-Ring.md) — referencia, pendiente de contraste
+- [Chili-Peppers](original/wiki/Chili-Peppers.md) — referencia, pendiente de contraste
+- [Clay-Walls](original/wiki/Clay-Walls.md) — referencia, pendiente de contraste
+- [CraftTweaker-Support](original/wiki/CraftTweaker-Support.md) — referencia, pendiente de contraste
+- [Crop-Stakes](original/wiki/Crop-Stakes.md) — referencia, pendiente de contraste
+- [Crushing-Tub](original/wiki/Crushing-Tub.md) — referencia, pendiente de contraste
+- [Evaporating-Basin](original/wiki/Evaporating-Basin.md) — referencia, pendiente de contraste
+- [Fertile-Soil](original/wiki/Fertile-Soil.md) — referencia, pendiente de contraste
+- [Gargoyles](original/wiki/Gargoyles.md) — referencia, pendiente de contraste
+- [Grapes](original/wiki/Grapes.md) — referencia, pendiente de contraste
+- [Herbs](original/wiki/Herbs.md) — referencia, pendiente de contraste
+- [Home](original/wiki/Home.md) — referencia, pendiente de contraste
+- [Iron-Lattice](original/wiki/Iron-Lattice.md) — referencia, pendiente de contraste
+- [Ironberries](original/wiki/Ironberries.md) — referencia, pendiente de contraste
+- [Lanterns](original/wiki/Lanterns.md) — referencia, pendiente de contraste
+- [Liquid-Barrels](original/wiki/Liquid-Barrels.md) — referencia, pendiente de contraste
+- [Materials](original/wiki/Materials.md) — referencia, pendiente de contraste
+- [Olives](original/wiki/Olives.md) — referencia, pendiente de contraste
+- [Painted-Wood](original/wiki/Painted-Wood.md) — referencia, pendiente de contraste
+- [Pots](original/wiki/Pots.md) — referencia, pendiente de contraste
+- [Rope](original/wiki/Rope.md) — referencia, pendiente de contraste
+- [Slate](original/wiki/Slate.md) — referencia, pendiente de contraste
+- [Stone-Pillars](original/wiki/Stone-Pillars.md) — referencia, pendiente de contraste
+- [Tables](original/wiki/Tables.md) — referencia, pendiente de contraste
+- [The-Almanac](original/wiki/The-Almanac.md) — referencia, pendiente de contraste
+- [Tomatoes](original/wiki/Tomatoes.md) — referencia, pendiente de contraste
+- [Wildberries](original/wiki/Wildberries.md) — referencia, pendiente de contraste
+- [_Sidebar](original/wiki/_Sidebar.md) — referencia, pendiente de contraste

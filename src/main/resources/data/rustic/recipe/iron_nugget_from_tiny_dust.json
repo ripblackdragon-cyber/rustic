@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": "rustic:dust_tiny_iron",
+  "result": {
+    "id": "minecraft:iron_nugget"
+  },
+  "experience": 0.15,
+  "cookingtime": 200
+}

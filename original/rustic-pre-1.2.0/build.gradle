@@ -1,0 +1,146 @@
+buildscript {
+    repositories {
+        jcenter()
+		maven {
+			name = "localmaven"
+			url = uri("${project.getRootDir()}/gradle/localmaven")
+		}
+        maven {
+            name = "forge"
+            url = "http://files.minecraftforge.net/maven"
+        }
+        maven { url = "https://plugins.gradle.org/m2/" }
+    }
+    dependencies {
+        classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-CUSTOM'
+		//classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
+        classpath 'com.wynprice.cursemaven:CurseMaven:1.2.3'
+    }
+}
+apply plugin: 'net.minecraftforge.gradle.forge'
+apply plugin: 'com.wynprice.cursemaven'
+//Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
+
+repositories {
+    maven { // JEI & Tinkers
+        name 'DVS1 Maven FS'
+        url 'http://dvs1.progwml6.com/files/maven'
+    }
+	maven { // CraftTweaker
+        name 'jared maven'
+        url "http://maven.blamejared.com/"
+    }
+    //maven { // TOP
+    //    name 'tterrag maven'
+    //    url "http://maven.tterrag.com/"
+    //}
+	//maven { // HWYLA
+	//	url "http://tehnut.info/maven"
+	//}
+    maven {
+        name "CoFH"
+        url "http://maven.covers1624.net"
+    }
+	//maven {
+	//	name "AppleCore"
+	//	url "http://www.ryanliptak.com/maven/"
+	//}
+	maven {
+		url 'https://www.cursemaven.com'
+    }
+    maven {
+		name "CurseForge"
+		url "https://minecraft.curseforge.com/api/maven/"
+    }
+    //maven {
+    //    name "IC2 Forestry"
+    //    url "http://maven.ic2.player.to/"
+    //}
+	//maven { // cloner
+	//	name 'Sonatype'
+	//	url 'https://central.sonatype.com/'
+	//}
+}
+
+
+configurations {
+    provided
+    shade
+    compile.extendsFrom shade
+	bundledLib
+	compile.extendsFrom bundledLib
+}
+
+idea {
+    module {
+        scopes.PROVIDED.plus += [configurations.provided]
+    }
+}
+
+dependencies {
+	// has to be declared before the 'jar' section
+	//bundledLib "io.github.kostaskougios:cloning:1.10.3"
+}
+
+jar {
+    configurations.shade.each { dep ->
+        from(project.zipTree(dep)) {
+            exclude 'META-INF', 'META-INF/**'
+        }
+    }
+
+    from sourceSets.api.output
+	
+	manifest {
+        attributes 'FMLAT': 'rustic_at.cfg'
+    }
+	
+	def libBuildDir = mkdir "${buildDir}/resources/main/lib"
+	copy {
+		from { configurations.bundledLib }
+		into { libBuildDir }
+	}
+}
+
+apply from: 'dependencies.gradle'
+
+version = "1.2.0"
+group = "com.cadaverous_eris.rustic"
+archivesBaseName = "rustic"
+
+sourceCompatibility = targetCompatibility = '1.8' // Need this here so eclipse task generates correctly.
+compileJava {
+    sourceCompatibility = targetCompatibility = '1.8'
+}
+
+minecraft {
+    version = "1.12.2-14.23.5.2768"
+    runDir = "run"
+    
+    mappings = "snapshot_20171003"
+    // makeObfSourceJar = false // an Srg named sources jar is made by default. uncomment this to disable.
+}
+
+processResources {
+    inputs.property "version", project.version
+    inputs.property "mcversion", project.minecraft.version
+
+    from(sourceSets.main.resources.srcDirs) {
+        include 'mcmod.info'
+        expand 'version':project.version, 'mcversion':project.minecraft.version
+    }
+        
+    from(sourceSets.main.resources.srcDirs) {
+        exclude 'mcmod.info'
+    }
+}
+
+task deobfJar(type: Jar) {
+    from sourceSets.main.output
+    classifier = 'deobf'
+	manifest {
+        attributes 'FMLAT': 'rustic_at.cfg'
+    }
+}
+
+tasks.build.dependsOn deobfJar
