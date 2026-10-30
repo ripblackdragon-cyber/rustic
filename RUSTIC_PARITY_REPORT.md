@@ -4,7 +4,7 @@
 
 | Área | Original | Fabric 26.3 | Paridad |
 |---|---|---|---|
-| Bloques, objetos, variantes | Declaraciones y fuentes indexadas | Seis ingredientes compilados en CI; dos alimentos adicionales implementados sin validar compilación o juego en esta revisión. Los bloques y restantes elementos pendientes | No verificada |
+| Bloques, objetos, variantes | Declaraciones y fuentes indexadas | Seis ingredientes compilados en CI; dos alimentos adicionales compilados y con componentes verificados en JUnit; sin validar en juego. Los bloques y restantes elementos pendientes | No verificada |
 | Texturas y modelos | Copia original e índice SHA-256 | 376 archivos de textura copiados sin cambios; ocho modelos de objetos adaptados; los demás modelos y renderizadores pendientes | No verificada |
 | Recetas normales y especiales | JSON y puntos de registro indexados en [RUSTIC_RECIPES.md](RUSTIC_RECIPES.md) | Tres recetas de fundición escritas, sin cargar ni probar; las demás pendientes | No verificada |
 | Agricultura, generación, abejas | Fuente preservada | Sin implementación | No verificada |

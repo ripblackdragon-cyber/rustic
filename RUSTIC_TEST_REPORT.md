@@ -4,7 +4,7 @@ Fecha: 2026-10-30. **Se ha compilado código inicial en CI, pero no se ha probad
 
 ## Pruebas ejecutadas
 
-`python3 -m unittest discover -s tests -q`: **36 pruebas correctas localmente** (incluidas dos pruebas estáticas nuevas de uvas y bayas silvestres). La ejecución CI `40985016548`, anterior a esas dos pruebas, ejecutó 32 correctamente. Comprueban:
+`python3 -m unittest discover -s tests -q`: **39 pruebas correctas localmente** (incluidas dos pruebas estáticas de uvas y bayas y tres del verificador de informes JUnit). La ejecución CI `40985016548`, anterior a esas dos pruebas, ejecutó 32 correctamente. Comprueban:
 
 - Índices de archivos y recursos, validez JSON de recetas originales y extracción de expresiones Java seleccionadas.
 - Correspondencia de las tres copias de referencia con los hashes Git registrados; detección de archivos modificados, añadidos y ausentes en un ejemplo sintético.
@@ -23,13 +23,15 @@ La [ejecución CI 40985016548](https://github.com/ripblackdragon-cyber/rustic/ac
 
 La [segunda ejecución CI](https://github.com/ripblackdragon-cyber/rustic/actions/runs/40985252713), commit `db3a25ca`, también pasó: 34 pruebas Python, compilación y comprobación del JAR. Se compararon 399 recursos y dos avisos con los archivos fuente, se comprobaron metadatos y la firma de los dos archivos `.class` principales. `rustic-fabric-26.3-dev-0.0.0-dev.jar` tiene SHA-256 `bfeb8b243bfdc1d6f5295ab874c8a8cce25b1a13297847760d472c29a0857ab1`. Ninguna comprobación carga el mod en el juego.
 
+La [ejecución CI 40986891133](https://github.com/ripblackdragon-cyber/rustic/actions/runs/40986891133) para `935811c` compiló los dos alimentos y ejecutó tres pruebas Java con Fabric Loader JUnit. Estas comprueban los componentes construidos realmente: bayas 2 de nutrición y 2,0 de saturación; uvas 3 y 1,8; ambas no son siempre comestibles y el consumible dura 0,8 segundos (16 ticks). No inicializan el mod ni un mundo; no comprueban registro, alimentación del jugador o lobos, sonido, gráficos, inventario, servidor ni multijugador. En CI también se verificaron 403 recursos del JAR. SHA-256 `83161858e9f012ce93c003d6eb04923c38dd9d1c2fee14de037bee8d805643aa`. El verificador del informe JUnit rechazó inicialmente la ejecución `40986743999` al no reconocer el sufijo `()` en nombres XML; corregido en `935811c` y comprobado en CI.
+
 Estas pruebas no demuestran que el commit sea idéntico al JAR publicado, que los recursos se vean correctamente o que todos los comportamientos se hayan identificado. Los casos de aceptación no ejecutados están en [RUSTIC_ACCEPTANCE_CASES.md](RUSTIC_ACCEPTANCE_CASES.md).
 
 ## No ejecutadas / bloqueadas
 
 | Prueba requerida | Estado y motivo |
 |---|---|
-| Compilación Java, resolución Gradle, empaquetado | Correctos en CI para `db3a25ca` (antes de los dos alimentos nuevos), con comprobación estática del JAR; el intento local falló por restricciones de red y falta de JDK completo. No se ha inspeccionado el JAR descargado localmente. |
+| Compilación Java, resolución Gradle, empaquetado | Correctos en CI para `935811c`, con comprobación estática del JAR y tres pruebas Java de componentes; el intento local falló por restricciones de red y falta de JDK completo. No se ha inspeccionado el JAR descargado localmente. |
 | Cliente y servidor Fabric 26.3 | No ejecutada: no hay entorno de ejecución instalado ni JAR descargado en el sandbox. |
 | Todos los bloques, objetos, texturas y recetas en juego | No ejecutada: sin implementación funcional. |
 | Agricultura, árboles, abejas, alquimia, bebidas, GUI y libro | No ejecutada: sin implementación. |
