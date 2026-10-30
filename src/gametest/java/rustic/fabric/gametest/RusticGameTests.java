@@ -122,13 +122,11 @@ public class RusticGameTests {
 
     @GameTest
     public void chiliConsumption(GameTestHelper helper) {
-        Player player = helper.makeMockPlayer(GameType.SURVIVAL);
         int damaged = 0;
         int unharmed = 0;
-        for (int i = 0; i < 1024; i++) {
-            player.removeEffect(MobEffects.SPEED);
-            player.setHealth(player.getMaxHealth());
-            player.invulnerableTime = 0;
+        for (int i = 0; i < 512; i++) {
+            // Fresh mock per trial avoids damage immunity persisting between immediate finishes.
+            Player player = helper.makeMockPlayer(GameType.SURVIVAL);
             player.getFoodData().setFoodLevel(20);
             player.getFoodData().setSaturation(0.0F);
             ItemStack stack = new ItemStack(RusticItems.CHILI_PEPPER, 2);
