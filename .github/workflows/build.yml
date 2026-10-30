@@ -90,9 +90,18 @@ jobs:
         with:
           distribution: temurin
           java-version: '25'
+      - name: Prepare software graphics
+        shell: bash
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y xvfb libgl1-mesa-dri libglx-mesa0 mesa-utils
+          LIBGL_ALWAYS_SOFTWARE=1 xvfb-run -a -s '-screen 0 1280x720x24' glxinfo -B
       - name: Run Minecraft client and integrated-server test
         id: client
         shell: bash
+        env:
+          LIBGL_ALWAYS_SOFTWARE: '1'
+          SDL_VIDEODRIVER: x11
         run: |
           set -o pipefail
           timeout --signal=TERM --kill-after=15s 240s xvfb-run -a -s '-screen 0 1280x720x24' ./gradlew runClientGameTest --no-daemon --stacktrace 2>&1 | tee "$RUNNER_TEMP/rustic-client.log"
@@ -106,20 +115,12 @@ jobs:
           import os
           from pathlib import Path
           log = Path(os.environ['RUNNER_TEMP']) / 'rustic-client.log'
-          if not log.exists():
-              print('::error::Client test log missing; check XVFB and Gradle startup.')
-          else:
-              lines = log.read_text(encoding='utf-8', errors='replace').splitlines()
-              found = []
-              for i, line in enumerate(lines):
-                  if any(key in line for key in ('What went wrong:', ' error:', 'ERROR', 'Exception', 'AssertionError', 'Failed to', 'GameTest')):
-                      found.extend(lines[i:i+3])
-              for line in found[-40:] + ['--- last output ---'] + lines[-50:]:
-                  print('::error::' + line[:1500].replace('%', '%25').replace('\r', '%0D').replace('\n', '%0A'))
+          lines = log.read_text(encoding='utf-8', errors='replace').splitlines() if log.exists() else ['Client log missing']
           game_log = Path('build/run/clientGameTest/logs/latest.log')
           if game_log.is_file():
-              for line in game_log.read_text(encoding='utf-8', errors='replace').splitlines()[-50:]:
-                  print('::error::client log ' + line[:1500].replace('%', '%25').replace('\r', '%0D').replace('\n', '%0A'))
+              lines += ['--- client latest.log ---'] + game_log.read_text(encoding='utf-8', errors='replace').splitlines()[-60:]
+          message = '\n'.join(lines[-120:])[-24000:]
+          print('::error::' + message.replace('%', '%25').replace('\r', '%0D').replace('\n', '%0A'))
           PY
       - name: Upload client screenshot
         if: success()
