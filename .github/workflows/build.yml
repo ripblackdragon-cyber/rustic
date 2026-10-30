@@ -95,7 +95,7 @@ jobs:
         shell: bash
         run: |
           set -o pipefail
-          xvfb-run -a -s '-screen 0 1280x720x24' ./gradlew runClientGameTest --no-daemon --stacktrace 2>&1 | tee "$RUNNER_TEMP/rustic-client.log"
+          timeout --signal=TERM --kill-after=15s 240s xvfb-run -a -s '-screen 0 1280x720x24' ./gradlew runClientGameTest --no-daemon --stacktrace 2>&1 | tee "$RUNNER_TEMP/rustic-client.log"
           grep -Fx 'rustic-client-food-gametest-passed' build/reports/rustic-client-gametest.txt
           echo '::notice::Minecraft client used both foods in a singleplayer world; integrated-server state verified.'
       - name: Annotate client failure
@@ -114,8 +114,12 @@ jobs:
               for i, line in enumerate(lines):
                   if any(key in line for key in ('What went wrong:', ' error:', 'ERROR', 'Exception', 'AssertionError', 'Failed to', 'GameTest')):
                       found.extend(lines[i:i+3])
-              for line in (found[-60:] or lines[-30:]):
+              for line in found[-40:] + ['--- last output ---'] + lines[-50:]:
                   print('::error::' + line[:1500].replace('%', '%25').replace('\r', '%0D').replace('\n', '%0A'))
+          game_log = Path('build/run/clientGameTest/logs/latest.log')
+          if game_log.is_file():
+              for line in game_log.read_text(encoding='utf-8', errors='replace').splitlines()[-50:]:
+                  print('::error::client log ' + line[:1500].replace('%', '%25').replace('\r', '%0D').replace('\n', '%0A'))
           PY
       - name: Upload client screenshot
         if: success()
