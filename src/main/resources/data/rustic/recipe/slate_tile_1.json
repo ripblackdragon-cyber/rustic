@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "S": "rustic:slate_brick"
+  },
+  "pattern": [
+    "S"
+  ],
+  "result": {
+    "id": "rustic:slate_tile",
+    "count": 1
+  }
+}

@@ -143,5 +143,10 @@
   "item.rustic.beeswax": "Cera de Abelha",
   "item.rustic.tallow": "Sebo",
   "item.rustic.dust_tiny_iron": "Minúscula Pilha de Pó de Ferro",
-  "item.rustic.olives": "Azeitona"
+  "item.rustic.olives": "Azeitona",
+  "block.rustic.slate": "Ardósia",
+  "block.rustic.slate_roof": "Telhado de Ardósia",
+  "block.rustic.slate_tile": "Azulejo de Ardósia",
+  "block.rustic.slate_brick": "Tijolo de Ardósia",
+  "block.rustic.slate_chiseled": "Andósia Talhada"
 }

@@ -183,5 +183,10 @@
   "item.rustic.dust_tiny_iron": "Petit tas de poussière de fer",
   "item.rustic.wildberries": "Baies sauvages",
   "item.rustic.grapes": "Raisins",
-  "item.rustic.olives": "Olives"
+  "item.rustic.olives": "Olives",
+  "block.rustic.slate": "Ardoise",
+  "block.rustic.slate_roof": "Toit en ardoise",
+  "block.rustic.slate_tile": "Tuile d'ardoise",
+  "block.rustic.slate_brick": "Brique d'ardoise",
+  "block.rustic.slate_chiseled": "Ardoise ciselée"
 }

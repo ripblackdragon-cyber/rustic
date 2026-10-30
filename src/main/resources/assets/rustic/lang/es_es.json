@@ -315,5 +315,10 @@
   "item.rustic.dust_tiny_iron": "Pequeña pila de polvo de hierro",
   "item.rustic.wildberries": "Bayas Silvestres",
   "item.rustic.grapes": "Uvas",
-  "item.rustic.olives": "Olivas"
+  "item.rustic.olives": "Olivas",
+  "block.rustic.slate": "Pizarra",
+  "block.rustic.slate_roof": "Tejado de Pizarra",
+  "block.rustic.slate_tile": "Azulejo de Pizarra",
+  "block.rustic.slate_brick": "Ladrillo de Pizarra",
+  "block.rustic.slate_chiseled": "Pizarra Cincelada"
 }

@@ -21,7 +21,9 @@ class ResourceLinkTests(unittest.TestCase):
         item_ids = registered_item_ids()
         self.assertEqual(len(item_ids), len(set(item_ids)), 'duplicate registration IDs')
         definitions = {p.stem for p in (ASSETS / 'items').glob('*.json')}
-        self.assertEqual(set(item_ids), definitions)
+        block_ids = set(re.findall(r'\bregister\("([a-z0-9_]+)"', (JAVA.parent / 'RusticBlocks.java').read_text()))
+        self.assertEqual(set(item_ids) | block_ids, definitions)
+        self.assertFalse(set(item_ids) & block_ids)
         for name in item_ids:
             with self.subTest(item=name):
                 item = json.loads((ASSETS / 'items' / f'{name}.json').read_text(encoding='utf-8'))
@@ -47,6 +49,8 @@ class ResourceLinkTests(unittest.TestCase):
         for path in recipes:
             with self.subTest(recipe=path.name):
                 data = json.loads(path.read_text(encoding='utf-8'))
+                if data['type'] == 'minecraft:crafting_shaped':
+                    continue  # independently checked by test_slate_migration.py
                 self.assertEqual(data['type'], 'minecraft:smelting')
                 self.assertEqual(data['cookingtime'], 200)
                 self.assertIn(data['ingredient'], item_ids)

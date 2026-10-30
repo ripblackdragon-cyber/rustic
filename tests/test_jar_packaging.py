@@ -26,7 +26,7 @@ class JarPackagingTest(unittest.TestCase):
                     'depends': {'minecraft': '=26.3'}}
         with zipfile.ZipFile(self.jar, 'w') as jar:
             jar.writestr('fabric.mod.json', json.dumps(metadata))
-            for name in ('RusticFabric', 'RusticItems', 'RusticFoods', 'RusticCreativeTabs'):
+            for name in ('RusticFabric', 'RusticItems', 'RusticFoods', 'RusticCreativeTabs', 'RusticBlocks'):
                 jar.writestr(f'rustic/fabric/{name}.class', b'\xca\xfe\xba\xbe')
             jar.writestr('example.txt', resource)
             jar.writestr('META-INF/THIRD_PARTY_NOTICES.md', b'notice')

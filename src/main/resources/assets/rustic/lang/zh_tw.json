@@ -315,5 +315,10 @@
   "item.rustic.dust_tiny_iron": "鐵屑",
   "item.rustic.wildberries": "野漿果",
   "item.rustic.grapes": "葡萄",
-  "item.rustic.olives": "橄欖"
+  "item.rustic.olives": "橄欖",
+  "block.rustic.slate": "板岩",
+  "block.rustic.slate_roof": "板岩屋頂磚",
+  "block.rustic.slate_tile": "板岩瓦塊",
+  "block.rustic.slate_brick": "板岩磚",
+  "block.rustic.slate_chiseled": "浮雕板岩"
 }

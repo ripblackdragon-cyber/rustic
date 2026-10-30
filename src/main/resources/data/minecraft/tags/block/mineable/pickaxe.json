@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "rustic:slate",
+    "rustic:slate_roof",
+    "rustic:slate_tile",
+    "rustic:slate_brick",
+    "rustic:slate_chiseled"
+  ]
+}

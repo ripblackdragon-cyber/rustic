@@ -17,6 +17,11 @@ ALIASES = {f'item.rustic.{name}.name': f'item.rustic.{name}' for name in (
     'wildberries', 'grapes', 'olives'
 )}
 
+# BlockItem names use their block translation key.
+ALIASES.update({f'tile.rustic.{name}.name': f'block.rustic.{name}' for name in (
+    'slate', 'slate_roof', 'slate_tile', 'slate_brick', 'slate_chiseled'
+)})
+
 
 def parse_lang(raw, name='<input>'):
     # utf-8-sig accepts the BOM in two upstream files and preserves every value byte
@@ -92,7 +97,7 @@ def main():
     except (ValueError, OSError, UnicodeError) as error:
         parser.exit(1, f'{error}\n')
     print(f'{count} locales comprobados; {missing if args.write else 0} archivos creados.')
-    print('Se han añadido alias modernos para nueve objetos; faltan las demás claves y pruebas en juego.')
+    print('Se han añadido alias modernos para nueve objetos y cinco bloques; faltan las demás claves y pruebas en juego.')
 
 
 if __name__ == '__main__':

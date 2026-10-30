@@ -306,5 +306,10 @@
   "item.rustic.dust_tiny_iron": "Маленькая кучка железной пыли",
   "item.rustic.wildberries": "Лесные ягоды",
   "item.rustic.grapes": "Виноград",
-  "item.rustic.olives": "Оливки"
+  "item.rustic.olives": "Оливки",
+  "block.rustic.slate": "Сланец",
+  "block.rustic.slate_roof": "Сланцевая крыша",
+  "block.rustic.slate_tile": "Сланцевый блок",
+  "block.rustic.slate_brick": "Сланцевый кирпич",
+  "block.rustic.slate_chiseled": "Резной сланцевый блок"
 }

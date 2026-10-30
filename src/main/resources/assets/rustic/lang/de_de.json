@@ -185,5 +185,10 @@
   "item.rustic.dust_tiny_iron": "Winziger Haufen Eisenstaub",
   "item.rustic.wildberries": "Wildbeeren",
   "item.rustic.grapes": "Trauben",
-  "item.rustic.olives": "Oliven"
+  "item.rustic.olives": "Oliven",
+  "block.rustic.slate": "Schiefer",
+  "block.rustic.slate_roof": "Schieferdach",
+  "block.rustic.slate_tile": "Schieferfliesen",
+  "block.rustic.slate_brick": "Schieferziegel",
+  "block.rustic.slate_chiseled": "Gemeißelter Schiefer"
 }

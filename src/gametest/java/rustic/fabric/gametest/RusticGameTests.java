@@ -1,5 +1,7 @@
 package rustic.fabric.gametest;
 
+import java.util.List;
+
 import net.fabricmc.fabric.api.gametest.v1.GameTest;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -10,9 +12,14 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.CraftingInput;
+import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.GameType;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.FurnaceBlockEntity;
+import rustic.fabric.RusticBlocks;
 import rustic.fabric.RusticCreativeTabs;
 import rustic.fabric.RusticFabric;
 import rustic.fabric.RusticItems;
@@ -104,6 +111,49 @@ public class RusticGameTests {
         helper.assertTrue(effectCount > 0 && noEffectCount > 0,
                 "Fixed-seed sample should include both nausea and no-effect cases");
         helper.succeed();
+    }
+
+    @GameTest
+    public void slateBlocksAndRecipes(GameTestHelper helper) {
+        Block[] blocks = {RusticBlocks.SLATE, RusticBlocks.SLATE_ROOF, RusticBlocks.SLATE_TILE,
+                RusticBlocks.SLATE_BRICK, RusticBlocks.SLATE_CHISELED};
+        String[] names = {"slate", "slate_roof", "slate_tile", "slate_brick", "slate_chiseled"};
+        Player player = helper.makeMockPlayer(GameType.SURVIVAL);
+        BlockPos pos = new BlockPos(1, 1, 1);
+        for (int i = 0; i < blocks.length; i++) {
+            Block block = blocks[i];
+            helper.assertTrue(RusticFabric.id(names[i]).equals(BuiltInRegistries.BLOCK.getKey(block)),
+                    "Incorrect slate block registry name");
+            helper.assertTrue(RusticFabric.id(names[i]).equals(BuiltInRegistries.ITEM.getKey(block.asItem())),
+                    "Incorrect slate item registry name");
+            helper.setBlock(pos, block);
+            var state = helper.getBlockState(pos);
+            helper.assertTrue(state.is(BlockTags.MINEABLE_WITH_PICKAXE) && state.requiresCorrectToolForDrops(),
+                    "Slate must require a pickaxe");
+            helper.assertTrue(state.getDestroySpeed(helper.getLevel(), helper.absolutePos(pos)) == 2.0F,
+                    "Slate hardness differs");
+            var drops = Block.getDrops(state, helper.getLevel(), helper.absolutePos(pos), null, player,
+                    new ItemStack(Items.WOODEN_PICKAXE));
+            helper.assertTrue(drops.size() == 1 && drops.getFirst().is(block.asItem())
+                    && drops.getFirst().getCount() == 1, "Slate loot differs for " + names[i]);
+        }
+        assertSlateRecipe(helper, RusticBlocks.SLATE, RusticBlocks.SLATE_ROOF, 2, 4);
+        assertSlateRecipe(helper, RusticBlocks.SLATE, RusticBlocks.SLATE_TILE, 1, 1);
+        assertSlateRecipe(helper, RusticBlocks.SLATE_BRICK, RusticBlocks.SLATE_TILE, 1, 1);
+        assertSlateRecipe(helper, RusticBlocks.SLATE_TILE, RusticBlocks.SLATE_BRICK, 2, 4);
+        assertSlateRecipe(helper, RusticBlocks.SLATE_BRICK, RusticBlocks.SLATE_CHISELED, 2, 4);
+        helper.succeed();
+    }
+
+    private void assertSlateRecipe(GameTestHelper helper, Block input, Block output, int width, int count) {
+        List<ItemStack> items = java.util.stream.IntStream.range(0, width * width)
+                .mapToObj(i -> new ItemStack(input)).toList();
+        var grid = CraftingInput.of(width, width, items);
+        var recipe = helper.getLevel().recipeAccess().getRecipeFor(RecipeType.CRAFTING, grid, helper.getLevel());
+        helper.assertTrue(recipe.isPresent(), "Missing crafting recipe for " + output);
+        ItemStack result = recipe.orElseThrow().value().assemble(grid);
+        helper.assertTrue(result.is(output.asItem()) && result.getCount() == count,
+                "Unexpected crafting output for " + output);
     }
 
     @GameTest(maxTicks = 500)
