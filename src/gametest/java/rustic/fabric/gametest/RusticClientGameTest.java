@@ -2,6 +2,8 @@ package rustic.fabric.gametest;
 
 import java.io.IOException;
 import java.io.UncheckedIOException;
+import java.util.Set;
+import java.util.stream.Collectors;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
@@ -12,9 +14,11 @@ import net.fabricmc.fabric.api.client.gametest.v1.context.TestDedicatedServerCon
 import net.fabricmc.fabric.api.client.gametest.v1.context.TestServerConnection;
 import net.fabricmc.fabric.api.client.gametest.v1.context.TestServerContext;
 import net.fabricmc.fabric.api.client.gametest.v1.context.TestSingleplayerContext;
+import net.minecraft.client.gui.screens.inventory.CreativeModeInventoryScreen;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import rustic.fabric.RusticCreativeTabs;
 import rustic.fabric.RusticItems;
 
 /** Drives a real local client and its integrated server, without external accounts. */
@@ -33,6 +37,7 @@ public final class RusticClientGameTest implements FabricClientGameTest {
             checkFood(context, world.getServer(), connection, RusticItems.OLIVES, 11, 0.8F);
             checkFoodAtFullHunger(context, world.getServer(), connection, RusticItems.OLIVES);
             context.takeScreenshot("rustic-olives-after-eating");
+            checkCreativeTab(context, world.getServer());
         }
         boolean dedicated = Boolean.getBoolean("rustic.testDedicatedServer");
         if (dedicated) {
@@ -45,6 +50,27 @@ public final class RusticClientGameTest implements FabricClientGameTest {
         } catch (IOException e) {
             throw new UncheckedIOException(e);
         }
+    }
+
+    private void checkCreativeTab(ClientGameTestContext context, TestServerContext server) {
+        server.runCommand("gamemode creative @a");
+        context.waitFor(client -> client.player.isCreative());
+        context.getInput().pressKey(options -> options.keyInventory);
+        context.waitForScreen(CreativeModeInventoryScreen.class);
+        context.runOnClient(client -> {
+            var tab = RusticCreativeTabs.FARMING;
+            Set<Item> expected = Set.of(RusticItems.BEE, RusticItems.HONEYCOMB, RusticItems.BEESWAX,
+                    RusticItems.TALLOW, RusticItems.OLIVES, RusticItems.IRON_DUST_TINY,
+                    RusticItems.GOLD_DUST, RusticItems.WILDBERRIES, RusticItems.GRAPES);
+            Set<Item> displayed = tab.getDisplayItems().stream().map(ItemStack::getItem).collect(Collectors.toSet());
+            if (!displayed.equals(expected) || tab.getDisplayItems().size() != expected.size()
+                    || !tab.getIconItem().is(RusticItems.OLIVES)
+                    || !tab.getDisplayName().getString().equals("Rustic Agriculture")) {
+                throw new AssertionError("Partial farming tab contents, title or icon differ: " + displayed);
+            }
+        });
+        context.takeScreenshot("rustic-creative-inventory");
+        context.setScreen(() -> null);
     }
 
     private void checkFood(ClientGameTestContext context, TestServerContext serverContext,

@@ -53,3 +53,7 @@ Estas pruebas no demuestran que el commit sea idéntico al JAR publicado, que lo
 | Dos jugadores, persistencia, guardado y recarga | Parcial: reconexión de un cliente conserva pila y hambre; no se probaron dos clientes, reinicio del servidor ni persistencia de sistemas del port. |
 
 No se ha realizado ninguna prueba de rendimiento, comparación visual ni compatibilidad con otros mods. Ningún requisito de paridad o de entrega está aprobado por estas pruebas.
+
+### Aceitunas y pestaña agrícola parcial
+
+[CI 41130337280](https://github.com/ripblackdragon-cyber/rustic/actions/runs/41130337280), commit `d1180e4`: 44 pruebas Python, cuatro JUnit y cuatro GameTests de servidor. Se verificaron nutrición, saturación, duración y componentes de náusea, y una muestra de 128 consumos con semilla fija que incluye casos con y sin efecto. El cliente automatizado probó consumir aceitunas, interrupción y hambre llena en servidor integrado y en servidor dedicado de prueba. Se verificaron registro e icono de la pestaña en GameTest, pero no su contenido ni su apariencia en el inventario en esta ejecución. No se instalaron los artefactos JAR ni se probaron dos jugadores o JEI.
