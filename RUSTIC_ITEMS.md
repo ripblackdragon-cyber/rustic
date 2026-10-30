@@ -24,8 +24,8 @@ Campos encontrados: **18**.
 | `ModItems.CHILI_PEPPER` | `ItemFoodBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/items/ModItems.java:48` | Pendiente |
 | `ModItems.GHOST_PEPPER` | `ItemFoodBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/items/ModItems.java:49` | Pendiente |
 | `ModItems.CHILI_PEPPER_SEEDS` | `ItemStakeCropSeed` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/items/ModItems.java:50` | Pendiente |
-| `ModItems.WILDBERRIES` | `ItemFoodBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/items/ModItems.java:51` | Pendiente |
-| `ModItems.GRAPES` | `ItemFoodBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/items/ModItems.java:52` | Pendiente |
+| `ModItems.WILDBERRIES` | `ItemFoodBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/items/ModItems.java:51` | En curso, sin probar |
+| `ModItems.GRAPES` | `ItemFoodBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/items/ModItems.java:52` | En curso, sin probar |
 
 ## Campos de hierbas (4)
 

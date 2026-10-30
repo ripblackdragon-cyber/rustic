@@ -4,14 +4,14 @@ Fecha: 2026-10-30. **Se ha compilado código inicial en CI, pero no se ha probad
 
 ## Pruebas ejecutadas
 
-`python3 -m unittest discover -s tests -q`: **34 pruebas correctas localmente** (incluidas dos pruebas sintéticas adicionales del verificador de JAR). La ejecución CI `40985016548`, anterior a esas dos pruebas, ejecutó 32 correctamente. Comprueban:
+`python3 -m unittest discover -s tests -q`: **36 pruebas correctas localmente** (incluidas dos pruebas estáticas nuevas de uvas y bayas silvestres). La ejecución CI `40985016548`, anterior a esas dos pruebas, ejecutó 32 correctamente. Comprueban:
 
 - Índices de archivos y recursos, validez JSON de recetas originales y extracción de expresiones Java seleccionadas.
 - Correspondencia de las tres copias de referencia con los hashes Git registrados; detección de archivos modificados, añadidos y ausentes en un ejemplo sintético.
 - Conversión de los ocho idiomas: contenidos originales, BOM, signos `=`, espacios significativos, duplicados, colisiones de nombre y protección frente a sobrescrituras o enlaces simbólicos.
 - Copia byte a byte de los 376 archivos de textura, comprobación de firma y CRC de los 343 PNG y análisis JSON de los 32 `.mcmeta`; protección contra sobrescrituras y enlaces simbólicos en ejemplos sintéticos. Esto no es una comparación visual.
 - Registro de paridad: detección de entradas omitidas, duplicadas, desconocidas o alteradas, cobertura pendiente, falta de archivos y rutas inseguras. Una prueba sintética confirma también que archivos existentes no prueban comportamiento correcto.
-- Comprobaciones estáticas del wrapper, metadatos Fabric, modelos, alias y texturas de seis ingredientes y campos de tres recetas de fundición. Se han añadido cuatro pruebas cruzadas: identificadores únicos y modelos/texturas, traducción inglesa de respaldo, referencias a objetos registrados y correspondencia de las tres recetas con sus llamadas originales. No compilan Java ni cargan las recetas en Minecraft.
+- Comprobaciones estáticas del wrapper, metadatos Fabric, modelos, alias y texturas de seis ingredientes y dos alimentos y campos de tres recetas de fundición. Se han añadido cuatro pruebas cruzadas: identificadores únicos y modelos/texturas, traducción inglesa de respaldo, referencias a objetos registrados y correspondencia de las tres recetas con sus llamadas originales. Se cotejan además las declaraciones de alimento, modelos y traducciones con el original. No compilan Java, no ejecutan alimentos ni cargan recetas en Minecraft.
 
 `python3 tools/verify_upstream.py`: las tres copias coinciden con sus manifiestos de blobs. `python3 tools/migrate_languages.py` y `python3 tools/migrate_textures.py`: las conversiones y copias existentes coinciden con la referencia.
 
@@ -29,7 +29,7 @@ Estas pruebas no demuestran que el commit sea idéntico al JAR publicado, que lo
 
 | Prueba requerida | Estado y motivo |
 |---|---|
-| Compilación Java, resolución Gradle, empaquetado | Correctos en CI para `db3a25ca`, con comprobación estática del JAR; el intento local falló por restricciones de red y falta de JDK completo. No se ha inspeccionado el JAR descargado localmente. |
+| Compilación Java, resolución Gradle, empaquetado | Correctos en CI para `db3a25ca` (antes de los dos alimentos nuevos), con comprobación estática del JAR; el intento local falló por restricciones de red y falta de JDK completo. No se ha inspeccionado el JAR descargado localmente. |
 | Cliente y servidor Fabric 26.3 | No ejecutada: no hay entorno de ejecución instalado ni JAR descargado en el sandbox. |
 | Todos los bloques, objetos, texturas y recetas en juego | No ejecutada: sin implementación funcional. |
 | Agricultura, árboles, abejas, alquimia, bebidas, GUI y libro | No ejecutada: sin implementación. |

@@ -13,7 +13,7 @@ ORIGINAL_RECIPES = ROOT / 'original/rustic-pre-1.2.0/src/main/java/rustic/common
 
 def registered_item_ids():
     source = JAVA.read_text(encoding='utf-8')
-    return re.findall(r'\bregister\("([a-z0-9_]+)"\)', source)
+    return re.findall(r'\bregister(?:Food)?\("([a-z0-9_]+)"', source)
 
 
 class ResourceLinkTests(unittest.TestCase):

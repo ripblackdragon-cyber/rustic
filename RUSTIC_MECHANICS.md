@@ -1,6 +1,6 @@
 # Mecánicas: investigación inicial
 
-Base: `original/rustic-pre-1.2.0` (commit `88597f5ca4342a6b9d4509d93967ecbef6f8bafa`, versión declarada 1.2.0). **Todo está pendiente de implementación y de prueba**. Este documento resume hallazgos, no sustituye la auditoría exhaustiva de cada ruta de código.
+Base: `original/rustic-pre-1.2.0` (commit `88597f5ca4342a6b9d4509d93967ecbef6f8bafa`, versión declarada 1.2.0). **El port está incompleto; ningún sistema está verificado en juego**. Este documento resume hallazgos, no sustituye la auditoría exhaustiva de cada ruta de código.
 
 | Sistema | Hallazgo comprobable en la fuente original | Fuentes principales | Estado |
 |---|---|---|---|
@@ -18,6 +18,10 @@ Base: `original/rustic-pre-1.2.0` (commit `88597f5ca4342a6b9d4509d93967ecbef6f8b
 | Red y multijugador | Hay mensajes y sincronización de tile entities; traducir las garantías a la arquitectura moderna requiere pruebas servidor/cliente. | `common/network`, `common/tileentity`, `core` | Pendiente |
 
 Hay muchos detalles adicionales en las fuentes, como NBT, cambios de inventario, drop aleatorio, requisitos de bioma y renderizadores especiales. Deben cotejarse y probarse antes de declarar paridad.
+
+## Detalle auditado: uvas y bayas silvestres
+
+[`ModItems.java:178-189`](original/rustic-pre-1.2.0/src/main/java/rustic/common/items/ModItems.java#L178) define bayas con 2 puntos de hambre y multiplicador de saturación 0,5, y uvas con 3 puntos y multiplicador 0,3. Ambas tardan 16 ticks en consumirse, no son alimento para lobos y no habilitan `setAlwaysEdible`. Se han declarado sus componentes de alimento y consumo, pero el comportamiento no se ha probado en juego; faltan cultivos, cosecha, trituración, etiquetas de compatibilidad, pestaña original y pruebas de cliente/servidor.
 
 ## Detalle auditado: apiario
 

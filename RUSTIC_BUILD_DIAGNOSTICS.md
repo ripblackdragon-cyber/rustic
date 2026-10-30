@@ -32,9 +32,9 @@ El JRE temporal de `jdk4py` ejecuta OpenJDK 25.0.2, pero no incluye `javac` ni `
 
 ## 3. Alcance funcional y pruebas
 
-Las 32 pruebas Python pasan. Incluyen validaciones estáticas de referencias entre los seis registros iniciales, modelos, texturas y traducciones, y correspondencias de tres recetas de fundición. **No ejecutan Java, Minecraft, Fabric ni JEI**; no comprueban el comportamiento de juego. El control de recetas devuelve 1 intencionadamente: 165 entradas no verificadas, incluyendo tres en curso, y cuatro controles de cobertura pendientes.
+Las 36 pruebas Python pasan localmente en la revisión actual. Incluyen validaciones estáticas de referencias entre los seis ingredientes y dos alimentos, modelos, texturas y traducciones, y correspondencias de tres recetas de fundición. **No ejecutan Java, Minecraft, Fabric ni JEI**; no comprueban el comportamiento de juego. El control de recetas devuelve 1 intencionadamente: 165 entradas no verificadas, incluyendo tres en curso, y cuatro controles de cobertura pendientes.
 
-La mayoría de bloques, objetos, mecánicas, recetas, interfaces, mundo, sincronización e integración JEI aún no están implementados. La pestaña original agrícola y sus iconos también están pendientes: los seis ingredientes se enumeran por ahora en la pestaña vanilla. Las correspondencias de las tres recetas y los modelos no se han cargado en Minecraft. La atribución y la licencia del original necesitan verificación antes de distribuir.
+La mayoría de bloques, objetos, mecánicas, recetas, interfaces, mundo, sincronización e integración JEI aún no están implementados. La pestaña original agrícola y sus iconos también están pendientes: los seis ingredientes y dos alimentos se enumeran por ahora en pestañas vanilla. Las correspondencias de las tres recetas y los modelos no se han cargado en Minecraft. La atribución y la licencia del original necesitan verificación antes de distribuir.
 
 ## 4. Para desbloquear pruebas reales
 
@@ -42,7 +42,7 @@ Se requiere un **JDK 25 completo**, acceso autorizado a los repositorios de Grad
 
 1. En un entorno local preparado, confirmar `java -version` y `javac -version` con Java 25 y ejecutar `./gradlew build --stacktrace`.
 2. Comprobar el contenido del JAR y corregir los errores que aparezcan; el build exitoso en CI no verifica jugabilidad.
-3. Ejecutar cliente y servidor dedicados Fabric 26.3, probar los seis ingredientes y tres recetas ya iniciados, y registrar evidencias reproducibles.
+3. Ejecutar cliente y servidor dedicados Fabric 26.3, probar los seis ingredientes, dos alimentos y tres recetas ya iniciados, y registrar evidencias reproducibles.
 4. Migrar el resto de contenido, pruebas y JEI antes de declarar el mod instalable o completo.
 
 Las rutas y comandos de Gradle son de desarrollo; no hay un `rustic-fabric-26.3.jar` definitivo.

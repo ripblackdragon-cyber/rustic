@@ -41,7 +41,7 @@ fluids = JAVA / 'common/blocks/fluids/ModFluids.java'
 for filename, label, path, prefix in [('RUSTIC_BLOCKS.md', 'bloques', blocks, 'ModBlocks'), ('RUSTIC_ITEMS.md', 'objetos', items, 'ModItems')]:
     rows = declarations(path, prefix)
     if label == 'objetos':
-        started = ('BEE', 'HONEYCOMB', 'BEESWAX', 'TALLOW', 'IRON_DUST_TINY', 'GOLD_DUST')
+        started = ('BEE', 'HONEYCOMB', 'BEESWAX', 'TALLOW', 'IRON_DUST_TINY', 'GOLD_DUST', 'WILDBERRIES', 'GRAPES')
         rows = [row.replace('| Pendiente |', '| En curso, sin probar |')
                 if any(f'`ModItems.{name}`' in row for name in started) else row for row in rows]
     body = f'# Índice de {label} originales\n\n' + NOTICE
@@ -101,7 +101,7 @@ body = '# Inventario de recursos originales\n\n' + NOTICE
 body += ('SHA-256 de cada archivo en el árbol de recursos original, sin transformaciones. '
          'Las 376 texturas y metadatos de la referencia 1.2.0 también están copiados sin cambios en '
          '`src/main/resources/assets/rustic/textures`; ocho archivos de idioma se han convertido a JSON '
-         'preservando las claves originales y añadiendo alias para seis ingredientes. Son pasos parciales: aún faltan adaptación de modelos, claves y '
+         'preservando las claves originales y añadiendo alias para ocho objetos. Son pasos parciales: aún faltan adaptación de modelos, claves y '
          'renderizadores, y pruebas visuales en 26.3. Las filas siguen pendientes de integración y prueba. '
          'No se ha auditado visualmente cada imagen ni validado la compatibilidad de cada modelo.\n\n')
 body += 'Extensiones: ' + ', '.join(f'`{k}`: {v}' for k, v in sorted(counts.items())) + '.\n\n'

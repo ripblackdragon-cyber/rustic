@@ -5,8 +5,10 @@ import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.component.Consumables;
 
 /** Initial ingredient registrations. Their uses and original creative tab remain incomplete. */
 public final class RusticItems {
@@ -17,12 +19,25 @@ public final class RusticItems {
     public static final Item IRON_DUST_TINY = register("dust_tiny_iron");
     public static final Item GOLD_DUST = register("dust_gold");
 
+    // ModItems.java:178-189: both have a 16-tick eating duration.
+    public static final Item WILDBERRIES = registerFood("wildberries", 2, 0.5F);
+    public static final Item GRAPES = registerFood("grapes", 3, 0.3F);
+
     private RusticItems() {
     }
 
     private static Item register(String name) {
         ResourceKey<Item> key = ResourceKey.create(Registries.ITEM, RusticFabric.id(name));
         return Registry.register(BuiltInRegistries.ITEM, key, new Item(new Item.Properties().setId(key)));
+    }
+
+    private static Item registerFood(String name, int nutrition, float saturationModifier) {
+        ResourceKey<Item> key = ResourceKey.create(Registries.ITEM, RusticFabric.id(name));
+        FoodProperties food = new FoodProperties.Builder()
+                .nutrition(nutrition).saturationModifier(saturationModifier).build();
+        Item.Properties properties = new Item.Properties().setId(key).food(food,
+                Consumables.defaultFood().consumeSeconds(0.8F).build());
+        return Registry.register(BuiltInRegistries.ITEM, key, new Item(properties));
     }
 
     public static void initialize() {
@@ -35,6 +50,10 @@ public final class RusticItems {
             output.accept(TALLOW);
             output.accept(IRON_DUST_TINY);
             output.accept(GOLD_DUST);
+        });
+        CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.FOOD_AND_DRINKS).register(output -> {
+            output.accept(WILDBERRIES);
+            output.accept(GRAPES);
         });
     }
 }

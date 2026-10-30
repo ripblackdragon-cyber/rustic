@@ -4,6 +4,7 @@ Estos son **casos diseñados, no pruebas ejecutadas**. La fuente de referencia e
 
 | ID | Preparación y acción | Resultado o propiedad a verificar | Estado |
 |---|---|---|---|
+| FOOD-01 | Consumir uvas y bayas silvestres con hambre variable en cliente y servidor; repetir con hambre completa. | Comparar duración de 16 ticks, puntos de hambre, saturación, bloqueo con hambre completa y reducción de pila; verificar que no puedan alimentar lobos. Comparar con Forge original. | Pendiente |
 | BEE-01 | Insertar 1, 20 y 64 abejas en apiarios separados, multiplicadores en 1. | Intervalos y límites según fórmula de `TileEntityApiary`; panal y reproducción independientes. | Pendiente |
 | BEE-02 | Automatizar inserción por arriba/lateral y extracción por abajo; romper bloque. | Las caras exponen los manejadores originales; objetos expulsados una sola vez. | Pendiente |
 | BEE-03 | Guardar/recargar antes de completar reproducción. | Comparar contadores y pilas con original: la revisión no guarda contadores. | Pendiente |
