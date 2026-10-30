@@ -21,7 +21,7 @@ Campos encontrados: **18**.
 | `ModItems.ELIXIR` | `ItemElixir` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/items/ModItems.java:45` | Pendiente |
 | `ModItems.TOMATO` | `ItemFoodBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/items/ModItems.java:46` | Pendiente |
 | `ModItems.TOMATO_SEEDS` | `ItemStakeCropSeed` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/items/ModItems.java:47` | Pendiente |
-| `ModItems.CHILI_PEPPER` | `ItemFoodBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/items/ModItems.java:48` | Pendiente |
+| `ModItems.CHILI_PEPPER` | `ItemFoodBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/items/ModItems.java:48` | En curso, paridad sin verificar |
 | `ModItems.GHOST_PEPPER` | `ItemFoodBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/items/ModItems.java:49` | Pendiente |
 | `ModItems.CHILI_PEPPER_SEEDS` | `ItemStakeCropSeed` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/items/ModItems.java:50` | Pendiente |
 | `ModItems.WILDBERRIES` | `ItemFoodBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/items/ModItems.java:51` | En curso, paridad sin verificar |
