@@ -69,6 +69,16 @@ jobs:
                       text = text.replace('%', '%25').replace('\r', '%0D').replace('\n', '%0A')
                       print('::error::JUnit ' + case.get('name', '') + ': ' + text)
           PY
+      - name: Upload test reports
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: rustic-minecraft-test-reports
+          path: |
+            build/reports/rustic-gametest.xml
+            build/test-results/test/TEST-*.xml
+          if-no-files-found: warn
+          retention-days: 7
       - name: Upload development JARs
         if: success()
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
@@ -107,7 +117,7 @@ jobs:
           set -o pipefail
           timeout --signal=TERM --kill-after=15s 240s xvfb-run -a -s '-screen 0 1280x720x24' ./gradlew runClientGameTest --no-daemon --stacktrace 2>&1 | tee "$RUNNER_TEMP/rustic-client.log"
           grep -Fx 'rustic-client-food-gametest-passed' build/reports/rustic-client-gametest.txt
-          echo '::notice::Minecraft client used both foods in a singleplayer world; integrated-server state verified.'
+          echo '::notice::Minecraft client tested eating, interrupted use and full hunger for both foods; integrated-server state verified.'
       - name: Annotate client failure
         if: failure() && steps.client.outcome == 'failure'
         shell: bash

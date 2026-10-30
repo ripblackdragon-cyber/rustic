@@ -24,7 +24,9 @@ public final class RusticClientGameTest implements FabricClientGameTest {
             world.getServer().runCommand("gamemode survival @a");
             context.getInput().lookAt(0.0F, -90.0F);
             checkFood(context, world, RusticItems.WILDBERRIES, 12, 2.0F);
+            checkFoodAtFullHunger(context, world, RusticItems.WILDBERRIES);
             checkFood(context, world, RusticItems.GRAPES, 13, 1.8F);
+            checkFoodAtFullHunger(context, world, RusticItems.GRAPES);
             context.takeScreenshot("rustic-grapes-after-eating");
         }
         try {
@@ -48,6 +50,16 @@ public final class RusticClientGameTest implements FabricClientGameTest {
         context.waitFor(client -> client.player.getMainHandItem().is(food)
                 && client.player.getMainHandItem().getCount() == 2
                 && client.player.getFoodData().getFoodLevel() == 10);
+        // Releasing halfway must not consume anything.
+        context.getInput().holdKeyFor(options -> options.keyUse, 8);
+        connection.waitForServerboundPackets();
+        world.getServer().runOnServer(server -> {
+            var player = connection.getServerPlayer();
+            if (player.getMainHandItem().getCount() != 2 || player.getFoodData().getFoodLevel() != 10) {
+                throw new AssertionError("Interrupted consumption changed server state for " + food);
+            }
+        });
+        context.waitTicks(2);
         context.getInput().holdKeyFor(options -> options.keyUse, 25);
         connection.waitForServerboundPackets();
         context.waitFor(client -> client.player.getMainHandItem().is(food)
@@ -61,4 +73,25 @@ public final class RusticClientGameTest implements FabricClientGameTest {
             }
         });
     }
+
+    private void checkFoodAtFullHunger(ClientGameTestContext context, TestSingleplayerContext world, Item food) {
+        TestServerConnection connection = world.getConnection();
+        world.getServer().runOnServer(server -> {
+            var player = connection.getServerPlayer();
+            player.getFoodData().setFoodLevel(20);
+            player.setItemInHand(InteractionHand.MAIN_HAND, new ItemStack(food, 2));
+        });
+        context.waitFor(client -> client.player.getMainHandItem().is(food)
+                && client.player.getMainHandItem().getCount() == 2
+                && client.player.getFoodData().getFoodLevel() == 20);
+        context.getInput().holdKeyFor(options -> options.keyUse, 25);
+        connection.waitForServerboundPackets();
+        world.getServer().runOnServer(server -> {
+            var player = connection.getServerPlayer();
+            if (player.getFoodData().getFoodLevel() != 20 || player.getMainHandItem().getCount() != 2) {
+                throw new AssertionError("Food used with full hunger: " + food);
+            }
+        });
+    }
+
 }

@@ -53,7 +53,7 @@ def main() -> int:
     except (OSError, KeyError, ValueError, zipfile.BadZipFile) as exc:
         print(f'JAR packaging check failed: {exc}', file=sys.stderr)
         return 1
-    print(f'::notice::Development JAR {jars[0].name}; SHA-256 {digest}; {count} resources checked. No runtime test.')
+    print(f'::notice::Development JAR {jars[0].name}; SHA-256 {digest}; {count} resources checked. Packaging check only; see GameTest results separately.')
     return 0
 
 
