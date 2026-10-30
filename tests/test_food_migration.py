@@ -14,6 +14,7 @@ class FoodMigrationTests(unittest.TestCase):
     def test_food_values_and_eating_time_are_backed_by_original(self):
         original = (ORIGINAL / 'java/rustic/common/items/ModItems.java').read_text()
         target = NEW_JAVA.read_text()
+        components = (NEW_JAVA.parent / 'RusticFoods.java').read_text()
         for field, item_id, nutrition, saturation in (
             ('WILDBERRIES', 'wildberries', 2, '0.5'),
             ('GRAPES', 'grapes', 3, '0.3'),
@@ -23,11 +24,12 @@ class FoodMigrationTests(unittest.TestCase):
                            rf'{re.escape(saturation)}F, false\)\s*\{{'
                            r'.*?getMaxItemUseDuration\(ItemStack stack\)\s*\{\s*return 16;')
                 self.assertRegex(original, re.compile(pattern, re.DOTALL))
-                self.assertIn(f'{field} = registerFood("{item_id}", {nutrition}, {saturation}F)', target)
+                self.assertIn(f'{field} = registerFood("{item_id}", RusticFoods.{field})', target)
+                self.assertRegex(components, rf'{field} = new FoodProperties.Builder\(\)\s*\.nutrition\({nutrition}\)\.saturationModifier\({re.escape(saturation)}F\)')
                 self.assertIn(f'output.accept({field})', target)
-        self.assertIn('.nutrition(nutrition).saturationModifier(saturationModifier)', target)
-        self.assertIn('Consumables.defaultFood().consumeSeconds(0.8F).build()', target)
-        self.assertNotIn('.alwaysEdible()', target)
+        self.assertIn('.food(food, RusticFoods.QUICK_FOOD)', target)
+        self.assertIn('Consumables.defaultFood().consumeSeconds(0.8F).build()', components)
+        self.assertNotIn('.alwaysEdible()', components)
 
     def test_original_model_texture_and_translations(self):
         for name in ('wildberries', 'grapes'):

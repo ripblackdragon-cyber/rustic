@@ -31,6 +31,8 @@ jobs:
         run: |
           set -o pipefail
           ./gradlew build --stacktrace --no-daemon 2>&1 | tee "$RUNNER_TEMP/rustic-gradle-build.log"
+      - name: Verify Java unit test results
+        run: python3 tools/check_junit_results.py
       - name: Verify development JAR packaging
         run: python3 tools/check_development_jar.py
       - name: Annotate build failure
@@ -53,6 +55,14 @@ jobs:
               for line in (found[:40] or lines[-15:]):
                   line = line.replace('%', '%25').replace('\r', '%0D').replace('\n', '%0A')
                   print('::error::' + line[:1500])
+          for xml in (Path('build/test-results/test')).glob('TEST-*.xml'):
+              import xml.etree.ElementTree as ET
+              root = ET.parse(xml).getroot()
+              for case in root.findall('testcase'):
+                  for failure in case.findall('failure') + case.findall('error'):
+                      text = (failure.text or failure.get('message', ''))[:1500]
+                      text = text.replace('%', '%25').replace('\r', '%0D').replace('\n', '%0A')
+                      print('::error::JUnit ' + case.get('name', '') + ': ' + text)
           PY
       - name: Upload development JARs
         if: success()

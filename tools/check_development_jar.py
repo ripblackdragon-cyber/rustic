@@ -15,7 +15,7 @@ def check_jar(jar: Path, root: Path = ROOT) -> tuple[int, str]:
         entries = archive.namelist()
         if len(entries) != len(set(entries)):
             raise ValueError('duplicate ZIP entries')
-        for name in ('rustic/fabric/RusticFabric.class', 'rustic/fabric/RusticItems.class'):
+        for name in ('rustic/fabric/RusticFabric.class', 'rustic/fabric/RusticItems.class', 'rustic/fabric/RusticFoods.class'):
             if archive.read(name)[:4] != b'\xca\xfe\xba\xbe':
                 raise ValueError(f'invalid class file: {name}')
         metadata = json.loads(archive.read('fabric.mod.json'))
