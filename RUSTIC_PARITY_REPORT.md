@@ -9,7 +9,7 @@
 | Recetas normales y especiales | JSON y puntos de registro indexados en [RUSTIC_RECIPES.md](RUSTIC_RECIPES.md) | Tres recetas producen el resultado previsto en hornos GameTest; XP, desbloqueos, JEI y las demás recetas pendientes | No verificada |
 | Agricultura, generación, abejas | Fuente preservada | Sin implementación | No verificada |
 | Alquimia, bebidas y efectos | Fuente preservada | Sin implementación | No verificada |
-| Almanaque, GUI, traducciones | Fuente y recursos preservados | 8 idiomas convertidos a JSON con claves antiguas y alias para nueve objetos; pestaña agrícola parcial registrada, GUI y libro sin implementar | No verificada |
+| Almanaque, GUI, traducciones | Fuente y recursos preservados | 8 idiomas convertidos a JSON con claves antiguas y alias para nueve objetos; pestaña agrícola parcial registrada y contenido comprobado en cliente, GUI y libro sin implementar | No verificada |
 | JEI y otras integraciones | Implementación Forge original preservada | Sin implementación | No verificada |
 | Sincronización multijugador y persistencia | Implementación Forge original preservada | Sin implementación | No verificada |
 

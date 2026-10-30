@@ -45,7 +45,7 @@ Estas pruebas no demuestran que el commit sea idéntico al JAR publicado, que lo
 
 | Prueba requerida | Estado y motivo |
 |---|---|
-| Compilación Java, resolución Gradle, empaquetado | Correctos en CI para `0c87441`, con comprobación estática del JAR, tres JUnit y tres GameTests; el intento local falló por restricciones de red y falta de JDK completo. No se ha inspeccionado el JAR descargado localmente. |
+| Compilación Java, resolución Gradle, empaquetado | Correctos en CI para `5337f81`, con comprobación estática del JAR, cuatro JUnit y cuatro GameTests; el intento local falló por restricciones de red y falta de JDK completo. No se ha inspeccionado el JAR descargado localmente. |
 | Cliente y servidor Fabric 26.3 | Parcial en CI: cliente singleplayer, servidor GameTest y un cliente automatizado en servidor dedicado de prueba con código de desarrollo. Sin cliente interactivo humano ni prueba del JAR instalado. |
 | Todos los bloques, objetos, texturas y recetas en juego | No ejecutada: sin implementación funcional. |
 | Agricultura, árboles, abejas, alquimia, bebidas, GUI y libro | No ejecutada: sin implementación. |
@@ -57,3 +57,5 @@ No se ha realizado ninguna prueba de rendimiento, comparación visual ni compati
 ### Aceitunas y pestaña agrícola parcial
 
 [CI 41130337280](https://github.com/ripblackdragon-cyber/rustic/actions/runs/41130337280), commit `d1180e4`: 44 pruebas Python, cuatro JUnit y cuatro GameTests de servidor. Se verificaron nutrición, saturación, duración y componentes de náusea, y una muestra de 128 consumos con semilla fija que incluye casos con y sin efecto. El cliente automatizado probó consumir aceitunas, interrupción y hambre llena en servidor integrado y en servidor dedicado de prueba. Se verificaron registro e icono de la pestaña en GameTest, pero no su contenido ni su apariencia en el inventario en esta ejecución. No se instalaron los artefactos JAR ni se probaron dos jugadores o JEI.
+
+[CI 41130679189](https://github.com/ripblackdragon-cyber/rustic/actions/runs/41130679189), commit `5337f81`: además abrió el inventario creativo en el cliente y comprobó el título inglés «Rustic Agriculture», el icono de aceitunas y la colección de nueve objetos generada para la pestaña. La prueba no hizo clic en la pestaña y la captura no se ha inspeccionado visualmente. El empaquetado verificó 405 recursos; JAR de desarrollo SHA-256 `14c16126894266cd31cdd75caf2a281938b08c2c2c010fde7936d15b3ccf185c`. No es un JAR final ni se ha probado instalado.
