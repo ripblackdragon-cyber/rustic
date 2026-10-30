@@ -115,9 +115,9 @@ jobs:
           SDL_VIDEO_FORCE_EGL: '1'
         run: |
           set -o pipefail
-          timeout --signal=TERM --kill-after=15s 240s xvfb-run -a -s '-screen 0 1280x720x24' ./gradlew runClientGameTest --no-daemon --stacktrace 2>&1 | tee "$RUNNER_TEMP/rustic-client.log"
-          grep -Fx 'rustic-client-food-gametest-passed' build/reports/rustic-client-gametest.txt
-          echo '::notice::Minecraft client tested eating, interrupted use and full hunger for both foods; integrated-server state verified.'
+          timeout --signal=TERM --kill-after=15s 360s xvfb-run -a -s '-screen 0 1280x720x24' ./gradlew runClientGameTest -PacceptMinecraftEula=true --no-daemon --stacktrace 2>&1 | tee "$RUNNER_TEMP/rustic-client.log"
+          grep -Fx 'rustic-client-dedicated-gametest-passed' build/reports/rustic-client-gametest.txt
+          echo '::notice::Minecraft client tested foods on integrated and dedicated servers and reconnected with persistent inventory/hunger.'
       - name: Annotate client failure
         if: failure() && steps.client.outcome == 'failure'
         shell: bash

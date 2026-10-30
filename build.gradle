@@ -18,14 +18,14 @@ dependencies {
     testImplementation "net.fabricmc:fabric-loader-junit:${project.loader_version}"
 }
 
-// Server GameTests run in a separate mod/source set and do not accept an EULA.
-// Interactive dedicated-server/client testing remains a separate requirement.
+// EULA acceptance is opt-in and only used in the disposable client test run.
+// Server GameTests run in their own source set without accepting the EULA.
 fabricApi {
     configureTests {
         createSourceSet = true
         modId = "rustic_gametest"
         enableClientGameTests = true
-        eula = false
+        eula = providers.gradleProperty('acceptMinecraftEula').map { it == 'true' }.orElse(false).get()
     }
 }
 
@@ -37,6 +37,7 @@ loom {
         clientGameTest {
             systemProperties.put('fabric.client.gametest.modid', 'rustic_gametest')
             systemProperties.put('rustic.client.report', file('build/reports/rustic-client-gametest.txt').absolutePath)
+            systemProperties.put('rustic.testDedicatedServer', providers.gradleProperty('acceptMinecraftEula').map { it == 'true' ? 'true' : 'false' }.orElse('false').get())
         }
     }
 }
