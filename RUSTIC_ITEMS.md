@@ -13,7 +13,7 @@ Campos encontrados: **18**.
 | `ModItems.HONEYCOMB` | `ItemBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/items/ModItems.java:37` | En curso, paridad sin verificar |
 | `ModItems.BEESWAX` | `ItemBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/items/ModItems.java:38` | En curso, paridad sin verificar |
 | `ModItems.TALLOW` | `ItemBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/items/ModItems.java:39` | En curso, paridad sin verificar |
-| `ModItems.OLIVES` | `ItemFoodBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/items/ModItems.java:40` | Pendiente |
+| `ModItems.OLIVES` | `ItemFoodBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/items/ModItems.java:40` | En curso, paridad sin verificar |
 | `ModItems.IRONBERRIES` | `ItemFoodBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/items/ModItems.java:41` | Pendiente |
 | `ModItems.FLUID_BOTTLE` | `ItemFluidBottle` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/items/ModItems.java:42` | Pendiente |
 | `ModItems.IRON_DUST_TINY` | `ItemBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/items/ModItems.java:43` | En curso, paridad sin verificar |

@@ -21,7 +21,7 @@ class MinecraftGameTestResultTests(unittest.TestCase):
 
     def test_expected_cases_pass(self):
         self.write()
-        self.assertEqual(check_results(self.path), 3)
+        self.assertEqual(check_results(self.path), len(EXPECTED))
 
     def test_missing_duplicate_and_unknown_cases_fail(self):
         suite = self.root[0]

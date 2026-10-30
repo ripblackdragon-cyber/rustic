@@ -14,6 +14,7 @@ class FoodMigrationTests(unittest.TestCase):
     def test_food_values_and_eating_time_are_backed_by_original(self):
         original = (ORIGINAL / 'java/rustic/common/items/ModItems.java').read_text()
         target = NEW_JAVA.read_text()
+        tabs = (NEW_JAVA.parent / 'RusticCreativeTabs.java').read_text()
         components = (NEW_JAVA.parent / 'RusticFoods.java').read_text()
         for field, item_id, nutrition, saturation in (
             ('WILDBERRIES', 'wildberries', 2, '0.5'),
@@ -24,15 +25,28 @@ class FoodMigrationTests(unittest.TestCase):
                            rf'{re.escape(saturation)}F, false\)\s*\{{'
                            r'.*?getMaxItemUseDuration\(ItemStack stack\)\s*\{\s*return 16;')
                 self.assertRegex(original, re.compile(pattern, re.DOTALL))
-                self.assertIn(f'{field} = registerFood("{item_id}", RusticFoods.{field})', target)
+                self.assertIn(f'{field} = registerFood("{item_id}", RusticFoods.{field}, RusticFoods.QUICK_FOOD)', target)
                 self.assertRegex(components, rf'{field} = new FoodProperties.Builder\(\)\s*\.nutrition\({nutrition}\)\.saturationModifier\({re.escape(saturation)}F\)')
-                self.assertIn(f'output.accept({field})', target)
-        self.assertIn('.food(food, RusticFoods.QUICK_FOOD)', target)
+                self.assertIn(f'output.accept(RusticItems.{field})', tabs)
+        self.assertIn('.food(food, consumable)', target)
         self.assertIn('Consumables.defaultFood().consumeSeconds(0.8F).build()', components)
         self.assertNotIn('.alwaysEdible()', components)
 
+    def test_olives_match_original_declaration_and_creative_tab(self):
+        original = (ORIGINAL / 'java/rustic/common/items/ModItems.java').read_text()
+        food = (NEW_JAVA.parent / 'RusticFoods.java').read_text()
+        tab = (NEW_JAVA.parent / 'RusticCreativeTabs.java').read_text()
+        self.assertIn('new ItemFoodBase("olives", 1, 0.4F, false)', original)
+        self.assertIn('new PotionEffect(MobEffects.NAUSEA, 200, 1, false, false), 0.95F', original)
+        self.assertRegex(original, re.compile(r'OLIVES = new ItemFoodBase.*?return 24;', re.DOTALL))
+        self.assertIn('new MobEffectInstance(MobEffects.NAUSEA, 200, 1, false, false, false), 0.95F', food)
+        self.assertIn('consumeSeconds(1.2F)', food)
+        self.assertIn('itemGroup.rustic.farming', tab)
+        self.assertIn('new ItemStack(RusticItems.OLIVES)', tab)
+        self.assertIn('output.accept(RusticItems.OLIVES)', tab)
+
     def test_original_model_texture_and_translations(self):
-        for name in ('wildberries', 'grapes'):
+        for name in ('wildberries', 'grapes', 'olives'):
             with self.subTest(item=name):
                 original_model = json.loads((ORIGINAL / f'resources/assets/rustic/models/item/{name}.json').read_text())
                 model = json.loads((ASSETS / f'models/item/{name}.json').read_text())

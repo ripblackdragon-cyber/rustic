@@ -30,7 +30,9 @@ public final class RusticClientGameTest implements FabricClientGameTest {
             checkFoodAtFullHunger(context, world.getServer(), connection, RusticItems.WILDBERRIES);
             checkFood(context, world.getServer(), connection, RusticItems.GRAPES, 13, 1.8F);
             checkFoodAtFullHunger(context, world.getServer(), connection, RusticItems.GRAPES);
-            context.takeScreenshot("rustic-grapes-after-eating");
+            checkFood(context, world.getServer(), connection, RusticItems.OLIVES, 11, 0.8F);
+            checkFoodAtFullHunger(context, world.getServer(), connection, RusticItems.OLIVES);
+            context.takeScreenshot("rustic-olives-after-eating");
         }
         boolean dedicated = Boolean.getBoolean("rustic.testDedicatedServer");
         if (dedicated) {
@@ -110,6 +112,8 @@ public final class RusticClientGameTest implements FabricClientGameTest {
                 checkFood(context, server, connection, RusticItems.WILDBERRIES, 12, 2.0F);
                 checkFoodAtFullHunger(context, server, connection, RusticItems.WILDBERRIES);
                 checkFood(context, server, connection, RusticItems.GRAPES, 13, 1.8F);
+                checkFood(context, server, connection, RusticItems.OLIVES, 11, 0.8F);
+                checkFoodAtFullHunger(context, server, connection, RusticItems.OLIVES);
                 // Set up state, then let the server save it when the real client disconnects.
                 server.runOnServer(minecraftServer -> {
                     var player = connection.getServerPlayer();

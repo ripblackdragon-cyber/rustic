@@ -8,6 +8,7 @@ EXPECTED = {
     'rustic_gametest:rustic_game_tests_items_registered',
     'rustic_gametest:rustic_game_tests_consuming_foods',
     'rustic_gametest:rustic_game_tests_furnace_recipes',
+    'rustic_gametest:rustic_game_tests_olives_consumption',
 }
 
 

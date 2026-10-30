@@ -10,6 +10,7 @@ public final class RusticFabric implements ModInitializer {
     @Override
     public void onInitialize() {
         RusticItems.initialize();
+        RusticCreativeTabs.initialize();
     }
 
     public static Identifier id(String path) {

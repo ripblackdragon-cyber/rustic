@@ -14,7 +14,7 @@ DESTINATION = ROOT / 'src/main/resources/assets/rustic/lang'
 # Only aliases backed by a migrated registry identifier belong here.
 ALIASES = {f'item.rustic.{name}.name': f'item.rustic.{name}' for name in (
     'bee', 'honeycomb', 'beeswax', 'tallow', 'dust_tiny_iron', 'dust_gold',
-    'wildberries', 'grapes'
+    'wildberries', 'grapes', 'olives'
 )}
 
 
@@ -92,7 +92,7 @@ def main():
     except (ValueError, OSError, UnicodeError) as error:
         parser.exit(1, f'{error}\n')
     print(f'{count} locales comprobados; {missing if args.write else 0} archivos creados.')
-    print('Se han añadido alias modernos para ocho objetos; faltan las demás claves y pruebas en juego.')
+    print('Se han añadido alias modernos para nueve objetos; faltan las demás claves y pruebas en juego.')
 
 
 if __name__ == '__main__':
