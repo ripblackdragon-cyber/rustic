@@ -22,7 +22,7 @@ Actualizado: 2026-10-30. La investigación está iniciada, no completada.
 | 5 Recursos y traducciones | En curso, sin validación en juego | 343 PNG, 32 metadatos de animación y un archivo PDN de la referencia 1.2.0 copiados sin modificar; ocho `.lang` convertidos a JSON preservando claves y valores, con alias modernos para ocho objetos cuando existe la traducción. Modelos de esos ocho preparados; faltan la mayoría de modelos, claves y renderizadores y todas las pruebas visuales. |
 | 6–8, 10–11 Mecánicas, JEI y multijugador | No iniciadas | Abejas, agricultura, bebidas, alquimia, GUI, integraciones y red todavía no implementadas. |
 | 9 Recetas | En curso, paridad sin verificar | Tres JSON de fundición correspondientes a `Recipes.java:176,183,184` producen el resultado esperado en hornos de GameTest; faltan XP, avances, configuración, el resto de recetas y validación en JEI. `audit/recipe-parity.json` sigue con 165 fuentes y cuatro bloqueos sin verificar; no prueba paridad. |
-| 12 Pruebas de juego | En curso | Tres pruebas de servidor GameTest y un cliente singleplayer automatizado en CI con las fuentes de desarrollo; no se probó el JAR instalado, un servidor dedicado convencional, dos jugadores ni JEI. |
+| 12 Pruebas de juego | En curso | Tres pruebas de servidor GameTest, cliente singleplayer y un cliente automatizado conectado a servidor dedicado en CI con fuentes de desarrollo; no se probó el JAR instalado, dos clientes ni JEI. |
 | 13 JAR definitivo | No iniciado | No existe `rustic-fabric-26.3.jar`. |
 
 ## Dependencias utilizadas en la compilación de desarrollo
@@ -47,6 +47,10 @@ La [ejecución 40986891133](https://github.com/ripblackdragon-cyber/rustic/actio
 ### Pruebas en Minecraft
 
 [CI 40990048384](https://github.com/ripblackdragon-cyber/rustic/actions/runs/40990048384), commit `5ff5aac`: tres GameTests de servidor (registro de 8 objetos, consumo con jugador simulado y 3 hornos), y una prueba de cliente gráfico real con servidor integrado (comer ambos alimentos, interrumpir el uso, probar hambre llena y comprobar estado del servidor). 43 pruebas Python y tres JUnit también pasaron. La captura y los informes están como artefactos; no se ha revisado la captura visualmente. No se aceptó la EULA de un servidor dedicado convencional; no se ha probado multijugador ni se ha instalado el JAR construido.
+
+### Servidor dedicado y reconexión
+
+[CI 41121118254](https://github.com/ripblackdragon-cyber/rustic/actions/runs/41121118254), commit `0c87441`: tras la aceptación explícita de la EULA por el usuario para esta prueba temporal, el cliente automatizado se conectó a un servidor dedicado de prueba local (en el mismo proceso, conexión de red local, modo de prueba sin autenticación). Comió bayas y uvas, se verificó hambre llena para bayas y después se desconectó y reconectó; el servidor restauró una pila de dos uvas y hambre 11. No son dos jugadores, ni se reinició el servidor, ni se probó el JAR instalado. El flujo por defecto no acepta la EULA; CI usa la opción explícita `-PacceptMinecraftEula=true` para esta prueba.
 
 ## Siguientes pasos
 

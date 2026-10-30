@@ -21,7 +21,7 @@ Hay muchos detalles adicionales en las fuentes, como NBT, cambios de inventario,
 
 ## Detalle auditado: uvas y bayas silvestres
 
-[`ModItems.java:178-189`](original/rustic-pre-1.2.0/src/main/java/rustic/common/items/ModItems.java#L178) define bayas con 2 puntos de hambre y multiplicador de saturación 0,5, y uvas con 3 puntos y multiplicador 0,3. Ambas tardan 16 ticks en consumirse, no son alimento para lobos y no habilitan `setAlwaysEdible`. Se han declarado sus componentes de alimento y consumo, y se ha probado el consumo en GameTest de servidor y en un cliente individual automatizado. Falta comparar en vivo con el original y probar lobos, cultivos, cosecha, trituración, etiquetas de compatibilidad, pestaña original, servidor dedicado y multijugador.
+[`ModItems.java:178-189`](original/rustic-pre-1.2.0/src/main/java/rustic/common/items/ModItems.java#L178) define bayas con 2 puntos de hambre y multiplicador de saturación 0,5, y uvas con 3 puntos y multiplicador 0,3. Ambas tardan 16 ticks en consumirse, no son alimento para lobos y no habilitan `setAlwaysEdible`. Se han declarado sus componentes de alimento y consumo, y se ha probado el consumo en GameTest de servidor y en un cliente individual automatizado. Falta comparar en vivo con el original y probar lobos, cultivos, cosecha, trituración, etiquetas de compatibilidad, pestaña original, dos jugadores y paridad en servidor dedicado.
 
 ## Detalle auditado: apiario
 

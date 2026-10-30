@@ -33,7 +33,11 @@ La [ejecución CI 40986891133](https://github.com/ripblackdragon-cyber/rustic/ac
 - **Hornos del servidor GameTest:** panal→cera, polvo de hierro→pepita y polvo de oro→lingote consumen la entrada y producen una salida correcta con carbón como combustible. No se verificaron la experiencia, desbloqueos, todos los tiempos, JEI o la configuración.
 - **Cliente gráfico e integrado:** Minecraft se arrancó con Xvfb y gráficos Mesa por software. En un mundo individual se simuló la pulsación de uso para comer ambos alimentos; se comprobó la pila, hambre y saturación en el servidor integrado. También se verificó que interrumpir el uso tras 8 ticks no consuma el objeto y que con hambre llena no se consuma. El jugador es automatizado, no una persona; no se ha comparado con una ejecución del mod Forge original.
 
-Los artefactos `rustic-minecraft-test-reports`, `rustic-client-gametest-screenshot` y `rustic-fabric-26.3-development` caducan el 6 de noviembre de 2026. La captura no se descargó ni inspeccionó visualmente debido a restricciones de red del sandbox. No se han aceptado las condiciones de un servidor dedicado por el usuario.
+Los artefactos `rustic-minecraft-test-reports`, `rustic-client-gametest-screenshot` y `rustic-fabric-26.3-development` caducan el 6 de noviembre de 2026. La captura no se descargó ni inspeccionó visualmente debido a restricciones de red del sandbox. Para la ejecución posterior el usuario aceptó expresamente la EULA para el entorno temporal de prueba.
+
+### Servidor dedicado y reconexión
+
+[CI 41121118254](https://github.com/ripblackdragon-cyber/rustic/actions/runs/41121118254), commit `0c87441`, completó la compilación, los tres GameTests de servidor y el cliente automatizado. El cliente se conectó por red local a un servidor dedicado de prueba dentro del proceso de GameTest, en modo sin autenticación para localhost: comió bayas y uvas, comprobó el bloqueo de bayas con hambre llena y luego se desconectó y volvió a conectarse. El servidor y el cliente mostraron dos uvas en la mano y hambre 11 tras la reconexión. Este caso no reinicia el servidor, no verifica almacenamiento de bloques ni usa dos clientes; el JAR final tampoco se instaló. El servidor de prueba se ejecutó tras la aceptación expresa de la EULA por el usuario mediante `-PacceptMinecraftEula=true`; sin esa opción no se habilita.
 
 Estas pruebas no demuestran que el commit sea idéntico al JAR publicado, que los recursos se vean correctamente o que todos los comportamientos se hayan identificado. Los casos de aceptación no ejecutados están en [RUSTIC_ACCEPTANCE_CASES.md](RUSTIC_ACCEPTANCE_CASES.md).
 
@@ -41,11 +45,11 @@ Estas pruebas no demuestran que el commit sea idéntico al JAR publicado, que lo
 
 | Prueba requerida | Estado y motivo |
 |---|---|
-| Compilación Java, resolución Gradle, empaquetado | Correctos en CI para `5ff5aac`, con comprobación estática del JAR, tres JUnit y tres GameTests; el intento local falló por restricciones de red y falta de JDK completo. No se ha inspeccionado el JAR descargado localmente. |
-| Cliente y servidor Fabric 26.3 | Parcial en CI: cliente singleplayer y servidor GameTest con código de desarrollo. Sin cliente interactivo humano, servidor dedicado convencional ni prueba del JAR instalado. |
+| Compilación Java, resolución Gradle, empaquetado | Correctos en CI para `0c87441`, con comprobación estática del JAR, tres JUnit y tres GameTests; el intento local falló por restricciones de red y falta de JDK completo. No se ha inspeccionado el JAR descargado localmente. |
+| Cliente y servidor Fabric 26.3 | Parcial en CI: cliente singleplayer, servidor GameTest y un cliente automatizado en servidor dedicado de prueba con código de desarrollo. Sin cliente interactivo humano ni prueba del JAR instalado. |
 | Todos los bloques, objetos, texturas y recetas en juego | No ejecutada: sin implementación funcional. |
 | Agricultura, árboles, abejas, alquimia, bebidas, GUI y libro | No ejecutada: sin implementación. |
 | JEI, recetas y usos, categorías y servidor | No ejecutada: sin implementación de JEI ni entorno. |
-| Dos jugadores, persistencia, guardado y recarga | No ejecutadas: no hay prueba con dos clientes ni de persistencia del port. |
+| Dos jugadores, persistencia, guardado y recarga | Parcial: reconexión de un cliente conserva pila y hambre; no se probaron dos clientes, reinicio del servidor ni persistencia de sistemas del port. |
 
 No se ha realizado ninguna prueba de rendimiento, comparación visual ni compatibilidad con otros mods. Ningún requisito de paridad o de entrega está aprobado por estas pruebas.

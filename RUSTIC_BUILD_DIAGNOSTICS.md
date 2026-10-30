@@ -34,6 +34,8 @@ La [ejecución 40986891133](https://github.com/ripblackdragon-cyber/rustic/actio
 
 Los primeros intentos de cliente, [40988933608](https://github.com/ripblackdragon-cyber/rustic/actions/runs/40988933608) y [40989383286](https://github.com/ripblackdragon-cyber/rustic/actions/runs/40989383286), fallaron al crear OpenGL bajo Xvfb (`Couldn't find matching GLX visual`) y Vulkan sin `VK_KHR_surface`; no llegaron a la prueba. Añadir Mesa EGL y Vulkan y activar EGL permitió que [40989840643](https://github.com/ripblackdragon-cyber/rustic/actions/runs/40989840643) y la ejecución posterior pasaran. El primer intento de cliente `40988296170` quedó largo tiempo en curso; no se pudo cancelar por HTTP 403 de permisos de la integración. El flujo posterior limita la duración del cliente.
 
+La [ejecución 41121118254](https://github.com/ripblackdragon-cyber/rustic/actions/runs/41121118254) también ejecutó un cliente conectado a un servidor dedicado de prueba y comprobó reconexión con conservación de pila y hambre. Se usó `-PacceptMinecraftEula=true` solo después de que el usuario aceptara expresamente la EULA para el entorno temporal de CI. Es una prueba con un cliente, no con dos; no se reinició el servidor ni se instaló el JAR.
+
 ## 2. JDK incompleto
 
 El JRE temporal de `jdk4py` ejecuta OpenJDK 25.0.2, pero no incluye `javac` ni `jdk.compiler`. Por sí solo no sirve para compilar el código. La ruta en caché es específica de este entorno y puede desaparecer.
