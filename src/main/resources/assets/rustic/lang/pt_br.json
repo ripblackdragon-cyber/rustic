@@ -148,5 +148,10 @@
   "block.rustic.slate_roof": "Telhado de Ardósia",
   "block.rustic.slate_tile": "Azulejo de Ardósia",
   "block.rustic.slate_brick": "Tijolo de Ardósia",
-  "block.rustic.slate_chiseled": "Andósia Talhada"
+  "block.rustic.slate_chiseled": "Andósia Talhada",
+  "block.rustic.slate_pillar": "Pilar de Ardósia",
+  "block.rustic.stairs_slate_roof": "Escada de Telhado de Ardósia",
+  "block.rustic.stairs_slate_brick": "Escada de Tijolos de Ardósia",
+  "block.rustic.slate_roof_slab": "Laje de Telhado de Ardósia",
+  "block.rustic.slate_brick_slab": "Laje de Tijolos de Ardósia"
 }

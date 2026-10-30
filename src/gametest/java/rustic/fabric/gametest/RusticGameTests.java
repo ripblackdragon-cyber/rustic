@@ -4,6 +4,7 @@ import java.util.List;
 
 import net.fabricmc.fabric.api.gametest.v1.GameTest;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.gametest.framework.GameTestHelper;
 import net.minecraft.world.InteractionHand;
@@ -18,6 +19,11 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.GameType;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.RotatedPillarBlock;
+import net.minecraft.world.level.block.SlabBlock;
+import net.minecraft.world.level.block.StairBlock;
+import net.minecraft.world.level.block.Rotation;
+import net.minecraft.world.level.block.state.properties.SlabType;
 import net.minecraft.world.level.block.entity.FurnaceBlockEntity;
 import rustic.fabric.RusticBlocks;
 import rustic.fabric.RusticCreativeTabs;
@@ -154,6 +160,60 @@ public class RusticGameTests {
         ItemStack result = recipe.orElseThrow().value().assemble(grid);
         helper.assertTrue(result.is(output.asItem()) && result.getCount() == count,
                 "Unexpected crafting output for " + output);
+    }
+
+    @GameTest
+    public void slateShapesAndRecipes(GameTestHelper helper) {
+        Block[] blocks = {RusticBlocks.SLATE_PILLAR, RusticBlocks.SLATE_ROOF_STAIRS, RusticBlocks.SLATE_BRICK_STAIRS,
+                RusticBlocks.SLATE_ROOF_SLAB, RusticBlocks.SLATE_BRICK_SLAB};
+        String[] names = {"slate_pillar", "stairs_slate_roof", "stairs_slate_brick", "slate_roof_slab", "slate_brick_slab"};
+        BlockPos pos = new BlockPos(1, 1, 1);
+        Player player = helper.makeMockPlayer(GameType.SURVIVAL);
+        for (int i = 0; i < blocks.length; i++) {
+            Block block = blocks[i];
+            helper.setBlock(pos, block);
+            var state = helper.getBlockState(pos);
+            helper.assertTrue(RusticFabric.id(names[i]).equals(BuiltInRegistries.BLOCK.getKey(block))
+                    && RusticFabric.id(names[i]).equals(BuiltInRegistries.ITEM.getKey(block.asItem())), "Bad shape ID");
+            helper.assertTrue(state.is(BlockTags.MINEABLE_WITH_PICKAXE) && state.requiresCorrectToolForDrops()
+                    && state.getDestroySpeed(helper.getLevel(), helper.absolutePos(pos)) == 2.0F, "Bad shape hardness or tool");
+            var drops = Block.getDrops(state, helper.getLevel(), helper.absolutePos(pos), null, player,
+                    new ItemStack(Items.WOODEN_PICKAXE));
+            helper.assertTrue(drops.size() == 1 && drops.getFirst().is(block.asItem())
+                    && drops.getFirst().getCount() == 1, "Bad single-block drop for " + names[i]);
+            if (block instanceof SlabBlock) {
+                var doubled = state.setValue(SlabBlock.TYPE, SlabType.DOUBLE);
+                helper.setBlock(pos, doubled);
+                var doubleDrops = Block.getDrops(doubled, helper.getLevel(), helper.absolutePos(pos), null, player,
+                        new ItemStack(Items.WOODEN_PICKAXE));
+                helper.assertTrue(doubleDrops.size() == 1 && doubleDrops.getFirst().is(block.asItem())
+                        && doubleDrops.getFirst().getCount() == 2, "Double slab must drop two slabs");
+                helper.assertTrue(state.hasProperty(SlabBlock.WATERLOGGED), "Modern slab waterlogging missing");
+            }
+            if (block instanceof StairBlock) {
+                helper.assertTrue(state.hasProperty(StairBlock.FACING) && state.hasProperty(StairBlock.HALF)
+                        && state.hasProperty(StairBlock.SHAPE), "Stair properties missing");
+            }
+        }
+        var pillar = RusticBlocks.SLATE_PILLAR.defaultBlockState().setValue(RotatedPillarBlock.AXIS, Direction.Axis.X);
+        helper.assertTrue(pillar.rotate(Rotation.CLOCKWISE_90).getValue(RotatedPillarBlock.AXIS) == Direction.Axis.Z,
+                "Pillar must rotate from X to Z");
+        assertShapedRecipe(helper, RusticBlocks.SLATE, RusticBlocks.SLATE_PILLAR, List.of("SS", "SS", "SS"), 6);
+        assertShapedRecipe(helper, RusticBlocks.SLATE_ROOF, RusticBlocks.SLATE_ROOF_STAIRS, List.of("S  ", "SS ", "SSS"), 4);
+        assertShapedRecipe(helper, RusticBlocks.SLATE_BRICK, RusticBlocks.SLATE_BRICK_STAIRS, List.of("S  ", "SS ", "SSS"), 4);
+        assertShapedRecipe(helper, RusticBlocks.SLATE_ROOF, RusticBlocks.SLATE_ROOF_SLAB, List.of("SSS"), 6);
+        assertShapedRecipe(helper, RusticBlocks.SLATE_BRICK, RusticBlocks.SLATE_BRICK_SLAB, List.of("SSS"), 6);
+        helper.succeed();
+    }
+
+    private void assertShapedRecipe(GameTestHelper helper, Block input, Block output, List<String> pattern, int count) {
+        List<ItemStack> stacks = pattern.stream().flatMapToInt(String::chars)
+                .mapToObj(c -> c == 'S' ? new ItemStack(input) : ItemStack.EMPTY).toList();
+        var grid = CraftingInput.of(pattern.getFirst().length(), pattern.size(), stacks);
+        var recipe = helper.getLevel().recipeAccess().getRecipeFor(RecipeType.CRAFTING, grid, helper.getLevel());
+        helper.assertTrue(recipe.isPresent(), "Missing recipe for " + output);
+        ItemStack result = recipe.orElseThrow().value().assemble(grid);
+        helper.assertTrue(result.is(output.asItem()) && result.getCount() == count, "Wrong shaped recipe output for " + output);
     }
 
     @GameTest(maxTicks = 500)

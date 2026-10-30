@@ -8,6 +8,7 @@ ROOT = Path(__file__).resolve().parents[1]
 OLD = ROOT / 'original/rustic-pre-1.2.0/src/main'
 RES = ROOT / 'src/main/resources'
 NAMES = ('slate', 'slate_roof', 'slate_tile', 'slate_brick', 'slate_chiseled')
+SHAPES = ('slate_pillar', 'stairs_slate_roof', 'stairs_slate_brick', 'slate_roof_slab', 'slate_brick_slab')
 
 class SlateMigrationTests(unittest.TestCase):
     def test_blocks_models_loot_and_translations(self):
@@ -17,7 +18,7 @@ class SlateMigrationTests(unittest.TestCase):
         lang = json.loads((RES / 'assets/rustic/lang/en_us.json').read_text())
         tag = json.loads((RES / 'data/minecraft/tags/block/mineable/pickaxe.json').read_text())
         self.assertFalse(tag['replace'])
-        self.assertEqual(set(tag['values']), {f'rustic:{n}' for n in NAMES})
+        self.assertEqual(set(tag['values']), {f'rustic:{n}' for n in NAMES + SHAPES})
         for name in NAMES:
             with self.subTest(name=name):
                 self.assertIn(f'new BlockBase(Material.ROCK, "{name}").setHardness(2.0F)', source)
@@ -29,6 +30,43 @@ class SlateMigrationTests(unittest.TestCase):
                 self.assertEqual(loot['pools'][0]['entries'][0]['name'], f'rustic:{name}')
                 state = json.loads((RES / f'assets/rustic/blockstates/{name}.json').read_text())
                 self.assertEqual(state['variants']['']['model'], f'rustic:block/{name}')
+
+    def test_shape_models_states_and_recipes(self):
+        lang = json.loads((RES / 'assets/rustic/lang/en_us.json').read_text())
+        for name in SHAPES:
+            with self.subTest(name=name):
+                self.assertEqual(lang[f'block.rustic.{name}'], lang[f'tile.rustic.{name}.name'])
+                state = json.loads((RES / f'assets/rustic/blockstates/{name}.json').read_text())
+                if name.startswith('stairs_'):
+                    self.assertEqual(len(state['variants']), 40)
+                    for variant, value in state['variants'].items():
+                        self.assertEqual(set(k.split('=')[0] for k in variant.split(',')), {'facing','half','shape'})
+                        self.assertTrue((RES / f'assets/rustic/models/block/{value["model"].removeprefix("rustic:block/")}.json').is_file())
+                elif name.endswith('_slab'):
+                    self.assertEqual(set(state['variants']), {'type=bottom','type=top','type=double'})
+                    for variant in ('bottom', 'top', 'double'):
+                        model = json.loads((RES / f'assets/rustic/models/block/{name}_{variant}.json').read_text())
+                        self.assertEqual(model['textures']['particle'], f'rustic:blocks/{name.removesuffix("_slab")}')
+                    loot = json.loads((RES / f'data/rustic/loot_table/blocks/{name}.json').read_text())
+                    self.assertEqual(loot['pools'][0]['entries'][0]['modifier'][0]['count'], 2)
+                else:
+                    self.assertEqual(set(state['variants']), {'axis=x','axis=y','axis=z'})
+        recipes = [('pillar_slate','slate','slate_pillar',['SS','SS','SS'],6,308),
+                   ('slate_roof_stairs','slate_roof','stairs_slate_roof',['S  ','SS ','SSS'],4,315),
+                   ('slate_brick_stairs','slate_brick','stairs_slate_brick',['S  ','SS ','SSS'],4,319),
+                   ('slate_roof_slab','slate_roof','slate_roof_slab',['SSS'],6,317),
+                   ('slate_brick_slab','slate_brick','slate_brick_slab',['SSS'],6,321)]
+        source = (OLD / 'java/rustic/common/crafting/Recipes.java').read_text().splitlines()
+        entries = {e['id']: e for e in json.loads((ROOT / 'audit/recipe-parity.json').read_text())['entries']}
+        for name, ingredient, output, pattern, count, line in recipes:
+            with self.subTest(recipe=name):
+                self.assertIn(f'"{name}"', source[line-1])
+                data = json.loads((RES / f'data/rustic/recipe/{name}.json').read_text())
+                self.assertEqual(data['key'], {'S':f'rustic:{ingredient}'})
+                self.assertEqual(data['pattern'], pattern)
+                self.assertEqual(data['result'], {'id':f'rustic:{output}', 'count':count})
+                self.assertEqual(entries[f'java:{line}']['status'], 'in_progress')
+                self.assertEqual(entries[f'java:{line}']['targets'], [f'src/main/resources/data/rustic/recipe/{name}.json'])
 
     def test_recipes_and_provenance(self):
         source = (OLD / 'java/rustic/common/crafting/Recipes.java').read_text().splitlines()

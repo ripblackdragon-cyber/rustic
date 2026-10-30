@@ -311,5 +311,10 @@
   "block.rustic.slate_roof": "板岩屋顶",
   "block.rustic.slate_tile": "板岩瓦块",
   "block.rustic.slate_brick": "板岩砖",
-  "block.rustic.slate_chiseled": "精雕板岩"
+  "block.rustic.slate_chiseled": "精雕板岩",
+  "block.rustic.slate_pillar": "板岩柱",
+  "block.rustic.stairs_slate_roof": "板岩屋顶楼梯",
+  "block.rustic.stairs_slate_brick": "板岩砖楼梯",
+  "block.rustic.slate_roof_slab": "板岩屋顶台阶",
+  "block.rustic.slate_brick_slab": "板岩砖台阶"
 }

@@ -109,8 +109,11 @@ public final class RusticClientGameTest implements FabricClientGameTest {
             Set<Item> displayed = tab.getDisplayItems().stream().map(ItemStack::getItem).collect(Collectors.toSet());
             var buildingTab = CreativeModeTabs.getDefaultTab();
             Item[] slateItems = {RusticBlocks.SLATE.asItem(), RusticBlocks.SLATE_ROOF.asItem(),
-                    RusticBlocks.SLATE_TILE.asItem(), RusticBlocks.SLATE_BRICK.asItem(), RusticBlocks.SLATE_CHISELED.asItem()};
-            String[] slateNames = {"Slate", "Slate Roof", "Slate Tile", "Slate Brick", "Chiseled Slate"};
+                    RusticBlocks.SLATE_TILE.asItem(), RusticBlocks.SLATE_BRICK.asItem(), RusticBlocks.SLATE_CHISELED.asItem(),
+                    RusticBlocks.SLATE_PILLAR.asItem(), RusticBlocks.SLATE_ROOF_STAIRS.asItem(), RusticBlocks.SLATE_BRICK_STAIRS.asItem(),
+                    RusticBlocks.SLATE_ROOF_SLAB.asItem(), RusticBlocks.SLATE_BRICK_SLAB.asItem()};
+            String[] slateNames = {"Slate", "Slate Roof", "Slate Tile", "Slate Brick", "Chiseled Slate", "Slate Pillar",
+                    "Slate Roof Stairs", "Slate Brick Stairs", "Slate Roof Slab", "Slate Brick Slab"};
             for (int i = 0; i < slateItems.length; i++) {
                 ItemStack stack = new ItemStack(slateItems[i]);
                 Item expectedItem = slateItems[i];

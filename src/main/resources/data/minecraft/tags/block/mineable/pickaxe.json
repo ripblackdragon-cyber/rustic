@@ -5,6 +5,11 @@
     "rustic:slate_roof",
     "rustic:slate_tile",
     "rustic:slate_brick",
-    "rustic:slate_chiseled"
+    "rustic:slate_chiseled",
+    "rustic:slate_pillar",
+    "rustic:stairs_slate_roof",
+    "rustic:stairs_slate_brick",
+    "rustic:slate_roof_slab",
+    "rustic:slate_brick_slab"
   ]
 }

@@ -311,5 +311,10 @@
   "block.rustic.slate_roof": "Сланцевая крыша",
   "block.rustic.slate_tile": "Сланцевый блок",
   "block.rustic.slate_brick": "Сланцевый кирпич",
-  "block.rustic.slate_chiseled": "Резной сланцевый блок"
+  "block.rustic.slate_chiseled": "Резной сланцевый блок",
+  "block.rustic.slate_pillar": "Сланцевая колонна",
+  "block.rustic.stairs_slate_roof": "Лестница сланцевой крыши",
+  "block.rustic.stairs_slate_brick": "Лездника из сланцевого кирпича",
+  "block.rustic.slate_roof_slab": "Половинка сланцевой крыши",
+  "block.rustic.slate_brick_slab": "Половинка сланцевого кирпича"
 }

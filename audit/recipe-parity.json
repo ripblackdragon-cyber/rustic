@@ -576,9 +576,13 @@
       "kind": "GameRegistry.addShapedRecipe",
       "file_sha256": "f8701e330c09c6974bcae4927f0fe11fd2cd7869f305ce5d4176269547170764",
       "fragment_sha256": "da2ec95342a666653af1e4b47c59b2de6b45ff467d9680c1de88d40d2ef74bce",
-      "status": "pending",
-      "targets": [],
-      "evidence": []
+      "status": "in_progress",
+      "targets": [
+        "src/main/resources/data/rustic/recipe/pillar_slate.json"
+      ],
+      "evidence": [
+        "RUSTIC_MECHANICS.md"
+      ]
     },
     {
       "id": "java:313",
@@ -602,9 +606,13 @@
       "kind": "GameRegistry.addShapedRecipe",
       "file_sha256": "f8701e330c09c6974bcae4927f0fe11fd2cd7869f305ce5d4176269547170764",
       "fragment_sha256": "d255f7edb3f65c37d0a6dd3cb22a7d35c6603234d8c4d8efc765d23efb16d9d0",
-      "status": "pending",
-      "targets": [],
-      "evidence": []
+      "status": "in_progress",
+      "targets": [
+        "src/main/resources/data/rustic/recipe/slate_roof_stairs.json"
+      ],
+      "evidence": [
+        "RUSTIC_MECHANICS.md"
+      ]
     },
     {
       "id": "java:317",
@@ -613,9 +621,13 @@
       "kind": "GameRegistry.addShapedRecipe",
       "file_sha256": "f8701e330c09c6974bcae4927f0fe11fd2cd7869f305ce5d4176269547170764",
       "fragment_sha256": "de0a70beed866e0418f5b7b4a7ead2eb7ed054239ed1902258cc007fa17eb396",
-      "status": "pending",
-      "targets": [],
-      "evidence": []
+      "status": "in_progress",
+      "targets": [
+        "src/main/resources/data/rustic/recipe/slate_roof_slab.json"
+      ],
+      "evidence": [
+        "RUSTIC_MECHANICS.md"
+      ]
     },
     {
       "id": "java:319",
@@ -624,9 +636,13 @@
       "kind": "GameRegistry.addShapedRecipe",
       "file_sha256": "f8701e330c09c6974bcae4927f0fe11fd2cd7869f305ce5d4176269547170764",
       "fragment_sha256": "6446321349c23b8ddcc6666312af1cda6e8e4a15ae10d0e62de2daaf89faf9af",
-      "status": "pending",
-      "targets": [],
-      "evidence": []
+      "status": "in_progress",
+      "targets": [
+        "src/main/resources/data/rustic/recipe/slate_brick_stairs.json"
+      ],
+      "evidence": [
+        "RUSTIC_MECHANICS.md"
+      ]
     },
     {
       "id": "java:321",
@@ -635,9 +651,13 @@
       "kind": "GameRegistry.addShapedRecipe",
       "file_sha256": "f8701e330c09c6974bcae4927f0fe11fd2cd7869f305ce5d4176269547170764",
       "fragment_sha256": "45724186566d46ad0b90f63a2131b9dd36f31f37c12e322b2608617346b1cf40",
-      "status": "pending",
-      "targets": [],
-      "evidence": []
+      "status": "in_progress",
+      "targets": [
+        "src/main/resources/data/rustic/recipe/slate_brick_slab.json"
+      ],
+      "evidence": [
+        "RUSTIC_MECHANICS.md"
+      ]
     },
     {
       "id": "java:323",

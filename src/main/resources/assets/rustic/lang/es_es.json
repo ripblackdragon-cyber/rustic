@@ -320,5 +320,10 @@
   "block.rustic.slate_roof": "Tejado de Pizarra",
   "block.rustic.slate_tile": "Azulejo de Pizarra",
   "block.rustic.slate_brick": "Ladrillo de Pizarra",
-  "block.rustic.slate_chiseled": "Pizarra Cincelada"
+  "block.rustic.slate_chiseled": "Pizarra Cincelada",
+  "block.rustic.slate_pillar": "Pilar de Pizarra",
+  "block.rustic.stairs_slate_roof": "Escalera de tejado de Pizarra",
+  "block.rustic.stairs_slate_brick": "Escaleras de ladrillo de Pizarra",
+  "block.rustic.slate_roof_slab": "Losa de tejado de Pizarra",
+  "block.rustic.slate_brick_slab": "Losa de ladrillo de Pizarra"
 }

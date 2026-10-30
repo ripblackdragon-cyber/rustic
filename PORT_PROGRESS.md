@@ -66,3 +66,7 @@ Se han preparado aceitunas con 1 hambre, saturación 0,8, consumo de 24 ticks y 
 ### Pizarra en curso
 
 Se prepararon los cinco bloques cúbicos de pizarra, cinco recetas de fabricación, botín, etiqueta de pico y modelos originales. Por ahora aparecen en la pestaña vanilla de construcción porque la pestaña decorativa original tiene como icono el jarrón todavía no migrado. La [CI 41133029468](https://github.com/ripblackdragon-cyber/rustic/actions/runs/41133029468) compiló y probó los cinco registros, su dureza, etiquetas, botín con pico y recetas en GameTest; el cliente colocó y minó pizarra en servidor integrado y dedicado, y comprobó nombres ingleses y contenidos de la pestaña vanilla. Siguen pendientes generación natural, configuración, pilares, escaleras, losas, desbloqueos y JEI. El arbusto de bayas continúa inventariado, sin implementar: véase `RUSTIC_MECHANICS.md`.
+
+### Formas de pizarra en desarrollo
+
+Se han preparado pilar, escaleras y losas de pizarra de techo y de ladrillo, modelos y sus cinco recetas originales. El bloque doble antiguo se representa como estado doble de la losa moderna, con dos losas de botín. Faltan las pruebas de CI de esta ampliación, conversión de mundos 1.12, configuración, generación, JEI y comprobación visual; ver el inventario previo en `RUSTIC_MECHANICS.md`.

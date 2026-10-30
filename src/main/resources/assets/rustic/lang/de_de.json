@@ -190,5 +190,10 @@
   "block.rustic.slate_roof": "Schieferdach",
   "block.rustic.slate_tile": "Schieferfliesen",
   "block.rustic.slate_brick": "Schieferziegel",
-  "block.rustic.slate_chiseled": "Gemeißelter Schiefer"
+  "block.rustic.slate_chiseled": "Gemeißelter Schiefer",
+  "block.rustic.slate_pillar": "Schiefersäule",
+  "block.rustic.stairs_slate_roof": "Schieferdachtreppe",
+  "block.rustic.stairs_slate_brick": "Schieferziegeltreppe",
+  "block.rustic.slate_roof_slab": "Schieferdachstufe",
+  "block.rustic.slate_brick_slab": "Schieferziegelstufe"
 }

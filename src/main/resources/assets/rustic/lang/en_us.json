@@ -419,5 +419,10 @@
   "block.rustic.slate_roof": "Slate Roof",
   "block.rustic.slate_tile": "Slate Tile",
   "block.rustic.slate_brick": "Slate Brick",
-  "block.rustic.slate_chiseled": "Chiseled Slate"
+  "block.rustic.slate_chiseled": "Chiseled Slate",
+  "block.rustic.slate_pillar": "Slate Pillar",
+  "block.rustic.stairs_slate_roof": "Slate Roof Stairs",
+  "block.rustic.stairs_slate_brick": "Slate Brick Stairs",
+  "block.rustic.slate_roof_slab": "Slate Roof Slab",
+  "block.rustic.slate_brick_slab": "Slate Brick Slab"
 }

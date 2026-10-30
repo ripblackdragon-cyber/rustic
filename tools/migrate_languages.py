@@ -19,7 +19,8 @@ ALIASES = {f'item.rustic.{name}.name': f'item.rustic.{name}' for name in (
 
 # BlockItem names use their block translation key.
 ALIASES.update({f'tile.rustic.{name}.name': f'block.rustic.{name}' for name in (
-    'slate', 'slate_roof', 'slate_tile', 'slate_brick', 'slate_chiseled'
+    'slate', 'slate_roof', 'slate_tile', 'slate_brick', 'slate_chiseled',
+    'slate_pillar', 'stairs_slate_roof', 'stairs_slate_brick', 'slate_roof_slab', 'slate_brick_slab'
 )})
 
 
@@ -97,7 +98,7 @@ def main():
     except (ValueError, OSError, UnicodeError) as error:
         parser.exit(1, f'{error}\n')
     print(f'{count} locales comprobados; {missing if args.write else 0} archivos creados.')
-    print('Se han añadido alias modernos para nueve objetos y cinco bloques; faltan las demás claves y pruebas en juego.')
+    print('Se han añadido alias modernos para nueve objetos y diez bloques; faltan las demás claves y pruebas en juego.')
 
 
 if __name__ == '__main__':

@@ -188,5 +188,10 @@
   "block.rustic.slate_roof": "Toit en ardoise",
   "block.rustic.slate_tile": "Tuile d'ardoise",
   "block.rustic.slate_brick": "Brique d'ardoise",
-  "block.rustic.slate_chiseled": "Ardoise ciselée"
+  "block.rustic.slate_chiseled": "Ardoise ciselée",
+  "block.rustic.slate_pillar": "Pilier d'ardoise",
+  "block.rustic.stairs_slate_roof": "Escaliers de toit en ardoise",
+  "block.rustic.stairs_slate_brick": "Escaliers en brique d'ardoise",
+  "block.rustic.slate_roof_slab": "Dalle de toit en ardoise",
+  "block.rustic.slate_brick_slab": "Dalle de brique d'ardoise"
 }
