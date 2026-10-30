@@ -44,6 +44,10 @@ for filename, label, path, prefix in [('RUSTIC_BLOCKS.md', 'bloques', blocks, 'M
         started = ('BEE', 'HONEYCOMB', 'BEESWAX', 'TALLOW', 'IRON_DUST_TINY', 'GOLD_DUST', 'WILDBERRIES', 'GRAPES', 'OLIVES')
         rows = [row.replace('| Pendiente |', '| En curso, paridad sin verificar |')
                 if any(f'`ModItems.{name}`' in row for name in started) else row for row in rows]
+    else:
+        started = ('SLATE', 'SLATE_ROOF', 'SLATE_TILE', 'SLATE_BRICK', 'SLATE_CHISELED')
+        rows = [row.replace('| Pendiente |', '| En curso, paridad sin verificar |')
+                if any(f'`ModBlocks.{name}`' in row for name in started) else row for row in rows]
     body = f'# Índice de {label} originales\n\n' + NOTICE
     body += ('Este índice enumera campos declarados, **no** IDs de registro ni todas las variantes por metadatos; '
              'algunos campos son ItemBlock, estados internos u opcionales. Los registros y variantes '
@@ -101,7 +105,7 @@ body = '# Inventario de recursos originales\n\n' + NOTICE
 body += ('SHA-256 de cada archivo en el árbol de recursos original, sin transformaciones. '
          'Las 376 texturas y metadatos de la referencia 1.2.0 también están copiados sin cambios en '
          '`src/main/resources/assets/rustic/textures`; ocho archivos de idioma se han convertido a JSON '
-         'preservando las claves originales y añadiendo alias para nueve objetos. Son pasos parciales: aún faltan adaptación de modelos, claves y '
+         'preservando las claves originales y añadiendo alias para nueve objetos y cinco bloques. Son pasos parciales: aún faltan adaptación de modelos, claves y '
          'renderizadores, y pruebas visuales en 26.3. Las filas siguen pendientes de integración y prueba. '
          'No se ha auditado visualmente cada imagen ni validado la compatibilidad de cada modelo.\n\n')
 body += 'Extensiones: ' + ', '.join(f'`{k}`: {v}' for k, v in sorted(counts.items())) + '.\n\n'

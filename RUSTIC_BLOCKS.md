@@ -13,11 +13,11 @@ Campos encontrados: **117**.
 | `ModBlocks.DIORITE_PILLAR` | `BlockPillar` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:53` | Pendiente |
 | `ModBlocks.GRANITE_PILLAR` | `BlockPillar` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:54` | Pendiente |
 | `ModBlocks.SLATE_PILLAR` | `BlockPillar` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:55` | Pendiente |
-| `ModBlocks.SLATE` | `BlockBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:56` | Pendiente |
-| `ModBlocks.SLATE_ROOF` | `BlockBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:57` | Pendiente |
-| `ModBlocks.SLATE_TILE` | `BlockBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:58` | Pendiente |
-| `ModBlocks.SLATE_BRICK` | `BlockBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:59` | Pendiente |
-| `ModBlocks.SLATE_CHISELED` | `BlockBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:60` | Pendiente |
+| `ModBlocks.SLATE` | `BlockBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:56` | En curso, paridad sin verificar |
+| `ModBlocks.SLATE_ROOF` | `BlockBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:57` | En curso, paridad sin verificar |
+| `ModBlocks.SLATE_TILE` | `BlockBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:58` | En curso, paridad sin verificar |
+| `ModBlocks.SLATE_BRICK` | `BlockBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:59` | En curso, paridad sin verificar |
+| `ModBlocks.SLATE_CHISELED` | `BlockBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:60` | En curso, paridad sin verificar |
 | `ModBlocks.SLATE_ROOF_STAIRS` | `BlockStairsBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:61` | Pendiente |
 | `ModBlocks.SLATE_ROOF_DOUBLESLAB` | `BlockDoubleSlabBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:62` | Pendiente |
 | `ModBlocks.SLATE_ROOF_SLAB` | `BlockSlabBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:63` | Pendiente |

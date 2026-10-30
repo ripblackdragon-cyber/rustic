@@ -1,6 +1,6 @@
 # Rustic: investigación para port Fabric 26.3
 
-**Proyecto incompleto: no es una versión jugable.** CI compiló el código de desarrollo y ejecutó pruebas limitadas en Minecraft; no hay paridad ni versión final. No poner las copias Forge de `original/` en la carpeta de mods de 26.3. Hay configuración Fabric y código inicial para seis ingredientes, tres alimentos (uvas, bayas y aceitunas) y una pestaña agrícola parcial y tres recetas de fundición, además de texturas originales e idiomas convertidos; la mayoría de la funcionalidad y las pruebas de paridad siguen pendientes.
+**Proyecto incompleto: no es una versión jugable.** CI compiló el código de desarrollo y ejecutó pruebas limitadas en Minecraft; no hay paridad ni versión final. No poner las copias Forge de `original/` en la carpeta de mods de 26.3. Hay configuración Fabric y código inicial para seis ingredientes, tres alimentos (uvas, bayas y aceitunas) una pestaña agrícola parcial, tres recetas de fundición y cinco bloques de pizarra con sus recetas básicas, además de texturas originales e idiomas convertidos; la mayoría de la funcionalidad y las pruebas de paridad siguen pendientes.
 
 - [Progreso y procedencia](PORT_PROGRESS.md)
 - [Características](RUSTIC_FEATURES.md), [objetos](RUSTIC_ITEMS.md), [bloques](RUSTIC_BLOCKS.md), [registros y almanaque](RUSTIC_REGISTERS.md)
