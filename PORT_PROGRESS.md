@@ -36,6 +36,10 @@ La configuración actual fija Minecraft 26.3, Java 25, Fabric Loader 0.20.1, Fab
 
 Los repositorios de dependencias no están entre los hosts permitidos para conexiones locales del sandbox. La resolución y compilación se efectuaron en GitHub Actions, no en este entorno; no se ha intentado eludir la restricción.
 
+## Comprobación adicional de CI
+
+La [ejecución 40985252713](https://github.com/ripblackdragon-cyber/rustic/actions/runs/40985252713) del commit `db3a25ca` compiló, ejecutó 34 pruebas Python, verificó metadatos, firmas de clase, 399 recursos y dos avisos en el JAR de desarrollo y subió el artefacto. SHA-256 del JAR: `bfeb8b243bfdc1d6f5295ab874c8a8cce25b1a13297847760d472c29a0857ab1`. No sustituye pruebas de juego ni resuelve la atribución.
+
 ## Siguientes pasos
 
 1. Completar la revisión semántica y determinar correspondencia entre el commit de referencia y el JAR 1.2.0; comprobar licencia y atribuciones originales.
