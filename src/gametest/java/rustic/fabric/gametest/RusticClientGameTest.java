@@ -21,6 +21,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.InteractionHand;
+import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import rustic.fabric.RusticBlocks;
@@ -106,6 +107,18 @@ public final class RusticClientGameTest implements FabricClientGameTest {
                     RusticItems.TALLOW, RusticItems.OLIVES, RusticItems.IRON_DUST_TINY,
                     RusticItems.GOLD_DUST, RusticItems.WILDBERRIES, RusticItems.GRAPES);
             Set<Item> displayed = tab.getDisplayItems().stream().map(ItemStack::getItem).collect(Collectors.toSet());
+            var buildingTab = CreativeModeTabs.getDefaultTab();
+            Item[] slateItems = {RusticBlocks.SLATE.asItem(), RusticBlocks.SLATE_ROOF.asItem(),
+                    RusticBlocks.SLATE_TILE.asItem(), RusticBlocks.SLATE_BRICK.asItem(), RusticBlocks.SLATE_CHISELED.asItem()};
+            String[] slateNames = {"Slate", "Slate Roof", "Slate Tile", "Slate Brick", "Chiseled Slate"};
+            for (int i = 0; i < slateItems.length; i++) {
+                ItemStack stack = new ItemStack(slateItems[i]);
+                Item expectedItem = slateItems[i];
+                if (buildingTab.getDisplayItems().stream().noneMatch(item -> item.is(expectedItem))
+                        || !stack.getHoverName().getString().equals(slateNames[i])) {
+                    throw new AssertionError("Slate item missing from building tab or not translated: " + stack.getHoverName());
+                }
+            }
             if (!displayed.equals(expected) || tab.getDisplayItems().size() != expected.size()
                     || !tab.getIconItem().is(RusticItems.OLIVES)
                     || !tab.getDisplayName().getString().equals("Rustic Agriculture")) {

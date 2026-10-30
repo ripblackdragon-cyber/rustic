@@ -12,6 +12,8 @@ NAMES = ('slate', 'slate_roof', 'slate_tile', 'slate_brick', 'slate_chiseled')
 class SlateMigrationTests(unittest.TestCase):
     def test_blocks_models_loot_and_translations(self):
         source = (OLD / 'java/rustic/common/blocks/ModBlocks.java').read_text()
+        port = (ROOT / 'src/main/java/rustic/fabric/RusticBlocks.java').read_text()
+        self.assertIn('.useBlockDescriptionPrefix()', port)
         lang = json.loads((RES / 'assets/rustic/lang/en_us.json').read_text())
         tag = json.loads((RES / 'data/minecraft/tags/block/mineable/pickaxe.json').read_text())
         self.assertFalse(tag['replace'])

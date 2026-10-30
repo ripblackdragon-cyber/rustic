@@ -30,7 +30,7 @@ public final class RusticBlocks {
                 .strength(2.0F, 2.0F).sound(SoundType.STONE).requiresCorrectToolForDrops());
         Registry.register(BuiltInRegistries.BLOCK, blockKey, block);
         Registry.register(BuiltInRegistries.ITEM, itemKey,
-                new BlockItem(block, new Item.Properties().setId(itemKey)));
+                new BlockItem(block, new Item.Properties().setId(itemKey).useBlockDescriptionPrefix()));
         return block;
     }
 
