@@ -52,6 +52,14 @@ class RusticFoodsTest {
     }
 
     @Test
+    void chiliFoodValues() {
+        assertEquals(3, RusticFoods.CHILI_PEPPER.nutrition());
+        assertEquals(2.4F, RusticFoods.CHILI_PEPPER.saturation(), 0.0001F);
+        assertTrue(RusticFoods.CHILI_PEPPER.canAlwaysEat());
+        assertEquals(1.6F, RusticFoods.NORMAL_FOOD.consumeSeconds(), 0.0001F);
+    }
+
+    @Test
     void quickFoodDuration() {
         assertEquals(0.8F, RusticFoods.QUICK_FOOD.consumeSeconds(), 0.0001F);
     }

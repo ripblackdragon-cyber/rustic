@@ -43,6 +43,7 @@ public class RusticGameTests {
         assertRegistered(helper, RusticItems.WILDBERRIES, "wildberries");
         assertRegistered(helper, RusticItems.GRAPES, "grapes");
         assertRegistered(helper, RusticItems.OLIVES, "olives");
+        assertRegistered(helper, RusticItems.CHILI_PEPPER, "chili_pepper");
         helper.assertTrue(RusticFabric.id("farming").equals(BuiltInRegistries.CREATIVE_MODE_TAB.getKey(RusticCreativeTabs.FARMING)),
                 "Farming tab not registered");
         helper.assertTrue(RusticCreativeTabs.FARMING.getIconItem().is(RusticItems.OLIVES),
@@ -116,6 +117,40 @@ public class RusticGameTests {
         }
         helper.assertTrue(effectCount > 0 && noEffectCount > 0,
                 "Fixed-seed sample should include both nausea and no-effect cases");
+        helper.succeed();
+    }
+
+    @GameTest
+    public void chiliConsumption(GameTestHelper helper) {
+        Player player = helper.makeMockPlayer(GameType.SURVIVAL);
+        int damaged = 0;
+        int unharmed = 0;
+        for (int i = 0; i < 1024; i++) {
+            player.removeEffect(MobEffects.SPEED);
+            player.setHealth(player.getMaxHealth());
+            player.invulnerableTime = 0;
+            player.getFoodData().setFoodLevel(20);
+            player.getFoodData().setSaturation(0.0F);
+            ItemStack stack = new ItemStack(RusticItems.CHILI_PEPPER, 2);
+            player.setItemInHand(InteractionHand.MAIN_HAND, stack);
+            stack.use(helper.getLevel(), player, InteractionHand.MAIN_HAND);
+            helper.assertTrue(player.isUsingItem() && player.getUseItemRemainingTicks() == 32,
+                    "Chili must be edible at full hunger and take 32 ticks");
+            ItemStack remaining = stack.finishUsingItem(helper.getLevel(), player);
+            helper.assertTrue(remaining.getCount() == 1 && player.getFoodData().getFoodLevel() == 20,
+                    "Chili must consume one item at full hunger");
+            var speed = player.getEffect(MobEffects.SPEED);
+            helper.assertTrue(speed != null && speed.getDuration() == 400 && speed.getAmplifier() == 0,
+                    "Chili must apply speed I for 400 ticks");
+            if (player.getHealth() < player.getMaxHealth()) {
+                damaged++;
+                helper.assertTrue(player.getHealth() == player.getMaxHealth() - 1.0F, "Unexpected chili damage");
+            } else {
+                unharmed++;
+            }
+            player.stopUsingItem();
+        }
+        helper.assertTrue(damaged > 0 && unharmed > 0, "Chili sample must include heat and no-heat outcomes");
         helper.succeed();
     }
 

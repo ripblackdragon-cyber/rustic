@@ -30,7 +30,7 @@ class FoodMigrationTests(unittest.TestCase):
                 self.assertIn(f'output.accept(RusticItems.{field})', tabs)
         self.assertIn('.food(food, consumable)', target)
         self.assertIn('Consumables.defaultFood().consumeSeconds(0.8F).build()', components)
-        self.assertNotIn('.alwaysEdible()', components)
+        self.assertNotIn('.alwaysEdible()', components.split('static final FoodProperties CHILI_PEPPER')[0])
 
     def test_olives_match_original_declaration_and_creative_tab(self):
         original = (ORIGINAL / 'java/rustic/common/items/ModItems.java').read_text()
@@ -45,8 +45,20 @@ class FoodMigrationTests(unittest.TestCase):
         self.assertIn('new ItemStack(RusticItems.OLIVES)', tab)
         self.assertIn('output.accept(RusticItems.OLIVES)', tab)
 
+    def test_chili_has_original_server_side_effects(self):
+        original = (ORIGINAL / 'java/rustic/common/items/ModItems.java').read_text()
+        chili = (NEW_JAVA.parent / 'ChiliPepperItem.java').read_text()
+        self.assertIn('new ItemFoodBase("chili_pepper", 3, 0.4F, false)', original)
+        self.assertIn('new PotionEffect(MobEffects.SPEED, 400)', original)
+        self.assertIn('rand.nextInt(24) == 0', original)
+        self.assertIn('DamageSource.ON_FIRE, 1.0F', original)
+        self.assertIn('new MobEffectInstance(MobEffects.SPEED, 400)', chili)
+        self.assertIn('random.nextInt(24) == 0', chili)
+        self.assertIn('player.damageSources().onFire(), 1.0F', chili)
+        self.assertIn('level instanceof ServerLevel', chili)
+
     def test_original_model_texture_and_translations(self):
-        for name in ('wildberries', 'grapes', 'olives'):
+        for name in ('wildberries', 'grapes', 'olives', 'chili_pepper'):
             with self.subTest(item=name):
                 original_model = json.loads((ORIGINAL / f'resources/assets/rustic/models/item/{name}.json').read_text())
                 model = json.loads((ASSETS / f'models/item/{name}.json').read_text())

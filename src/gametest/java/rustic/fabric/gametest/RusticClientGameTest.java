@@ -46,6 +46,8 @@ public final class RusticClientGameTest implements FabricClientGameTest {
             checkFoodAtFullHunger(context, world.getServer(), connection, RusticItems.GRAPES);
             checkFood(context, world.getServer(), connection, RusticItems.OLIVES, 11, 0.8F);
             checkFoodAtFullHunger(context, world.getServer(), connection, RusticItems.OLIVES);
+            checkFood(context, world.getServer(), connection, RusticItems.CHILI_PEPPER, 13, 2.4F, 40);
+            checkChiliAtFullHunger(context, world.getServer(), connection);
             context.takeScreenshot("rustic-olives-after-eating");
             checkSlatePlacementAndMining(context, world.getServer(), connection);
             checkSlabMerging(context, world.getServer(), connection, RusticBlocks.SLATE_ROOF_SLAB);
@@ -160,7 +162,7 @@ public final class RusticClientGameTest implements FabricClientGameTest {
             var tab = RusticCreativeTabs.FARMING;
             Set<Item> expected = Set.of(RusticItems.BEE, RusticItems.HONEYCOMB, RusticItems.BEESWAX,
                     RusticItems.TALLOW, RusticItems.OLIVES, RusticItems.IRON_DUST_TINY,
-                    RusticItems.GOLD_DUST, RusticItems.WILDBERRIES, RusticItems.GRAPES);
+                    RusticItems.GOLD_DUST, RusticItems.CHILI_PEPPER, RusticItems.WILDBERRIES, RusticItems.GRAPES);
             Set<Item> displayed = tab.getDisplayItems().stream().map(ItemStack::getItem).collect(Collectors.toSet());
             var buildingTab = CreativeModeTabs.getDefaultTab();
             Item[] slateItems = {RusticBlocks.SLATE.asItem(), RusticBlocks.SLATE_ROOF.asItem(),
@@ -189,6 +191,11 @@ public final class RusticClientGameTest implements FabricClientGameTest {
 
     private void checkFood(ClientGameTestContext context, TestServerContext serverContext,
                            TestServerConnection connection, Item food, int expectedHunger, float expectedSaturation) {
+        checkFood(context, serverContext, connection, food, expectedHunger, expectedSaturation, 25);
+    }
+
+    private void checkFood(ClientGameTestContext context, TestServerContext serverContext,
+                           TestServerConnection connection, Item food, int expectedHunger, float expectedSaturation, int ticks) {
         serverContext.runOnServer(server -> {
             var player = connection.getServerPlayer();
             player.getFoodData().setFoodLevel(10);
@@ -208,7 +215,7 @@ public final class RusticClientGameTest implements FabricClientGameTest {
             }
         });
         context.waitTicks(2);
-        context.getInput().holdKeyFor(options -> options.keyUse, 25);
+        context.getInput().holdKeyFor(options -> options.keyUse, ticks);
         connection.waitForServerboundPackets();
         context.waitFor(client -> client.player.getMainHandItem().is(food)
                 && client.player.getMainHandItem().getCount() == 1);
@@ -218,6 +225,29 @@ public final class RusticClientGameTest implements FabricClientGameTest {
                     || Math.abs(player.getFoodData().getSaturationLevel() - expectedSaturation) > 0.0001F
                     || player.getMainHandItem().getCount() != 1) {
                 throw new AssertionError("Unexpected server state after consuming " + food);
+            }
+        });
+    }
+
+    private void checkChiliAtFullHunger(ClientGameTestContext context, TestServerContext server,
+                                        TestServerConnection connection) {
+        server.runOnServer(minecraftServer -> {
+            var player = connection.getServerPlayer();
+            player.removeEffect(net.minecraft.world.effect.MobEffects.SPEED);
+            player.getFoodData().setFoodLevel(20);
+            player.setItemInHand(InteractionHand.MAIN_HAND, new ItemStack(RusticItems.CHILI_PEPPER, 2));
+        });
+        context.waitFor(client -> client.player.getMainHandItem().is(RusticItems.CHILI_PEPPER)
+                && client.player.getMainHandItem().getCount() == 2 && client.player.getFoodData().getFoodLevel() == 20);
+        context.getInput().holdKeyFor(options -> options.keyUse, 40);
+        connection.waitForServerboundPackets();
+        context.waitFor(client -> client.player.getMainHandItem().getCount() == 1);
+        server.runOnServer(minecraftServer -> {
+            var player = connection.getServerPlayer();
+            var speed = player.getEffect(net.minecraft.world.effect.MobEffects.SPEED);
+            if (player.getFoodData().getFoodLevel() != 20 || speed == null || speed.getAmplifier() != 0
+                    || speed.getDuration() <= 0 || speed.getDuration() > 400) {
+                throw new AssertionError("Chili must be edible when full and apply speed I");
             }
         });
     }
@@ -255,6 +285,8 @@ public final class RusticClientGameTest implements FabricClientGameTest {
                 checkFood(context, server, connection, RusticItems.OLIVES, 11, 0.8F);
                 checkFoodAtFullHunger(context, server, connection, RusticItems.OLIVES);
                 checkSlatePlacementAndMining(context, server, connection);
+                checkFood(context, server, connection, RusticItems.CHILI_PEPPER, 13, 2.4F, 40);
+                checkChiliAtFullHunger(context, server, connection);
                 // Set up state, then let the server save it when the real client disconnects.
                 server.runOnServer(minecraftServer -> {
                     var player = connection.getServerPlayer();

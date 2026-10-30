@@ -17,6 +17,7 @@ public final class RusticItems {
     public static final Item IRON_DUST_TINY = register("dust_tiny_iron");
     public static final Item GOLD_DUST = register("dust_gold");
 
+    public static final Item CHILI_PEPPER = registerChili("chili_pepper");
     public static final Item OLIVES = registerFood("olives", RusticFoods.OLIVES, RusticFoods.OLIVES_CONSUMABLE);
 
     // ModItems.java:178-189: both have a 16-tick eating duration.
@@ -29,6 +30,12 @@ public final class RusticItems {
     private static Item register(String name) {
         ResourceKey<Item> key = ResourceKey.create(Registries.ITEM, RusticFabric.id(name));
         return Registry.register(BuiltInRegistries.ITEM, key, new Item(new Item.Properties().setId(key)));
+    }
+
+    private static Item registerChili(String name) {
+        ResourceKey<Item> key = ResourceKey.create(Registries.ITEM, RusticFabric.id(name));
+        return Registry.register(BuiltInRegistries.ITEM, key,
+                new ChiliPepperItem(new Item.Properties().setId(key).food(RusticFoods.CHILI_PEPPER, RusticFoods.NORMAL_FOOD)));
     }
 
     private static Item registerFood(String name, FoodProperties food, Consumable consumable) {

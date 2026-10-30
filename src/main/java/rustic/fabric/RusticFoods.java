@@ -20,6 +20,9 @@ final class RusticFoods {
             .onConsume(new ApplyStatusEffectsConsumeEffect(
                     new MobEffectInstance(MobEffects.NAUSEA, 200, 1, false, false, false), 0.95F))
             .build();
+    static final FoodProperties CHILI_PEPPER = new FoodProperties.Builder()
+            .nutrition(3).saturationModifier(0.4F).alwaysEdible().build();
+    static final Consumable NORMAL_FOOD = Consumables.defaultFood().build();
     // Both original foods override getMaxItemUseDuration to 16 ticks (0.8 seconds).
     static final Consumable QUICK_FOOD = Consumables.defaultFood().consumeSeconds(0.8F).build();
 

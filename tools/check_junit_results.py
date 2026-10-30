@@ -4,7 +4,7 @@ from pathlib import Path
 import sys
 import xml.etree.ElementTree as ET
 
-EXPECTED = {'wildberryFoodValues', 'grapeFoodValues', 'quickFoodDuration', 'oliveFoodAndEffect'}
+EXPECTED = {'wildberryFoodValues', 'grapeFoodValues', 'quickFoodDuration', 'oliveFoodAndEffect', 'chiliFoodValues'}
 
 
 def check_results(directory):
@@ -33,7 +33,7 @@ def main():
         message = str(error).replace('%', '%25').replace('\r', '%0D').replace('\n', '%0A')
         print(f'::error::{message}')
         return 1
-    print('::notice::Four Fabric Loader JUnit food component tests passed; no world/gameplay test.')
+    print('::notice::Five Fabric Loader JUnit food component tests passed; no world/gameplay test.')
     return 0
 
 

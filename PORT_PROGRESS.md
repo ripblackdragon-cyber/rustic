@@ -70,3 +70,7 @@ Se prepararon los cinco bloques cúbicos de pizarra, cinco recetas de fabricaci�
 ### Formas de pizarra en desarrollo
 
 Se han preparado pilar, escaleras y losas de pizarra de techo y de ladrillo, modelos y sus cinco recetas originales. El bloque doble antiguo se representa como estado doble de la losa moderna, con dos losas de botín. La [CI 41133651215](https://github.com/ripblackdragon-cyber/rustic/actions/runs/41133651215) pasó las pruebas de registro, propiedades, rotación de pilar, botín simple y doble y cinco recetas; el cliente comprobó las entradas y traducciones en inglés. La [CI 41134042567](https://github.com/ripblackdragon-cyber/rustic/actions/runs/41134042567) también probó colocar, combinar y minar losas dobles en mundo integrado. Faltan conversión de mundos 1.12, configuración, generación, JEI y comprobación visual; ver el inventario previo en `RUSTIC_MECHANICS.md`.
+
+### Chile en desarrollo
+
+Se ha preparado el alimento `chili_pepper` conforme a `ModItems.java:137–152`: siempre comestible, 3 puntos de hambre, saturación 2,4, 32 ticks, velocidad I durante 400 ticks y probabilidad 1/24 de un punto de daño de fuego. Se prepararon pruebas de componentes, servidor y clientes; esta ampliación está pendiente de CI. No se han migrado sus semillas, cultivo ni obtención, y faltan paridad de daño, resistencias y multijugador.
