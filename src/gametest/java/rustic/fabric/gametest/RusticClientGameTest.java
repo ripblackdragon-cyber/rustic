@@ -15,9 +15,15 @@ import net.fabricmc.fabric.api.client.gametest.v1.context.TestServerConnection;
 import net.fabricmc.fabric.api.client.gametest.v1.context.TestServerContext;
 import net.fabricmc.fabric.api.client.gametest.v1.context.TestSingleplayerContext;
 import net.minecraft.client.gui.screens.inventory.CreativeModeInventoryScreen;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.phys.AABB;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import rustic.fabric.RusticBlocks;
 import rustic.fabric.RusticCreativeTabs;
 import rustic.fabric.RusticItems;
 
@@ -37,6 +43,7 @@ public final class RusticClientGameTest implements FabricClientGameTest {
             checkFood(context, world.getServer(), connection, RusticItems.OLIVES, 11, 0.8F);
             checkFoodAtFullHunger(context, world.getServer(), connection, RusticItems.OLIVES);
             context.takeScreenshot("rustic-olives-after-eating");
+            checkSlatePlacementAndMining(context, world.getServer(), connection);
             checkCreativeTab(context, world.getServer());
         }
         boolean dedicated = Boolean.getBoolean("rustic.testDedicatedServer");
@@ -50,6 +57,42 @@ public final class RusticClientGameTest implements FabricClientGameTest {
         } catch (IOException e) {
             throw new UncheckedIOException(e);
         }
+    }
+
+    private void checkSlatePlacementAndMining(ClientGameTestContext context, TestServerContext server,
+                                              TestServerConnection connection) {
+        BlockPos target = server.computeOnServer(minecraftServer -> {
+            var player = connection.getServerPlayer();
+            var level = player.level();
+            BlockPos pos = player.blockPosition().east(2);
+            level.setBlockAndUpdate(pos, Blocks.AIR.defaultBlockState());
+            level.setBlockAndUpdate(pos.above(), Blocks.AIR.defaultBlockState());
+            level.setBlockAndUpdate(pos.below(), Blocks.STONE.defaultBlockState());
+            player.setItemInHand(InteractionHand.MAIN_HAND, new ItemStack(RusticBlocks.SLATE));
+            return pos;
+        });
+        context.waitFor(client -> client.player.getMainHandItem().is(RusticBlocks.SLATE.asItem())
+                && client.level.getBlockState(target.below()).is(Blocks.STONE));
+        context.getInput().lookAt(target.below());
+        context.getInput().pressKey(options -> options.keyUse);
+        connection.waitForServerboundPackets();
+        server.waitFor(minecraftServer -> connection.getServerPlayer().level().getBlockState(target).is(RusticBlocks.SLATE));
+        context.waitFor(client -> client.level.getBlockState(target).is(RusticBlocks.SLATE));
+        context.takeScreenshot("rustic-placed-slate");
+        server.runOnServer(minecraftServer -> connection.getServerPlayer()
+                .setItemInHand(InteractionHand.MAIN_HAND, new ItemStack(Items.WOODEN_PICKAXE)));
+        context.waitFor(client -> client.player.getMainHandItem().is(Items.WOODEN_PICKAXE));
+        context.getInput().lookAt(target);
+        context.getInput().holdKeyFor(options -> options.keyAttack, 80);
+        connection.waitForServerboundPackets();
+        server.waitFor(minecraftServer -> {
+            var player = connection.getServerPlayer();
+            var level = player.level();
+            boolean dropped = !level.getEntitiesOfClass(ItemEntity.class, new AABB(target).inflate(3),
+                    entity -> entity.getItem().is(RusticBlocks.SLATE.asItem())).isEmpty();
+            return level.getBlockState(target).isAir()
+                    && (dropped || player.getInventory().contains(new ItemStack(RusticBlocks.SLATE)));
+        });
     }
 
     private void checkCreativeTab(ClientGameTestContext context, TestServerContext server) {
@@ -140,6 +183,7 @@ public final class RusticClientGameTest implements FabricClientGameTest {
                 checkFood(context, server, connection, RusticItems.GRAPES, 13, 1.8F);
                 checkFood(context, server, connection, RusticItems.OLIVES, 11, 0.8F);
                 checkFoodAtFullHunger(context, server, connection, RusticItems.OLIVES);
+                checkSlatePlacementAndMining(context, server, connection);
                 // Set up state, then let the server save it when the real client disconnects.
                 server.runOnServer(minecraftServer -> {
                     var player = connection.getServerPlayer();
