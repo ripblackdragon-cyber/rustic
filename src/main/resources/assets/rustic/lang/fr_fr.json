@@ -221,5 +221,9 @@
   "block.rustic.olive_slab": "Dalle d'olivier",
   "block.rustic.ironwood_slab": "Dalle de bois de fer",
   "block.rustic.stairs_olive": "Escaliers en olivier",
-  "block.rustic.stairs_ironwood": "Escaliers en bois de fer"
+  "block.rustic.stairs_ironwood": "Escaliers en bois de fer",
+  "block.rustic.fence_olive": "Barrière en olivier",
+  "block.rustic.fence_ironwood": "Barrière en bois de fer",
+  "block.rustic.fence_gate_olive": "Portillon en olivier",
+  "block.rustic.fence_gate_ironwood": "Portillon en bois de fer"
 }

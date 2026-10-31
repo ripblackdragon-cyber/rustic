@@ -344,5 +344,9 @@
   "block.rustic.olive_slab": "橄榄木台阶",
   "block.rustic.ironwood_slab": "铁树台阶",
   "block.rustic.stairs_olive": "橄榄木楼梯",
-  "block.rustic.stairs_ironwood": "铁树楼梯"
+  "block.rustic.stairs_ironwood": "铁树楼梯",
+  "block.rustic.fence_olive": "橄榄木栅栏",
+  "block.rustic.fence_ironwood": "铁树栅栏",
+  "block.rustic.fence_gate_olive": "橄榄木栅栏门",
+  "block.rustic.fence_gate_ironwood": "铁树栅栏门"
 }

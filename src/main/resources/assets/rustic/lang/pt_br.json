@@ -181,5 +181,9 @@
   "block.rustic.olive_slab": "Laje de Madeira de Oliva",
   "block.rustic.ironwood_slab": "Laje de Pau-Ferro",
   "block.rustic.stairs_olive": "Escada de Madeira de Oliva",
-  "block.rustic.stairs_ironwood": "Escada de Pau-Ferro"
+  "block.rustic.stairs_ironwood": "Escada de Pau-Ferro",
+  "block.rustic.fence_olive": "Cerca de Oliva",
+  "block.rustic.fence_ironwood": "Cerca de Pau-Ferro",
+  "block.rustic.fence_gate_olive": "Portão de Oliva",
+  "block.rustic.fence_gate_ironwood": "Portão de Pau-Ferro"
 }

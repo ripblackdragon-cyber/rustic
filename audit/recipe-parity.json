@@ -284,9 +284,13 @@
       "kind": "json",
       "file_sha256": "8314c6493a2bd63aabf4bcbeb8bb14c93ecd8f6db4781608002b963d40186a5d",
       "fragment_sha256": "8314c6493a2bd63aabf4bcbeb8bb14c93ecd8f6db4781608002b963d40186a5d",
-      "status": "pending",
-      "targets": [],
-      "evidence": []
+      "status": "in_progress",
+      "targets": [
+        "src/main/resources/data/rustic/recipe/ironwood_fence.json"
+      ],
+      "evidence": [
+        "RUSTIC_MECHANICS.md"
+      ]
     },
     {
       "id": "json:ironwood_fence_gate.json",
@@ -295,9 +299,13 @@
       "kind": "json",
       "file_sha256": "3bf0e4037f09e69c955bbf5a6c9bc872dbc28f0aea34429e1ec9950bc161c754",
       "fragment_sha256": "3bf0e4037f09e69c955bbf5a6c9bc872dbc28f0aea34429e1ec9950bc161c754",
-      "status": "pending",
-      "targets": [],
-      "evidence": []
+      "status": "in_progress",
+      "targets": [
+        "src/main/resources/data/rustic/recipe/ironwood_fence_gate.json"
+      ],
+      "evidence": [
+        "RUSTIC_MECHANICS.md"
+      ]
     },
     {
       "id": "json:ironwood_planks.json",
@@ -384,9 +392,13 @@
       "kind": "json",
       "file_sha256": "9dc626992a1d98a9130d29f3f941c39a66cf26647bcb8a7d8c07430ce67722a4",
       "fragment_sha256": "9dc626992a1d98a9130d29f3f941c39a66cf26647bcb8a7d8c07430ce67722a4",
-      "status": "pending",
-      "targets": [],
-      "evidence": []
+      "status": "in_progress",
+      "targets": [
+        "src/main/resources/data/rustic/recipe/olive_fence.json"
+      ],
+      "evidence": [
+        "RUSTIC_MECHANICS.md"
+      ]
     },
     {
       "id": "json:olive_fence_gate.json",
@@ -395,9 +407,13 @@
       "kind": "json",
       "file_sha256": "b73fc6c4c73206c59c20c13b66653abf40aebed87ad006e74989d616fd073297",
       "fragment_sha256": "b73fc6c4c73206c59c20c13b66653abf40aebed87ad006e74989d616fd073297",
-      "status": "pending",
-      "targets": [],
-      "evidence": []
+      "status": "in_progress",
+      "targets": [
+        "src/main/resources/data/rustic/recipe/olive_fence_gate.json"
+      ],
+      "evidence": [
+        "RUSTIC_MECHANICS.md"
+      ]
     },
     {
       "id": "json:olive_planks.json",

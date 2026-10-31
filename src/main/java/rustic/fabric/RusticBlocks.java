@@ -22,6 +22,9 @@ import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.SlabBlock;
 import net.minecraft.world.level.block.StairBlock;
+import net.minecraft.world.level.block.FenceBlock;
+import net.minecraft.world.level.block.FenceGateBlock;
+import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 
 /** Partial slate family: world generation, variants and configuration remain pending. */
@@ -64,6 +67,11 @@ public final class RusticBlocks {
     public static final Block IRONWOOD_SLAB = registerWoodShape("ironwood_slab", SlabBlock::new, true);
     public static final Block OLIVE_STAIRS = registerWoodShape("stairs_olive", p -> new StairBlock(PLANKS_OLIVE.defaultBlockState(), p), false);
     public static final Block IRONWOOD_STAIRS = registerWoodShape("stairs_ironwood", p -> new StairBlock(PLANKS_IRONWOOD.defaultBlockState(), p), false);
+
+    public static final Block OLIVE_FENCE = registerWoodShape("fence_olive", FenceBlock::new, true);
+    public static final Block IRONWOOD_FENCE = registerWoodShape("fence_ironwood", FenceBlock::new, true);
+    public static final Block OLIVE_FENCE_GATE = registerWoodShape("fence_gate_olive", p -> new FenceGateBlock(WoodType.OAK, p), true);
+    public static final Block IRONWOOD_FENCE_GATE = registerWoodShape("fence_gate_ironwood", p -> new FenceGateBlock(WoodType.OAK, p), true);
 
     public static final Block CLAY_WALL = registerClayWall("clay_wall", Block::new);
     public static final Block CLAY_WALL_CROSS = registerClayWall("clay_wall_cross", Block::new);
@@ -169,6 +177,10 @@ public final class RusticBlocks {
             output.accept(PAINTED_WOOD_GREEN);
             output.accept(PAINTED_WOOD_RED);
             output.accept(PAINTED_WOOD_BLACK);
+            output.accept(OLIVE_FENCE);
+            output.accept(IRONWOOD_FENCE);
+            output.accept(OLIVE_FENCE_GATE);
+            output.accept(IRONWOOD_FENCE_GATE);
             output.accept(OLIVE_SLAB);
             output.accept(IRONWOOD_SLAB);
             output.accept(OLIVE_STAIRS);

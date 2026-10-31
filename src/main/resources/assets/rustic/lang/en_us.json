@@ -452,5 +452,9 @@
   "block.rustic.olive_slab": "Olive Wood Slab",
   "block.rustic.ironwood_slab": "Ironwood Slab",
   "block.rustic.stairs_olive": "Olive Wood Stairs",
-  "block.rustic.stairs_ironwood": "Ironwood Stairs"
+  "block.rustic.stairs_ironwood": "Ironwood Stairs",
+  "block.rustic.fence_olive": "Olive Wood Fence",
+  "block.rustic.fence_ironwood": "Ironwood Fence",
+  "block.rustic.fence_gate_olive": "Olive Wood Fence Gate",
+  "block.rustic.fence_gate_ironwood": "Ironwood Fence Gate"
 }

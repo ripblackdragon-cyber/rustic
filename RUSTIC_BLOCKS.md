@@ -90,10 +90,10 @@ Campos encontrados: **117**.
 | `ModBlocks.SAPLING` | `BlockSaplingRustic` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:130` | Pendiente |
 | `ModBlocks.CRUSHING_TUB` | `BlockCrushingTub` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:131` | Pendiente |
 | `ModBlocks.EVAPORATING_BASIN` | `BlockEvaporatingBasin` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:132` | Pendiente |
-| `ModBlocks.OLIVE_FENCE` | `BlockFenceRustic` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:133` | Pendiente |
-| `ModBlocks.IRONWOOD_FENCE` | `BlockFenceRustic` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:134` | Pendiente |
-| `ModBlocks.OLIVE_FENCE_GATE` | `BlockFenceGateRustic` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:135` | Pendiente |
-| `ModBlocks.IRONWOOD_FENCE_GATE` | `BlockFenceGateRustic` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:136` | Pendiente |
+| `ModBlocks.OLIVE_FENCE` | `BlockFenceRustic` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:133` | En curso, paridad sin verificar |
+| `ModBlocks.IRONWOOD_FENCE` | `BlockFenceRustic` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:134` | En curso, paridad sin verificar |
+| `ModBlocks.OLIVE_FENCE_GATE` | `BlockFenceGateRustic` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:135` | En curso, paridad sin verificar |
+| `ModBlocks.IRONWOOD_FENCE_GATE` | `BlockFenceGateRustic` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:136` | En curso, paridad sin verificar |
 | `ModBlocks.OLIVE_DOUBLESLAB` | `BlockDoubleSlabBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:137` | En curso, paridad sin verificar |
 | `ModBlocks.OLIVE_SLAB` | `BlockSlabBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:138` | En curso, paridad sin verificar |
 | `ModBlocks.OLIVE_SLAB_ITEM` | `ItemBlockSlabBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:139` | En curso, paridad sin verificar |

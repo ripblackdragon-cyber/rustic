@@ -24,6 +24,10 @@
     "rustic:stairs_olive",
     "rustic:stairs_ironwood",
     "rustic:olive_slab",
-    "rustic:ironwood_slab"
+    "rustic:ironwood_slab",
+    "rustic:fence_olive",
+    "rustic:fence_ironwood",
+    "rustic:fence_gate_olive",
+    "rustic:fence_gate_ironwood"
   ]
 }

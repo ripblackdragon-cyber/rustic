@@ -223,5 +223,9 @@
   "block.rustic.olive_slab": "Olivenholzstufe",
   "block.rustic.ironwood_slab": "Eisenholzstufe",
   "block.rustic.stairs_olive": "Olivenholztreppe",
-  "block.rustic.stairs_ironwood": "Eisenholztreppe"
+  "block.rustic.stairs_ironwood": "Eisenholztreppe",
+  "block.rustic.fence_olive": "Olivenholzzaun",
+  "block.rustic.fence_ironwood": "Eisenholzzaun",
+  "block.rustic.fence_gate_olive": "Olivenholzzauntor",
+  "block.rustic.fence_gate_ironwood": "Eisenholzzauntor"
 }

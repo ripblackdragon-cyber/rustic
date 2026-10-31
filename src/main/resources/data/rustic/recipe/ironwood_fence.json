@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "minecraft:wooden_fence",
+  "key": {
+    "P": "rustic:planks_ironwood",
+    "S": "#rustic:wooden_sticks"
+  },
+  "pattern": [
+    "PSP",
+    "PSP"
+  ],
+  "result": {
+    "id": "rustic:fence_ironwood",
+    "count": 3
+  }
+}

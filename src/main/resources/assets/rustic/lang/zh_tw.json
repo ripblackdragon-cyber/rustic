@@ -353,5 +353,9 @@
   "block.rustic.olive_slab": "橄欖樹半磚",
   "block.rustic.ironwood_slab": "鐵樹半磚",
   "block.rustic.stairs_olive": "橄欖樹階梯",
-  "block.rustic.stairs_ironwood": "鐵樹階梯"
+  "block.rustic.stairs_ironwood": "鐵樹階梯",
+  "block.rustic.fence_olive": "橄欖樹柵欄",
+  "block.rustic.fence_ironwood": "鐵樹柵欄",
+  "block.rustic.fence_gate_olive": "橄欖樹柵欄門",
+  "block.rustic.fence_gate_ironwood": "鐵樹柵欄門"
 }

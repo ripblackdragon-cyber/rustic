@@ -94,3 +94,7 @@ La [CI 41249855947](https://github.com/ripblackdragon-cyber/rustic/actions/runs/
 ### Losas y escaleras de olivo e ironwood en desarrollo
 
 La [CI 41251247201](https://github.com/ripblackdragon-cyber/rustic/actions/runs/41251247201) probó los cuatro bloques, sus recetas, inflamabilidad, botín y losas dobles en servidor; el cliente comprobó sus nombres y pestañas y colocó, combinó y minó losas dobles de las dos especies en un mundo integrado. La losa doble usa el estado moderno y admite agua; falta la conversión de mundos y la comparación visual.
+
+### Vallas y puertas de valla en desarrollo
+
+Se han preparado cuatro bloques, recetas, modelos y pruebas de conexión, redstone y uso del portón. Todavía pendiente de compilación y pruebas CI; las etiquetas de palos de otros mods y la apariencia siguen sin verificar.

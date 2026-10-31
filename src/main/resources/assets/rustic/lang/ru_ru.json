@@ -344,5 +344,9 @@
   "block.rustic.olive_slab": "Половинка досок из оливы",
   "block.rustic.ironwood_slab": "Половинка досок из железного дерева",
   "block.rustic.stairs_olive": "Лестница из оливы",
-  "block.rustic.stairs_ironwood": "Лестница из железного дерева"
+  "block.rustic.stairs_ironwood": "Лестница из железного дерева",
+  "block.rustic.fence_olive": "Забор из оливы",
+  "block.rustic.fence_ironwood": "Забор из железного дерева",
+  "block.rustic.fence_gate_olive": "Калитка из оливы",
+  "block.rustic.fence_gate_ironwood": "Калитка из железного дерева"
 }

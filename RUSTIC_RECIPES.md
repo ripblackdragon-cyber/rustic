@@ -55,9 +55,13 @@ La columna original enlaza al JSON íntegro; aún no se han creado equivalentes 
 
 | Original | Archivo de destino | Estado |
 |---|---|---|
+| `json:ironwood_fence.json` | [ironwood_fence.json](src/main/resources/data/rustic/recipe/ironwood_fence.json) | `in_progress` |
+| `json:ironwood_fence_gate.json` | [ironwood_fence_gate.json](src/main/resources/data/rustic/recipe/ironwood_fence_gate.json) | `in_progress` |
 | `json:ironwood_planks.json` | [ironwood_planks.json](src/main/resources/data/rustic/recipe/ironwood_planks.json) | `in_progress` |
 | `json:ironwood_slab.json` | [ironwood_slab.json](src/main/resources/data/rustic/recipe/ironwood_slab.json) | `in_progress` |
 | `json:ironwood_stairs.json` | [ironwood_stairs.json](src/main/resources/data/rustic/recipe/ironwood_stairs.json) | `in_progress` |
+| `json:olive_fence.json` | [olive_fence.json](src/main/resources/data/rustic/recipe/olive_fence.json) | `in_progress` |
+| `json:olive_fence_gate.json` | [olive_fence_gate.json](src/main/resources/data/rustic/recipe/olive_fence_gate.json) | `in_progress` |
 | `json:olive_planks.json` | [olive_planks.json](src/main/resources/data/rustic/recipe/olive_planks.json) | `in_progress` |
 | `json:olive_slab.json` | [olive_slab.json](src/main/resources/data/rustic/recipe/olive_slab.json) | `in_progress` |
 | `json:olive_stairs.json` | [olive_stairs.json](src/main/resources/data/rustic/recipe/olive_stairs.json) | `in_progress` |

@@ -26,6 +26,8 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.SlabBlock;
+import net.minecraft.world.level.block.FenceBlock;
+import net.minecraft.world.level.block.FenceGateBlock;
 import net.minecraft.world.level.block.StairBlock;
 import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.block.state.properties.SlabType;
@@ -407,6 +409,36 @@ public class RusticGameTests {
             assertShapedRecipe(helper, planks[i], slabs[i], List.of("SSS"), 6);
             assertShapedRecipe(helper, planks[i], stairs[i], List.of("S  ", "SS ", "SSS"), 4);
         }
+        Block[] fences = {RusticBlocks.OLIVE_FENCE, RusticBlocks.IRONWOOD_FENCE};
+        Block[] gates = {RusticBlocks.OLIVE_FENCE_GATE, RusticBlocks.IRONWOOD_FENCE_GATE};
+        for (int i = 0; i < fences.length; i++) {
+            for (Block block : new Block[]{fences[i], gates[i]}) {
+                helper.setBlock(pos, block);
+                var state = helper.getBlockState(pos);
+                var fire = FlammableBlockRegistry.getDefaultInstance().get(block);
+                helper.assertTrue(state.is(BlockTags.MINEABLE_WITH_AXE) && !state.requiresCorrectToolForDrops()
+                        && state.getDestroySpeed(helper.getLevel(), helper.absolutePos(pos)) == 2.0F
+                        && fire != null && fire.getIgniteOdds() == 5 && fire.getBurnOdds() == 20
+                        && new ItemStack(block).has(DataComponents.COOKING_FUEL), "Fence properties differ");
+                var drops = Block.getDrops(state, helper.getLevel(), helper.absolutePos(pos), null, player, ItemStack.EMPTY);
+                helper.assertTrue(drops.size() == 1 && drops.getFirst().is(block.asItem()) && drops.getFirst().getCount() == 1,
+                        "Fence drop differs");
+            }
+            assertFenceRecipe(helper, planks[i], fences[i], false);
+            assertFenceRecipe(helper, planks[i], gates[i], true);
+        }
+        BlockPos other = new BlockPos(2, 1, 1);
+        helper.setBlock(pos, RusticBlocks.OLIVE_FENCE);
+        helper.setBlock(other, RusticBlocks.IRONWOOD_FENCE);
+        helper.assertTrue(helper.getBlockState(pos).getValue(FenceBlock.EAST)
+                && helper.getBlockState(other).getValue(FenceBlock.WEST), "Wooden fences should connect");
+        helper.setBlock(pos, RusticBlocks.OLIVE_FENCE_GATE);
+        helper.setBlock(other, Blocks.REDSTONE_BLOCK);
+        helper.assertTrue(helper.getBlockState(pos).getValue(FenceGateBlock.OPEN)
+                && helper.getBlockState(pos).getValue(FenceGateBlock.POWERED), "Powered gate should open");
+        helper.setBlock(other, Blocks.AIR);
+        helper.assertTrue(!helper.getBlockState(pos).getValue(FenceGateBlock.OPEN)
+                && !helper.getBlockState(pos).getValue(FenceGateBlock.POWERED), "Unpowered gate should close");
         FurnaceBlockEntity first = prepareFurnace(helper, new BlockPos(1, 1, 1), logs[0].asItem());
         FurnaceBlockEntity second = prepareFurnace(helper, new BlockPos(3, 1, 1), logs[1].asItem());
         // Vanilla fuel tags must recognize both the plank and log block items.
@@ -416,6 +448,16 @@ public class RusticGameTests {
             assertOutput(helper, first, Items.CHARCOAL);
             assertOutput(helper, second, Items.CHARCOAL);
         });
+    }
+
+    private void assertFenceRecipe(GameTestHelper helper, Block planks, Block output, boolean gate) {
+        var stacks = java.util.stream.IntStream.range(0, 6).mapToObj(i ->
+                new ItemStack((i % 3 == 1) == gate ? planks.asItem() : Items.STICK)).toList();
+        var grid = CraftingInput.of(3, 2, stacks);
+        var recipe = helper.getLevel().recipeAccess().getRecipeFor(RecipeType.CRAFTING, grid, helper.getLevel());
+        helper.assertTrue(recipe.isPresent(), "Missing fence recipe");
+        var result = recipe.orElseThrow().value().assemble(grid);
+        helper.assertTrue(result.is(output.asItem()) && result.getCount() == (gate ? 1 : 3), "Wrong fence recipe result");
     }
 
     @GameTest(maxTicks = 500)

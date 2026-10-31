@@ -21,6 +21,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SlabBlock;
+import net.minecraft.world.level.block.FenceGateBlock;
 import net.minecraft.world.level.block.state.properties.SlabType;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.InteractionHand;
@@ -53,6 +54,7 @@ public final class RusticClientGameTest implements FabricClientGameTest {
             checkBlockPlacementAndMining(context, world.getServer(), connection, RusticBlocks.PAINTED_WOOD_SILVER, Items.WOODEN_AXE);
             checkBlockPlacementAndMining(context, world.getServer(), connection, RusticBlocks.CLAY_WALL_DIAG, Items.WOODEN_SHOVEL);
             checkBlockPlacementAndMining(context, world.getServer(), connection, RusticBlocks.LOG_OLIVE, Items.WOODEN_AXE);
+            checkGateInteraction(context, world.getServer(), connection, RusticBlocks.OLIVE_FENCE_GATE);
             checkSlabMerging(context, world.getServer(), connection, RusticBlocks.SLATE_ROOF_SLAB, Items.WOODEN_PICKAXE);
             checkSlabMerging(context, world.getServer(), connection, RusticBlocks.SLATE_BRICK_SLAB, Items.WOODEN_PICKAXE);
             checkSlabMerging(context, world.getServer(), connection, RusticBlocks.OLIVE_SLAB, Items.WOODEN_AXE);
@@ -135,6 +137,39 @@ public final class RusticClientGameTest implements FabricClientGameTest {
             return level.getBlockState(target).isAir()
                     && (dropped || player.getInventory().contains(new ItemStack(block)));
         });
+    }
+
+    private void checkGateInteraction(ClientGameTestContext context, TestServerContext server,
+                                      TestServerConnection connection, Block gate) {
+        BlockPos pos = server.computeOnServer(minecraftServer -> {
+            var player = connection.getServerPlayer();
+            var level = player.level();
+            var target = player.blockPosition().east(2);
+            level.setBlockAndUpdate(target, Blocks.AIR.defaultBlockState());
+            level.setBlockAndUpdate(target.above(), Blocks.AIR.defaultBlockState());
+            level.setBlockAndUpdate(target.below(), Blocks.STONE.defaultBlockState());
+            player.setItemInHand(InteractionHand.MAIN_HAND, new ItemStack(gate));
+            return target;
+        });
+        context.waitFor(client -> client.player.getMainHandItem().is(gate.asItem())
+                && client.level.getBlockState(pos.below()).is(Blocks.STONE));
+        context.getInput().lookAt(pos.below());
+        context.getInput().pressKey(options -> options.keyUse);
+        connection.waitForServerboundPackets();
+        server.waitFor(minecraftServer -> connection.getServerPlayer().level().getBlockState(pos).is(gate));
+        server.runOnServer(minecraftServer -> connection.getServerPlayer().setItemInHand(InteractionHand.MAIN_HAND, ItemStack.EMPTY));
+        context.waitFor(client -> client.level.getBlockState(pos).is(gate) && client.player.getMainHandItem().isEmpty());
+        context.waitTicks(4);
+        context.getInput().lookAt(pos);
+        context.getInput().pressKey(options -> options.keyUse);
+        connection.waitForServerboundPackets();
+        server.waitFor(minecraftServer -> connection.getServerPlayer().level().getBlockState(pos).getValue(FenceGateBlock.OPEN));
+        context.waitFor(client -> client.level.getBlockState(pos).getValue(FenceGateBlock.OPEN));
+        context.waitTicks(4);
+        context.getInput().pressKey(options -> options.keyUse);
+        connection.waitForServerboundPackets();
+        server.waitFor(minecraftServer -> !connection.getServerPlayer().level().getBlockState(pos).getValue(FenceGateBlock.OPEN));
+        context.waitFor(client -> !client.level.getBlockState(pos).getValue(FenceGateBlock.OPEN));
     }
 
     private void checkSlabMerging(ClientGameTestContext context, TestServerContext server,
@@ -255,6 +290,16 @@ public final class RusticClientGameTest implements FabricClientGameTest {
                     throw new AssertionError("Wood shape missing or untranslated: " + stack.getHoverName());
                 }
             }
+            Item[] fences = {RusticBlocks.OLIVE_FENCE.asItem(), RusticBlocks.IRONWOOD_FENCE.asItem(), RusticBlocks.OLIVE_FENCE_GATE.asItem(), RusticBlocks.IRONWOOD_FENCE_GATE.asItem()};
+            String[] fenceNames = {"Olive Wood Fence", "Ironwood Fence", "Olive Wood Fence Gate", "Ironwood Fence Gate"};
+            for (int i = 0; i < fences.length; i++) {
+                Item expectedItem = fences[i];
+                ItemStack stack = new ItemStack(expectedItem);
+                if (buildingTab.getDisplayItems().stream().noneMatch(item -> item.is(expectedItem))
+                        || !stack.getHoverName().getString().equals(fenceNames[i])) {
+                    throw new AssertionError("Fence missing or untranslated: " + stack.getHoverName());
+                }
+            }
             if (!displayed.equals(expected) || tab.getDisplayItems().size() != expected.size()
                     || !tab.getIconItem().is(RusticItems.OLIVES)
                     || !tab.getDisplayName().getString().equals("Rustic Agriculture")) {
@@ -364,6 +409,7 @@ public final class RusticClientGameTest implements FabricClientGameTest {
                 checkBlockPlacementAndMining(context, server, connection, RusticBlocks.PAINTED_WOOD_SILVER, Items.WOODEN_AXE);
                 checkBlockPlacementAndMining(context, server, connection, RusticBlocks.CLAY_WALL_DIAG, Items.WOODEN_SHOVEL);
                 checkBlockPlacementAndMining(context, server, connection, RusticBlocks.LOG_OLIVE, Items.WOODEN_AXE);
+                checkGateInteraction(context, server, connection, RusticBlocks.OLIVE_FENCE_GATE);
                 checkFood(context, server, connection, RusticItems.CHILI_PEPPER, 13, 2.4F, 40);
                 checkChiliAtFullHunger(context, server, connection);
                 // Set up state, then let the server save it when the real client disconnects.

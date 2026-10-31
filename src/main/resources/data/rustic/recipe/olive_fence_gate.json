@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "minecraft:wooden_fence_gate",
+  "key": {
+    "P": "rustic:planks_olive",
+    "S": "#rustic:wooden_sticks"
+  },
+  "pattern": [
+    "SPS",
+    "SPS"
+  ],
+  "result": {
+    "id": "rustic:fence_gate_olive",
+    "count": 1
+  }
+}
