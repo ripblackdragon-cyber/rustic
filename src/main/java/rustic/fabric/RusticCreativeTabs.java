@@ -27,6 +27,8 @@ public final class RusticCreativeTabs {
                 output.accept(RusticItems.CHILI_PEPPER);
                 output.accept(RusticItems.WILDBERRIES);
                 output.accept(RusticItems.GRAPES);
+                output.accept(RusticBlocks.LOG_OLIVE);
+                output.accept(RusticBlocks.LOG_IRONWOOD);
             }).build();
 
     private RusticCreativeTabs() {

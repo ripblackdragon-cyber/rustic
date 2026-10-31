@@ -213,5 +213,9 @@
   "block.rustic.painted_wood_black": "Bois peint en noir",
   "block.rustic.clay_wall": "Mur d'argile",
   "block.rustic.clay_wall_cross": "Mur d'agile croisé",
-  "block.rustic.clay_wall_diag": "Mur d'argile diagonal"
+  "block.rustic.clay_wall_diag": "Mur d'argile diagonal",
+  "block.rustic.log_olive": "Bois d'olivier",
+  "block.rustic.log_ironwood": "Bois de fer",
+  "block.rustic.planks_olive": "Planches d'olivier",
+  "block.rustic.planks_ironwood": "Planches de bois de fer"
 }

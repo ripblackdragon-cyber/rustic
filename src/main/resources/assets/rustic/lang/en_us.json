@@ -444,5 +444,9 @@
   "block.rustic.painted_wood_black": "Black Painted Wood",
   "block.rustic.clay_wall": "Clay Wall",
   "block.rustic.clay_wall_cross": "Crossed Clay Wall",
-  "block.rustic.clay_wall_diag": "Diagonal Clay Wall"
+  "block.rustic.clay_wall_diag": "Diagonal Clay Wall",
+  "block.rustic.log_olive": "Olive Wood",
+  "block.rustic.log_ironwood": "Ironwood",
+  "block.rustic.planks_olive": "Olive Wood Planks",
+  "block.rustic.planks_ironwood": "Ironwood Planks"
 }

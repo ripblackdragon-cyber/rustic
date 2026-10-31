@@ -55,7 +55,10 @@ La columna original enlaza al JSON íntegro; aún no se han creado equivalentes 
 
 | Original | Archivo de destino | Estado |
 |---|---|---|
+| `json:ironwood_planks.json` | [ironwood_planks.json](src/main/resources/data/rustic/recipe/ironwood_planks.json) | `in_progress` |
+| `json:olive_planks.json` | [olive_planks.json](src/main/resources/data/rustic/recipe/olive_planks.json) | `in_progress` |
 | `java:176` | [beeswax_from_honeycomb.json](src/main/resources/data/rustic/recipe/beeswax_from_honeycomb.json) | `in_progress` |
+| `java:181` | [charcoal_from_olive_log.json](src/main/resources/data/rustic/recipe/charcoal_from_olive_log.json), [charcoal_from_ironwood_log.json](src/main/resources/data/rustic/recipe/charcoal_from_ironwood_log.json) | `in_progress` |
 | `java:183` | [iron_nugget_from_tiny_dust.json](src/main/resources/data/rustic/recipe/iron_nugget_from_tiny_dust.json) | `in_progress` |
 | `java:184` | [gold_ingot_from_dust.json](src/main/resources/data/rustic/recipe/gold_ingot_from_dust.json) | `in_progress` |
 | `java:308` | [pillar_slate.json](src/main/resources/data/rustic/recipe/pillar_slate.json) | `in_progress` |
@@ -68,6 +71,9 @@ La columna original enlaza al JSON íntegro; aún no se han creado equivalentes 
 | `java:325` | [slate_tile_1.json](src/main/resources/data/rustic/recipe/slate_tile_1.json) | `in_progress` |
 | `java:327` | [slate_brick.json](src/main/resources/data/rustic/recipe/slate_brick.json) | `in_progress` |
 | `java:329` | [slate_chiseled.json](src/main/resources/data/rustic/recipe/slate_chiseled.json) | `in_progress` |
+| `java:333` | [clay_wall.json](src/main/resources/data/rustic/recipe/clay_wall.json) | `in_progress` |
+| `java:335` | [clay_wall_cross.json](src/main/resources/data/rustic/recipe/clay_wall_cross.json) | `in_progress` |
+| `java:337` | [clay_wall_diag.json](src/main/resources/data/rustic/recipe/clay_wall_diag.json) | `in_progress` |
 | `java:385` | [painted_wood_white.json](src/main/resources/data/rustic/recipe/painted_wood_white.json) | `in_progress` |
 | `java:387` | [painted_wood_orange.json](src/main/resources/data/rustic/recipe/painted_wood_orange.json) | `in_progress` |
 | `java:389` | [painted_wood_magenta.json](src/main/resources/data/rustic/recipe/painted_wood_magenta.json) | `in_progress` |
@@ -90,7 +96,7 @@ La columna original enlaza al JSON íntegro; aún no se han creado equivalentes 
 | Fuente | Declaración / llamada (primera línea) | Migrada | Estado |
 |---|---|---|---|
 | `original/rustic-pre-1.2.0/src/main/java/rustic/common/crafting/Recipes.java:176` | `GameRegistry.addSmelting(new ItemStack(ModItems.HONEYCOMB), new ItemStack(ModItems.BEESWAX), 0.3F);` | [beeswax_from_honeycomb.json](src/main/resources/data/rustic/recipe/beeswax_from_honeycomb.json) | En curso, paridad sin verificar |
-| `original/rustic-pre-1.2.0/src/main/java/rustic/common/crafting/Recipes.java:181` | `GameRegistry.addSmelting(new ItemStack(ModBlocks.LOG, 1, meta), new ItemStack(Items.COAL, 1, 1), 0.15F);` | — | Pendiente |
+| `original/rustic-pre-1.2.0/src/main/java/rustic/common/crafting/Recipes.java:181` | `GameRegistry.addSmelting(new ItemStack(ModBlocks.LOG, 1, meta), new ItemStack(Items.COAL, 1, 1), 0.15F);` | [charcoal_from_olive_log.json](src/main/resources/data/rustic/recipe/charcoal_from_olive_log.json), [charcoal_from_ironwood_log.json](src/main/resources/data/rustic/recipe/charcoal_from_ironwood_log.json) | En curso, paridad sin verificar |
 | `original/rustic-pre-1.2.0/src/main/java/rustic/common/crafting/Recipes.java:183` | `GameRegistry.addSmelting(new ItemStack(ModItems.IRON_DUST_TINY), new ItemStack(Items.IRON_NUGGET), 0.15F);` | [iron_nugget_from_tiny_dust.json](src/main/resources/data/rustic/recipe/iron_nugget_from_tiny_dust.json) | En curso, paridad sin verificar |
 | `original/rustic-pre-1.2.0/src/main/java/rustic/common/crafting/Recipes.java:184` | `GameRegistry.addSmelting(new ItemStack(ModItems.GOLD_DUST), new ItemStack(Items.GOLD_INGOT), 0.5F);` | [gold_ingot_from_dust.json](src/main/resources/data/rustic/recipe/gold_ingot_from_dust.json) | En curso, paridad sin verificar |
 | `original/rustic-pre-1.2.0/src/main/java/rustic/common/crafting/Recipes.java:186` | `GameRegistry.addSmelting(new ItemStack(Items.ROTTEN_FLESH), new ItemStack(ModItems.TALLOW), 0.3F);` | — | Pendiente |
@@ -108,11 +114,11 @@ La columna original enlaza al JSON íntegro; aún no se han creado equivalentes 
 | `original/rustic-pre-1.2.0/src/main/java/rustic/common/crafting/Recipes.java:325` | `GameRegistry.addShapedRecipe(new ResourceLocation(Rustic.MODID, "slate_tile_1"), null, new ItemStack(ModBlocks.SLATE_TILE), "S", 'S',` | [slate_tile_1.json](src/main/resources/data/rustic/recipe/slate_tile_1.json) | En curso, paridad sin verificar |
 | `original/rustic-pre-1.2.0/src/main/java/rustic/common/crafting/Recipes.java:327` | `GameRegistry.addShapedRecipe(new ResourceLocation(Rustic.MODID, "slate_brick"), null, new ItemStack(ModBlocks.SLATE_BRICK, 4), "SS", "SS", 'S',` | [slate_brick.json](src/main/resources/data/rustic/recipe/slate_brick.json) | En curso, paridad sin verificar |
 | `original/rustic-pre-1.2.0/src/main/java/rustic/common/crafting/Recipes.java:329` | `GameRegistry.addShapedRecipe(new ResourceLocation(Rustic.MODID, "slate_chiseled"), null, new ItemStack(ModBlocks.SLATE_CHISELED, 4), "SS", "SS", 'S',` | [slate_chiseled.json](src/main/resources/data/rustic/recipe/slate_chiseled.json) | En curso, paridad sin verificar |
-| `original/rustic-pre-1.2.0/src/main/java/rustic/common/crafting/Recipes.java:333` | `GameRegistry.findRegistry(IRecipe.class).register(new ShapedOreRecipe(null, new ItemStack(ModBlocks.CLAY_WALL, 8), " P ", "PCP", " P ", 'P',` | — | Pendiente |
+| `original/rustic-pre-1.2.0/src/main/java/rustic/common/crafting/Recipes.java:333` | `GameRegistry.findRegistry(IRecipe.class).register(new ShapedOreRecipe(null, new ItemStack(ModBlocks.CLAY_WALL, 8), " P ", "PCP", " P ", 'P',` | [clay_wall.json](src/main/resources/data/rustic/recipe/clay_wall.json) | En curso, paridad sin verificar |
 | `original/rustic-pre-1.2.0/src/main/java/rustic/common/crafting/Recipes.java:334` | `"plankWood", 'C', Blocks.CLAY).setRegistryName(new ResourceLocation(Rustic.MODID, "clay_wall")));` | — | Pendiente |
-| `original/rustic-pre-1.2.0/src/main/java/rustic/common/crafting/Recipes.java:335` | `GameRegistry.findRegistry(IRecipe.class).register(new ShapedOreRecipe(null, new ItemStack(ModBlocks.CLAY_WALL_CROSS), "P P", " C ", "P P",` | — | Pendiente |
+| `original/rustic-pre-1.2.0/src/main/java/rustic/common/crafting/Recipes.java:335` | `GameRegistry.findRegistry(IRecipe.class).register(new ShapedOreRecipe(null, new ItemStack(ModBlocks.CLAY_WALL_CROSS), "P P", " C ", "P P",` | [clay_wall_cross.json](src/main/resources/data/rustic/recipe/clay_wall_cross.json) | En curso, paridad sin verificar |
 | `original/rustic-pre-1.2.0/src/main/java/rustic/common/crafting/Recipes.java:336` | `'P', "plankWood", 'C', ModBlocks.CLAY_WALL).setRegistryName(new ResourceLocation(Rustic.MODID, "clay_wall_cross")));` | — | Pendiente |
-| `original/rustic-pre-1.2.0/src/main/java/rustic/common/crafting/Recipes.java:337` | `GameRegistry.findRegistry(IRecipe.class).register(new ShapedOreRecipe(null, new ItemStack(ModBlocks.CLAY_WALL_DIAG), "P  ", " C ", "  P",` | — | Pendiente |
+| `original/rustic-pre-1.2.0/src/main/java/rustic/common/crafting/Recipes.java:337` | `GameRegistry.findRegistry(IRecipe.class).register(new ShapedOreRecipe(null, new ItemStack(ModBlocks.CLAY_WALL_DIAG), "P  ", " C ", "  P",` | [clay_wall_diag.json](src/main/resources/data/rustic/recipe/clay_wall_diag.json) | En curso, paridad sin verificar |
 | `original/rustic-pre-1.2.0/src/main/java/rustic/common/crafting/Recipes.java:338` | `'P', "plankWood", 'C', ModBlocks.CLAY_WALL).setRegistryName(new ResourceLocation(Rustic.MODID, "clay_wall_diag")));` | — | Pendiente |
 | `original/rustic-pre-1.2.0/src/main/java/rustic/common/crafting/Recipes.java:341` | `GameRegistry.addShapedRecipe(new ResourceLocation(Rustic.MODID, "acacia_chair"), new ResourceLocation(Rustic.MODID, "chair"), new ItemStack(ModBlocks.CHAIR_ACACIA, 4), "P  ", "PPP", "S S", 'P',` | — | Pendiente |
 | `original/rustic-pre-1.2.0/src/main/java/rustic/common/crafting/Recipes.java:343` | `GameRegistry.addShapedRecipe(new ResourceLocation(Rustic.MODID, "big_oak_chair"), new ResourceLocation(Rustic.MODID, "chair"), new ItemStack(ModBlocks.CHAIR_BIG_OAK, 4), "P  ", "PPP", "S S", 'P',` | — | Pendiente |

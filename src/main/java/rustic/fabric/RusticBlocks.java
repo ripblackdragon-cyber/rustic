@@ -49,6 +49,11 @@ public final class RusticBlocks {
     public static final Block PAINTED_WOOD_RED = registerPainted("painted_wood_red");
     public static final Block PAINTED_WOOD_BLACK = registerPainted("painted_wood_black");
 
+    public static final Block LOG_OLIVE = registerWood("log_olive", RotatedPillarBlock::new, true);
+    public static final Block LOG_IRONWOOD = registerWood("log_ironwood", RotatedPillarBlock::new, true);
+    public static final Block PLANKS_OLIVE = registerWood("planks_olive", Block::new, false);
+    public static final Block PLANKS_IRONWOOD = registerWood("planks_ironwood", Block::new, false);
+
     public static final Block CLAY_WALL = registerClayWall("clay_wall", Block::new);
     public static final Block CLAY_WALL_CROSS = registerClayWall("clay_wall_cross", Block::new);
     public static final Block CLAY_WALL_DIAG = registerClayWall("clay_wall_diag", DiagonalClayWallBlock::new);
@@ -80,6 +85,18 @@ public final class RusticBlocks {
         Registry.register(BuiltInRegistries.ITEM, itemKey,
                 new BlockItem(block, new Item.Properties().setId(itemKey).useBlockDescriptionPrefix()));
         FlammableBlockRegistry.getDefaultInstance().add(block, 5, 20);
+        return block;
+    }
+
+    private static Block registerWood(String name, Function<BlockBehaviour.Properties, Block> factory, boolean log) {
+        var blockKey = ResourceKey.create(Registries.BLOCK, RusticFabric.id(name));
+        var itemKey = ResourceKey.create(Registries.ITEM, RusticFabric.id(name));
+        var block = factory.apply(BlockBehaviour.Properties.of().setId(blockKey)
+                .strength(2.0F, log ? 2.0F : 3.0F).sound(SoundType.WOOD));
+        Registry.register(BuiltInRegistries.BLOCK, blockKey, block);
+        Registry.register(BuiltInRegistries.ITEM, itemKey,
+                new BlockItem(block, new Item.Properties().setId(itemKey).useBlockDescriptionPrefix()));
+        FlammableBlockRegistry.getDefaultInstance().add(block, 5, log ? 5 : 20);
         return block;
     }
 
@@ -122,6 +139,8 @@ public final class RusticBlocks {
             output.accept(PAINTED_WOOD_GREEN);
             output.accept(PAINTED_WOOD_RED);
             output.accept(PAINTED_WOOD_BLACK);
+            output.accept(PLANKS_OLIVE);
+            output.accept(PLANKS_IRONWOOD);
             output.accept(CLAY_WALL);
             output.accept(CLAY_WALL_CROSS);
             output.accept(CLAY_WALL_DIAG);

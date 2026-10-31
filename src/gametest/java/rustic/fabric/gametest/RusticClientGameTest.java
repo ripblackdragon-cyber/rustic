@@ -52,6 +52,7 @@ public final class RusticClientGameTest implements FabricClientGameTest {
             checkBlockPlacementAndMining(context, world.getServer(), connection, RusticBlocks.SLATE, Items.WOODEN_PICKAXE);
             checkBlockPlacementAndMining(context, world.getServer(), connection, RusticBlocks.PAINTED_WOOD_SILVER, Items.WOODEN_AXE);
             checkBlockPlacementAndMining(context, world.getServer(), connection, RusticBlocks.CLAY_WALL_DIAG, Items.WOODEN_SHOVEL);
+            checkBlockPlacementAndMining(context, world.getServer(), connection, RusticBlocks.LOG_OLIVE, Items.WOODEN_AXE);
             checkSlabMerging(context, world.getServer(), connection, RusticBlocks.SLATE_ROOF_SLAB);
             checkSlabMerging(context, world.getServer(), connection, RusticBlocks.SLATE_BRICK_SLAB);
             checkCreativeTab(context, world.getServer());
@@ -193,7 +194,8 @@ public final class RusticClientGameTest implements FabricClientGameTest {
             var tab = RusticCreativeTabs.FARMING;
             Set<Item> expected = Set.of(RusticItems.BEE, RusticItems.HONEYCOMB, RusticItems.BEESWAX,
                     RusticItems.TALLOW, RusticItems.OLIVES, RusticItems.IRON_DUST_TINY,
-                    RusticItems.GOLD_DUST, RusticItems.CHILI_PEPPER, RusticItems.WILDBERRIES, RusticItems.GRAPES);
+                    RusticItems.GOLD_DUST, RusticItems.CHILI_PEPPER, RusticItems.WILDBERRIES, RusticItems.GRAPES,
+                    RusticBlocks.LOG_OLIVE.asItem(), RusticBlocks.LOG_IRONWOOD.asItem());
             Set<Item> displayed = tab.getDisplayItems().stream().map(ItemStack::getItem).collect(Collectors.toSet());
             var buildingTab = CreativeModeTabs.getDefaultTab();
             Item[] slateItems = {RusticBlocks.SLATE.asItem(), RusticBlocks.SLATE_ROOF.asItem(),
@@ -228,6 +230,17 @@ public final class RusticClientGameTest implements FabricClientGameTest {
                 if (buildingTab.getDisplayItems().stream().noneMatch(item -> item.is(expectedItem))
                         || !stack.getHoverName().getString().equals(clayNames[i])) {
                     throw new AssertionError("Clay wall missing or untranslated: " + stack.getHoverName());
+                }
+            }
+            Item[] woodItems = {RusticBlocks.LOG_OLIVE.asItem(), RusticBlocks.LOG_IRONWOOD.asItem(), RusticBlocks.PLANKS_OLIVE.asItem(), RusticBlocks.PLANKS_IRONWOOD.asItem()};
+            String[] woodNames = {"Olive Wood", "Ironwood", "Olive Wood Planks", "Ironwood Planks"};
+            for (int i = 0; i < woodItems.length; i++) {
+                Item expectedItem = woodItems[i];
+                ItemStack stack = new ItemStack(expectedItem);
+                boolean inCorrectTab = i < 2 ? displayed.contains(expectedItem)
+                        : buildingTab.getDisplayItems().stream().anyMatch(item -> item.is(expectedItem));
+                if (!inCorrectTab || !stack.getHoverName().getString().equals(woodNames[i])) {
+                    throw new AssertionError("Wood missing or untranslated: " + stack.getHoverName());
                 }
             }
             if (!displayed.equals(expected) || tab.getDisplayItems().size() != expected.size()
@@ -338,6 +351,7 @@ public final class RusticClientGameTest implements FabricClientGameTest {
                 checkBlockPlacementAndMining(context, server, connection, RusticBlocks.SLATE, Items.WOODEN_PICKAXE);
                 checkBlockPlacementAndMining(context, server, connection, RusticBlocks.PAINTED_WOOD_SILVER, Items.WOODEN_AXE);
                 checkBlockPlacementAndMining(context, server, connection, RusticBlocks.CLAY_WALL_DIAG, Items.WOODEN_SHOVEL);
+                checkBlockPlacementAndMining(context, server, connection, RusticBlocks.LOG_OLIVE, Items.WOODEN_AXE);
                 checkFood(context, server, connection, RusticItems.CHILI_PEPPER, 13, 2.4F, 40);
                 checkChiliAtFullHunger(context, server, connection);
                 // Set up state, then let the server save it when the real client disconnects.

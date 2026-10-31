@@ -16,7 +16,7 @@ class PaintedWoodTests(unittest.TestCase):
         manifest = json.loads((ROOT / 'audit/recipe-parity.json').read_text())
         entries = {e['id']:e for e in manifest['entries']}
         tag = json.loads((RES / 'data/minecraft/tags/block/mineable/axe.json').read_text())
-        self.assertEqual(set(tag['values']), {f'rustic:painted_wood_{c}' for c in COLORS})
+        self.assertTrue({f'rustic:painted_wood_{c}' for c in COLORS}.issubset(set(tag['values'])))
         plank = json.loads((RES / 'data/rustic/tags/item/plank_wood.json').read_text())
         self.assertIn('#minecraft:planks', plank['values'])
         for color, line in zip(COLORS, LINES):

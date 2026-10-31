@@ -215,5 +215,9 @@
   "block.rustic.painted_wood_black": "Schwarz gefärbtes Holz",
   "block.rustic.clay_wall": "Tonmauer",
   "block.rustic.clay_wall_cross": "Gekreuzte Tonmauer",
-  "block.rustic.clay_wall_diag": "Diagonale Tonmauer"
+  "block.rustic.clay_wall_diag": "Diagonale Tonmauer",
+  "block.rustic.log_olive": "Olivenholz",
+  "block.rustic.log_ironwood": "Eisenholz",
+  "block.rustic.planks_olive": "Olivenholzbretter",
+  "block.rustic.planks_ironwood": "Eisenholzbretter"
 }

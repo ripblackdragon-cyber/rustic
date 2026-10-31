@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=y": {
+      "model": "rustic:block/log_ironwood"
+    },
+    "axis=z": {
+      "model": "rustic:block/log_ironwood",
+      "x": 90
+    },
+    "axis=x": {
+      "model": "rustic:block/log_ironwood",
+      "x": 90,
+      "y": 90
+    }
+  }
+}

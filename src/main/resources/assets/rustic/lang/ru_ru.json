@@ -336,5 +336,9 @@
   "block.rustic.painted_wood_black": "Черные доски",
   "block.rustic.clay_wall": "Глиняная стена",
   "block.rustic.clay_wall_cross": "Глиняная стена",
-  "block.rustic.clay_wall_diag": "Глиняная стена"
+  "block.rustic.clay_wall_diag": "Глиняная стена",
+  "block.rustic.log_olive": "Оливковая древесина",
+  "block.rustic.log_ironwood": "Железная древесина",
+  "block.rustic.planks_olive": "Доски из оливы",
+  "block.rustic.planks_ironwood": "Доски из железного дерева"
 }

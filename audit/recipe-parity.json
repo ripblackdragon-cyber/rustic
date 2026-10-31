@@ -306,9 +306,13 @@
       "kind": "json",
       "file_sha256": "d5e048915beac03caef587df8dccd99147e8628a48a5dd92eec4d357d89304bc",
       "fragment_sha256": "d5e048915beac03caef587df8dccd99147e8628a48a5dd92eec4d357d89304bc",
-      "status": "pending",
-      "targets": [],
-      "evidence": []
+      "status": "in_progress",
+      "targets": [
+        "src/main/resources/data/rustic/recipe/ironwood_planks.json"
+      ],
+      "evidence": [
+        "RUSTIC_MECHANICS.md"
+      ]
     },
     {
       "id": "json:ironwood_slab.json",
@@ -394,9 +398,13 @@
       "kind": "json",
       "file_sha256": "eed92a1525aad2ea9d699e029d5df86d28c0db06703a624cebecf163cc1f6700",
       "fragment_sha256": "eed92a1525aad2ea9d699e029d5df86d28c0db06703a624cebecf163cc1f6700",
-      "status": "pending",
-      "targets": [],
-      "evidence": []
+      "status": "in_progress",
+      "targets": [
+        "src/main/resources/data/rustic/recipe/olive_planks.json"
+      ],
+      "evidence": [
+        "RUSTIC_MECHANICS.md"
+      ]
     },
     {
       "id": "json:olive_slab.json",
@@ -484,9 +492,14 @@
       "kind": "GameRegistry.addSmelting",
       "file_sha256": "f8701e330c09c6974bcae4927f0fe11fd2cd7869f305ce5d4176269547170764",
       "fragment_sha256": "0a3a4f6a21f1848115b6cf737ea78cd13de519cb100e8d1102966cb14c069aca",
-      "status": "pending",
-      "targets": [],
-      "evidence": []
+      "status": "in_progress",
+      "targets": [
+        "src/main/resources/data/rustic/recipe/charcoal_from_olive_log.json",
+        "src/main/resources/data/rustic/recipe/charcoal_from_ironwood_log.json"
+      ],
+      "evidence": [
+        "RUSTIC_MECHANICS.md"
+      ]
     },
     {
       "id": "java:183",

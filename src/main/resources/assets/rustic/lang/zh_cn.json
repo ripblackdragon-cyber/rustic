@@ -336,5 +336,9 @@
   "block.rustic.painted_wood_black": "黑色彩绘木板",
   "block.rustic.clay_wall": "粘土框墙",
   "block.rustic.clay_wall_cross": "交叉粘土框墙",
-  "block.rustic.clay_wall_diag": "对角粘土框墙"
+  "block.rustic.clay_wall_diag": "对角粘土框墙",
+  "block.rustic.log_olive": "橄榄树原木",
+  "block.rustic.log_ironwood": "铁树原木",
+  "block.rustic.planks_olive": "橄榄木木板",
+  "block.rustic.planks_ironwood": "铁树木板"
 }

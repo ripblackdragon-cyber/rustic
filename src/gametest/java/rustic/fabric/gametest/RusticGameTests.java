@@ -354,6 +354,43 @@ public class RusticGameTests {
     }
 
     @GameTest(maxTicks = 500)
+    public void logsAndPlanks(GameTestHelper helper) {
+        Block[] logs = {RusticBlocks.LOG_OLIVE, RusticBlocks.LOG_IRONWOOD};
+        Block[] planks = {RusticBlocks.PLANKS_OLIVE, RusticBlocks.PLANKS_IRONWOOD};
+        String[] names = {"olive", "ironwood"};
+        var player = helper.makeMockPlayer(GameType.SURVIVAL);
+        BlockPos pos = new BlockPos(1, 1, 1);
+        for (int i = 0; i < logs.length; i++) {
+            for (Block block : new Block[]{logs[i], planks[i]}) {
+                helper.setBlock(pos, block);
+                var state = helper.getBlockState(pos);
+                helper.assertTrue(state.is(BlockTags.MINEABLE_WITH_AXE) && !state.requiresCorrectToolForDrops()
+                        && state.getDestroySpeed(helper.getLevel(), helper.absolutePos(pos)) == 2.0F, "Wood properties differ");
+                var fire = FlammableBlockRegistry.getDefaultInstance().get(block);
+                helper.assertTrue(fire != null && fire.getIgniteOdds() == 5 && fire.getBurnOdds() == (block == logs[i] ? 5 : 20), "Fire properties differ");
+                var drops = Block.getDrops(state, helper.getLevel(), helper.absolutePos(pos), null, player, ItemStack.EMPTY);
+                helper.assertTrue(drops.size() == 1 && drops.getFirst().is(block.asItem()) && drops.getFirst().getCount() == 1, "Wood drops differ");
+            }
+            helper.assertTrue(RusticFabric.id("log_" + names[i]).equals(BuiltInRegistries.BLOCK.getKey(logs[i])), "Log ID differs");
+            helper.assertTrue(RusticFabric.id("planks_" + names[i]).equals(BuiltInRegistries.BLOCK.getKey(planks[i])), "Plank ID differs");
+            var state = logs[i].defaultBlockState().setValue(RotatedPillarBlock.AXIS, Direction.Axis.X);
+            helper.assertTrue(state.rotate(Rotation.CLOCKWISE_90).getValue(RotatedPillarBlock.AXIS) == Direction.Axis.Z, "Log rotation differs");
+            var grid = CraftingInput.of(1, 1, List.of(new ItemStack(logs[i])));
+            var recipe = helper.getLevel().recipeAccess().getRecipeFor(RecipeType.CRAFTING, grid, helper.getLevel());
+            helper.assertTrue(recipe.isPresent(), "Missing log-to-planks recipe");
+            ItemStack result = recipe.orElseThrow().value().assemble(grid);
+            helper.assertTrue(result.is(planks[i].asItem()) && result.getCount() == 4, "Wrong log-to-planks recipe");
+            assertPaintedRecipe(helper, planks[i].asItem(), Items.BONE_MEAL, RusticBlocks.PAINTED_WOOD_WHITE);
+        }
+        FurnaceBlockEntity first = prepareFurnace(helper, new BlockPos(1, 1, 1), logs[0].asItem());
+        FurnaceBlockEntity second = prepareFurnace(helper, new BlockPos(3, 1, 1), logs[1].asItem());
+        helper.succeedWhen(() -> {
+            assertOutput(helper, first, Items.CHARCOAL);
+            assertOutput(helper, second, Items.CHARCOAL);
+        });
+    }
+
+    @GameTest(maxTicks = 500)
     public void furnaceRecipes(GameTestHelper helper) {
         FurnaceBlockEntity wax = prepareFurnace(helper, new BlockPos(1, 1, 1), RusticItems.HONEYCOMB);
         FurnaceBlockEntity iron = prepareFurnace(helper, new BlockPos(3, 1, 1), RusticItems.IRON_DUST_TINY);

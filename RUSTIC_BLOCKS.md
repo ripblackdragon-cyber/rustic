@@ -22,9 +22,9 @@ Campos encontrados: **117**.
 | `ModBlocks.SLATE_ROOF_DOUBLESLAB` | `BlockDoubleSlabBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:62` | En curso, paridad sin verificar |
 | `ModBlocks.SLATE_ROOF_SLAB` | `BlockSlabBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:63` | En curso, paridad sin verificar |
 | `ModBlocks.SLATE_ROOF_SLAB_ITEM` | `ItemBlockSlabBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:64` | En curso, paridad sin verificar |
-| `ModBlocks.CLAY_WALL` | `BlockBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:65` | Pendiente |
-| `ModBlocks.CLAY_WALL_CROSS` | `BlockBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:66` | Pendiente |
-| `ModBlocks.CLAY_WALL_DIAG` | `BlockClayWallDiag` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:67` | Pendiente |
+| `ModBlocks.CLAY_WALL` | `BlockBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:65` | En curso, paridad sin verificar |
+| `ModBlocks.CLAY_WALL_CROSS` | `BlockBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:66` | En curso, paridad sin verificar |
+| `ModBlocks.CLAY_WALL_DIAG` | `BlockClayWallDiag` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:67` | En curso, paridad sin verificar |
 | `ModBlocks.CHAIN` | `BlockChain` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:68` | Pendiente |
 | `ModBlocks.CANDLE` | `BlockCandle` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:69` | Pendiente |
 | `ModBlocks.CANDLE_DOUBLE` | `BlockCandleDouble` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:70` | Pendiente |
@@ -84,8 +84,8 @@ Campos encontrados: **117**.
 | `ModBlocks.CABINET` | `BlockCabinet` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:124` | Pendiente |
 | `ModBlocks.LIQUID_BARREL` | `BlockLiquidBarrel` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:125` | Pendiente |
 | `ModBlocks.FERTILE_SOIL` | `BlockFertileSoil` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:126` | Pendiente |
-| `ModBlocks.PLANKS` | `BlockPlanksRustic` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:127` | Pendiente |
-| `ModBlocks.LOG` | `BlockLogRustic` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:128` | Pendiente |
+| `ModBlocks.PLANKS` | `BlockPlanksRustic` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:127` | En curso, paridad sin verificar |
+| `ModBlocks.LOG` | `BlockLogRustic` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:128` | En curso, paridad sin verificar |
 | `ModBlocks.LEAVES` | `BlockLeavesRustic` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:129` | Pendiente |
 | `ModBlocks.SAPLING` | `BlockSaplingRustic` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:130` | Pendiente |
 | `ModBlocks.CRUSHING_TUB` | `BlockCrushingTub` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:131` | Pendiente |

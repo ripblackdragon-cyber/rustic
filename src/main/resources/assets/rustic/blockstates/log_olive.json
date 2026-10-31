@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=y": {
+      "model": "rustic:block/log_olive"
+    },
+    "axis=z": {
+      "model": "rustic:block/log_olive",
+      "x": 90
+    },
+    "axis=x": {
+      "model": "rustic:block/log_olive",
+      "x": 90,
+      "y": 90
+    }
+  }
+}

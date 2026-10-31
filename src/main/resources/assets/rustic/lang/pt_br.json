@@ -173,5 +173,9 @@
   "block.rustic.painted_wood_black": "Madeira Pintada de Preto",
   "block.rustic.clay_wall": "Parede de Argila",
   "block.rustic.clay_wall_cross": "Parede de Argila Transversal",
-  "block.rustic.clay_wall_diag": "Parede de Argila Diagonal"
+  "block.rustic.clay_wall_diag": "Parede de Argila Diagonal",
+  "block.rustic.log_olive": "Madeira de Oliva",
+  "block.rustic.log_ironwood": "Pau-Ferro",
+  "block.rustic.planks_olive": "Tábuas de Madeira de Oliva",
+  "block.rustic.planks_ironwood": "Tábuas de Pau-Ferro"
 }

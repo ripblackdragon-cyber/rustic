@@ -345,5 +345,9 @@
   "block.rustic.painted_wood_black": "Madera Pintada de Negro",
   "block.rustic.clay_wall": "Pared de arcilla",
   "block.rustic.clay_wall_cross": "Muro de arcilla cruzada",
-  "block.rustic.clay_wall_diag": "Muro de arcilla diagonal"
+  "block.rustic.clay_wall_diag": "Muro de arcilla diagonal",
+  "block.rustic.log_olive": "Madera de Olivo",
+  "block.rustic.log_ironwood": "Madera Férrica",
+  "block.rustic.planks_olive": "Tablones de Madera de Olivo",
+  "block.rustic.planks_ironwood": "Tablones de Madera Férrica"
 }

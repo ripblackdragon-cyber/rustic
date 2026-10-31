@@ -21,7 +21,7 @@ class ResourceLinkTests(unittest.TestCase):
         item_ids = registered_item_ids()
         self.assertEqual(len(item_ids), len(set(item_ids)), 'duplicate registration IDs')
         definitions = {p.stem for p in (ASSETS / 'items').glob('*.json')}
-        block_ids = set(re.findall(r'\bregister(?:Painted|ClayWall)?\("([a-z0-9_]+)"', (JAVA.parent / 'RusticBlocks.java').read_text()))
+        block_ids = set(re.findall(r'\bregister(?:Painted|ClayWall|Wood)?\("([a-z0-9_]+)"', (JAVA.parent / 'RusticBlocks.java').read_text()))
         self.assertEqual(set(item_ids) | block_ids, definitions)
         self.assertFalse(set(item_ids) & block_ids)
         for name in item_ids:
@@ -44,12 +44,13 @@ class ResourceLinkTests(unittest.TestCase):
 
     def test_all_rustic_smelting_inputs_and_outputs_are_registered(self):
         item_ids = {f'rustic:{name}' for name in registered_item_ids()}
+        item_ids |= {f'rustic:{name}' for name in re.findall(r'\bregister(?:Painted|ClayWall|Wood)?\("([a-z0-9_]+)"', (JAVA.parent / 'RusticBlocks.java').read_text())}
         recipes = list(RECIPE_DIR.glob('*.json'))
         self.assertTrue(recipes)
         for path in recipes:
             with self.subTest(recipe=path.name):
                 data = json.loads(path.read_text(encoding='utf-8'))
-                if data['type'] == 'minecraft:crafting_shaped':
+                if data['type'] in ('minecraft:crafting_shaped', 'minecraft:crafting_shapeless'):
                     continue  # independently checked by test_slate_migration.py
                 self.assertEqual(data['type'], 'minecraft:smelting')
                 self.assertEqual(data['cookingtime'], 200)
@@ -60,7 +61,7 @@ class ResourceLinkTests(unittest.TestCase):
                 else:
                     # These two vanilla IDs were cross-checked with 26.3 data;
                     # this is not a full registry or a game loader test.
-                    self.assertIn(result, {'minecraft:iron_nugget', 'minecraft:gold_ingot'})
+                    self.assertIn(result, {'minecraft:iron_nugget', 'minecraft:gold_ingot', 'minecraft:charcoal'})
 
     def test_mapped_recipes_point_to_original_smelting_calls(self):
         original = ORIGINAL_RECIPES.read_text(encoding='utf-8').splitlines()

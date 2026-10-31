@@ -86,3 +86,7 @@ Se han preparado los tres bloques, orientación de la pared diagonal, modelos or
 ### Generación natural de pizarra en desarrollo
 
 Se han preparado una feature moderna para los parámetros predeterminados del overworld y una prueba de mundo normal con recarga. La [CI 41247047617](https://github.com/ripblackdragon-cyber/rustic/actions/runs/41247047617) pasó: encontró pizarra natural en un mundo nuevo y comprobó el mismo bloque después de guardar y reabrir el mundo integrado. Siguen pendientes configuración, Nether, listas de dimensiones, comparación de distribución y conversión de mundos. La selección por biomas no equivale exactamente a la lista de dimensiones original.
+
+### Troncos y tablones de olivo e ironwood en desarrollo
+
+Se han preparado cuatro bloques, dos recetas de tablones y dos fundiciones de carbón vegetal; faltan compilación y pruebas de CI. Los bloques modernos usan IDs separados por variante y etiquetas de madera vanilla, que pueden habilitar recetas adicionales. Sin conversión de metadata ni eje antiguo `none`; faltan árboles, generación, hojas y maderas derivadas.

@@ -16,6 +16,10 @@
     "rustic:painted_wood_brown",
     "rustic:painted_wood_green",
     "rustic:painted_wood_red",
-    "rustic:painted_wood_black"
+    "rustic:painted_wood_black",
+    "rustic:log_olive",
+    "rustic:log_ironwood",
+    "rustic:planks_olive",
+    "rustic:planks_ironwood"
   ]
 }
