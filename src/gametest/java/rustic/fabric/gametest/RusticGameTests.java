@@ -384,6 +384,9 @@ public class RusticGameTests {
         }
         FurnaceBlockEntity first = prepareFurnace(helper, new BlockPos(1, 1, 1), logs[0].asItem());
         FurnaceBlockEntity second = prepareFurnace(helper, new BlockPos(3, 1, 1), logs[1].asItem());
+        // Vanilla fuel tags must recognize both the plank and log block items.
+        first.setItem(1, new ItemStack(planks[1]));
+        second.setItem(1, new ItemStack(logs[0]));
         helper.succeedWhen(() -> {
             assertOutput(helper, first, Items.CHARCOAL);
             assertOutput(helper, second, Items.CHARCOAL);
