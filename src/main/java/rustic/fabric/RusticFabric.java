@@ -11,6 +11,7 @@ public final class RusticFabric implements ModInitializer {
     public void onInitialize() {
         RusticItems.initialize();
         RusticBlocks.initialize();
+        RusticWorldgen.initialize();
         RusticCreativeTabs.initialize();
     }
 

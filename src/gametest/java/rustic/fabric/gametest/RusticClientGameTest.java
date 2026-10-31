@@ -56,6 +56,7 @@ public final class RusticClientGameTest implements FabricClientGameTest {
             checkSlabMerging(context, world.getServer(), connection, RusticBlocks.SLATE_BRICK_SLAB);
             checkCreativeTab(context, world.getServer());
         }
+        checkNaturalSlateAndSave(context);
         boolean dedicated = Boolean.getBoolean("rustic.testDedicatedServer");
         if (dedicated) {
             checkDedicatedServer(context);
@@ -66,6 +67,34 @@ public final class RusticClientGameTest implements FabricClientGameTest {
             Files.writeString(report, dedicated ? "rustic-client-dedicated-gametest-passed\n" : "rustic-client-food-gametest-passed\n");
         } catch (IOException e) {
             throw new UncheckedIOException(e);
+        }
+    }
+
+    /** Search naturally generated terrain, then reload the save and verify the same block persisted. */
+    private void checkNaturalSlateAndSave(ClientGameTestContext context) {
+        net.fabricmc.fabric.api.client.gametest.v1.world.TestWorldSave save;
+        BlockPos found;
+        try (TestSingleplayerContext world = context.worldBuilder().setUseConsistentSettings(false).create()) {
+            save = world.getWorldSave();
+            found = world.getServer().computeOnServer(server -> {
+                var level = server.overworld();
+                var spawn = world.getConnection().getServerPlayer().blockPosition();
+                // Scan a small area of already generated normal terrain around spawn.
+                for (int x = spawn.getX() - 24; x <= spawn.getX() + 24; x++) {
+                    for (int z = spawn.getZ() - 24; z <= spawn.getZ() + 24; z++) {
+                        for (int y = 1; y <= 90; y++) {
+                            BlockPos pos = new BlockPos(x, y, z);
+                            if (level.getBlockState(pos).is(RusticBlocks.SLATE)) return pos;
+                        }
+                    }
+                }
+                throw new AssertionError("No slate found in naturally generated terrain near spawn");
+            });
+        }
+        try (TestSingleplayerContext reopened = save.open()) {
+            boolean persisted = reopened.getServer().computeOnServer(server ->
+                    server.overworld().getBlockState(found).is(RusticBlocks.SLATE));
+            if (!persisted) throw new AssertionError("Naturally generated slate did not survive world reload");
         }
     }
 

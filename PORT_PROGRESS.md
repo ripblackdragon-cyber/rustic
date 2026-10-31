@@ -82,3 +82,7 @@ Se han preparado 16 bloques, modelos, traducciones y recetas de madera pintada; 
 ### Paredes de arcilla en desarrollo
 
 Se han preparado los tres bloques, orientación de la pared diagonal, modelos originales y tres recetas con tablones. La [CI 41236209786](https://github.com/ripblackdragon-cyber/rustic/actions/runs/41236209786) verificó registro, dureza, botín, recetas y orientación diagonal en GameTest; el cliente comprobó los tres nombres ingleses y las entradas en la pestaña vanilla, y colocó y minó la pared diagonal en mundos integrado y dedicado. Persisten los pendientes de configuración, pestaña decorativa, etiquetas de otros mods, JEI y validación visual.
+
+### Generación natural de pizarra en desarrollo
+
+Se han preparado una feature moderna para los parámetros predeterminados del overworld y una prueba de mundo normal con recarga. **La compilación y la prueba están pendientes de CI**. Siguen pendientes configuración, Nether, listas de dimensiones, comparación de distribución y conversión de mundos. La selección por biomas no equivale exactamente a la lista de dimensiones original.
