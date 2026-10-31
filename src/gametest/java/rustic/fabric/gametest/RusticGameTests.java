@@ -254,7 +254,7 @@ public class RusticGameTests {
     public void paintedWood(GameTestHelper helper) {
         Block[] blocks = {RusticBlocks.PAINTED_WOOD_WHITE, RusticBlocks.PAINTED_WOOD_ORANGE, RusticBlocks.PAINTED_WOOD_MAGENTA, RusticBlocks.PAINTED_WOOD_LIGHT_BLUE, RusticBlocks.PAINTED_WOOD_YELLOW, RusticBlocks.PAINTED_WOOD_LIME, RusticBlocks.PAINTED_WOOD_PINK, RusticBlocks.PAINTED_WOOD_GRAY, RusticBlocks.PAINTED_WOOD_SILVER, RusticBlocks.PAINTED_WOOD_CYAN, RusticBlocks.PAINTED_WOOD_PURPLE, RusticBlocks.PAINTED_WOOD_BLUE, RusticBlocks.PAINTED_WOOD_BROWN, RusticBlocks.PAINTED_WOOD_GREEN, RusticBlocks.PAINTED_WOOD_RED, RusticBlocks.PAINTED_WOOD_BLACK};
         String[] names = {"painted_wood_white", "painted_wood_orange", "painted_wood_magenta", "painted_wood_light_blue", "painted_wood_yellow", "painted_wood_lime", "painted_wood_pink", "painted_wood_gray", "painted_wood_silver", "painted_wood_cyan", "painted_wood_purple", "painted_wood_blue", "painted_wood_brown", "painted_wood_green", "painted_wood_red", "painted_wood_black"};
-        Item[] dyes = {Items.WHITE_DYE, Items.ORANGE_DYE, Items.MAGENTA_DYE, Items.LIGHT_BLUE_DYE, Items.YELLOW_DYE, Items.LIME_DYE, Items.PINK_DYE, Items.GRAY_DYE, Items.LIGHT_GRAY_DYE, Items.CYAN_DYE, Items.PURPLE_DYE, Items.BLUE_DYE, Items.BROWN_DYE, Items.GREEN_DYE, Items.RED_DYE, Items.BLACK_DYE};
+        String[] dyeNames = {"white_dye", "orange_dye", "magenta_dye", "light_blue_dye", "yellow_dye", "lime_dye", "pink_dye", "gray_dye", "light_gray_dye", "cyan_dye", "purple_dye", "blue_dye", "brown_dye", "green_dye", "red_dye", "black_dye"};
         BlockPos pos = new BlockPos(1, 1, 1);
         Player player = helper.makeMockPlayer(GameType.SURVIVAL);
         for (int i = 0; i < blocks.length; i++) {
@@ -271,14 +271,18 @@ public class RusticGameTests {
             var drops = Block.getDrops(state, helper.getLevel(), helper.absolutePos(pos), null, player, ItemStack.EMPTY);
             helper.assertTrue(drops.size() == 1 && drops.getFirst().is(block.asItem()) && drops.getFirst().getCount() == 1,
                     "Wrong painted wood drops");
-            assertPaintedRecipe(helper, Items.OAK_PLANKS, dyes[i], block);
-            assertPaintedRecipe(helper, RusticBlocks.PAINTED_WOOD_RED.asItem(), dyes[i], block);
+            assertPaintedRecipe(helper, Items.OAK_PLANKS, vanillaItem(dyeNames[i]), block);
+            assertPaintedRecipe(helper, RusticBlocks.PAINTED_WOOD_RED.asItem(), vanillaItem(dyeNames[i]), block);
         }
         assertPaintedRecipe(helper, Items.SPRUCE_PLANKS, Items.BONE_MEAL, RusticBlocks.PAINTED_WOOD_WHITE);
         assertPaintedRecipe(helper, Items.SPRUCE_PLANKS, Items.INK_SAC, RusticBlocks.PAINTED_WOOD_BLACK);
         assertPaintedRecipe(helper, Items.SPRUCE_PLANKS, Items.LAPIS_LAZULI, RusticBlocks.PAINTED_WOOD_BLUE);
         assertPaintedRecipe(helper, Items.SPRUCE_PLANKS, Items.COCOA_BEANS, RusticBlocks.PAINTED_WOOD_BROWN);
         helper.succeed();
+    }
+
+    private Item vanillaItem(String name) {
+        return BuiltInRegistries.ITEM.getValue(net.minecraft.resources.Identifier.fromNamespaceAndPath("minecraft", name));
     }
 
     private void assertPaintedRecipe(GameTestHelper helper, Item planks, Item dye, Block output) {
