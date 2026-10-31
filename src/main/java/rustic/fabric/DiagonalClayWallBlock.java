@@ -1,6 +1,5 @@
 package rustic.fabric;
 
-import com.mojang.serialization.MapCodec;
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.block.Block;
@@ -12,16 +11,9 @@ import net.minecraft.world.level.block.state.StateDefinition;
 
 /** The original wall uses the clicked face and hit position rather than player yaw. */
 public final class DiagonalClayWallBlock extends HorizontalDirectionalBlock {
-    public static final MapCodec<DiagonalClayWallBlock> CODEC = simpleCodec(DiagonalClayWallBlock::new);
-
     public DiagonalClayWallBlock(Properties properties) {
         super(properties);
         registerDefaultState(stateDefinition.any().setValue(FACING, Direction.NORTH));
-    }
-
-    @Override
-    protected MapCodec<? extends HorizontalDirectionalBlock> codec() {
-        return CODEC;
     }
 
     @Override
