@@ -194,5 +194,21 @@
   "block.rustic.stairs_slate_roof": "Escaliers de toit en ardoise",
   "block.rustic.stairs_slate_brick": "Escaliers en brique d'ardoise",
   "block.rustic.slate_roof_slab": "Dalle de toit en ardoise",
-  "block.rustic.slate_brick_slab": "Dalle de brique d'ardoise"
+  "block.rustic.slate_brick_slab": "Dalle de brique d'ardoise",
+  "block.rustic.painted_wood_white": "Bois peint en blanc",
+  "block.rustic.painted_wood_orange": "Bois peint en orange",
+  "block.rustic.painted_wood_magenta": "Bois peint en magenta",
+  "block.rustic.painted_wood_light_blue": "Bois peint en bleu clair",
+  "block.rustic.painted_wood_yellow": "Bois peint en jaune",
+  "block.rustic.painted_wood_lime": "Bois peint en vert clair",
+  "block.rustic.painted_wood_pink": "Bois peint en rose",
+  "block.rustic.painted_wood_gray": "Bois peint en gris",
+  "block.rustic.painted_wood_silver": "Bois peint en gris clair",
+  "block.rustic.painted_wood_cyan": "Bois peint en cyan",
+  "block.rustic.painted_wood_purple": "Bois peint en violet",
+  "block.rustic.painted_wood_blue": "Bois peint en bleu",
+  "block.rustic.painted_wood_brown": "Bois peint en bois",
+  "block.rustic.painted_wood_green": "Bois peint en vert",
+  "block.rustic.painted_wood_red": "Bois peint en rouge",
+  "block.rustic.painted_wood_black": "Bois peint en noir"
 }

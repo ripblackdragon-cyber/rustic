@@ -179,6 +179,16 @@ public final class RusticClientGameTest implements FabricClientGameTest {
                     throw new AssertionError("Slate item missing from building tab or not translated: " + stack.getHoverName());
                 }
             }
+            Item[] paintedItems = {RusticBlocks.PAINTED_WOOD_WHITE.asItem(), RusticBlocks.PAINTED_WOOD_ORANGE.asItem(), RusticBlocks.PAINTED_WOOD_MAGENTA.asItem(), RusticBlocks.PAINTED_WOOD_LIGHT_BLUE.asItem(), RusticBlocks.PAINTED_WOOD_YELLOW.asItem(), RusticBlocks.PAINTED_WOOD_LIME.asItem(), RusticBlocks.PAINTED_WOOD_PINK.asItem(), RusticBlocks.PAINTED_WOOD_GRAY.asItem(), RusticBlocks.PAINTED_WOOD_SILVER.asItem(), RusticBlocks.PAINTED_WOOD_CYAN.asItem(), RusticBlocks.PAINTED_WOOD_PURPLE.asItem(), RusticBlocks.PAINTED_WOOD_BLUE.asItem(), RusticBlocks.PAINTED_WOOD_BROWN.asItem(), RusticBlocks.PAINTED_WOOD_GREEN.asItem(), RusticBlocks.PAINTED_WOOD_RED.asItem(), RusticBlocks.PAINTED_WOOD_BLACK.asItem()};
+            String[] paintedNames = {"White Painted Wood", "Orange Painted Wood", "Magenta Painted Wood", "Light Blue Painted Wood", "Yellow Painted Wood", "Lime Painted Wood", "Pink Painted Wood", "Gray Painted Wood", "Light Gray Painted Wood", "Cyan Painted Wood", "Purple Painted Wood", "Blue Painted Wood", "Brown Painted Wood", "Green Painted Wood", "Red Painted Wood", "Black Painted Wood"};
+            for (int i = 0; i < paintedItems.length; i++) {
+                Item expectedItem = paintedItems[i];
+                ItemStack stack = new ItemStack(expectedItem);
+                if (buildingTab.getDisplayItems().stream().noneMatch(item -> item.is(expectedItem))
+                        || !stack.getHoverName().getString().equals(paintedNames[i])) {
+                    throw new AssertionError("Painted wood missing or untranslated: " + stack.getHoverName());
+                }
+            }
             if (!displayed.equals(expected) || tab.getDisplayItems().size() != expected.size()
                     || !tab.getIconItem().is(RusticItems.OLIVES)
                     || !tab.getDisplayName().getString().equals("Rustic Agriculture")) {

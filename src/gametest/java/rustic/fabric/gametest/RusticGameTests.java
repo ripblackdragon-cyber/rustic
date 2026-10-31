@@ -3,6 +3,7 @@ package rustic.fabric.gametest;
 import java.util.List;
 
 import net.fabricmc.fabric.api.gametest.v1.GameTest;
+import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -247,6 +248,47 @@ public class RusticGameTests {
         helper.assertTrue(recipe.isPresent(), "Missing recipe for " + output);
         ItemStack result = recipe.orElseThrow().value().assemble(grid);
         helper.assertTrue(result.is(output.asItem()) && result.getCount() == count, "Wrong shaped recipe output for " + output);
+    }
+
+    @GameTest
+    public void paintedWood(GameTestHelper helper) {
+        Block[] blocks = {RusticBlocks.PAINTED_WOOD_WHITE, RusticBlocks.PAINTED_WOOD_ORANGE, RusticBlocks.PAINTED_WOOD_MAGENTA, RusticBlocks.PAINTED_WOOD_LIGHT_BLUE, RusticBlocks.PAINTED_WOOD_YELLOW, RusticBlocks.PAINTED_WOOD_LIME, RusticBlocks.PAINTED_WOOD_PINK, RusticBlocks.PAINTED_WOOD_GRAY, RusticBlocks.PAINTED_WOOD_SILVER, RusticBlocks.PAINTED_WOOD_CYAN, RusticBlocks.PAINTED_WOOD_PURPLE, RusticBlocks.PAINTED_WOOD_BLUE, RusticBlocks.PAINTED_WOOD_BROWN, RusticBlocks.PAINTED_WOOD_GREEN, RusticBlocks.PAINTED_WOOD_RED, RusticBlocks.PAINTED_WOOD_BLACK};
+        String[] names = {"painted_wood_white", "painted_wood_orange", "painted_wood_magenta", "painted_wood_light_blue", "painted_wood_yellow", "painted_wood_lime", "painted_wood_pink", "painted_wood_gray", "painted_wood_silver", "painted_wood_cyan", "painted_wood_purple", "painted_wood_blue", "painted_wood_brown", "painted_wood_green", "painted_wood_red", "painted_wood_black"};
+        Item[] dyes = {Items.WHITE_DYE, Items.ORANGE_DYE, Items.MAGENTA_DYE, Items.LIGHT_BLUE_DYE, Items.YELLOW_DYE, Items.LIME_DYE, Items.PINK_DYE, Items.GRAY_DYE, Items.LIGHT_GRAY_DYE, Items.CYAN_DYE, Items.PURPLE_DYE, Items.BLUE_DYE, Items.BROWN_DYE, Items.GREEN_DYE, Items.RED_DYE, Items.BLACK_DYE};
+        BlockPos pos = new BlockPos(1, 1, 1);
+        Player player = helper.makeMockPlayer(GameType.SURVIVAL);
+        for (int i = 0; i < blocks.length; i++) {
+            Block block = blocks[i];
+            helper.setBlock(pos, block);
+            var state = helper.getBlockState(pos);
+            helper.assertTrue(RusticFabric.id(names[i]).equals(BuiltInRegistries.BLOCK.getKey(block))
+                    && RusticFabric.id(names[i]).equals(BuiltInRegistries.ITEM.getKey(block.asItem())), "Bad painted wood registry ID");
+            helper.assertTrue(state.is(BlockTags.MINEABLE_WITH_AXE) && !state.requiresCorrectToolForDrops()
+                    && state.getDestroySpeed(helper.getLevel(), helper.absolutePos(pos)) == 2.0F, "Wrong painted wood mining properties");
+            var fire = FlammableBlockRegistry.getDefaultInstance().get(block);
+            helper.assertTrue(fire != null && fire.getIgniteOdds() == 5 && fire.getBurnOdds() == 20,
+                    "Wrong painted wood fire values");
+            var drops = Block.getDrops(state, helper.getLevel(), helper.absolutePos(pos), null, player, ItemStack.EMPTY);
+            helper.assertTrue(drops.size() == 1 && drops.getFirst().is(block.asItem()) && drops.getFirst().getCount() == 1,
+                    "Wrong painted wood drops");
+            assertPaintedRecipe(helper, Items.OAK_PLANKS, dyes[i], block);
+            assertPaintedRecipe(helper, RusticBlocks.PAINTED_WOOD_RED.asItem(), dyes[i], block);
+        }
+        assertPaintedRecipe(helper, Items.SPRUCE_PLANKS, Items.BONE_MEAL, RusticBlocks.PAINTED_WOOD_WHITE);
+        assertPaintedRecipe(helper, Items.SPRUCE_PLANKS, Items.INK_SAC, RusticBlocks.PAINTED_WOOD_BLACK);
+        assertPaintedRecipe(helper, Items.SPRUCE_PLANKS, Items.LAPIS_LAZULI, RusticBlocks.PAINTED_WOOD_BLUE);
+        assertPaintedRecipe(helper, Items.SPRUCE_PLANKS, Items.COCOA_BEANS, RusticBlocks.PAINTED_WOOD_BROWN);
+        helper.succeed();
+    }
+
+    private void assertPaintedRecipe(GameTestHelper helper, Item planks, Item dye, Block output) {
+        List<ItemStack> items = java.util.stream.IntStream.range(0, 9)
+                .mapToObj(i -> new ItemStack(i == 4 ? dye : planks)).toList();
+        var grid = CraftingInput.of(3, 3, items);
+        var recipe = helper.getLevel().recipeAccess().getRecipeFor(RecipeType.CRAFTING, grid, helper.getLevel());
+        helper.assertTrue(recipe.isPresent(), "Missing painted wood recipe for " + output);
+        ItemStack result = recipe.orElseThrow().value().assemble(grid);
+        helper.assertTrue(result.is(output.asItem()) && result.getCount() == 8, "Wrong painted wood recipe output for " + output);
     }
 
     @GameTest(maxTicks = 500)

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "P": "#rustic:plank_wood",
+    "D": "#rustic:dyes/white"
+  },
+  "pattern": [
+    "PPP",
+    "PDP",
+    "PPP"
+  ],
+  "result": {
+    "id": "rustic:painted_wood_white",
+    "count": 8
+  }
+}

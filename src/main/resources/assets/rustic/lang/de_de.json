@@ -196,5 +196,21 @@
   "block.rustic.stairs_slate_roof": "Schieferdachtreppe",
   "block.rustic.stairs_slate_brick": "Schieferziegeltreppe",
   "block.rustic.slate_roof_slab": "Schieferdachstufe",
-  "block.rustic.slate_brick_slab": "Schieferziegelstufe"
+  "block.rustic.slate_brick_slab": "Schieferziegelstufe",
+  "block.rustic.painted_wood_white": "Weiß gefärbtes Holz",
+  "block.rustic.painted_wood_orange": "Orange gefärbtes Holz",
+  "block.rustic.painted_wood_magenta": "Magenta gefärbtes Holz",
+  "block.rustic.painted_wood_light_blue": "Hellblau gefärbtes Holz",
+  "block.rustic.painted_wood_yellow": "Gelb gefärbtes Holz",
+  "block.rustic.painted_wood_lime": "Hellgrün gefärbtes Holz",
+  "block.rustic.painted_wood_pink": "Rosa gefärbtes Holz",
+  "block.rustic.painted_wood_gray": "Grau gefärbtes Holz",
+  "block.rustic.painted_wood_silver": "Hellgrau gefärbtes Holz",
+  "block.rustic.painted_wood_cyan": "Türkis gefärbtes Holz",
+  "block.rustic.painted_wood_purple": "Violett gefärbtes Holz",
+  "block.rustic.painted_wood_blue": "Blau gefärbtes Holz",
+  "block.rustic.painted_wood_brown": "Braun gefärbtes Holz",
+  "block.rustic.painted_wood_green": "Grün gefärbtes Holz",
+  "block.rustic.painted_wood_red": "Rot gefärbtes Holz",
+  "block.rustic.painted_wood_black": "Schwarz gefärbtes Holz"
 }

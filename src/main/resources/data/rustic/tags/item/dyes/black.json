@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:black_dye",
+    {
+      "id": "#c:dyes/black",
+      "required": false
+    },
+    "minecraft:ink_sac"
+  ]
+}

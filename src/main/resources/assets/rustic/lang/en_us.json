@@ -425,5 +425,21 @@
   "block.rustic.stairs_slate_roof": "Slate Roof Stairs",
   "block.rustic.stairs_slate_brick": "Slate Brick Stairs",
   "block.rustic.slate_roof_slab": "Slate Roof Slab",
-  "block.rustic.slate_brick_slab": "Slate Brick Slab"
+  "block.rustic.slate_brick_slab": "Slate Brick Slab",
+  "block.rustic.painted_wood_white": "White Painted Wood",
+  "block.rustic.painted_wood_orange": "Orange Painted Wood",
+  "block.rustic.painted_wood_magenta": "Magenta Painted Wood",
+  "block.rustic.painted_wood_light_blue": "Light Blue Painted Wood",
+  "block.rustic.painted_wood_yellow": "Yellow Painted Wood",
+  "block.rustic.painted_wood_lime": "Lime Painted Wood",
+  "block.rustic.painted_wood_pink": "Pink Painted Wood",
+  "block.rustic.painted_wood_gray": "Gray Painted Wood",
+  "block.rustic.painted_wood_silver": "Light Gray Painted Wood",
+  "block.rustic.painted_wood_cyan": "Cyan Painted Wood",
+  "block.rustic.painted_wood_purple": "Purple Painted Wood",
+  "block.rustic.painted_wood_blue": "Blue Painted Wood",
+  "block.rustic.painted_wood_brown": "Brown Painted Wood",
+  "block.rustic.painted_wood_green": "Green Painted Wood",
+  "block.rustic.painted_wood_red": "Red Painted Wood",
+  "block.rustic.painted_wood_black": "Black Painted Wood"
 }

@@ -21,7 +21,7 @@ class ResourceLinkTests(unittest.TestCase):
         item_ids = registered_item_ids()
         self.assertEqual(len(item_ids), len(set(item_ids)), 'duplicate registration IDs')
         definitions = {p.stem for p in (ASSETS / 'items').glob('*.json')}
-        block_ids = set(re.findall(r'\bregister\("([a-z0-9_]+)"', (JAVA.parent / 'RusticBlocks.java').read_text()))
+        block_ids = set(re.findall(r'\bregister(?:Painted)?\("([a-z0-9_]+)"', (JAVA.parent / 'RusticBlocks.java').read_text()))
         self.assertEqual(set(item_ids) | block_ids, definitions)
         self.assertFalse(set(item_ids) & block_ids)
         for name in item_ids:

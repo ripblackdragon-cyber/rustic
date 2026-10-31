@@ -154,5 +154,21 @@
   "block.rustic.stairs_slate_roof": "Escada de Telhado de Ardósia",
   "block.rustic.stairs_slate_brick": "Escada de Tijolos de Ardósia",
   "block.rustic.slate_roof_slab": "Laje de Telhado de Ardósia",
-  "block.rustic.slate_brick_slab": "Laje de Tijolos de Ardósia"
+  "block.rustic.slate_brick_slab": "Laje de Tijolos de Ardósia",
+  "block.rustic.painted_wood_white": "Madeira Pintada de Branco",
+  "block.rustic.painted_wood_orange": "Madeira Pintada de Laranja",
+  "block.rustic.painted_wood_magenta": "Madeira Pintada de Magenta",
+  "block.rustic.painted_wood_light_blue": "Madeira Pintada de Azul Claro",
+  "block.rustic.painted_wood_yellow": "Madeira Pintada de Amarelo",
+  "block.rustic.painted_wood_lime": "Madeira Pintada de Verde Limão",
+  "block.rustic.painted_wood_pink": "Madeira Pintada de Rosa",
+  "block.rustic.painted_wood_gray": "Madeira Pintada de Cinza",
+  "block.rustic.painted_wood_silver": "Madeira Pintada de Cinza Claro",
+  "block.rustic.painted_wood_cyan": "Madeira Pintada de Ciano",
+  "block.rustic.painted_wood_purple": "Madeira Pintada de Roxo",
+  "block.rustic.painted_wood_blue": "Madeira Pintada de Azul",
+  "block.rustic.painted_wood_brown": "Madeira Pintada de Marrom",
+  "block.rustic.painted_wood_green": "Madeira Pintada de Verde",
+  "block.rustic.painted_wood_red": "Madeira Pintada de Vermelho",
+  "block.rustic.painted_wood_black": "Madeira Pintada de Preto"
 }

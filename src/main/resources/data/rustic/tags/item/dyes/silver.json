@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:light_gray_dye",
+    {
+      "id": "#c:dyes/light_gray",
+      "required": false
+    }
+  ]
+}

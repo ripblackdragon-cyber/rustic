@@ -74,3 +74,7 @@ Se han preparado pilar, escaleras y losas de pizarra de techo y de ladrillo, mod
 ### Chile en desarrollo
 
 Se ha preparado el alimento `chili_pepper` conforme a `ModItems.java:137–152`: siempre comestible, 3 puntos de hambre, saturación 2,4, 32 ticks, velocidad I durante 400 ticks y probabilidad 1/24 de un punto de daño de fuego. Se prepararon pruebas de componentes, servidor y clientes; la [CI 41134802880](https://github.com/ripblackdragon-cyber/rustic/actions/runs/41134802880) pasó estas pruebas con fuentes de desarrollo. No se han migrado sus semillas, cultivo ni obtención, y faltan paridad de daño, resistencias y multijugador.
+
+### Madera pintada en desarrollo
+
+Se han preparado 16 bloques, modelos, traducciones y recetas de madera pintada; los tintes y tablones se expresan con etiquetas adaptadas desde OreDictionary. La compilación y las pruebas de esta ampliación están pendientes de CI; la configuración, la pestaña decorativa original, los tablones Rustic aún no migrados, compatibilidad de etiquetas con otros mods, JEI y pruebas visuales siguen pendientes. Véase el inventario en `RUSTIC_MECHANICS.md`.

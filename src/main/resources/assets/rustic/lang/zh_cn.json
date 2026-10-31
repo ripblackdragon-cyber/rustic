@@ -317,5 +317,21 @@
   "block.rustic.stairs_slate_roof": "板岩屋顶楼梯",
   "block.rustic.stairs_slate_brick": "板岩砖楼梯",
   "block.rustic.slate_roof_slab": "板岩屋顶台阶",
-  "block.rustic.slate_brick_slab": "板岩砖台阶"
+  "block.rustic.slate_brick_slab": "板岩砖台阶",
+  "block.rustic.painted_wood_white": "白色彩绘木板",
+  "block.rustic.painted_wood_orange": "橙色彩绘木板",
+  "block.rustic.painted_wood_magenta": "品红色彩绘木板",
+  "block.rustic.painted_wood_light_blue": "淡蓝色彩绘木板",
+  "block.rustic.painted_wood_yellow": "黄色彩绘木板",
+  "block.rustic.painted_wood_lime": "黄绿色彩绘木板",
+  "block.rustic.painted_wood_pink": "粉色彩绘木板",
+  "block.rustic.painted_wood_gray": "灰色彩绘木板",
+  "block.rustic.painted_wood_silver": "淡灰色彩绘木板",
+  "block.rustic.painted_wood_cyan": "青色彩绘木板",
+  "block.rustic.painted_wood_purple": "紫色彩绘木板",
+  "block.rustic.painted_wood_blue": "蓝色彩绘木板",
+  "block.rustic.painted_wood_brown": "棕色彩绘木板",
+  "block.rustic.painted_wood_green": "绿色彩绘木板",
+  "block.rustic.painted_wood_red": "红色彩绘木板",
+  "block.rustic.painted_wood_black": "黑色彩绘木板"
 }

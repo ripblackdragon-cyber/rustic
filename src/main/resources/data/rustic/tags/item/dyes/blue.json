@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:blue_dye",
+    {
+      "id": "#c:dyes/blue",
+      "required": false
+    },
+    "minecraft:lapis_lazuli"
+  ]
+}

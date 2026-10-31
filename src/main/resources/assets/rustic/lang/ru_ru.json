@@ -317,5 +317,21 @@
   "block.rustic.stairs_slate_roof": "Лестница сланцевой крыши",
   "block.rustic.stairs_slate_brick": "Лездника из сланцевого кирпича",
   "block.rustic.slate_roof_slab": "Половинка сланцевой крыши",
-  "block.rustic.slate_brick_slab": "Половинка сланцевого кирпича"
+  "block.rustic.slate_brick_slab": "Половинка сланцевого кирпича",
+  "block.rustic.painted_wood_white": "Белые доски",
+  "block.rustic.painted_wood_orange": "Оранжевые доски",
+  "block.rustic.painted_wood_magenta": "Пурпурные доски",
+  "block.rustic.painted_wood_light_blue": "Голубые доски",
+  "block.rustic.painted_wood_yellow": "Желтые доски",
+  "block.rustic.painted_wood_lime": "Лаймовые доски",
+  "block.rustic.painted_wood_pink": "Розовые доски",
+  "block.rustic.painted_wood_gray": "Серые доски",
+  "block.rustic.painted_wood_silver": "Светло-серые доски",
+  "block.rustic.painted_wood_cyan": "Бирюзовые доски",
+  "block.rustic.painted_wood_purple": "Фиолетовые доски",
+  "block.rustic.painted_wood_blue": "Синие доски",
+  "block.rustic.painted_wood_brown": "Коричневые доски",
+  "block.rustic.painted_wood_green": "Зеленые доски",
+  "block.rustic.painted_wood_red": "Красные доски",
+  "block.rustic.painted_wood_black": "Черные доски"
 }

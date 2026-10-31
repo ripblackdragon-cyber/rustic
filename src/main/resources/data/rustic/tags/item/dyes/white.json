@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:white_dye",
+    {
+      "id": "#c:dyes/white",
+      "required": false
+    },
+    "minecraft:bone_meal"
+  ]
+}

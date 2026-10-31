@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:brown_dye",
+    {
+      "id": "#c:dyes/brown",
+      "required": false
+    },
+    "minecraft:cocoa_beans"
+  ]
+}

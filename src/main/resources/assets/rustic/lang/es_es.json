@@ -326,5 +326,21 @@
   "block.rustic.stairs_slate_roof": "Escalera de tejado de Pizarra",
   "block.rustic.stairs_slate_brick": "Escaleras de ladrillo de Pizarra",
   "block.rustic.slate_roof_slab": "Losa de tejado de Pizarra",
-  "block.rustic.slate_brick_slab": "Losa de ladrillo de Pizarra"
+  "block.rustic.slate_brick_slab": "Losa de ladrillo de Pizarra",
+  "block.rustic.painted_wood_white": "Madera Pintada de Blanco",
+  "block.rustic.painted_wood_orange": "Madera Pintada de Naranja",
+  "block.rustic.painted_wood_magenta": "Madera Pintada de Magenta",
+  "block.rustic.painted_wood_light_blue": "Madera Pintada de Azul Claro",
+  "block.rustic.painted_wood_yellow": "Madera Pintada de Amarillo",
+  "block.rustic.painted_wood_lime": "Madera Pintada de Lima",
+  "block.rustic.painted_wood_pink": "Madera Pintada de Rosa",
+  "block.rustic.painted_wood_gray": "Madera Pintada de Gris",
+  "block.rustic.painted_wood_silver": "Madera Pintada de Gris Claro",
+  "block.rustic.painted_wood_cyan": "Madera Pintada de Cian",
+  "block.rustic.painted_wood_purple": "Madera Pintada de Púrpura",
+  "block.rustic.painted_wood_blue": "Madera Pintada de Azul",
+  "block.rustic.painted_wood_brown": "Madera Pintada de Marrón",
+  "block.rustic.painted_wood_green": "Madera Pintada de Verde",
+  "block.rustic.painted_wood_red": "Madera Pintada de Rojo",
+  "block.rustic.painted_wood_black": "Madera Pintada de Negro"
 }

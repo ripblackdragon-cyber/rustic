@@ -946,9 +946,13 @@
       "kind": "new ShapedOreRecipe",
       "file_sha256": "f8701e330c09c6974bcae4927f0fe11fd2cd7869f305ce5d4176269547170764",
       "fragment_sha256": "edefe7dc8add26f1c2cb825653d5dcd7c94b0e7b82a94e88493ba90634aa270a",
-      "status": "pending",
-      "targets": [],
-      "evidence": []
+      "status": "in_progress",
+      "targets": [
+        "src/main/resources/data/rustic/recipe/painted_wood_white.json"
+      ],
+      "evidence": [
+        "RUSTIC_MECHANICS.md"
+      ]
     },
     {
       "id": "java:387",
@@ -957,9 +961,13 @@
       "kind": "new ShapedOreRecipe",
       "file_sha256": "f8701e330c09c6974bcae4927f0fe11fd2cd7869f305ce5d4176269547170764",
       "fragment_sha256": "f1adb0ef78aa019f8aafb6fe2a091a41e1c21d54beeb92aedefd4c4c8d2bb5c1",
-      "status": "pending",
-      "targets": [],
-      "evidence": []
+      "status": "in_progress",
+      "targets": [
+        "src/main/resources/data/rustic/recipe/painted_wood_orange.json"
+      ],
+      "evidence": [
+        "RUSTIC_MECHANICS.md"
+      ]
     },
     {
       "id": "java:389",
@@ -968,9 +976,13 @@
       "kind": "new ShapedOreRecipe",
       "file_sha256": "f8701e330c09c6974bcae4927f0fe11fd2cd7869f305ce5d4176269547170764",
       "fragment_sha256": "66c01ef8e364dc620e6d3e19f51f6a0287da35036cd1c9d9df48a9d9031534e7",
-      "status": "pending",
-      "targets": [],
-      "evidence": []
+      "status": "in_progress",
+      "targets": [
+        "src/main/resources/data/rustic/recipe/painted_wood_magenta.json"
+      ],
+      "evidence": [
+        "RUSTIC_MECHANICS.md"
+      ]
     },
     {
       "id": "java:391",
@@ -979,9 +991,13 @@
       "kind": "new ShapedOreRecipe",
       "file_sha256": "f8701e330c09c6974bcae4927f0fe11fd2cd7869f305ce5d4176269547170764",
       "fragment_sha256": "ebba33eef38d60c3eaf0f0ac90f1bc5fa3958997aee5ca5e7a35f962f0a82d75",
-      "status": "pending",
-      "targets": [],
-      "evidence": []
+      "status": "in_progress",
+      "targets": [
+        "src/main/resources/data/rustic/recipe/painted_wood_light_blue.json"
+      ],
+      "evidence": [
+        "RUSTIC_MECHANICS.md"
+      ]
     },
     {
       "id": "java:393",
@@ -990,9 +1006,13 @@
       "kind": "new ShapedOreRecipe",
       "file_sha256": "f8701e330c09c6974bcae4927f0fe11fd2cd7869f305ce5d4176269547170764",
       "fragment_sha256": "e4335638bde0e70e5fca7704757b14188822b3916a34502ae47c61b27789978d",
-      "status": "pending",
-      "targets": [],
-      "evidence": []
+      "status": "in_progress",
+      "targets": [
+        "src/main/resources/data/rustic/recipe/painted_wood_yellow.json"
+      ],
+      "evidence": [
+        "RUSTIC_MECHANICS.md"
+      ]
     },
     {
       "id": "java:395",
@@ -1001,9 +1021,13 @@
       "kind": "new ShapedOreRecipe",
       "file_sha256": "f8701e330c09c6974bcae4927f0fe11fd2cd7869f305ce5d4176269547170764",
       "fragment_sha256": "776085c754bf18aa0765381b938f6c195c6ccf884827e7d54e60704f59de8d0c",
-      "status": "pending",
-      "targets": [],
-      "evidence": []
+      "status": "in_progress",
+      "targets": [
+        "src/main/resources/data/rustic/recipe/painted_wood_lime.json"
+      ],
+      "evidence": [
+        "RUSTIC_MECHANICS.md"
+      ]
     },
     {
       "id": "java:397",
@@ -1012,9 +1036,13 @@
       "kind": "new ShapedOreRecipe",
       "file_sha256": "f8701e330c09c6974bcae4927f0fe11fd2cd7869f305ce5d4176269547170764",
       "fragment_sha256": "15cc6c515fe120d3756164527f1fac95b2240847ab0a3c17f0953c283c0485db",
-      "status": "pending",
-      "targets": [],
-      "evidence": []
+      "status": "in_progress",
+      "targets": [
+        "src/main/resources/data/rustic/recipe/painted_wood_pink.json"
+      ],
+      "evidence": [
+        "RUSTIC_MECHANICS.md"
+      ]
     },
     {
       "id": "java:399",
@@ -1023,9 +1051,13 @@
       "kind": "new ShapedOreRecipe",
       "file_sha256": "f8701e330c09c6974bcae4927f0fe11fd2cd7869f305ce5d4176269547170764",
       "fragment_sha256": "018cd99773b9248d0e8e77a0d0d62ddd5069c1068da527cd3049faa99358511e",
-      "status": "pending",
-      "targets": [],
-      "evidence": []
+      "status": "in_progress",
+      "targets": [
+        "src/main/resources/data/rustic/recipe/painted_wood_gray.json"
+      ],
+      "evidence": [
+        "RUSTIC_MECHANICS.md"
+      ]
     },
     {
       "id": "java:401",
@@ -1034,9 +1066,13 @@
       "kind": "new ShapedOreRecipe",
       "file_sha256": "f8701e330c09c6974bcae4927f0fe11fd2cd7869f305ce5d4176269547170764",
       "fragment_sha256": "1483a61d3cb58ef60ae3f542cc1d0848421d58ce8134a0f31a9722cff6b68648",
-      "status": "pending",
-      "targets": [],
-      "evidence": []
+      "status": "in_progress",
+      "targets": [
+        "src/main/resources/data/rustic/recipe/painted_wood_silver.json"
+      ],
+      "evidence": [
+        "RUSTIC_MECHANICS.md"
+      ]
     },
     {
       "id": "java:403",
@@ -1045,9 +1081,13 @@
       "kind": "new ShapedOreRecipe",
       "file_sha256": "f8701e330c09c6974bcae4927f0fe11fd2cd7869f305ce5d4176269547170764",
       "fragment_sha256": "29662b12e9bae703b0f3a25e2311307d5bc13499ae554b3c1337278c23403e77",
-      "status": "pending",
-      "targets": [],
-      "evidence": []
+      "status": "in_progress",
+      "targets": [
+        "src/main/resources/data/rustic/recipe/painted_wood_cyan.json"
+      ],
+      "evidence": [
+        "RUSTIC_MECHANICS.md"
+      ]
     },
     {
       "id": "java:405",
@@ -1056,9 +1096,13 @@
       "kind": "new ShapedOreRecipe",
       "file_sha256": "f8701e330c09c6974bcae4927f0fe11fd2cd7869f305ce5d4176269547170764",
       "fragment_sha256": "67b64083e5fd2f7bdf8731f085ba7dc072e09fd1e3b286815c9784fd153cce87",
-      "status": "pending",
-      "targets": [],
-      "evidence": []
+      "status": "in_progress",
+      "targets": [
+        "src/main/resources/data/rustic/recipe/painted_wood_purple.json"
+      ],
+      "evidence": [
+        "RUSTIC_MECHANICS.md"
+      ]
     },
     {
       "id": "java:407",
@@ -1067,9 +1111,13 @@
       "kind": "new ShapedOreRecipe",
       "file_sha256": "f8701e330c09c6974bcae4927f0fe11fd2cd7869f305ce5d4176269547170764",
       "fragment_sha256": "995dcedf73eab10f2d459ff00ea315b7eef61ea100e4dd931a14a31538aefd9f",
-      "status": "pending",
-      "targets": [],
-      "evidence": []
+      "status": "in_progress",
+      "targets": [
+        "src/main/resources/data/rustic/recipe/painted_wood_blue.json"
+      ],
+      "evidence": [
+        "RUSTIC_MECHANICS.md"
+      ]
     },
     {
       "id": "java:409",
@@ -1078,9 +1126,13 @@
       "kind": "new ShapedOreRecipe",
       "file_sha256": "f8701e330c09c6974bcae4927f0fe11fd2cd7869f305ce5d4176269547170764",
       "fragment_sha256": "763b0e20862edb70d530e9cec45f12fc01405b09350552c58458fe1824595a39",
-      "status": "pending",
-      "targets": [],
-      "evidence": []
+      "status": "in_progress",
+      "targets": [
+        "src/main/resources/data/rustic/recipe/painted_wood_brown.json"
+      ],
+      "evidence": [
+        "RUSTIC_MECHANICS.md"
+      ]
     },
     {
       "id": "java:411",
@@ -1089,9 +1141,13 @@
       "kind": "new ShapedOreRecipe",
       "file_sha256": "f8701e330c09c6974bcae4927f0fe11fd2cd7869f305ce5d4176269547170764",
       "fragment_sha256": "4ebb7d2845ec5bc9fcf2e30aacc68a92de71aa0365a8bd223d3bc989b35be209",
-      "status": "pending",
-      "targets": [],
-      "evidence": []
+      "status": "in_progress",
+      "targets": [
+        "src/main/resources/data/rustic/recipe/painted_wood_green.json"
+      ],
+      "evidence": [
+        "RUSTIC_MECHANICS.md"
+      ]
     },
     {
       "id": "java:413",
@@ -1100,9 +1156,13 @@
       "kind": "new ShapedOreRecipe",
       "file_sha256": "f8701e330c09c6974bcae4927f0fe11fd2cd7869f305ce5d4176269547170764",
       "fragment_sha256": "d65b9e4c610fbad17b00f325094bae6ed6b6483eae34773778e5dee85a0b0ddd",
-      "status": "pending",
-      "targets": [],
-      "evidence": []
+      "status": "in_progress",
+      "targets": [
+        "src/main/resources/data/rustic/recipe/painted_wood_red.json"
+      ],
+      "evidence": [
+        "RUSTIC_MECHANICS.md"
+      ]
     },
     {
       "id": "java:415",
@@ -1111,9 +1171,13 @@
       "kind": "new ShapedOreRecipe",
       "file_sha256": "f8701e330c09c6974bcae4927f0fe11fd2cd7869f305ce5d4176269547170764",
       "fragment_sha256": "04316a62e4b729d718842831eaa8235773305514c8612be5877b690489e49e3d",
-      "status": "pending",
-      "targets": [],
-      "evidence": []
+      "status": "in_progress",
+      "targets": [
+        "src/main/resources/data/rustic/recipe/painted_wood_black.json"
+      ],
+      "evidence": [
+        "RUSTIC_MECHANICS.md"
+      ]
     },
     {
       "id": "java:422",
