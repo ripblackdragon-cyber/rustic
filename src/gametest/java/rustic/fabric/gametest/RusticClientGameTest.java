@@ -49,7 +49,8 @@ public final class RusticClientGameTest implements FabricClientGameTest {
             checkFood(context, world.getServer(), connection, RusticItems.CHILI_PEPPER, 13, 2.4F, 40);
             checkChiliAtFullHunger(context, world.getServer(), connection);
             context.takeScreenshot("rustic-olives-after-eating");
-            checkSlatePlacementAndMining(context, world.getServer(), connection);
+            checkBlockPlacementAndMining(context, world.getServer(), connection, RusticBlocks.SLATE, Items.WOODEN_PICKAXE);
+            checkBlockPlacementAndMining(context, world.getServer(), connection, RusticBlocks.PAINTED_WOOD_SILVER, Items.WOODEN_AXE);
             checkSlabMerging(context, world.getServer(), connection, RusticBlocks.SLATE_ROOF_SLAB);
             checkSlabMerging(context, world.getServer(), connection, RusticBlocks.SLATE_BRICK_SLAB);
             checkCreativeTab(context, world.getServer());
@@ -67,8 +68,8 @@ public final class RusticClientGameTest implements FabricClientGameTest {
         }
     }
 
-    private void checkSlatePlacementAndMining(ClientGameTestContext context, TestServerContext server,
-                                              TestServerConnection connection) {
+    private void checkBlockPlacementAndMining(ClientGameTestContext context, TestServerContext server,
+                                              TestServerConnection connection, Block block, Item tool) {
         BlockPos target = server.computeOnServer(minecraftServer -> {
             var player = connection.getServerPlayer();
             var level = player.level();
@@ -76,20 +77,20 @@ public final class RusticClientGameTest implements FabricClientGameTest {
             level.setBlockAndUpdate(pos, Blocks.AIR.defaultBlockState());
             level.setBlockAndUpdate(pos.above(), Blocks.AIR.defaultBlockState());
             level.setBlockAndUpdate(pos.below(), Blocks.STONE.defaultBlockState());
-            player.setItemInHand(InteractionHand.MAIN_HAND, new ItemStack(RusticBlocks.SLATE));
+            player.setItemInHand(InteractionHand.MAIN_HAND, new ItemStack(block));
             return pos;
         });
-        context.waitFor(client -> client.player.getMainHandItem().is(RusticBlocks.SLATE.asItem())
+        context.waitFor(client -> client.player.getMainHandItem().is(block.asItem())
                 && client.level.getBlockState(target.below()).is(Blocks.STONE));
         context.getInput().lookAt(target.below());
         context.getInput().pressKey(options -> options.keyUse);
         connection.waitForServerboundPackets();
-        server.waitFor(minecraftServer -> connection.getServerPlayer().level().getBlockState(target).is(RusticBlocks.SLATE));
-        context.waitFor(client -> client.level.getBlockState(target).is(RusticBlocks.SLATE));
-        context.takeScreenshot("rustic-placed-slate");
+        server.waitFor(minecraftServer -> connection.getServerPlayer().level().getBlockState(target).is(block));
+        context.waitFor(client -> client.level.getBlockState(target).is(block));
+        context.takeScreenshot("rustic-placed-" + net.minecraft.core.registries.BuiltInRegistries.BLOCK.getKey(block).getPath());
         server.runOnServer(minecraftServer -> connection.getServerPlayer()
-                .setItemInHand(InteractionHand.MAIN_HAND, new ItemStack(Items.WOODEN_PICKAXE)));
-        context.waitFor(client -> client.player.getMainHandItem().is(Items.WOODEN_PICKAXE));
+                .setItemInHand(InteractionHand.MAIN_HAND, new ItemStack(tool)));
+        context.waitFor(client -> client.player.getMainHandItem().is(tool));
         context.getInput().lookAt(target);
         context.getInput().holdKeyFor(options -> options.keyAttack, 80);
         connection.waitForServerboundPackets();
@@ -97,9 +98,9 @@ public final class RusticClientGameTest implements FabricClientGameTest {
             var player = connection.getServerPlayer();
             var level = player.level();
             boolean dropped = !level.getEntitiesOfClass(ItemEntity.class, new AABB(target).inflate(3),
-                    entity -> entity.getItem().is(RusticBlocks.SLATE.asItem())).isEmpty();
+                    entity -> entity.getItem().is(block.asItem())).isEmpty();
             return level.getBlockState(target).isAir()
-                    && (dropped || player.getInventory().contains(new ItemStack(RusticBlocks.SLATE)));
+                    && (dropped || player.getInventory().contains(new ItemStack(block)));
         });
     }
 
@@ -294,7 +295,8 @@ public final class RusticClientGameTest implements FabricClientGameTest {
                 checkFood(context, server, connection, RusticItems.GRAPES, 13, 1.8F);
                 checkFood(context, server, connection, RusticItems.OLIVES, 11, 0.8F);
                 checkFoodAtFullHunger(context, server, connection, RusticItems.OLIVES);
-                checkSlatePlacementAndMining(context, server, connection);
+                checkBlockPlacementAndMining(context, server, connection, RusticBlocks.SLATE, Items.WOODEN_PICKAXE);
+                checkBlockPlacementAndMining(context, server, connection, RusticBlocks.PAINTED_WOOD_SILVER, Items.WOODEN_AXE);
                 checkFood(context, server, connection, RusticItems.CHILI_PEPPER, 13, 2.4F, 40);
                 checkChiliAtFullHunger(context, server, connection);
                 // Set up state, then let the server save it when the real client disconnects.
