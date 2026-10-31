@@ -357,5 +357,7 @@
   "block.rustic.fence_olive": "Valla de Madera de Olivo",
   "block.rustic.fence_ironwood": "Valla de Madera Férrica",
   "block.rustic.fence_gate_olive": "Puerta de Valla de Madera de Olivo",
-  "block.rustic.fence_gate_ironwood": "Puerta de Valla de Madera Férrica"
+  "block.rustic.fence_gate_ironwood": "Puerta de Valla de Madera Férrica",
+  "block.rustic.olive_door": "Puerta de Olivo",
+  "block.rustic.ironwood_door": "Puerta de Madera Férrica"
 }

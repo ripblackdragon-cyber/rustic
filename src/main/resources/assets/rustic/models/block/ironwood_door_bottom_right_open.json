@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/door_bottom_right_open",
+  "textures": {
+    "bottom": "rustic:blocks/door_ironwood_lower",
+    "top": "rustic:blocks/door_ironwood_upper"
+  }
+}

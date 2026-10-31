@@ -348,5 +348,7 @@
   "block.rustic.fence_olive": "Забор из оливы",
   "block.rustic.fence_ironwood": "Забор из железного дерева",
   "block.rustic.fence_gate_olive": "Калитка из оливы",
-  "block.rustic.fence_gate_ironwood": "Калитка из железного дерева"
+  "block.rustic.fence_gate_ironwood": "Калитка из железного дерева",
+  "block.rustic.olive_door": "Дверь из оливы",
+  "block.rustic.ironwood_door": "Дверь из железного дерева"
 }

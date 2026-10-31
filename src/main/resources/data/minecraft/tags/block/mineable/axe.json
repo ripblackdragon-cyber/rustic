@@ -28,6 +28,8 @@
     "rustic:fence_olive",
     "rustic:fence_ironwood",
     "rustic:fence_gate_olive",
-    "rustic:fence_gate_ironwood"
+    "rustic:fence_gate_ironwood",
+    "rustic:olive_door",
+    "rustic:ironwood_door"
   ]
 }

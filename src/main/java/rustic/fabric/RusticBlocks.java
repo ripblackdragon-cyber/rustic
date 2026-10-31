@@ -22,6 +22,8 @@ import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.SlabBlock;
 import net.minecraft.world.level.block.StairBlock;
+import net.minecraft.world.level.block.DoorBlock;
+import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.block.FenceBlock;
 import net.minecraft.world.level.block.FenceGateBlock;
 import net.minecraft.world.level.block.state.properties.WoodType;
@@ -72,6 +74,9 @@ public final class RusticBlocks {
     public static final Block IRONWOOD_FENCE = registerWoodShape("fence_ironwood", FenceBlock::new, true);
     public static final Block OLIVE_FENCE_GATE = registerWoodShape("fence_gate_olive", p -> new FenceGateBlock(WoodType.OAK, p), true);
     public static final Block IRONWOOD_FENCE_GATE = registerWoodShape("fence_gate_ironwood", p -> new FenceGateBlock(WoodType.OAK, p), true);
+
+    public static final Block OLIVE_DOOR = registerDoor("olive_door");
+    public static final Block IRONWOOD_DOOR = registerDoor("ironwood_door");
 
     public static final Block CLAY_WALL = registerClayWall("clay_wall", Block::new);
     public static final Block CLAY_WALL_CROSS = registerClayWall("clay_wall_cross", Block::new);
@@ -131,10 +136,25 @@ public final class RusticBlocks {
         return block;
     }
 
+    private static Block registerDoor(String name) {
+        var blockKey = ResourceKey.create(Registries.BLOCK, RusticFabric.id(name));
+        var itemKey = ResourceKey.create(Registries.ITEM, RusticFabric.id(name));
+        var block = new DoorBlock(BlockSetType.OAK, BlockBehaviour.Properties.of().setId(blockKey)
+                .strength(3.0F).sound(SoundType.WOOD).noOcclusion());
+        Registry.register(BuiltInRegistries.BLOCK, blockKey, block);
+        Registry.register(BuiltInRegistries.ITEM, itemKey, new BlockItem(block,
+                fuel(new Item.Properties().setId(itemKey).useBlockDescriptionPrefix(), "cooking/time_wood_items_large")));
+        return block;
+    }
+
     private static Item.Properties woodFuel(Item.Properties properties) {
+        return fuel(properties, "cooking/time_wood_blocks");
+    }
+
+    private static Item.Properties fuel(Item.Properties properties, String provider) {
         return properties.component(DataComponents.COOKING_FUEL, new CookingFuel(
                 ResolvableInt.fromKey(ResourceKey.create(Registries.CONTEXT_INT_PROVIDER,
-                        Identifier.fromNamespaceAndPath("minecraft", "cooking/time_wood_blocks"))),
+                        Identifier.fromNamespaceAndPath("minecraft", provider))),
                 ResolvableFloat.fromKey(ContextFloatProviders.COOKING_DEFAULT_SPEED_MULTIPLIER)));
     }
 
@@ -177,6 +197,8 @@ public final class RusticBlocks {
             output.accept(PAINTED_WOOD_GREEN);
             output.accept(PAINTED_WOOD_RED);
             output.accept(PAINTED_WOOD_BLACK);
+            output.accept(OLIVE_DOOR);
+            output.accept(IRONWOOD_DOOR);
             output.accept(OLIVE_FENCE);
             output.accept(IRONWOOD_FENCE);
             output.accept(OLIVE_FENCE_GATE);

@@ -28,6 +28,10 @@ ALIASES.update({f'tile.rustic.{name}.name': f'block.rustic.{name}' for name in (
     'fence_olive', 'fence_ironwood', 'fence_gate_olive', 'fence_gate_ironwood'
 )})
 
+# Legacy ItemDoor used item.tile keys despite sharing the block's registry ID.
+ALIASES.update({f'item.tile.rustic.{name}.name': f'block.rustic.{name}'
+                for name in ('olive_door', 'ironwood_door')})
+
 
 def parse_lang(raw, name='<input>'):
     # utf-8-sig accepts the BOM in two upstream files and preserves every value byte

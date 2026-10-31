@@ -26,6 +26,8 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.SlabBlock;
+import net.minecraft.world.level.block.DoorBlock;
+import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.world.level.block.FenceBlock;
 import net.minecraft.world.level.block.FenceGateBlock;
 import net.minecraft.world.level.block.StairBlock;
@@ -408,6 +410,19 @@ public class RusticGameTests {
                     "Double wooden slab must drop two slabs");
             assertShapedRecipe(helper, planks[i], slabs[i], List.of("SSS"), 6);
             assertShapedRecipe(helper, planks[i], stairs[i], List.of("S  ", "SS ", "SSS"), 4);
+        }
+        Block[] doors = {RusticBlocks.OLIVE_DOOR, RusticBlocks.IRONWOOD_DOOR};
+        for (int i = 0; i < doors.length; i++) {
+            var lower = doors[i].defaultBlockState();
+            var upper = lower.setValue(DoorBlock.HALF, DoubleBlockHalf.UPPER);
+            helper.assertTrue(lower.is(BlockTags.MINEABLE_WITH_AXE)
+                    && lower.getDestroySpeed(helper.getLevel(), helper.absolutePos(pos)) == 3.0F
+                    && new ItemStack(doors[i]).has(DataComponents.COOKING_FUEL), "Door properties differ");
+            var lowerDrops = Block.getDrops(lower, helper.getLevel(), helper.absolutePos(pos), null, player, ItemStack.EMPTY);
+            var upperDrops = Block.getDrops(upper, helper.getLevel(), helper.absolutePos(pos), null, player, ItemStack.EMPTY);
+            helper.assertTrue(lowerDrops.size() == 1 && lowerDrops.getFirst().is(doors[i].asItem())
+                    && lowerDrops.getFirst().getCount() == 1 && upperDrops.isEmpty(), "Door half drops differ");
+            assertShapedRecipe(helper, planks[i], doors[i], List.of("SS", "SS", "SS"), 3);
         }
         Block[] fences = {RusticBlocks.OLIVE_FENCE, RusticBlocks.IRONWOOD_FENCE};
         Block[] gates = {RusticBlocks.OLIVE_FENCE_GATE, RusticBlocks.IRONWOOD_FENCE_GATE};

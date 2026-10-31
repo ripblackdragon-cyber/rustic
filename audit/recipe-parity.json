@@ -273,8 +273,10 @@
       "kind": "json",
       "file_sha256": "387ade337b60aa2bc3836ebfa2f519a4d8638fc8c854dc09b2338640dcd820be",
       "fragment_sha256": "387ade337b60aa2bc3836ebfa2f519a4d8638fc8c854dc09b2338640dcd820be",
-      "status": "pending",
-      "targets": [],
+      "status": "in_progress",
+      "targets": [
+        "src/main/resources/data/rustic/recipe/ironwood_door.json"
+      ],
       "evidence": []
     },
     {
@@ -381,8 +383,10 @@
       "kind": "json",
       "file_sha256": "e76457cbd8deeba619ff85bf2ffa5a3f69449ea3ac3931804c4e53c45214384a",
       "fragment_sha256": "e76457cbd8deeba619ff85bf2ffa5a3f69449ea3ac3931804c4e53c45214384a",
-      "status": "pending",
-      "targets": [],
+      "status": "in_progress",
+      "targets": [
+        "src/main/resources/data/rustic/recipe/olive_door.json"
+      ],
       "evidence": []
     },
     {

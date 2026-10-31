@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "condition": {
+        "type": "minecraft:survives_explosion"
+      },
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "condition": {
+            "type": "minecraft:match_block",
+            "blocks": "rustic:olive_door",
+            "state": {
+              "half": "lower"
+            }
+          },
+          "name": "rustic:olive_door"
+        }
+      ],
+      "rolls": 1
+    }
+  ],
+  "random_sequence": "rustic:blocks/olive_door"
+}

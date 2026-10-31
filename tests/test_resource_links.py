@@ -21,7 +21,7 @@ class ResourceLinkTests(unittest.TestCase):
         item_ids = registered_item_ids()
         self.assertEqual(len(item_ids), len(set(item_ids)), 'duplicate registration IDs')
         definitions = {p.stem for p in (ASSETS / 'items').glob('*.json')}
-        block_ids = set(re.findall(r'\bregister(?:Painted|ClayWall|Wood|WoodShape)?\("([a-z0-9_]+)"', (JAVA.parent / 'RusticBlocks.java').read_text()))
+        block_ids = set(re.findall(r'\bregister(?:Painted|ClayWall|Wood|WoodShape|Door)?\("([a-z0-9_]+)"', (JAVA.parent / 'RusticBlocks.java').read_text()))
         self.assertEqual(set(item_ids) | block_ids, definitions)
         self.assertFalse(set(item_ids) & block_ids)
         for name in item_ids:
@@ -44,7 +44,7 @@ class ResourceLinkTests(unittest.TestCase):
 
     def test_all_rustic_smelting_inputs_and_outputs_are_registered(self):
         item_ids = {f'rustic:{name}' for name in registered_item_ids()}
-        item_ids |= {f'rustic:{name}' for name in re.findall(r'\bregister(?:Painted|ClayWall|Wood|WoodShape)?\("([a-z0-9_]+)"', (JAVA.parent / 'RusticBlocks.java').read_text())}
+        item_ids |= {f'rustic:{name}' for name in re.findall(r'\bregister(?:Painted|ClayWall|Wood|WoodShape|Door)?\("([a-z0-9_]+)"', (JAVA.parent / 'RusticBlocks.java').read_text())}
         recipes = list(RECIPE_DIR.glob('*.json'))
         self.assertTrue(recipes)
         for path in recipes:

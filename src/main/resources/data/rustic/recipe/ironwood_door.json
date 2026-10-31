@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "group": "minecraft:bed",
+  "pattern": [
+    "##",
+    "##",
+    "##"
+  ],
+  "key": {
+    "#": "rustic:planks_ironwood"
+  },
+  "result": {
+    "id": "rustic:ironwood_door",
+    "count": 3
+  }
+}

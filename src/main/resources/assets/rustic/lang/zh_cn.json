@@ -348,5 +348,7 @@
   "block.rustic.fence_olive": "橄榄木栅栏",
   "block.rustic.fence_ironwood": "铁树栅栏",
   "block.rustic.fence_gate_olive": "橄榄木栅栏门",
-  "block.rustic.fence_gate_ironwood": "铁树栅栏门"
+  "block.rustic.fence_gate_ironwood": "铁树栅栏门",
+  "block.rustic.olive_door": "橄榄木门",
+  "block.rustic.ironwood_door": "铁树门"
 }
