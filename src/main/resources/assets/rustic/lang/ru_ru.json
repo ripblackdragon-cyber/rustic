@@ -333,5 +333,8 @@
   "block.rustic.painted_wood_brown": "Коричневые доски",
   "block.rustic.painted_wood_green": "Зеленые доски",
   "block.rustic.painted_wood_red": "Красные доски",
-  "block.rustic.painted_wood_black": "Черные доски"
+  "block.rustic.painted_wood_black": "Черные доски",
+  "block.rustic.clay_wall": "Глиняная стена",
+  "block.rustic.clay_wall_cross": "Глиняная стена",
+  "block.rustic.clay_wall_diag": "Глиняная стена"
 }

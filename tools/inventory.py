@@ -49,7 +49,7 @@ for filename, label, path, prefix in [('RUSTIC_BLOCKS.md', 'bloques', blocks, 'M
                    'SLATE_PILLAR', 'SLATE_ROOF_STAIRS', 'SLATE_BRICK_STAIRS',
                    'SLATE_ROOF_SLAB', 'SLATE_BRICK_SLAB', 'SLATE_ROOF_SLAB_ITEM', 'SLATE_BRICK_SLAB_ITEM',
                    'SLATE_ROOF_DOUBLESLAB', 'SLATE_BRICK_DOUBLESLAB',
-                   'PAINTED_WOOD_WHITE', 'PAINTED_WOOD_ORANGE', 'PAINTED_WOOD_MAGENTA', 'PAINTED_WOOD_LIGHT_BLUE', 'PAINTED_WOOD_YELLOW', 'PAINTED_WOOD_LIME', 'PAINTED_WOOD_PINK', 'PAINTED_WOOD_GRAY', 'PAINTED_WOOD_SILVER', 'PAINTED_WOOD_CYAN', 'PAINTED_WOOD_PURPLE', 'PAINTED_WOOD_BLUE', 'PAINTED_WOOD_BROWN', 'PAINTED_WOOD_GREEN', 'PAINTED_WOOD_RED', 'PAINTED_WOOD_BLACK')
+                   'PAINTED_WOOD_WHITE', 'PAINTED_WOOD_ORANGE', 'PAINTED_WOOD_MAGENTA', 'PAINTED_WOOD_LIGHT_BLUE', 'PAINTED_WOOD_YELLOW', 'PAINTED_WOOD_LIME', 'PAINTED_WOOD_PINK', 'PAINTED_WOOD_GRAY', 'PAINTED_WOOD_SILVER', 'PAINTED_WOOD_CYAN', 'PAINTED_WOOD_PURPLE', 'PAINTED_WOOD_BLUE', 'PAINTED_WOOD_BROWN', 'PAINTED_WOOD_GREEN', 'PAINTED_WOOD_RED', 'PAINTED_WOOD_BLACK', 'CLAY_WALL', 'CLAY_WALL_CROSS', 'CLAY_WALL_DIAG')
         rows = [row.replace('| Pendiente |', '| En curso, paridad sin verificar |')
                 if any(f'`ModBlocks.{name}`' in row for name in started) else row for row in rows]
     body = f'# Índice de {label} originales\n\n' + NOTICE
@@ -109,7 +109,7 @@ body = '# Inventario de recursos originales\n\n' + NOTICE
 body += ('SHA-256 de cada archivo en el árbol de recursos original, sin transformaciones. '
          'Las 376 texturas y metadatos de la referencia 1.2.0 también están copiados sin cambios en '
          '`src/main/resources/assets/rustic/textures`; ocho archivos de idioma se han convertido a JSON '
-         'preservando las claves originales y añadiendo alias para diez objetos y veintiséis bloques. Son pasos parciales: aún faltan adaptación de modelos, claves y '
+         'preservando las claves originales y añadiendo alias para diez objetos y veintinueve bloques. Son pasos parciales: aún faltan adaptación de modelos, claves y '
          'renderizadores, y pruebas visuales en 26.3. Las filas siguen pendientes de integración y prueba. '
          'No se ha auditado visualmente cada imagen ni validado la compatibilidad de cada modelo.\n\n')
 body += 'Extensiones: ' + ', '.join(f'`{k}`: {v}' for k, v in sorted(counts.items())) + '.\n\n'

@@ -13,6 +13,7 @@ EXPECTED = {
     'rustic_gametest:rustic_game_tests_slate_shapes_and_recipes',
     'rustic_gametest:rustic_game_tests_chili_consumption',
     'rustic_gametest:rustic_game_tests_painted_wood',
+    'rustic_gametest:rustic_game_tests_clay_walls',
 }
 
 

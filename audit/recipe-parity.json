@@ -726,9 +726,13 @@
       "kind": "new ShapedOreRecipe",
       "file_sha256": "f8701e330c09c6974bcae4927f0fe11fd2cd7869f305ce5d4176269547170764",
       "fragment_sha256": "3cfb1c68e9f9310187ea7197ea2cb79e1fedcde2c637a4b1275338873adc3160",
-      "status": "pending",
-      "targets": [],
-      "evidence": []
+      "status": "in_progress",
+      "targets": [
+        "src/main/resources/data/rustic/recipe/clay_wall.json"
+      ],
+      "evidence": [
+        "RUSTIC_MECHANICS.md"
+      ]
     },
     {
       "id": "java:335",
@@ -737,9 +741,13 @@
       "kind": "new ShapedOreRecipe",
       "file_sha256": "f8701e330c09c6974bcae4927f0fe11fd2cd7869f305ce5d4176269547170764",
       "fragment_sha256": "d6915bea51d184c632163d1b850c1ef99187f44b7f7fde318fa62796fffaba8c",
-      "status": "pending",
-      "targets": [],
-      "evidence": []
+      "status": "in_progress",
+      "targets": [
+        "src/main/resources/data/rustic/recipe/clay_wall_cross.json"
+      ],
+      "evidence": [
+        "RUSTIC_MECHANICS.md"
+      ]
     },
     {
       "id": "java:337",
@@ -748,9 +756,13 @@
       "kind": "new ShapedOreRecipe",
       "file_sha256": "f8701e330c09c6974bcae4927f0fe11fd2cd7869f305ce5d4176269547170764",
       "fragment_sha256": "25378788caec47080b11924078c0917df720ab2b36ba2e3a74486f058b42edf7",
-      "status": "pending",
-      "targets": [],
-      "evidence": []
+      "status": "in_progress",
+      "targets": [
+        "src/main/resources/data/rustic/recipe/clay_wall_diag.json"
+      ],
+      "evidence": [
+        "RUSTIC_MECHANICS.md"
+      ]
     },
     {
       "id": "java:341",

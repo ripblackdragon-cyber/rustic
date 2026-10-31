@@ -170,5 +170,8 @@
   "block.rustic.painted_wood_brown": "Madeira Pintada de Marrom",
   "block.rustic.painted_wood_green": "Madeira Pintada de Verde",
   "block.rustic.painted_wood_red": "Madeira Pintada de Vermelho",
-  "block.rustic.painted_wood_black": "Madeira Pintada de Preto"
+  "block.rustic.painted_wood_black": "Madeira Pintada de Preto",
+  "block.rustic.clay_wall": "Parede de Argila",
+  "block.rustic.clay_wall_cross": "Parede de Argila Transversal",
+  "block.rustic.clay_wall_diag": "Parede de Argila Diagonal"
 }

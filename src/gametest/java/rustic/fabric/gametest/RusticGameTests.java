@@ -14,6 +14,9 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.item.crafting.CraftingInput;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.tags.BlockTags;
@@ -26,6 +29,7 @@ import net.minecraft.world.level.block.StairBlock;
 import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.block.state.properties.SlabType;
 import net.minecraft.world.level.block.entity.FurnaceBlockEntity;
+import rustic.fabric.DiagonalClayWallBlock;
 import rustic.fabric.RusticBlocks;
 import rustic.fabric.RusticCreativeTabs;
 import rustic.fabric.RusticFabric;
@@ -293,6 +297,60 @@ public class RusticGameTests {
         helper.assertTrue(recipe.isPresent(), "Missing painted wood recipe for " + output);
         ItemStack result = recipe.orElseThrow().value().assemble(grid);
         helper.assertTrue(result.is(output.asItem()) && result.getCount() == 8, "Wrong painted wood recipe output for " + output);
+    }
+
+    @GameTest
+    public void clayWalls(GameTestHelper helper) {
+        Block[] blocks = {RusticBlocks.CLAY_WALL, RusticBlocks.CLAY_WALL_CROSS, RusticBlocks.CLAY_WALL_DIAG};
+        String[] names = {"clay_wall", "clay_wall_cross", "clay_wall_diag"};
+        Player player = helper.makeMockPlayer(GameType.SURVIVAL);
+        BlockPos pos = new BlockPos(1, 1, 1);
+        for (int i = 0; i < blocks.length; i++) {
+            Block block = blocks[i];
+            helper.setBlock(pos, block);
+            var state = helper.getBlockState(pos);
+            helper.assertTrue(RusticFabric.id(names[i]).equals(BuiltInRegistries.BLOCK.getKey(block))
+                    && RusticFabric.id(names[i]).equals(BuiltInRegistries.ITEM.getKey(block.asItem())), "Bad clay wall ID");
+            helper.assertTrue(state.is(BlockTags.MINEABLE_WITH_SHOVEL) && !state.requiresCorrectToolForDrops()
+                    && state.getDestroySpeed(helper.getLevel(), helper.absolutePos(pos)) == 1.0F, "Wrong clay wall properties");
+            var drops = Block.getDrops(state, helper.getLevel(), helper.absolutePos(pos), null, player, ItemStack.EMPTY);
+            helper.assertTrue(drops.size() == 1 && drops.getFirst().is(block.asItem()) && drops.getFirst().getCount() == 1,
+                    "Wrong clay wall drops");
+        }
+        assertClayRecipe(helper, Blocks.CLAY.asItem(), RusticBlocks.CLAY_WALL, List.of(" P ", "PCP", " P "), 8);
+        assertClayRecipe(helper, RusticBlocks.CLAY_WALL.asItem(), RusticBlocks.CLAY_WALL_CROSS, List.of("P P", " C ", "P P"), 1);
+        assertClayRecipe(helper, RusticBlocks.CLAY_WALL.asItem(), RusticBlocks.CLAY_WALL_DIAG, List.of("P  ", " C ", "  P"), 1);
+        var diagonal = (DiagonalClayWallBlock) RusticBlocks.CLAY_WALL_DIAG;
+        BlockPos clicked = helper.absolutePos(new BlockPos(2, 1, 2));
+        helper.setBlock(new BlockPos(2, 1, 2), Blocks.STONE);
+        assertClayFacing(helper, diagonal, player, clicked, Direction.UP, 0.9, 1.0, 0.5, Direction.EAST);
+        assertClayFacing(helper, diagonal, player, clicked, Direction.UP, 0.1, 1.0, 0.5, Direction.WEST);
+        assertClayFacing(helper, diagonal, player, clicked, Direction.UP, 0.5, 1.0, 0.9, Direction.SOUTH);
+        assertClayFacing(helper, diagonal, player, clicked, Direction.UP, 0.5, 1.0, 0.1, Direction.NORTH);
+        assertClayFacing(helper, diagonal, player, clicked, Direction.NORTH, 0.9, 0.5, 0.0, Direction.SOUTH);
+        var state = diagonal.defaultBlockState().setValue(DiagonalClayWallBlock.FACING, Direction.NORTH);
+        helper.assertTrue(state.rotate(Rotation.CLOCKWISE_90).getValue(DiagonalClayWallBlock.FACING) == Direction.EAST,
+                "Diagonal wall rotation differs");
+        helper.succeed();
+    }
+
+    private void assertClayFacing(GameTestHelper helper, DiagonalClayWallBlock block, Player player, BlockPos pos,
+                                  Direction face, double x, double y, double z, Direction expected) {
+        var hit = new BlockHitResult(new Vec3(pos.getX() + x, pos.getY() + y, pos.getZ() + z), face, pos, false);
+        var context = new BlockPlaceContext(player, InteractionHand.MAIN_HAND, new ItemStack(block), hit);
+        var state = block.getStateForPlacement(context);
+        helper.assertTrue(state.getValue(DiagonalClayWallBlock.FACING) == expected, "Diagonal wall orientation differs");
+    }
+
+    private void assertClayRecipe(GameTestHelper helper, Item center, Block output, List<String> pattern, int count) {
+        List<ItemStack> stacks = pattern.stream().flatMapToInt(String::chars)
+                .mapToObj(c -> c == 'P' ? new ItemStack(RusticBlocks.PAINTED_WOOD_RED) :
+                        c == 'C' ? new ItemStack(center) : ItemStack.EMPTY).toList();
+        var grid = CraftingInput.of(pattern.getFirst().length(), pattern.size(), stacks);
+        var recipe = helper.getLevel().recipeAccess().getRecipeFor(RecipeType.CRAFTING, grid, helper.getLevel());
+        helper.assertTrue(recipe.isPresent(), "Missing clay wall recipe");
+        ItemStack result = recipe.orElseThrow().value().assemble(grid);
+        helper.assertTrue(result.is(output.asItem()) && result.getCount() == count, "Wrong clay wall output");
     }
 
     @GameTest(maxTicks = 500)

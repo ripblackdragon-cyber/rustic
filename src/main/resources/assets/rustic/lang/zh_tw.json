@@ -342,5 +342,8 @@
   "block.rustic.painted_wood_brown": "棕色彩繪木材",
   "block.rustic.painted_wood_green": "綠色彩繪木材",
   "block.rustic.painted_wood_red": "紅色彩繪木材",
-  "block.rustic.painted_wood_black": "黑色彩繪木材"
+  "block.rustic.painted_wood_black": "黑色彩繪木材",
+  "block.rustic.clay_wall": "黏土牆",
+  "block.rustic.clay_wall_cross": "交叉黏土牆",
+  "block.rustic.clay_wall_diag": "對角黏土牆"
 }

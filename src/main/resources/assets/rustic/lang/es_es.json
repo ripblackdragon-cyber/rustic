@@ -342,5 +342,8 @@
   "block.rustic.painted_wood_brown": "Madera Pintada de Marrón",
   "block.rustic.painted_wood_green": "Madera Pintada de Verde",
   "block.rustic.painted_wood_red": "Madera Pintada de Rojo",
-  "block.rustic.painted_wood_black": "Madera Pintada de Negro"
+  "block.rustic.painted_wood_black": "Madera Pintada de Negro",
+  "block.rustic.clay_wall": "Pared de arcilla",
+  "block.rustic.clay_wall_cross": "Muro de arcilla cruzada",
+  "block.rustic.clay_wall_diag": "Muro de arcilla diagonal"
 }

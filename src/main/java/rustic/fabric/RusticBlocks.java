@@ -49,6 +49,10 @@ public final class RusticBlocks {
     public static final Block PAINTED_WOOD_RED = registerPainted("painted_wood_red");
     public static final Block PAINTED_WOOD_BLACK = registerPainted("painted_wood_black");
 
+    public static final Block CLAY_WALL = registerClayWall("clay_wall", Block::new);
+    public static final Block CLAY_WALL_CROSS = registerClayWall("clay_wall_cross", Block::new);
+    public static final Block CLAY_WALL_DIAG = registerClayWall("clay_wall_diag", DiagonalClayWallBlock::new);
+
     private RusticBlocks() {
     }
 
@@ -76,6 +80,16 @@ public final class RusticBlocks {
         Registry.register(BuiltInRegistries.ITEM, itemKey,
                 new BlockItem(block, new Item.Properties().setId(itemKey).useBlockDescriptionPrefix()));
         FlammableBlockRegistry.getDefaultInstance().add(block, 5, 20);
+        return block;
+    }
+
+    private static Block registerClayWall(String name, Function<BlockBehaviour.Properties, Block> factory) {
+        var blockKey = ResourceKey.create(Registries.BLOCK, RusticFabric.id(name));
+        var itemKey = ResourceKey.create(Registries.ITEM, RusticFabric.id(name));
+        var block = factory.apply(BlockBehaviour.Properties.of().setId(blockKey).strength(1.0F, 1.0F).sound(SoundType.GRAVEL));
+        Registry.register(BuiltInRegistries.BLOCK, blockKey, block);
+        Registry.register(BuiltInRegistries.ITEM, itemKey,
+                new BlockItem(block, new Item.Properties().setId(itemKey).useBlockDescriptionPrefix()));
         return block;
     }
 
@@ -108,6 +122,9 @@ public final class RusticBlocks {
             output.accept(PAINTED_WOOD_GREEN);
             output.accept(PAINTED_WOOD_RED);
             output.accept(PAINTED_WOOD_BLACK);
+            output.accept(CLAY_WALL);
+            output.accept(CLAY_WALL_CROSS);
+            output.accept(CLAY_WALL_DIAG);
         });
     }
 }

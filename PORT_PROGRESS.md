@@ -78,3 +78,7 @@ Se ha preparado el alimento `chili_pepper` conforme a `ModItems.java:137–152`:
 ### Madera pintada en desarrollo
 
 Se han preparado 16 bloques, modelos, traducciones y recetas de madera pintada; los tintes y tablones se expresan con etiquetas adaptadas desde OreDictionary. La [CI 41235567309](https://github.com/ripblackdragon-cyber/rustic/actions/runs/41235567309) pasó las pruebas de servidor para los 16 colores y sus recetas, además de colocación y minería del bloque gris claro en cliente con servidor integrado y dedicado; la configuración, la pestaña decorativa original, los tablones Rustic aún no migrados, compatibilidad de etiquetas con otros mods, JEI y pruebas visuales siguen pendientes. Véase el inventario en `RUSTIC_MECHANICS.md`.
+
+### Paredes de arcilla en desarrollo
+
+Se han preparado los tres bloques, orientación de la pared diagonal, modelos originales y tres recetas con tablones; falta verificar esta ampliación en CI. Persisten los pendientes de configuración, pestaña decorativa, etiquetas de otros mods, JEI y validación visual.

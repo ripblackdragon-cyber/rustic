@@ -210,5 +210,8 @@
   "block.rustic.painted_wood_brown": "Bois peint en bois",
   "block.rustic.painted_wood_green": "Bois peint en vert",
   "block.rustic.painted_wood_red": "Bois peint en rouge",
-  "block.rustic.painted_wood_black": "Bois peint en noir"
+  "block.rustic.painted_wood_black": "Bois peint en noir",
+  "block.rustic.clay_wall": "Mur d'argile",
+  "block.rustic.clay_wall_cross": "Mur d'agile croisé",
+  "block.rustic.clay_wall_diag": "Mur d'argile diagonal"
 }

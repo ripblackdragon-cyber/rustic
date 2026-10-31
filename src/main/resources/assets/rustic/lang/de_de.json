@@ -212,5 +212,8 @@
   "block.rustic.painted_wood_brown": "Braun gefärbtes Holz",
   "block.rustic.painted_wood_green": "Grün gefärbtes Holz",
   "block.rustic.painted_wood_red": "Rot gefärbtes Holz",
-  "block.rustic.painted_wood_black": "Schwarz gefärbtes Holz"
+  "block.rustic.painted_wood_black": "Schwarz gefärbtes Holz",
+  "block.rustic.clay_wall": "Tonmauer",
+  "block.rustic.clay_wall_cross": "Gekreuzte Tonmauer",
+  "block.rustic.clay_wall_diag": "Diagonale Tonmauer"
 }

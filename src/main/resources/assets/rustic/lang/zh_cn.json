@@ -333,5 +333,8 @@
   "block.rustic.painted_wood_brown": "棕色彩绘木板",
   "block.rustic.painted_wood_green": "绿色彩绘木板",
   "block.rustic.painted_wood_red": "红色彩绘木板",
-  "block.rustic.painted_wood_black": "黑色彩绘木板"
+  "block.rustic.painted_wood_black": "黑色彩绘木板",
+  "block.rustic.clay_wall": "粘土框墙",
+  "block.rustic.clay_wall_cross": "交叉粘土框墙",
+  "block.rustic.clay_wall_diag": "对角粘土框墙"
 }

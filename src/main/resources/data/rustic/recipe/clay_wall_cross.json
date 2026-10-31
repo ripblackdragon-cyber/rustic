@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "P": "#rustic:plank_wood",
+    "C": "rustic:clay_wall"
+  },
+  "pattern": [
+    "P P",
+    " C ",
+    "P P"
+  ],
+  "result": {
+    "id": "rustic:clay_wall_cross",
+    "count": 1
+  }
+}

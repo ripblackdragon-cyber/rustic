@@ -441,5 +441,8 @@
   "block.rustic.painted_wood_brown": "Brown Painted Wood",
   "block.rustic.painted_wood_green": "Green Painted Wood",
   "block.rustic.painted_wood_red": "Red Painted Wood",
-  "block.rustic.painted_wood_black": "Black Painted Wood"
+  "block.rustic.painted_wood_black": "Black Painted Wood",
+  "block.rustic.clay_wall": "Clay Wall",
+  "block.rustic.clay_wall_cross": "Crossed Clay Wall",
+  "block.rustic.clay_wall_diag": "Diagonal Clay Wall"
 }
