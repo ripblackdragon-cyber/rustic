@@ -1,7 +1,7 @@
 # Progreso de port: Rustic → Fabric 26.3
 
 **Estado: no terminado; el código inicial compiló en CI y produjo un artefacto de desarrollo, con pruebas acotadas en Minecraft, pero sin paridad.**
-Actualizado: 2026-10-30. La investigación está iniciada, no completada.
+Actualizado: 2026-10-31. La investigación está iniciada, no completada.
 
 ## Referencias preservadas
 
@@ -20,8 +20,8 @@ Actualizado: 2026-10-30. La investigación está iniciada, no completada.
 | 3 Fabric | En curso; compilación CI correcta | [Ejecución 40985016548](https://github.com/ripblackdragon-cyber/rustic/actions/runs/40985016548), commit `8b4ad598`: Java 25, resolución, `./gradlew build` y subida del artefacto de desarrollo correctos. La compilación local sigue bloqueada por TLS y por carecer de JDK completo. Hay pruebas posteriores de arranque GameTest y cliente; atribución upstream pendiente. Ver `RUSTIC_BUILD_DIAGNOSTICS.md`. |
 | 4 Registros | En curso, paridad sin verificar | Seis ingredientes (`bee`, `honeycomb`, `beeswax`, `tallow`, `dust_tiny_iron`, `dust_gold`) compilados previamente. Se añaden `wildberries` y `grapes`, con comida y 16 ticks de consumo basados en `ModItems.java:178-189`; compilados y probados parcialmente en GameTest y en un cliente individual. En desarrollo: se añaden aceitunas y una pestaña agrícola parcial con icono original; compilación y pruebas parciales superadas en CI; faltan el contenido restante y comprobaciones visuales. Faltan plantas, obtención y usos completos. |
 | 5 Recursos y traducciones | En curso, sin validación en juego | 343 PNG, 32 metadatos de animación y un archivo PDN de la referencia 1.2.0 copiados sin modificar; ocho `.lang` convertidos a JSON preservando claves y valores, con alias modernos para diez objetos y veintinueve bloques cuando existe la traducción. Modelos de esos treinta y nueve preparados; faltan la mayoría de modelos, claves y renderizadores y todas las pruebas visuales. |
-| 6–8, 10–11 Mecánicas, JEI y multijugador | No iniciadas | Abejas, agricultura, bebidas, alquimia, GUI, integraciones y red todavía no implementadas. |
-| 9 Recetas | En curso, paridad sin verificar | Tres recetas de fundición, diez de pizarra dieciséis de madera pintada y tres de paredes de arcilla están en curso; las fundiciones correspondientes a `Recipes.java:176,183,184` producen el resultado esperado en hornos de GameTest; faltan XP, avances, configuración, el resto de recetas y validación en JEI. `audit/recipe-parity.json` sigue con 165 fuentes y cuatro bloqueos sin verificar; no prueba paridad. |
+| 6–8, 10–11 Mecánicas, JEI y multijugador | En curso, sin paridad | Alimentos parciales y generación inicial de pizarra; abejas, agricultura, bebidas, alquimia, GUI, integraciones y red específica todavía no implementadas. |
+| 9 Recetas | En curso, paridad sin verificar | Tres recetas de fundición, diez de pizarra, dieciséis de madera pintada y tres de paredes de arcilla están en curso; las fundiciones correspondientes a `Recipes.java:176,183,184` producen el resultado esperado en hornos de GameTest; faltan XP, avances, configuración, el resto de recetas y validación en JEI. `audit/recipe-parity.json` sigue con 165 fuentes y cuatro bloqueos sin verificar; no prueba paridad. |
 | 12 Pruebas de juego | En curso | Nueve pruebas de servidor GameTest, cliente singleplayer y un cliente automatizado conectado a servidor dedicado en CI con fuentes de desarrollo; no se probó el JAR instalado, dos clientes ni JEI. |
 | 13 JAR definitivo | No iniciado | No existe `rustic-fabric-26.3.jar`. |
 
