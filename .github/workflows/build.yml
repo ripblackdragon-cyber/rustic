@@ -130,13 +130,13 @@ jobs:
           game_log = Path('build/run/clientGameTest/logs/latest.log')
           if game_log.is_file():
               lines += ['--- client latest.log ---'] + game_log.read_text(encoding='utf-8', errors='replace').splitlines()[-60:]
-          keywords = ('exception', 'assertion', 'failed', 'timeout', 'caused by:', 'error', 'gametest')
-          selected = []
+          interesting = []
           for index, line in enumerate(lines):
-              if any(keyword in line.lower() for keyword in keywords):
-                  selected.extend(lines[max(0, index - 2):min(len(lines), index + 6)])
-          message = '\n'.join((selected[:120] or lines[-120:]))[:24000]
-          print('::error::' + message.replace('%', '%25').replace('\r', '%0D').replace('\n', '%0A'))
+              text = line.lower()
+              if any(word in text for word in ('exception', 'assertionerror', 'caused by:', 'failed test', '[error]')):
+                  interesting.append('\n'.join(lines[max(0, index - 2):min(len(lines), index + 8)]))
+          for message in (interesting[-8:] or ['\n'.join(lines[-30:])]):
+              print('::error::' + message[:3500].replace('%', '%25').replace('\r', '%0D').replace('\n', '%0A'))
           PY
       - name: Upload client screenshot
         if: success()
