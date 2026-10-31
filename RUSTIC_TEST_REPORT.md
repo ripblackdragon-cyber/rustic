@@ -103,3 +103,11 @@ JAR de desarrollo con 639 recursos verificados en empaquetado: SHA-256 `a1041630
 ### Losas y escaleras de madera
 
 [CI 41251247201](https://github.com/ripblackdragon-cyber/rustic/actions/runs/41251247201), commit `92b4f5d`: 53 pruebas Python, cinco JUnit, diez GameTests de servidor y cliente automatizado. Se verificaron las cuatro recetas, propiedades, componentes de combustible, botín simple y doble; el cliente comprobó los nombres ingleses y colocó, combinó y minó losas dobles de ambas especies en mundo integrado. No se verificó su combustión efectiva, la colocación de escaleras, el agua, la visualización ni JEI. El JAR de desarrollo tiene 675 recursos verificados y SHA-256 `38c6fc0f9efeaca8b386596f6d4d7f34caf440ef72fbede415b19497ab8665c2`; no se ha probado instalado.
+
+### Vallas y portones de madera
+
+[CI 41252677507](https://github.com/ripblackdragon-cyber/rustic/actions/runs/41252677507), commit `d9bbc33`: 54 pruebas Python, cinco JUnit, diez GameTests de servidor y cliente automatizado. El servidor comprobó los cuatro bloques, sus recetas y botín, dureza, inflamabilidad, componente de combustible, conexión entre vallas y apertura/cierre del portón por redstone. El cliente colocó el portón de olivo y lo abrió y cerró en mundo integrado y servidor dedicado. No se comprobó combustión real, palos de otros mods, aspecto visual, JEI, dos jugadores ni el JAR instalado.
+
+Las ejecuciones [41251815952](https://github.com/ripblackdragon-cyber/rustic/actions/runs/41251815952), [41252105505](https://github.com/ripblackdragon-cyber/rustic/actions/runs/41252105505) y [41252378718](https://github.com/ripblackdragon-cyber/rustic/actions/runs/41252378718) pasaron el servidor pero fallaron la prueba cliente; el diagnóstico localizó una espera agotada al comer después de interactuar con el portón. Se apuntó al cielo antes de las pruebas de comida para evitar que un bloque interactivo intercepte el uso; la ejecución posterior pasó.
+
+JAR de desarrollo con 714 recursos verificados en empaquetado: SHA-256 `1ae61bd64204a746f438879aa9c39bd1f6746813ccaf4235e5add946c44122ab`. No es una entrega final ni se ha probado instalado.
