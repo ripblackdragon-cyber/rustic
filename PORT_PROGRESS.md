@@ -98,3 +98,7 @@ La [CI 41251247201](https://github.com/ripblackdragon-cyber/rustic/actions/runs/
 ### Vallas y puertas de valla en desarrollo
 
 La [CI 41252677507](https://github.com/ripblackdragon-cyber/rustic/actions/runs/41252677507) pasó las pruebas de cuatro bloques y recetas, conexión de vallas y redstone en servidor, y colocación y apertura/cierre del portón de olivo con cliente en servidores integrado y dedicado. Las etiquetas de palos de otros mods, la apariencia y la paridad completa siguen sin verificar.
+
+### Puertas de olivo e ironwood en desarrollo
+
+La [CI 41254117807](https://github.com/ripblackdragon-cyber/rustic/actions/runs/41254117807) pasó las pruebas de recetas y botín de ambas mitades; un cliente colocó y abrió/cerró ambas puertas en mundo integrado y la de olivo también en servidor dedicado. Los modelos usan las texturas originales y padres modernos. Faltan redstone, minería interactiva, todos los estados, combustible efectivo, inspección visual, JEI y conversión de mundos; no se afirma paridad.
