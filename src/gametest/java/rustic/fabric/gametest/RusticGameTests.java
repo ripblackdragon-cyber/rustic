@@ -5,6 +5,7 @@ import java.util.List;
 import net.fabricmc.fabric.api.gametest.v1.GameTest;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.gametest.framework.GameTestHelper;
@@ -269,6 +270,7 @@ public class RusticGameTests {
                     && RusticFabric.id(names[i]).equals(BuiltInRegistries.ITEM.getKey(block.asItem())), "Bad painted wood registry ID");
             helper.assertTrue(state.is(BlockTags.MINEABLE_WITH_AXE) && !state.requiresCorrectToolForDrops()
                     && state.getDestroySpeed(helper.getLevel(), helper.absolutePos(pos)) == 2.0F, "Wrong painted wood mining properties");
+            helper.assertTrue(new ItemStack(block).has(DataComponents.COOKING_FUEL), "Painted wood must be a fuel");
             var fire = FlammableBlockRegistry.getDefaultInstance().get(block);
             helper.assertTrue(fire != null && fire.getIgniteOdds() == 5 && fire.getBurnOdds() == 20,
                     "Wrong painted wood fire values");

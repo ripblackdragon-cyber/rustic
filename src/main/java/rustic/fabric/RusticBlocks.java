@@ -5,6 +5,12 @@ import java.util.function.Function;
 import net.fabricmc.fabric.api.creativetab.v1.CreativeModeTabEvents;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.minecraft.core.Registry;
+import net.minecraft.core.component.DataComponents;
+import net.minecraft.resources.Identifier;
+import net.minecraft.world.item.component.CookingFuel;
+import net.minecraft.world.level.storage.loot.providers.number.ints.ResolvableInt;
+import net.minecraft.world.level.storage.loot.providers.number.floats.ResolvableFloat;
+import net.minecraft.world.level.storage.loot.providers.number.floats.ContextFloatProviders;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
@@ -83,7 +89,7 @@ public final class RusticBlocks {
                 .strength(2.0F, 2.0F).sound(SoundType.WOOD));
         Registry.register(BuiltInRegistries.BLOCK, blockKey, block);
         Registry.register(BuiltInRegistries.ITEM, itemKey,
-                new BlockItem(block, new Item.Properties().setId(itemKey).useBlockDescriptionPrefix()));
+                new BlockItem(block, woodFuel(new Item.Properties().setId(itemKey).useBlockDescriptionPrefix())));
         FlammableBlockRegistry.getDefaultInstance().add(block, 5, 20);
         return block;
     }
@@ -95,9 +101,16 @@ public final class RusticBlocks {
                 .strength(2.0F, log ? 2.0F : 3.0F).sound(SoundType.WOOD));
         Registry.register(BuiltInRegistries.BLOCK, blockKey, block);
         Registry.register(BuiltInRegistries.ITEM, itemKey,
-                new BlockItem(block, new Item.Properties().setId(itemKey).useBlockDescriptionPrefix()));
+                new BlockItem(block, woodFuel(new Item.Properties().setId(itemKey).useBlockDescriptionPrefix())));
         FlammableBlockRegistry.getDefaultInstance().add(block, 5, log ? 5 : 20);
         return block;
+    }
+
+    private static Item.Properties woodFuel(Item.Properties properties) {
+        return properties.component(DataComponents.COOKING_FUEL, new CookingFuel(
+                ResolvableInt.fromKey(ResourceKey.create(Registries.CONTEXT_INT_PROVIDER,
+                        Identifier.fromNamespaceAndPath("minecraft", "cooking/time_wood_blocks"))),
+                ResolvableFloat.fromKey(ContextFloatProviders.COOKING_DEFAULT_SPEED_MULTIPLIER)));
     }
 
     private static Block registerClayWall(String name, Function<BlockBehaviour.Properties, Block> factory) {
