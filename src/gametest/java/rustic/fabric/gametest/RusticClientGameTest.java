@@ -51,6 +51,7 @@ public final class RusticClientGameTest implements FabricClientGameTest {
             context.takeScreenshot("rustic-olives-after-eating");
             checkBlockPlacementAndMining(context, world.getServer(), connection, RusticBlocks.SLATE, Items.WOODEN_PICKAXE);
             checkBlockPlacementAndMining(context, world.getServer(), connection, RusticBlocks.PAINTED_WOOD_SILVER, Items.WOODEN_AXE);
+            checkBlockPlacementAndMining(context, world.getServer(), connection, RusticBlocks.CLAY_WALL_DIAG, Items.WOODEN_SHOVEL);
             checkSlabMerging(context, world.getServer(), connection, RusticBlocks.SLATE_ROOF_SLAB);
             checkSlabMerging(context, world.getServer(), connection, RusticBlocks.SLATE_BRICK_SLAB);
             checkCreativeTab(context, world.getServer());
@@ -190,6 +191,16 @@ public final class RusticClientGameTest implements FabricClientGameTest {
                     throw new AssertionError("Painted wood missing or untranslated: " + stack.getHoverName());
                 }
             }
+            Item[] clayItems = {RusticBlocks.CLAY_WALL.asItem(), RusticBlocks.CLAY_WALL_CROSS.asItem(), RusticBlocks.CLAY_WALL_DIAG.asItem()};
+            String[] clayNames = {"Clay Wall", "Crossed Clay Wall", "Diagonal Clay Wall"};
+            for (int i = 0; i < clayItems.length; i++) {
+                Item expectedItem = clayItems[i];
+                ItemStack stack = new ItemStack(expectedItem);
+                if (buildingTab.getDisplayItems().stream().noneMatch(item -> item.is(expectedItem))
+                        || !stack.getHoverName().getString().equals(clayNames[i])) {
+                    throw new AssertionError("Clay wall missing or untranslated: " + stack.getHoverName());
+                }
+            }
             if (!displayed.equals(expected) || tab.getDisplayItems().size() != expected.size()
                     || !tab.getIconItem().is(RusticItems.OLIVES)
                     || !tab.getDisplayName().getString().equals("Rustic Agriculture")) {
@@ -297,6 +308,7 @@ public final class RusticClientGameTest implements FabricClientGameTest {
                 checkFoodAtFullHunger(context, server, connection, RusticItems.OLIVES);
                 checkBlockPlacementAndMining(context, server, connection, RusticBlocks.SLATE, Items.WOODEN_PICKAXE);
                 checkBlockPlacementAndMining(context, server, connection, RusticBlocks.PAINTED_WOOD_SILVER, Items.WOODEN_AXE);
+                checkBlockPlacementAndMining(context, server, connection, RusticBlocks.CLAY_WALL_DIAG, Items.WOODEN_SHOVEL);
                 checkFood(context, server, connection, RusticItems.CHILI_PEPPER, 13, 2.4F, 40);
                 checkChiliAtFullHunger(context, server, connection);
                 // Set up state, then let the server save it when the real client disconnects.
