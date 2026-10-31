@@ -94,14 +94,14 @@ Campos encontrados: **117**.
 | `ModBlocks.IRONWOOD_FENCE` | `BlockFenceRustic` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:134` | Pendiente |
 | `ModBlocks.OLIVE_FENCE_GATE` | `BlockFenceGateRustic` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:135` | Pendiente |
 | `ModBlocks.IRONWOOD_FENCE_GATE` | `BlockFenceGateRustic` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:136` | Pendiente |
-| `ModBlocks.OLIVE_DOUBLESLAB` | `BlockDoubleSlabBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:137` | Pendiente |
-| `ModBlocks.OLIVE_SLAB` | `BlockSlabBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:138` | Pendiente |
-| `ModBlocks.OLIVE_SLAB_ITEM` | `ItemBlockSlabBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:139` | Pendiente |
-| `ModBlocks.IRONWOOD_DOUBLESLAB` | `BlockDoubleSlabBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:140` | Pendiente |
-| `ModBlocks.IRONWOOD_SLAB` | `BlockSlabBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:141` | Pendiente |
-| `ModBlocks.IRONWOOD_SLAB_ITEM` | `ItemBlockSlabBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:142` | Pendiente |
-| `ModBlocks.OLIVE_STAIRS` | `BlockStairsBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:143` | Pendiente |
-| `ModBlocks.IRONWOOD_STAIRS` | `BlockStairsBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:144` | Pendiente |
+| `ModBlocks.OLIVE_DOUBLESLAB` | `BlockDoubleSlabBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:137` | En curso, paridad sin verificar |
+| `ModBlocks.OLIVE_SLAB` | `BlockSlabBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:138` | En curso, paridad sin verificar |
+| `ModBlocks.OLIVE_SLAB_ITEM` | `ItemBlockSlabBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:139` | En curso, paridad sin verificar |
+| `ModBlocks.IRONWOOD_DOUBLESLAB` | `BlockDoubleSlabBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:140` | En curso, paridad sin verificar |
+| `ModBlocks.IRONWOOD_SLAB` | `BlockSlabBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:141` | En curso, paridad sin verificar |
+| `ModBlocks.IRONWOOD_SLAB_ITEM` | `ItemBlockSlabBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:142` | En curso, paridad sin verificar |
+| `ModBlocks.OLIVE_STAIRS` | `BlockStairsBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:143` | En curso, paridad sin verificar |
+| `ModBlocks.IRONWOOD_STAIRS` | `BlockStairsBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:144` | En curso, paridad sin verificar |
 | `ModBlocks.CHAIR_OLIVE` | `BlockChair` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:145` | Pendiente |
 | `ModBlocks.CHAIR_IRONWOOD` | `BlockChair` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:146` | Pendiente |
 | `ModBlocks.TABLE_OLIVE` | `BlockTable` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:147` | Pendiente |

@@ -60,6 +60,11 @@ public final class RusticBlocks {
     public static final Block PLANKS_OLIVE = registerWood("planks_olive", Block::new, false);
     public static final Block PLANKS_IRONWOOD = registerWood("planks_ironwood", Block::new, false);
 
+    public static final Block OLIVE_SLAB = registerWoodShape("olive_slab", SlabBlock::new, true);
+    public static final Block IRONWOOD_SLAB = registerWoodShape("ironwood_slab", SlabBlock::new, true);
+    public static final Block OLIVE_STAIRS = registerWoodShape("stairs_olive", p -> new StairBlock(PLANKS_OLIVE.defaultBlockState(), p), false);
+    public static final Block IRONWOOD_STAIRS = registerWoodShape("stairs_ironwood", p -> new StairBlock(PLANKS_IRONWOOD.defaultBlockState(), p), false);
+
     public static final Block CLAY_WALL = registerClayWall("clay_wall", Block::new);
     public static final Block CLAY_WALL_CROSS = registerClayWall("clay_wall_cross", Block::new);
     public static final Block CLAY_WALL_DIAG = registerClayWall("clay_wall_diag", DiagonalClayWallBlock::new);
@@ -103,6 +108,18 @@ public final class RusticBlocks {
         Registry.register(BuiltInRegistries.ITEM, itemKey,
                 new BlockItem(block, woodFuel(new Item.Properties().setId(itemKey).useBlockDescriptionPrefix())));
         FlammableBlockRegistry.getDefaultInstance().add(block, 5, log ? 5 : 20);
+        return block;
+    }
+
+    private static Block registerWoodShape(String name, Function<BlockBehaviour.Properties, Block> factory, boolean slab) {
+        var blockKey = ResourceKey.create(Registries.BLOCK, RusticFabric.id(name));
+        var itemKey = ResourceKey.create(Registries.ITEM, RusticFabric.id(name));
+        var block = factory.apply(BlockBehaviour.Properties.of().setId(blockKey)
+                .strength(2.0F, slab ? 2.0F : 3.0F).sound(SoundType.WOOD));
+        Registry.register(BuiltInRegistries.BLOCK, blockKey, block);
+        Registry.register(BuiltInRegistries.ITEM, itemKey,
+                new BlockItem(block, woodFuel(new Item.Properties().setId(itemKey).useBlockDescriptionPrefix())));
+        FlammableBlockRegistry.getDefaultInstance().add(block, 5, 20);
         return block;
     }
 
@@ -152,6 +169,10 @@ public final class RusticBlocks {
             output.accept(PAINTED_WOOD_GREEN);
             output.accept(PAINTED_WOOD_RED);
             output.accept(PAINTED_WOOD_BLACK);
+            output.accept(OLIVE_SLAB);
+            output.accept(IRONWOOD_SLAB);
+            output.accept(OLIVE_STAIRS);
+            output.accept(IRONWOOD_STAIRS);
             output.accept(PLANKS_OLIVE);
             output.accept(PLANKS_IRONWOOD);
             output.accept(CLAY_WALL);

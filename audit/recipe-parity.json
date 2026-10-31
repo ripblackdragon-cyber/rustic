@@ -321,9 +321,13 @@
       "kind": "json",
       "file_sha256": "b4a0916671d45f4c4a02025ba0fb24987fe9cb5f0d441d1380a4c84fb3f4befd",
       "fragment_sha256": "b4a0916671d45f4c4a02025ba0fb24987fe9cb5f0d441d1380a4c84fb3f4befd",
-      "status": "pending",
-      "targets": [],
-      "evidence": []
+      "status": "in_progress",
+      "targets": [
+        "src/main/resources/data/rustic/recipe/ironwood_slab.json"
+      ],
+      "evidence": [
+        "RUSTIC_MECHANICS.md"
+      ]
     },
     {
       "id": "json:ironwood_stairs.json",
@@ -332,9 +336,13 @@
       "kind": "json",
       "file_sha256": "ee60f9f3c24bd31e44b3aedf62d55c2eb4ca09730eb8fd77201d250be15bac05",
       "fragment_sha256": "ee60f9f3c24bd31e44b3aedf62d55c2eb4ca09730eb8fd77201d250be15bac05",
-      "status": "pending",
-      "targets": [],
-      "evidence": []
+      "status": "in_progress",
+      "targets": [
+        "src/main/resources/data/rustic/recipe/ironwood_stairs.json"
+      ],
+      "evidence": [
+        "RUSTIC_MECHANICS.md"
+      ]
     },
     {
       "id": "json:lantern_wood.json",
@@ -413,9 +421,13 @@
       "kind": "json",
       "file_sha256": "e6b4180bd437a095c4742c9b4a14b210e7c2fbec2584949df06557541afbb2a7",
       "fragment_sha256": "e6b4180bd437a095c4742c9b4a14b210e7c2fbec2584949df06557541afbb2a7",
-      "status": "pending",
-      "targets": [],
-      "evidence": []
+      "status": "in_progress",
+      "targets": [
+        "src/main/resources/data/rustic/recipe/olive_slab.json"
+      ],
+      "evidence": [
+        "RUSTIC_MECHANICS.md"
+      ]
     },
     {
       "id": "json:olive_stairs.json",
@@ -424,9 +436,13 @@
       "kind": "json",
       "file_sha256": "fa5b0113f3f7384d86a5b6fa0e0f3b5d1a0c78827f805e6282e19ffbd6b6ad78",
       "fragment_sha256": "fa5b0113f3f7384d86a5b6fa0e0f3b5d1a0c78827f805e6282e19ffbd6b6ad78",
-      "status": "pending",
-      "targets": [],
-      "evidence": []
+      "status": "in_progress",
+      "targets": [
+        "src/main/resources/data/rustic/recipe/olive_stairs.json"
+      ],
+      "evidence": [
+        "RUSTIC_MECHANICS.md"
+      ]
     },
     {
       "id": "json:retort.json",

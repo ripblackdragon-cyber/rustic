@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "minecraft:wooden_slab",
+  "key": {
+    "P": "rustic:planks_olive"
+  },
+  "pattern": [
+    "PPP"
+  ],
+  "result": {
+    "id": "rustic:olive_slab",
+    "count": 6
+  }
+}

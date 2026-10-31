@@ -349,5 +349,9 @@
   "block.rustic.log_olive": "Madera de Olivo",
   "block.rustic.log_ironwood": "Madera Férrica",
   "block.rustic.planks_olive": "Tablones de Madera de Olivo",
-  "block.rustic.planks_ironwood": "Tablones de Madera Férrica"
+  "block.rustic.planks_ironwood": "Tablones de Madera Férrica",
+  "block.rustic.olive_slab": "Losa de Madera de Olivo",
+  "block.rustic.ironwood_slab": "Losa de Madera Férrica",
+  "block.rustic.stairs_olive": "Escalera de Madera de Olivo",
+  "block.rustic.stairs_ironwood": "Escalera de Madera Férrica"
 }

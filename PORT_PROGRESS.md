@@ -90,3 +90,7 @@ Se han preparado una feature moderna para los parámetros predeterminados del ov
 ### Troncos y tablones de olivo e ironwood en desarrollo
 
 La [CI 41249855947](https://github.com/ripblackdragon-cyber/rustic/actions/runs/41249855947) pasó las pruebas de cuatro bloques, dos recetas de tablones, dos fundiciones de carbón vegetal, uso de un tronco y un tablón como combustible y colocación/minería del tronco de olivo en clientes integrado y dedicado. Se añadieron componentes de combustible también a las 16 maderas pintadas; la prueba verificó que tienen el componente, no que se hayan quemado en horno. Los bloques modernos usan IDs separados por variante y etiquetas de madera vanilla, que pueden habilitar recetas adicionales. Sin conversión de metadata ni eje antiguo `none`; faltan árboles, generación, hojas y maderas derivadas.
+
+### Losas y escaleras de olivo e ironwood en desarrollo
+
+Se prepararon cuatro bloques, recetas, modelos y pruebas; compilación y comportamiento aún pendientes de CI. La losa doble usa el estado moderno y admite agua; falta la conversión de mundos y la comparación visual.

@@ -23,7 +23,8 @@ ALIASES.update({f'tile.rustic.{name}.name': f'block.rustic.{name}' for name in (
     'slate_pillar', 'stairs_slate_roof', 'stairs_slate_brick', 'slate_roof_slab', 'slate_brick_slab',
     'painted_wood_white', 'painted_wood_orange', 'painted_wood_magenta', 'painted_wood_light_blue', 'painted_wood_yellow', 'painted_wood_lime', 'painted_wood_pink', 'painted_wood_gray', 'painted_wood_silver', 'painted_wood_cyan', 'painted_wood_purple', 'painted_wood_blue', 'painted_wood_brown', 'painted_wood_green', 'painted_wood_red', 'painted_wood_black',
     'clay_wall', 'clay_wall_cross', 'clay_wall_diag',
-    'log_olive', 'log_ironwood', 'planks_olive', 'planks_ironwood'
+    'log_olive', 'log_ironwood', 'planks_olive', 'planks_ironwood',
+    'olive_slab', 'ironwood_slab', 'stairs_olive', 'stairs_ironwood'
 )})
 
 
@@ -101,7 +102,7 @@ def main():
     except (ValueError, OSError, UnicodeError) as error:
         parser.exit(1, f'{error}\n')
     print(f'{count} locales comprobados; {missing if args.write else 0} archivos creados.')
-    print('Se han añadido alias modernos para diez objetos y treinta y tres bloques; faltan las demás claves y pruebas en juego.')
+    print('Se han añadido alias modernos para diez objetos y treinta y siete bloques; faltan las demás claves y pruebas en juego.')
 
 
 if __name__ == '__main__':

@@ -20,6 +20,10 @@
     "rustic:log_olive",
     "rustic:log_ironwood",
     "rustic:planks_olive",
-    "rustic:planks_ironwood"
+    "rustic:planks_ironwood",
+    "rustic:stairs_olive",
+    "rustic:stairs_ironwood",
+    "rustic:olive_slab",
+    "rustic:ironwood_slab"
   ]
 }

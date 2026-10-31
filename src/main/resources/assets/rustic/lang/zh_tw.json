@@ -349,5 +349,9 @@
   "block.rustic.log_olive": "橄欖樹原木",
   "block.rustic.log_ironwood": "鐵樹原木",
   "block.rustic.planks_olive": "橄欖樹木材",
-  "block.rustic.planks_ironwood": "鐵樹木材"
+  "block.rustic.planks_ironwood": "鐵樹木材",
+  "block.rustic.olive_slab": "橄欖樹半磚",
+  "block.rustic.ironwood_slab": "鐵樹半磚",
+  "block.rustic.stairs_olive": "橄欖樹階梯",
+  "block.rustic.stairs_ironwood": "鐵樹階梯"
 }

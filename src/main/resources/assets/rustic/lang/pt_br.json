@@ -177,5 +177,9 @@
   "block.rustic.log_olive": "Madeira de Oliva",
   "block.rustic.log_ironwood": "Pau-Ferro",
   "block.rustic.planks_olive": "Tábuas de Madeira de Oliva",
-  "block.rustic.planks_ironwood": "Tábuas de Pau-Ferro"
+  "block.rustic.planks_ironwood": "Tábuas de Pau-Ferro",
+  "block.rustic.olive_slab": "Laje de Madeira de Oliva",
+  "block.rustic.ironwood_slab": "Laje de Pau-Ferro",
+  "block.rustic.stairs_olive": "Escada de Madeira de Oliva",
+  "block.rustic.stairs_ironwood": "Escada de Pau-Ferro"
 }

@@ -448,5 +448,9 @@
   "block.rustic.log_olive": "Olive Wood",
   "block.rustic.log_ironwood": "Ironwood",
   "block.rustic.planks_olive": "Olive Wood Planks",
-  "block.rustic.planks_ironwood": "Ironwood Planks"
+  "block.rustic.planks_ironwood": "Ironwood Planks",
+  "block.rustic.olive_slab": "Olive Wood Slab",
+  "block.rustic.ironwood_slab": "Ironwood Slab",
+  "block.rustic.stairs_olive": "Olive Wood Stairs",
+  "block.rustic.stairs_ironwood": "Ironwood Stairs"
 }

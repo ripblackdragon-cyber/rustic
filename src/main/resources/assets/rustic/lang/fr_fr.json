@@ -217,5 +217,9 @@
   "block.rustic.log_olive": "Bois d'olivier",
   "block.rustic.log_ironwood": "Bois de fer",
   "block.rustic.planks_olive": "Planches d'olivier",
-  "block.rustic.planks_ironwood": "Planches de bois de fer"
+  "block.rustic.planks_ironwood": "Planches de bois de fer",
+  "block.rustic.olive_slab": "Dalle d'olivier",
+  "block.rustic.ironwood_slab": "Dalle de bois de fer",
+  "block.rustic.stairs_olive": "Escaliers en olivier",
+  "block.rustic.stairs_ironwood": "Escaliers en bois de fer"
 }

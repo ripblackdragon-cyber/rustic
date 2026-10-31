@@ -384,6 +384,29 @@ public class RusticGameTests {
             helper.assertTrue(result.is(planks[i].asItem()) && result.getCount() == 4, "Wrong log-to-planks recipe");
             assertPaintedRecipe(helper, planks[i].asItem(), Items.BONE_MEAL, RusticBlocks.PAINTED_WOOD_WHITE);
         }
+        Block[] slabs = {RusticBlocks.OLIVE_SLAB, RusticBlocks.IRONWOOD_SLAB};
+        Block[] stairs = {RusticBlocks.OLIVE_STAIRS, RusticBlocks.IRONWOOD_STAIRS};
+        for (int i = 0; i < slabs.length; i++) {
+            for (Block block : new Block[]{slabs[i], stairs[i]}) {
+                helper.setBlock(pos, block);
+                var state = helper.getBlockState(pos);
+                var fire = FlammableBlockRegistry.getDefaultInstance().get(block);
+                helper.assertTrue(state.is(BlockTags.MINEABLE_WITH_AXE) && !state.requiresCorrectToolForDrops()
+                        && state.getDestroySpeed(helper.getLevel(), helper.absolutePos(pos)) == 2.0F
+                        && fire != null && fire.getIgniteOdds() == 5 && fire.getBurnOdds() == 20
+                        && new ItemStack(block).has(DataComponents.COOKING_FUEL), "Wood shape properties differ");
+                var drops = Block.getDrops(state, helper.getLevel(), helper.absolutePos(pos), null, player, ItemStack.EMPTY);
+                helper.assertTrue(drops.size() == 1 && drops.getFirst().is(block.asItem()) && drops.getFirst().getCount() == 1,
+                        "Wood shape drop differs");
+            }
+            var doubleState = slabs[i].defaultBlockState().setValue(SlabBlock.TYPE, SlabType.DOUBLE);
+            helper.setBlock(pos, doubleState);
+            var drops = Block.getDrops(doubleState, helper.getLevel(), helper.absolutePos(pos), null, player, ItemStack.EMPTY);
+            helper.assertTrue(drops.size() == 1 && drops.getFirst().is(slabs[i].asItem()) && drops.getFirst().getCount() == 2,
+                    "Double wooden slab must drop two slabs");
+            assertShapedRecipe(helper, planks[i], slabs[i], List.of("SSS"), 6);
+            assertShapedRecipe(helper, planks[i], stairs[i], List.of("S  ", "SS ", "SSS"), 4);
+        }
         FurnaceBlockEntity first = prepareFurnace(helper, new BlockPos(1, 1, 1), logs[0].asItem());
         FurnaceBlockEntity second = prepareFurnace(helper, new BlockPos(3, 1, 1), logs[1].asItem());
         // Vanilla fuel tags must recognize both the plank and log block items.

@@ -53,8 +53,10 @@ public final class RusticClientGameTest implements FabricClientGameTest {
             checkBlockPlacementAndMining(context, world.getServer(), connection, RusticBlocks.PAINTED_WOOD_SILVER, Items.WOODEN_AXE);
             checkBlockPlacementAndMining(context, world.getServer(), connection, RusticBlocks.CLAY_WALL_DIAG, Items.WOODEN_SHOVEL);
             checkBlockPlacementAndMining(context, world.getServer(), connection, RusticBlocks.LOG_OLIVE, Items.WOODEN_AXE);
-            checkSlabMerging(context, world.getServer(), connection, RusticBlocks.SLATE_ROOF_SLAB);
-            checkSlabMerging(context, world.getServer(), connection, RusticBlocks.SLATE_BRICK_SLAB);
+            checkSlabMerging(context, world.getServer(), connection, RusticBlocks.SLATE_ROOF_SLAB, Items.WOODEN_PICKAXE);
+            checkSlabMerging(context, world.getServer(), connection, RusticBlocks.SLATE_BRICK_SLAB, Items.WOODEN_PICKAXE);
+            checkSlabMerging(context, world.getServer(), connection, RusticBlocks.OLIVE_SLAB, Items.WOODEN_AXE);
+            checkSlabMerging(context, world.getServer(), connection, RusticBlocks.IRONWOOD_SLAB, Items.WOODEN_AXE);
             checkCreativeTab(context, world.getServer());
         }
         checkNaturalSlateAndSave(context);
@@ -136,7 +138,7 @@ public final class RusticClientGameTest implements FabricClientGameTest {
     }
 
     private void checkSlabMerging(ClientGameTestContext context, TestServerContext server,
-                                  TestServerConnection connection, Block slab) {
+                                  TestServerConnection connection, Block slab, Item tool) {
         BlockPos target = server.computeOnServer(minecraftServer -> {
             var player = connection.getServerPlayer();
             var level = player.level();
@@ -170,8 +172,8 @@ public final class RusticClientGameTest implements FabricClientGameTest {
         context.waitFor(client -> client.level.getBlockState(target).is(slab)
                 && client.level.getBlockState(target).getValue(SlabBlock.TYPE) == SlabType.DOUBLE);
         server.runOnServer(minecraftServer -> connection.getServerPlayer()
-                .setItemInHand(InteractionHand.MAIN_HAND, new ItemStack(Items.WOODEN_PICKAXE)));
-        context.waitFor(client -> client.player.getMainHandItem().is(Items.WOODEN_PICKAXE));
+                .setItemInHand(InteractionHand.MAIN_HAND, new ItemStack(tool)));
+        context.waitFor(client -> client.player.getMainHandItem().is(tool));
         context.getInput().lookAt(target);
         context.getInput().holdKeyFor(options -> options.keyAttack, 80);
         connection.waitForServerboundPackets();
@@ -241,6 +243,16 @@ public final class RusticClientGameTest implements FabricClientGameTest {
                         : buildingTab.getDisplayItems().stream().anyMatch(item -> item.is(expectedItem));
                 if (!inCorrectTab || !stack.getHoverName().getString().equals(woodNames[i])) {
                     throw new AssertionError("Wood missing or untranslated: " + stack.getHoverName());
+                }
+            }
+            Item[] woodShapeItems = {RusticBlocks.OLIVE_SLAB.asItem(), RusticBlocks.IRONWOOD_SLAB.asItem(), RusticBlocks.OLIVE_STAIRS.asItem(), RusticBlocks.IRONWOOD_STAIRS.asItem()};
+            String[] woodShapeNames = {"Olive Wood Slab", "Ironwood Slab", "Olive Wood Stairs", "Ironwood Stairs"};
+            for (int i = 0; i < woodShapeItems.length; i++) {
+                Item expectedItem = woodShapeItems[i];
+                ItemStack stack = new ItemStack(expectedItem);
+                if (buildingTab.getDisplayItems().stream().noneMatch(item -> item.is(expectedItem))
+                        || !stack.getHoverName().getString().equals(woodShapeNames[i])) {
+                    throw new AssertionError("Wood shape missing or untranslated: " + stack.getHoverName());
                 }
             }
             if (!displayed.equals(expected) || tab.getDisplayItems().size() != expected.size()

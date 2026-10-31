@@ -56,7 +56,11 @@ La columna original enlaza al JSON íntegro; aún no se han creado equivalentes 
 | Original | Archivo de destino | Estado |
 |---|---|---|
 | `json:ironwood_planks.json` | [ironwood_planks.json](src/main/resources/data/rustic/recipe/ironwood_planks.json) | `in_progress` |
+| `json:ironwood_slab.json` | [ironwood_slab.json](src/main/resources/data/rustic/recipe/ironwood_slab.json) | `in_progress` |
+| `json:ironwood_stairs.json` | [ironwood_stairs.json](src/main/resources/data/rustic/recipe/ironwood_stairs.json) | `in_progress` |
 | `json:olive_planks.json` | [olive_planks.json](src/main/resources/data/rustic/recipe/olive_planks.json) | `in_progress` |
+| `json:olive_slab.json` | [olive_slab.json](src/main/resources/data/rustic/recipe/olive_slab.json) | `in_progress` |
+| `json:olive_stairs.json` | [olive_stairs.json](src/main/resources/data/rustic/recipe/olive_stairs.json) | `in_progress` |
 | `java:176` | [beeswax_from_honeycomb.json](src/main/resources/data/rustic/recipe/beeswax_from_honeycomb.json) | `in_progress` |
 | `java:181` | [charcoal_from_olive_log.json](src/main/resources/data/rustic/recipe/charcoal_from_olive_log.json), [charcoal_from_ironwood_log.json](src/main/resources/data/rustic/recipe/charcoal_from_ironwood_log.json) | `in_progress` |
 | `java:183` | [iron_nugget_from_tiny_dust.json](src/main/resources/data/rustic/recipe/iron_nugget_from_tiny_dust.json) | `in_progress` |
