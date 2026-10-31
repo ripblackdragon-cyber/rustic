@@ -317,6 +317,8 @@ public final class RusticClientGameTest implements FabricClientGameTest {
 
     private void checkFood(ClientGameTestContext context, TestServerContext serverContext,
                            TestServerConnection connection, Item food, int expectedHunger, float expectedSaturation, int ticks) {
+        // A previously tested interactive block (such as a fence gate) can intercept use.
+        context.getInput().lookAt(0.0F, -90.0F);
         serverContext.runOnServer(server -> {
             var player = connection.getServerPlayer();
             player.getFoodData().setFoodLevel(10);
@@ -352,6 +354,7 @@ public final class RusticClientGameTest implements FabricClientGameTest {
 
     private void checkChiliAtFullHunger(ClientGameTestContext context, TestServerContext server,
                                         TestServerConnection connection) {
+        context.getInput().lookAt(0.0F, -90.0F);
         server.runOnServer(minecraftServer -> {
             var player = connection.getServerPlayer();
             player.removeEffect(net.minecraft.world.effect.MobEffects.SPEED);
@@ -375,6 +378,7 @@ public final class RusticClientGameTest implements FabricClientGameTest {
 
     private void checkFoodAtFullHunger(ClientGameTestContext context, TestServerContext serverContext,
                                        TestServerConnection connection, Item food) {
+        context.getInput().lookAt(0.0F, -90.0F);
         serverContext.runOnServer(server -> {
             var player = connection.getServerPlayer();
             player.getFoodData().setFoodLevel(20);
