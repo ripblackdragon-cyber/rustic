@@ -60,22 +60,22 @@ Campos encontrados: **117**.
 | `ModBlocks.IRON_LANTERN` | `BlockLantern` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:100` | Pendiente |
 | `ModBlocks.GOLDEN_LANTERN` | `BlockLantern` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:101` | Pendiente |
 | `ModBlocks.SILVER_LANTERN` | `BlockLantern` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:102` | Pendiente |
-| `ModBlocks.PAINTED_WOOD_WHITE` | `BlockBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:103` | Pendiente |
-| `ModBlocks.PAINTED_WOOD_ORANGE` | `BlockBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:104` | Pendiente |
-| `ModBlocks.PAINTED_WOOD_MAGENTA` | `BlockBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:105` | Pendiente |
-| `ModBlocks.PAINTED_WOOD_LIGHT_BLUE` | `BlockBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:106` | Pendiente |
-| `ModBlocks.PAINTED_WOOD_YELLOW` | `BlockBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:107` | Pendiente |
-| `ModBlocks.PAINTED_WOOD_LIME` | `BlockBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:108` | Pendiente |
-| `ModBlocks.PAINTED_WOOD_PINK` | `BlockBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:109` | Pendiente |
-| `ModBlocks.PAINTED_WOOD_GRAY` | `BlockBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:110` | Pendiente |
-| `ModBlocks.PAINTED_WOOD_SILVER` | `BlockBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:111` | Pendiente |
-| `ModBlocks.PAINTED_WOOD_CYAN` | `BlockBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:112` | Pendiente |
-| `ModBlocks.PAINTED_WOOD_PURPLE` | `BlockBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:113` | Pendiente |
-| `ModBlocks.PAINTED_WOOD_BLUE` | `BlockBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:114` | Pendiente |
-| `ModBlocks.PAINTED_WOOD_BROWN` | `BlockBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:115` | Pendiente |
-| `ModBlocks.PAINTED_WOOD_GREEN` | `BlockBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:116` | Pendiente |
-| `ModBlocks.PAINTED_WOOD_RED` | `BlockBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:117` | Pendiente |
-| `ModBlocks.PAINTED_WOOD_BLACK` | `BlockBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:118` | Pendiente |
+| `ModBlocks.PAINTED_WOOD_WHITE` | `BlockBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:103` | En curso, paridad sin verificar |
+| `ModBlocks.PAINTED_WOOD_ORANGE` | `BlockBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:104` | En curso, paridad sin verificar |
+| `ModBlocks.PAINTED_WOOD_MAGENTA` | `BlockBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:105` | En curso, paridad sin verificar |
+| `ModBlocks.PAINTED_WOOD_LIGHT_BLUE` | `BlockBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:106` | En curso, paridad sin verificar |
+| `ModBlocks.PAINTED_WOOD_YELLOW` | `BlockBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:107` | En curso, paridad sin verificar |
+| `ModBlocks.PAINTED_WOOD_LIME` | `BlockBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:108` | En curso, paridad sin verificar |
+| `ModBlocks.PAINTED_WOOD_PINK` | `BlockBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:109` | En curso, paridad sin verificar |
+| `ModBlocks.PAINTED_WOOD_GRAY` | `BlockBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:110` | En curso, paridad sin verificar |
+| `ModBlocks.PAINTED_WOOD_SILVER` | `BlockBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:111` | En curso, paridad sin verificar |
+| `ModBlocks.PAINTED_WOOD_CYAN` | `BlockBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:112` | En curso, paridad sin verificar |
+| `ModBlocks.PAINTED_WOOD_PURPLE` | `BlockBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:113` | En curso, paridad sin verificar |
+| `ModBlocks.PAINTED_WOOD_BLUE` | `BlockBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:114` | En curso, paridad sin verificar |
+| `ModBlocks.PAINTED_WOOD_BROWN` | `BlockBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:115` | En curso, paridad sin verificar |
+| `ModBlocks.PAINTED_WOOD_GREEN` | `BlockBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:116` | En curso, paridad sin verificar |
+| `ModBlocks.PAINTED_WOOD_RED` | `BlockBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:117` | En curso, paridad sin verificar |
+| `ModBlocks.PAINTED_WOOD_BLACK` | `BlockBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:118` | En curso, paridad sin verificar |
 | `ModBlocks.SLATE_BRICK_DOUBLESLAB` | `BlockDoubleSlabBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:119` | En curso, paridad sin verificar |
 | `ModBlocks.SLATE_BRICK_SLAB` | `BlockSlabBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:120` | En curso, paridad sin verificar |
 | `ModBlocks.SLATE_BRICK_SLAB_ITEM` | `ItemBlockSlabBase` | `original/rustic-pre-1.2.0/src/main/java/rustic/common/blocks/ModBlocks.java:121` | En curso, paridad sin verificar |

@@ -2,7 +2,7 @@
 
 Base: `original/rustic-pre-1.2.0`, commit `88597f5ca4342a6b9d4509d93967ecbef6f8bafa`, versión declarada 1.2.0. No se ha verificado que sea idéntico al JAR publicado. La paridad integral aún no está verificada; consultar el estado de cada fila y RUSTIC_TEST_REPORT.md.
 
-SHA-256 de cada archivo en el árbol de recursos original, sin transformaciones. Las 376 texturas y metadatos de la referencia 1.2.0 también están copiados sin cambios en `src/main/resources/assets/rustic/textures`; ocho archivos de idioma se han convertido a JSON preservando las claves originales y añadiendo alias para diez objetos y diez bloques. Son pasos parciales: aún faltan adaptación de modelos, claves y renderizadores, y pruebas visuales en 26.3. Las filas siguen pendientes de integración y prueba. No se ha auditado visualmente cada imagen ni validado la compatibilidad de cada modelo.
+SHA-256 de cada archivo en el árbol de recursos original, sin transformaciones. Las 376 texturas y metadatos de la referencia 1.2.0 también están copiados sin cambios en `src/main/resources/assets/rustic/textures`; ocho archivos de idioma se han convertido a JSON preservando las claves originales y añadiendo alias para diez objetos y veintiséis bloques. Son pasos parciales: aún faltan adaptación de modelos, claves y renderizadores, y pruebas visuales en 26.3. Las filas siguen pendientes de integración y prueba. No se ha auditado visualmente cada imagen ni validado la compatibilidad de cada modelo.
 
 Extensiones: `.cfg`: 1, `.info`: 1, `.js`: 1, `.json`: 595, `.lang`: 8, `.mcmeta`: 33, `.pdn`: 1, `.png`: 343, `.txt`: 2.
 
