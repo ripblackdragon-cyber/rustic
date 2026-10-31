@@ -176,6 +176,18 @@ public final class RusticClientGameTest implements FabricClientGameTest {
         server.waitFor(minecraftServer -> connection.getServerPlayer().level().getBlockState(pos).getValue(DoorBlock.OPEN));
         context.waitFor(client -> client.level.getBlockState(pos).getValue(DoorBlock.OPEN));
         context.waitTicks(4);
+        // Opening rotates the narrow collision shape; aim at its new center,
+        // not at the block center, which can now be empty space.
+        float[] aim = context.computeOnClient(client -> {
+            var bounds = client.level.getBlockState(pos).getShape(client.level, pos).bounds();
+            var eye = client.player.getEyePosition();
+            double dx = pos.getX() + (bounds.minX + bounds.maxX) / 2 - eye.x;
+            double dy = pos.getY() + (bounds.minY + bounds.maxY) / 2 - eye.y;
+            double dz = pos.getZ() + (bounds.minZ + bounds.maxZ) / 2 - eye.z;
+            return new float[] {(float) Math.toDegrees(Math.atan2(-dx, dz)),
+                    (float) -Math.toDegrees(Math.atan2(dy, Math.hypot(dx, dz)))};
+        });
+        context.getInput().lookAt(aim[0], aim[1]);
         context.getInput().pressKey(options -> options.keyUse);
         connection.waitForServerboundPackets();
         server.waitFor(minecraftServer -> !connection.getServerPlayer().level().getBlockState(pos).getValue(DoorBlock.OPEN));
