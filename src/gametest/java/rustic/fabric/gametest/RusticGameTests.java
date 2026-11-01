@@ -423,6 +423,19 @@ public class RusticGameTests {
             helper.assertTrue(lowerDrops.size() == 1 && lowerDrops.getFirst().is(doors[i].asItem())
                     && lowerDrops.getFirst().getCount() == 1 && upperDrops.isEmpty(), "Door half drops differ");
             assertShapedRecipe(helper, planks[i], doors[i], List.of("SS", "SS", "SS"), 3);
+            BlockPos power = pos.east();
+            helper.setBlock(power, Blocks.AIR);
+            helper.setBlock(pos.below(), Blocks.STONE);
+            helper.setBlock(pos, lower);
+            helper.setBlock(pos.above(), upper);
+            helper.setBlock(power, Blocks.REDSTONE_BLOCK);
+            helper.assertTrue(helper.getBlockState(pos).getValue(DoorBlock.OPEN)
+                    && helper.getBlockState(pos.above()).getValue(DoorBlock.OPEN), "Powered door halves should open");
+            helper.setBlock(power, Blocks.AIR);
+            helper.assertTrue(!helper.getBlockState(pos).getValue(DoorBlock.OPEN)
+                    && !helper.getBlockState(pos.above()).getValue(DoorBlock.OPEN), "Unpowered door halves should close");
+            helper.setBlock(pos, Blocks.AIR);
+            helper.setBlock(pos.above(), Blocks.AIR);
         }
         Block[] fences = {RusticBlocks.OLIVE_FENCE, RusticBlocks.IRONWOOD_FENCE};
         Block[] gates = {RusticBlocks.OLIVE_FENCE_GATE, RusticBlocks.IRONWOOD_FENCE_GATE};

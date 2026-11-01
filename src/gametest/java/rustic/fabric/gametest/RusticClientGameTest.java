@@ -192,6 +192,20 @@ public final class RusticClientGameTest implements FabricClientGameTest {
         connection.waitForServerboundPackets();
         server.waitFor(minecraftServer -> !connection.getServerPlayer().level().getBlockState(pos).getValue(DoorBlock.OPEN));
         context.waitFor(client -> !client.level.getBlockState(pos).getValue(DoorBlock.OPEN));
+        server.runOnServer(minecraftServer -> connection.getServerPlayer()
+                .setItemInHand(InteractionHand.MAIN_HAND, new ItemStack(Items.WOODEN_AXE)));
+        context.waitFor(client -> client.player.getMainHandItem().is(Items.WOODEN_AXE));
+        context.getInput().lookAt(pos);
+        context.getInput().holdKeyFor(options -> options.keyAttack, 100);
+        connection.waitForServerboundPackets();
+        server.waitFor(minecraftServer -> {
+            var player = connection.getServerPlayer();
+            var level = player.level();
+            boolean dropped = !level.getEntitiesOfClass(ItemEntity.class, new AABB(pos).inflate(3),
+                    entity -> entity.getItem().is(door.asItem())).isEmpty();
+            return level.getBlockState(pos).isAir() && level.getBlockState(pos.above()).isAir()
+                    && (dropped || player.getInventory().contains(new ItemStack(door)));
+        });
     }
 
     private void checkGateInteraction(ClientGameTestContext context, TestServerContext server,
